@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vertex Digital | Sistemas, CRM, IA & Consultoria Comercial</title>
+  <meta name="description" content="A Vertex Digital desenvolve sistemas sob medida, CRMs automatizados, soluções em Inteligência Artificial, consultoria comercial e sites de alta conversão." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <!-- Ambient Red Glow Effects -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container announcement-content">
+      <span class="badge-pulse"></span>
+      <span>⚡ Vagas abertas para novos projetos e consultorias este mês!</span>
+      <a href="#simulador" class="announcement-link">Simular projeto &rarr;</a>
+    </div>
+  </div>
+
+  <main class="main-wrapper">
+    <!-- Header / Profile Section -->
+    <header class="header-section">
+      <div class="container profile-card">
+        <div class="logo-wrapper">
+          <div class="logo-circle" id="logoContainer">
+            <img id="vertexLogoImg" src="./vertex-logo.png" alt="Vertex Digital Logo" class="vertex-logo-img" />
+          </div>
+          <div class="online-indicator" title="Atendimento Online"></div>
+        </div>
+
+        <h1 class="brand-title">VERTEX <span class="brand-sub">DIGITAL</span></h1>
+        <a href="https://www.instagram.com/somosvertexdigital/" target="_blank" rel="noopener noreferrer" class="insta-handle-badge">
+          <i class="ri-instagram-line"></i> @somosvertexdigital
+        </a>
+        <p class="brand-tagline">Sistemas sob medida • CRM • IA • Consultoria • Sites</p>
+
+        <p class="hero-description">
+          Transformamos sua operação com <strong>tecnologia de ponta</strong>, automações inteligentes e processos comerciais de alta conversão.
+        </p>
+
+        <!-- Quick Bio Action Links (Optimized for Instagram Mobile visitors) -->
+        <div class="bio-actions">
+          <a href="https://wa.me/5516992805627?text=Ol%C3%A1!%20Vim%20pelo%20Instagram%20da%20Vertex%20Digital%20e%20gostaria%20de%20falar%20com%20um%20consultor." 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn btn-primary btn-glow btn-block">
+            <i class="ri-whatsapp-line"></i>
+            <span>Falar com Consultor no WhatsApp</span>
+          </a>
+
+          <div class="bio-btn-grid bio-btn-grid-3">
+            <a href="https://www.instagram.com/somosvertexdigital/" target="_blank" rel="noopener noreferrer" class="btn btn-glass btn-insta">
+              <i class="ri-instagram-line"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="#simulador" class="btn btn-glass">
+              <i class="ri-calculator-line"></i>
+              <span>Simular Orçamento</span>
+            </a>
+            <a href="#solucoes" class="btn btn-glass">
+              <i class="ri-dashboard-3-line"></i>
+              <span>Ver Soluções</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Services / Solutions Section (Os 5 Pilares) -->
+    <section id="solucoes" class="section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="sub-badge"><i class="ri-flashlight-line"></i> Nossos Serviços</span>
+          <h2>O que a <span class="gradient-text">Vertex</span> faz pela sua empresa</h2>
+          <p>Desenvolvemos ecossistemas completos para acelerar vendas e automatizar operações.</p>
+        </div>
+
+        <div class="solutions-grid">
+          <!-- Service 1: Sistemas sob Medida -->
+          <div class="solution-card">
+            <div class="card-icon icon-cyan">
+              <i class="ri-code-s-slash-line"></i>
+            </div>
+            <h3>Sistemas sob Medida</h3>
+            <p>Plataformas web, portais de clientes, ERPs enxutos e dashboards de gestão adaptados 100% à sua regra de negócio.</p>
+            <ul class="feature-list">
+              <li><i class="ri-checkbox-circle-fill"></i> Dashboards em Tempo Real</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Controle de Acessos & Permissões</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Integração via APIs</li>
+            </ul>
+            <button class="btn-card-cta" onclick="openContactModal('Sistemas sob Medida')">
+              Solicitar Sistema <i class="ri-arrow-right-line"></i>
+            </button>
+          </div>
+
+          <!-- Service 2: CRM & Funis de Vendas -->
+          <div class="solution-card highlight-card">
+            <div class="badge-featured">Mais Solicitado</div>
+            <div class="card-icon icon-purple">
+              <i class="ri-git-merge-line"></i>
+            </div>
+            <h3>CRM & Funis de Vendas</h3>
+            <p>Organize seus leads, padronize seu pipeline comercial e garanta que nenhum cliente em potencial fique sem acompanhamento.</p>
+            <ul class="feature-list">
+              <li><i class="ri-checkbox-circle-fill"></i> Funil de Vendas Visual (Kanban)</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Automação de Follow-up</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Métricas & Relatórios Comerciais</li>
+            </ul>
+            <button class="btn-card-cta" onclick="openContactModal('CRM & Funis de Vendas')">
+              Estruturar meu CRM <i class="ri-arrow-right-line"></i>
+            </button>
+          </div>
+
+          <!-- Service 3: Inteligência Artificial -->
+          <div class="solution-card">
+            <div class="card-icon icon-blue">
+              <i class="ri-robot-2-line"></i>
+            </div>
+            <h3>Inteligência Artificial</h3>
+            <p>Agentes inteligentes treinados com a base da sua empresa para atender, qualificar leads e agendar reuniões no WhatsApp 24/7.</p>
+            <ul class="feature-list">
+              <li><i class="ri-checkbox-circle-fill"></i> Atendimento Humanizado 24/7</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Agendamento Automático</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Treinamento com Dados Próprios</li>
+            </ul>
+            <button class="btn-card-cta" onclick="openContactModal('Inteligência Artificial')">
+              Implementar IA <i class="ri-arrow-right-line"></i>
+            </button>
+          </div>
+
+          <!-- Service 4: Consultoria Comercial -->
+          <div class="solution-card">
+            <div class="card-icon icon-emerald">
+              <i class="ri-line-chart-line"></i>
+            </div>
+            <h3>Consultoria Comercial</h3>
+            <p>Diagnóstico de processos de vendas, criação de scripts de abordagem, pitch de vendas e treinamento para equipe de Inside Sales.</p>
+            <ul class="feature-list">
+              <li><i class="ri-checkbox-circle-fill"></i> Diagnóstico de Gargalos de Vendas</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Playbook Comercial Completo</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Acompanhamento & Metas</li>
+            </ul>
+            <button class="btn-card-cta" onclick="openContactModal('Consultoria Comercial')">
+              Agendar Diagnóstico <i class="ri-arrow-right-line"></i>
+            </button>
+          </div>
+
+          <!-- Service 5: Sites & Landing Pages -->
+          <div class="solution-card">
+            <div class="card-icon icon-orange">
+              <i class="ri-layout-4-line"></i>
+            </div>
+            <h3>Sites & Landing Pages</h3>
+            <p>Páginas modernas, ultrarrápidas e projetadas psicologicamente para converter visitantes em clientes pagantes.</p>
+            <ul class="feature-list">
+              <li><i class="ri-checkbox-circle-fill"></i> Design Premium Exclusivo</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Otimização Extrema de Velocidade</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Foco Total em Conversão</li>
+            </ul>
+            <button class="btn-card-cta" onclick="openContactModal('Sites & Landing Pages')">
+              Criar meu Site <i class="ri-arrow-right-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Budget / Solution Simulator -->
+    <section id="simulador" class="section section-dark-card">
+      <div class="container">
+        <div class="sim-wrapper">
+          <div class="section-header text-center">
+            <span class="sub-badge"><i class="ri-cpu-line"></i> Ferramenta Interativa</span>
+            <h2>Simulador de <span class="gradient-text">Soluções Vertex</span></h2>
+            <p>Monte o pacote ideal para o seu momento atual e receba um orçamento prévio no WhatsApp.</p>
+          </div>
+
+          <form id="simulatorForm" class="simulator-card">
+            <!-- Step 1: Segmento -->
+            <div class="sim-step">
+              <label class="sim-label">1. Qual o segmento da sua empresa?</label>
+              <div class="sim-options-grid">
+                <label class="sim-option-btn">
+                  <input type="radio" name="segmento" value="Prestador de Serviços / B2B" checked />
+                  <div class="option-content">
+                    <i class="ri-briefcase-line"></i>
+                    <span>Serviços / B2B</span>
+                  </div>
+                </label>
+                <label class="sim-option-btn">
+                  <input type="radio" name="segmento" value="Comércio / Loja / E-commerce" />
+                  <div class="option-content">
+                    <i class="ri-shopping-bag-3-line"></i>
+                    <span>Comércio / E-commerce</span>
+                  </div>
+                </label>
+                <label class="sim-option-btn">
+                  <input type="radio" name="segmento" value="Clínica / Saúde / Estética" />
+                  <div class="option-content">
+                    <i class="ri-heart-pulse-line"></i>
+                    <span>Saúde / Estética</span>
+                  </div>
+                </label>
+                <label class="sim-option-btn">
+                  <input type="radio" name="segmento" value="Outro Segmento" />
+                  <div class="option-content">
+                    <i class="ri-building-4-line"></i>
+                    <span>Outros</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 2: Soluções Desejadas -->
+            <div class="sim-step">
+              <label class="sim-label">2. Quais soluções você precisa no momento? (Selecione 1 ou mais)</label>
+              <div class="sim-options-grid">
+                <label class="sim-checkbox-btn">
+                  <input type="checkbox" name="solucoes" value="Sites & Landing Pages" checked />
+                  <div class="checkbox-content">
+                    <i class="ri-layout-4-line"></i>
+                    <div>
+                      <strong>Site / Landing Page</strong>
+                      <small>Presença digital & conversão</small>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="sim-checkbox-btn">
+                  <input type="checkbox" name="solucoes" value="CRM & Funil de Vendas" checked />
+                  <div class="checkbox-content">
+                    <i class="ri-git-merge-line"></i>
+                    <div>
+                      <strong>CRM Comercial</strong>
+                      <small>Organização de leads & funil</small>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="sim-checkbox-btn">
+                  <input type="checkbox" name="solucoes" value="Inteligência Artificial (WhatsApp)" />
+                  <div class="checkbox-content">
+                    <i class="ri-robot-2-line"></i>
+                    <div>
+                      <strong>Agente de IA 24/7</strong>
+                      <small>Atendimento inteligente</small>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="sim-checkbox-btn">
+                  <input type="checkbox" name="solucoes" value="Sistema Web sob Medida" />
+                  <div class="checkbox-content">
+                    <i class="ri-code-s-slash-line"></i>
+                    <div>
+                      <strong>Sistema sob Medida</strong>
+                      <small>Gestão personalizada</small>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="sim-checkbox-btn">
+                  <input type="checkbox" name="solucoes" value="Consultoria Comercial" />
+                  <div class="checkbox-content">
+                    <i class="ri-line-chart-line"></i>
+                    <div>
+                      <strong>Consultoria Comercial</strong>
+                      <small>Aceleração de vendas</small>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 3: Urgência -->
+            <div class="sim-step">
+              <label class="sim-label">3. Qual a sua prioridade de início?</label>
+              <div class="sim-options-grid grid-3">
+                <label class="sim-option-btn">
+                  <input type="radio" name="prazo" value="Imediato (Esta semana)" checked />
+                  <div class="option-content">
+                    <i class="ri-flashlight-line"></i>
+                    <span>Imediata (Esta semana)</span>
+                  </div>
+                </label>
+                <label class="sim-option-btn">
+                  <input type="radio" name="prazo" value="Próximos 15-30 dias" />
+                  <div class="option-content">
+                    <i class="ri-calendar-event-line"></i>
+                    <span>15 a 30 dias</span>
+                  </div>
+                </label>
+                <label class="sim-option-btn">
+                  <input type="radio" name="prazo" value="Pesquisando para o futuro" />
+                  <div class="option-content">
+                    <i class="ri-search-eye-line"></i>
+                    <span>Pesquisando soluções</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Result Summary Box -->
+            <div class="sim-summary-box">
+              <div class="summary-info">
+                <div class="summary-badge">Pacote Personalizado Vertex</div>
+                <div class="summary-sol-count"><span id="selectedCount">2</span> soluções selecionadas</div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-glow btn-lg">
+                <i class="ri-whatsapp-line"></i>
+                <span>Enviar Simulação via WhatsApp</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Portfolio Preview Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="sub-badge"><i class="ri-eye-line"></i> Experiência & Qualidade</span>
+          <h2>Conheça a tecnologia dos nossos <span class="gradient-text">Sistemas</span></h2>
+          <p>Interface intuitiva, rápida e focada em resultados mensuráveis.</p>
+        </div>
+
+        <!-- Interactive Tabs -->
+        <div class="demo-tabs">
+          <button class="tab-btn active" data-tab="tab-crm">
+            <i class="ri-git-merge-line"></i> CRM & Funil
+          </button>
+          <button class="tab-btn" data-tab="tab-ia">
+            <i class="ri-robot-2-line"></i> Chatbot com IA
+          </button>
+          <button class="tab-btn" data-tab="tab-dashboard">
+            <i class="ri-dashboard-3-line"></i> Dashboard de Gestão
+          </button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="tab-viewport glass-panel">
+          <!-- CRM Tab Content -->
+          <div class="tab-content active" id="tab-crm">
+            <div class="mockup-header">
+              <div class="mockup-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="mockup-title">Vertex CRM Commercial Suite</div>
+            </div>
+            <div class="mockup-body crm-view">
+              <div class="kanban-column">
+                <div class="column-header">Leads Novos <span class="count">8</span></div>
+                <div class="kanban-card">
+                  <div class="card-tag tag-cyan">Landing Page</div>
+                  <strong>Empresa Alpha Ltda</strong>
+                  <p>Interesse: Sistema sob Medida</p>
+                  <span class="card-price">R$ 12.000,00</span>
+                </div>
+                <div class="kanban-card">
+                  <div class="card-tag tag-purple">Instagram</div>
+                  <strong>Dr. Marcelo Silva</strong>
+                  <p>Interesse: Agente de IA</p>
+                  <span class="card-price">R$ 4.500,00</span>
+                </div>
+              </div>
+
+              <div class="kanban-column">
+                <div class="column-header">Em Diagnóstico <span class="count">4</span></div>
+                <div class="kanban-card">
+                  <div class="card-tag tag-orange">Indicação</div>
+                  <strong>Grupo Horizon</strong>
+                  <p>Interesse: CRM + Consultoria</p>
+                  <span class="card-price">R$ 18.500,00</span>
+                </div>
+              </div>
+
+              <div class="kanban-column">
+                <div class="column-header">Proposta Enviada <span class="count">3</span></div>
+                <div class="kanban-card">
+                  <div class="card-tag tag-emerald">Reunião Realizada</div>
+                  <strong>Nexus Logística</strong>
+                  <p>Interesse: Sistema de Gestão</p>
+                  <span class="card-price">R$ 25.000,00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IA Tab Content -->
+          <div class="tab-content" id="tab-ia">
+            <div class="mockup-header">
+              <div class="mockup-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="mockup-title">Vertex IA WhatsApp Assistant (Simulação)</div>
+            </div>
+            <div class="mockup-body chat-view">
+              <div class="chat-bubble user">
+                <p>Olá, preciso automatizar o atendimento da minha clínica. Vocês fazem isso?</p>
+                <span class="time">14:32</span>
+              </div>
+              <div class="chat-bubble ia">
+                <div class="ia-badge"><i class="ri-robot-2-line"></i> Agente Vertex IA</div>
+                <p>Olá! Com certeza. Desenvolvemos agentes virtuais com Inteligência Artificial que agendam consultas, tiram dúvidas frequentes e qualificam pacientes diretamente no WhatsApp, 24h por dia. Gostaria de agendar uma demonstração rápida?</p>
+                <span class="time">14:32</span>
+              </div>
+              <div class="chat-bubble user">
+                <p>Nossa, que rápido! Sim, quero ver como funciona.</p>
+                <span class="time">14:33</span>
+              </div>
+              <div class="chat-bubble ia">
+                <div class="ia-badge"><i class="ri-robot-2-line"></i> Agente Vertex IA</div>
+                <p>Perfeito! Qual o melhor horário para você amanhã: 10h ou 15h?</p>
+                <span class="time">14:33</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Tab Content -->
+          <div class="tab-content" id="tab-dashboard">
+            <div class="mockup-header">
+              <div class="mockup-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="mockup-title">Vertex Executive Metrics Dashboard</div>
+            </div>
+            <div class="mockup-body dash-view">
+              <div class="metric-grid">
+                <div class="dash-card">
+                  <span>Receita Mensal</span>
+                  <h3>R$ 142.800</h3>
+                  <small class="trend positive"><i class="ri-arrow-up-line"></i> +28.4% este mês</small>
+                </div>
+                <div class="dash-card">
+                  <span>Taxa de Conversão</span>
+                  <h3>34.2%</h3>
+                  <small class="trend positive"><i class="ri-arrow-up-line"></i> +12% com IA</small>
+                </div>
+                <div class="dash-card">
+                  <span>Leads Atendidos</span>
+                  <h3>1.420 leads</h3>
+                  <small class="trend">100% automatizados</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROI / Time Savings Calculator Section -->
+    <section class="section section-dark-card">
+      <div class="container">
+        <div class="sim-wrapper text-center">
+          <span class="sub-badge"><i class="ri-line-chart-line"></i> Calculadora de Eficiência</span>
+          <h2>Quanto tempo sua empresa <span class="gradient-text">está perdendo?</span></h2>
+          <p>Descubra quantas horas operacionais você pode economizar por mês com Agentes de IA e CRM da Vertex.</p>
+
+          <div class="calculator-card glass-panel margin-top-md">
+            <div class="calc-control-group">
+              <label class="calc-label">
+                <span>Leads/Atendimentos recebidos por dia:</span>
+                <strong id="leadCountDisplay">50 leads/dia</strong>
+              </label>
+              <input type="range" id="leadSlider" min="10" max="300" step="10" value="50" class="calc-slider" />
+            </div>
+
+            <div class="calc-results-grid">
+              <div class="calc-result-box">
+                <span class="calc-res-title">Horas manuais salvas/mês</span>
+                <h3 id="hoursSavedVal" class="calc-res-num">65 horas</h3>
+                <small>Com automações de IA no WhatsApp</small>
+              </div>
+              <div class="calc-result-box highlight-box">
+                <span class="calc-res-title">Aumento potencial de vendas</span>
+                <h3 id="revenueBoostVal" class="calc-res-num">+ 35%</h3>
+                <small>Evitando perda de leads por demora no atendimento</small>
+              </div>
+            </div>
+
+            <a href="https://wa.me/5516992805627?text=Ol%C3%A1!%20Fiz%20a%20simula%C3%A7%C3%A3o%20na%20calculadora%20do%20site%20da%20Vertex%20e%20gostaria%20de%20economizar%20esse%20tempo%20na%20minha%20empresa!" 
+               target="_blank" class="btn btn-primary btn-glow margin-top-md">
+              <i class="ri-whatsapp-line"></i> Quero economizar esse tempo na minha empresa
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4-Step Process Section -->
+    <section class="section">
+      <div class="container text-center">
+        <span class="sub-badge"><i class="ri-route-line"></i> Passo a Passo</span>
+        <h2>Como a <span class="gradient-text">Vertex Digital</span> trabalha com você</h2>
+        <p>Um método transparente, ágil e focado na entrega rápida de resultados.</p>
+
+        <div class="process-steps-grid margin-top-md">
+          <div class="process-step-card">
+            <div class="step-num">01</div>
+            <h3>Diagnóstico Gratuito</h3>
+            <p>Reunião rápida para mapear sua operação, gargalos de vendas e definir as soluções ideais.</p>
+          </div>
+          <div class="process-step-card">
+            <div class="step-num">02</div>
+            <h3>Proposta & Escopo</h3>
+            <p>Apresentamos o plano de ação sob medida com cronograma garantido e investimento transparente.</p>
+          </div>
+          <div class="process-step-card">
+            <div class="step-num">03</div>
+            <h3>Desenvolvimento Ágil</h3>
+            <p>Construção do seu sistema, CRM, site ou Agente de IA com validações em tempo real.</p>
+          </div>
+          <div class="process-step-card">
+            <div class="step-num">04</div>
+            <h3>Lançamento & Suporte</h3>
+            <p>Colocamos a solução no ar, treinamos sua equipe e acompanhamos os primeiros resultados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metrics / Stats Section -->
+    <section class="section metrics-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3 class="stat-number">+100k</h3>
+            <p>Leads gerados e geridos pelos nossos sistemas</p>
+          </div>
+          <div class="stat-item">
+            <h3 class="stat-number">24/7</h3>
+            <p>Atendimento contínuo com Agentes de IA</p>
+          </div>
+          <div class="stat-item">
+            <h3 class="stat-number">+60%</h3>
+            <p>Aumento médio em conversões comerciais</p>
+          </div>
+          <div class="stat-item">
+            <h3 class="stat-number">100%</h3>
+            <p>Projetos desenvolvidos sob medida</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA Bar -->
+    <section class="section text-center cta-banner">
+      <div class="container">
+        <h2>Pronto para levar a <span class="gradient-text">Vertex</span> para a sua empresa?</h2>
+        <p>Agende uma reunião de diagnóstico gratuita e descubra como automatizar e escalar suas vendas.</p>
+        <button class="btn btn-primary btn-glow btn-lg margin-top-md" onclick="openContactModal('Diagnóstico Geral')">
+          <i class="ri-calendar-check-line"></i>
+          <span>Agendar Diagnóstico Gratuito</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <strong>VERTEX <span>DIGITAL</span></strong>
+          <p>Sistemas sob medida • CRM • IA • Consultoria Comercial • Sites</p>
+        </div>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/somosvertexdigital/" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram @somosvertexdigital">
+            <i class="ri-instagram-line"></i>
+          </a>
+          <a href="https://wa.me/5516992805627" target="_blank" rel="noopener noreferrer" class="social-icon" title="WhatsApp Vertex Digital">
+            <i class="ri-whatsapp-line"></i>
+          </a>
+        </div>
+        <div class="footer-copy">
+          &copy; <span id="year">2026</span> Vertex Digital. Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Lead Contact Modal -->
+  <div id="contactModal" class="modal-backdrop">
+    <div class="modal-card glass-panel">
+      <button class="modal-close" onclick="closeContactModal()"><i class="ri-close-line"></i></button>
+      <div class="modal-header">
+        <span class="sub-badge"><i class="ri-send-plane-line"></i> Falar com especialista</span>
+        <h3 id="modalTitle">Solicitar Atendimento Vertex</h3>
+        <p>Preencha os dados abaixo para direcionarmos ao especialista ideal.</p>
+      </div>
+      <form id="contactForm">
+        <input type="hidden" id="modalSolucao" value="Geral" />
+        <div class="form-group">
+          <label>Seu Nome</label>
+          <input type="text" id="modalNome" class="form-input" placeholder="Ex: Rodrigo Silva" required />
+        </div>
+        <div class="form-group">
+          <label>Nome da Empresa</label>
+          <input type="text" id="modalEmpresa" class="form-input" placeholder="Ex: Silva Tech" required />
+        </div>
+        <div class="form-group">
+          <label>WhatsApp para contato</label>
+          <input type="tel" id="modalTelefone" class="form-input" placeholder="(00) 90000-0000" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-glow btn-block">
+          <i class="ri-whatsapp-line"></i> Iniciar Conversa no WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating AI Assistant Widget -->
+  <div id="aiWidget" class="ai-floating-widget">
+    <div class="ai-widget-badge" onclick="toggleAIChat()">
+      <span class="ai-sparkle">✨</span>
+      <span>Como posso te ajudar?</span>
+    </div>
+    <button class="ai-widget-trigger" onclick="toggleAIChat()" aria-label="Abrir Assistente de IA">
+      <i class="ri-robot-2-line"></i>
+      <span class="ai-pulse-ring"></span>
+    </button>
+  </div>
+
+  <!-- Floating AI Chat Drawer / Panel -->
+  <div id="aiChatDrawer" class="ai-chat-drawer glass-panel">
+    <div class="ai-chat-header">
+      <div class="ai-header-info">
+        <div class="ai-avatar">
+          <i class="ri-robot-2-line"></i>
+          <span class="ai-online-dot"></span>
+        </div>
+        <div>
+          <h4>Vertex IA Assistant</h4>
+          <p><span class="badge-pulse"></span> Respostas Instantâneas 24/7</p>
+        </div>
+      </div>
+      <button class="ai-close-btn" onclick="toggleAIChat()"><i class="ri-close-line"></i></button>
+    </div>
+
+    <div class="ai-chat-body" id="aiChatMessages">
+      <!-- Welcome Message -->
+      <div class="chat-bubble ia">
+        <div class="ia-badge"><i class="ri-robot-2-line"></i> Assistente Vertex IA</div>
+        <p>Olá! Sou a Inteligência Artificial da <strong>Vertex Digital</strong>. 👋</p>
+        <p class="ai-sub-msg">Selecione uma das dúvidas mais frequentes abaixo ou digite a sua pergunta:</p>
+      </div>
+
+      <!-- Quick FAQ Chips Container -->
+      <div class="faq-chips-container" id="faqChips">
+        <!-- Dynamic FAQ chips rendered by JS -->
+      </div>
+    </div>
+
+    <div class="ai-chat-footer">
+      <form id="aiChatForm">
+        <input type="text" id="aiInput" class="ai-chat-input" placeholder="Digite sua dúvida aqui..." autocomplete="off" />
+        <button type="submit" class="ai-send-btn" title="Enviar Pergunta">
+          <i class="ri-send-plane-fill"></i>
+        </button>
+      </form>
+      <div class="ai-footer-direct">
+        <span>Prefere atendimento humano?</span>
+        <a href="https://wa.me/5516992805627?text=Ol%C3%A1!%20Tinha%20uma%20d%C3%BAvida%20no%20site%20da%20Vertex%20e%20gostaria%20de%20falar%20com%20um%20consultor." target="_blank">
+          Chamar no WhatsApp &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
