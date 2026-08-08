@@ -167,7 +167,7 @@
     }
 
     .cover-body {
-      margin: 80px 0;
+      margin: 70px 0;
     }
 
     .proposal-tag {
@@ -182,7 +182,7 @@
 
     .cover-title {
       font-family: var(--font-display);
-      font-size: 2.8rem;
+      font-size: 2.7rem;
       font-weight: 900;
       line-height: 1.15;
       margin-bottom: 20px;
@@ -196,11 +196,11 @@
     }
 
     .cover-subtitle {
-      font-size: 1.25rem;
+      font-size: 1.18rem;
       color: var(--text-muted);
-      max-width: 680px;
+      max-width: 720px;
       line-height: 1.6;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
     }
 
     .meta-cards-grid {
@@ -264,7 +264,7 @@
     }
 
     .section-block {
-      margin-bottom: 45px;
+      margin-bottom: 40px;
     }
 
     .section-header {
@@ -292,73 +292,82 @@
 
     .section-header h2 {
       font-family: var(--font-display);
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       font-weight: 800;
       color: #fff;
     }
 
     p.intro-text {
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 0.98rem;
       margin-bottom: 20px;
     }
 
-    /* Highlights / Cards Grid */
-    .grid-2-col {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+    /* 3 Pilares Main Cards */
+    .pilares-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
       margin-bottom: 25px;
     }
 
-    .feature-card {
+    .pilar-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
-      padding: 20px;
-      transition: border-color 0.2s;
+      padding: 22px;
+      border-left: 5px solid var(--color-primary);
     }
 
-    .feature-card.highlight {
-      border-color: var(--color-primary);
-      background: linear-gradient(180deg, rgba(255, 10, 43, 0.1) 0%, var(--bg-card) 100%);
+    .pilar-card .pilar-num {
+      display: inline-block;
+      background: rgba(255, 10, 43, 0.15);
+      color: var(--color-primary);
+      font-weight: 800;
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
     }
 
-    .feature-card h3 {
-      font-size: 1.1rem;
+    .pilar-card h3 {
+      font-size: 1.2rem;
       color: #fff;
       margin-bottom: 8px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .feature-card h3 i {
+    .pilar-card h3 i {
       color: var(--color-primary);
     }
 
-    .feature-card p {
-      font-size: 0.88rem;
+    .pilar-card p {
+      font-size: 0.9rem;
       color: var(--text-muted);
+      margin-bottom: 12px;
     }
 
-    .feature-card ul {
+    .pilar-card ul {
       list-style: none;
-      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
     }
 
-    .feature-card ul li {
-      font-size: 0.82rem;
+    .pilar-card ul li {
+      font-size: 0.84rem;
       color: var(--text-main);
-      margin-bottom: 4px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .feature-card ul li i {
+    .pilar-card ul li i {
       color: var(--color-primary);
-      font-size: 0.9rem;
     }
 
     /* Tabelas Executivas */
@@ -449,7 +458,7 @@
       color: var(--text-muted);
     }
 
-    /* ROI / Impact Summary Box */
+    /* Impact Box */
     .impact-box {
       background: linear-gradient(135deg, rgba(255, 10, 43, 0.15) 0%, rgba(15, 16, 22, 0.95) 100%);
       border: 1px solid var(--color-primary);
@@ -560,8 +569,8 @@
     <div class="info">
       <i class="ri-file-pdf-2-line"></i>
       <div>
-        <strong>Documento Executivo de Implementação</strong>
-        <p style="font-size: 0.8rem; color: #94a3b8;">Formatado em alta definição com a marca oficial Vertex Digital</p>
+        <strong>Plano Executivo de Entrega Vertex Digital</strong>
+        <p style="font-size: 0.8rem; color: #94a3b8;">Desenvolvido especialmente para Corretora de Seguros • 3 Entregáveis Exclusivos</p>
       </div>
     </div>
     <button class="btn-print" onclick="window.print()">
@@ -585,10 +594,10 @@
       </div>
 
       <div class="cover-body">
-        <span class="proposal-tag">Plano de Implementação Técnica & Estratégica</span>
-        <h1 class="cover-title">Plataforma Vertex para <span>Corretora de Seguros</span></h1>
+        <span class="proposal-tag">Plano de Implementação & Aceleração Comercial</span>
+        <h1 class="cover-title">Gerador de Carrosséis, Scripts & Mentoria para <span>Corretora de Seguros</span></h1>
         <p class="cover-subtitle">
-          Arquitetura completa de sistemas sob medida, CRM comercial Kanban, automações de renovações e Agente de Inteligência Artificial 24/7 para aceleração comercial.
+          Estratégia completa de marketing de atração no Instagram, gerador de scripts comerciais para corretores e mentoria prática em vendas para a equipe da corretora.
         </p>
 
         <div class="meta-cards-grid">
@@ -599,16 +608,16 @@
           </div>
           <div class="meta-card">
             <label>Destinado A</label>
-            <strong>Corretora de Seguros (Diretoria)</strong>
+            <strong>Corretora de Seguros (Diretoria & Vendas)</strong>
             <span style="font-size: 0.8rem; color: #94a3b8;">Seguros Auto, Vida, Saúde & Empresarial</span>
           </div>
           <div class="meta-card">
-            <label>Código da Proposta</label>
+            <label>Código do Projeto</label>
             <strong>VTX-SEG-2026-004</strong>
           </div>
           <div class="meta-card">
-            <label>Data de Emissão</label>
-            <strong>Fevereiro de 2026</strong>
+            <label>Escopo do Projeto</label>
+            <strong>3 Pilares Exclusivos de Vendas</strong>
           </div>
         </div>
       </div>
@@ -623,7 +632,7 @@
     </div>
 
     <!-- ==========================================
-         PÁGINA 2: DIAGNÓSTICO & ESCOPO DOS MÓDULOS
+         PÁGINA 2: DIAGNÓSTICO & OS 3 PILARES DA SOLUÇÃO
          ========================================== -->
     <div class="pdf-page-content page-break">
 
@@ -631,81 +640,61 @@
       <div class="section-block">
         <div class="section-header">
           <div class="num-badge">01</div>
-          <h2>Diagnóstico Operacional & Desafios</h2>
+          <h2>Diagnóstico & Contexto do Projeto</h2>
         </div>
         <p class="intro-text">
-          Mapeamos os principais gargalos que limitam o crescimento das corretoras tradicionais no mercado brasileiro de seguros e definimos as metas diretas da implementação:
+          A corretora parceira já possui <strong>Agente de IA 24/7 e CRM Comercial ativos</strong>. O objetivo desta implementação é potencializar a geração de demanda qualificada e capacitar os funcionários da corretora para fechamentos de alto valor através de 3 soluções sob medida:
         </p>
 
-        <div class="grid-2-col">
-          <div class="feature-card">
-            <h3><i class="ri-error-warning-line"></i> Gargalos Identificados</h3>
+        <!-- OS 3 PILARES -->
+        <div class="pilares-grid">
+          
+          <!-- Pilar 1 -->
+          <div class="pilar-card">
+            <span class="pilar-num">Pilar 01 • Atração de Leads no Instagram</span>
+            <h3><i class="ri-slideshow-line"></i> Gerador de Carrosséis Persuasivos (Nicho de Seguros)</h3>
+            <p>
+              Produção contínua de artes e carrosséis com gatilhos de <strong>curiosidade, escassez e oportunidade de proteção patrimonial</strong>. Conteúdos práticos desenhados para o seguidor olhar o post e concluir imediatamente: <em>"Eu preciso contratar um seguro dele agora mesmo!"</em>.
+            </p>
             <ul>
-              <li><i class="ri-close-circle-fill"></i> Demora no envio de cotações de seguros via WhatsApp.</li>
-              <li><i class="ri-close-circle-fill"></i> Perda de renovações de apólices por falta de lembretes automáticos.</li>
-              <li><i class="ri-close-circle-fill"></i> Atendimento estático fora do horário comercial (noites e finais de semana).</li>
-              <li><i class="ri-close-circle-fill"></i> Falta de visibilidade de comissões por seguradora.</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Posts de Proteção Familiar & Vida</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Alertas de Prevenção de Sinistros Auto</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Gatilhos de Escassez & Condições Especiais</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Design Premium Pronto para Postar</li>
             </ul>
           </div>
 
-          <div class="feature-card highlight">
-            <h3><i class="ri-checkbox-circle-line"></i> Metas de Eficiência Alcançadas</h3>
+          <!-- Pilar 2 -->
+          <div class="pilar-card">
+            <span class="pilar-num">Pilar 02 • Ferramenta Interna para os Funcionários</span>
+            <h3><i class="ri-message-3-line"></i> Plataforma / Gerador de Scripts Comercial</h3>
+            <p>
+              Sistema web interno onde todos os funcionários e corretores da empresa acessam em 1 clique roteiros de abordagem, respostas para contorno de objeções ("tá caro", "vou cotar em outra", "falaria com meu sócio") e mensagens de fechamento prontas para o WhatsApp.
+            </p>
             <ul>
-              <li><i class="ri-checkbox-circle-fill"></i> <strong>-70%</strong> de tempo médio de cotação e envio.</li>
-              <li><i class="ri-checkbox-circle-fill"></i> <strong>+45%</strong> de retenção e renovação automática de carteira.</li>
-              <li><i class="ri-checkbox-circle-fill"></i> Atendimento humanizado com IA <strong>24h por dia</strong>.</li>
-              <li><i class="ri-checkbox-circle-fill"></i> Dashboard unificado com Kanban por corretor.</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Roteiros Rápidos de Abordagem WhatsApp</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Matriz de Resposta a Objeções de Preço</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Cópia de Mensagens em 1 Clique</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Padronização do Time de Atendimento</li>
             </ul>
           </div>
-        </div>
-      </div>
 
-      <!-- SEÇÃO 2: ESCOPO DOS MÓDULOS -->
-      <div class="section-block">
-        <div class="section-header">
-          <div class="num-badge">02</div>
-          <h2>Escopo dos Módulos da Plataforma</h2>
-        </div>
-        <p class="intro-text">
-          O ecossistema Vertex para a Corretora contempla 5 módulos integrados em nuvem com alta segurança e tecnologia de ponta:
-        </p>
+          <!-- Pilar 3 -->
+          <div class="pilar-card">
+            <span class="pilar-num">Pilar 03 • Capacitação Comercial de Alta Performance</span>
+            <h3><i class="ri-team-line"></i> Mentoria Estratégica com o Time de Vendas</h3>
+            <p>
+              Encontros de treinamento ao vivo e acompanhamento estratégico da equipe comercial da corretora. Alinhamento de processos de vendas, simulações de atendimento ao vivo, metas de conversão e técnicas de fechamento para apólices High-Ticket.
+            </p>
+            <ul>
+              <li><i class="ri-checkbox-circle-fill"></i> Treinamento Prático de Vendas por Telefone & WA</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Simulação de Atendimentos & Roleplay</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Acompanhamento de Metas Comercial</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Playbook Executivo de Vendas de Seguros</li>
+            </ul>
+          </div>
 
-        <table class="executive-table">
-          <thead>
-            <tr>
-              <th>Módulo</th>
-              <th>Funcionalidades Principais</th>
-              <th>Impacto Direto</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>🤖 Agente IA WhatsApp 24/7</strong></td>
-              <td>Pré-qualificação de cotações (Auto, Vida, Saúde) e triagem de sinistros.</td>
-              <td><span class="status-pill">Atendimento 24/7</span></td>
-            </tr>
-            <tr>
-              <td><strong>📊 CRM Comercial Kanban</strong></td>
-              <td>Funil visual por tipo de apólice, atribuição de corretores e follow-up.</td>
-              <td><span class="status-pill">Gestão de Leads</span></td>
-            </tr>
-            <tr>
-              <td><strong>🔄 Motor de Renovações</strong></td>
-              <td>Alertas automatizados aos clientes 30, 15 e 7 dias antes do vencimento.</td>
-              <td><span class="status-pill">+ Retention</span></td>
-            </tr>
-            <tr>
-              <td><strong>⚙️ Portal do Segurado</strong></td>
-              <td>Área restrita para consulta de carteira, download de boletos e cartões.</td>
-              <td><span class="status-pill">Self-Service</span></td>
-            </tr>
-            <tr>
-              <td><strong>📈 Dashboard da Diretoria</strong></td>
-              <td>Métricas de comissões por seguradora, ranking de vendas e sinistralidade.</td>
-              <td><span class="status-pill">Gestão BI</span></td>
-            </tr>
-          </tbody>
-        </table>
+        </div>
       </div>
 
       <div class="pdf-footer">
@@ -715,72 +704,72 @@
     </div>
 
     <!-- ==========================================
-         PÁGINA 3: CRONOGRAMA & ROADMAP DE IMPLEMENTAÇÃO
+         PÁGINA 3: ROADMAP DE EXECUÇÃO & IMPACTO
          ========================================== -->
     <div class="pdf-page-content page-break">
       <div class="section-block">
         <div class="section-header">
-          <div class="num-badge">03</div>
-          <h2>Cronograma de Execução (Roadmap de 4 Fases)</h2>
+          <div class="num-badge">02</div>
+          <h2>Cronograma de Execução (Roadmap em 4 Fases)</h2>
         </div>
         <p class="intro-text">
-          Desenvolvimento ágil estruturado para garantir a entrega rápida e sem interrupções nas rotinas de vendas atuais da corretora:
+          Execução ágil estruturada para implantar as 3 soluções sem interromper o atendimento diário da corretora:
         </p>
 
         <div class="timeline-container">
           <div class="timeline-step">
-            <div class="step-time">Fase 1 • Semanas 1 e 2</div>
+            <div class="step-time">Fase 1 • Semana 1</div>
             <div class="step-info">
-              <h4>Mapeamento & Configuração de Regras de Negócio</h4>
-              <p>Alinhamento de fluxos de cotação por tipo de seguro (Auto, Vida, Saúde, Empresarial). Mapeamento das seguradoras parceiras (Porto, Bradesco, SulAmérica, Tokio, HDI, Azul) e regras de comissionamento.</p>
+              <h4>Mapeamento de Objeções & Linha Editorial de Conteúdo</h4>
+              <p>Mapeamento das maiores dúvidas e objeções dos clientes da corretora. Definição da linha de carrosséis para o Instagram e estrutura da plataforma de scripts comerciais.</p>
             </div>
           </div>
 
           <div class="timeline-step">
-            <div class="step-time">Fase 2 • Semanas 3 a 5</div>
+            <div class="step-time">Fase 2 • Semanas 2 e 3</div>
             <div class="step-info">
-              <h4>Construção da Plataforma Web, CRM & Treinamento da IA</h4>
-              <p>Desenvolvimento da interface responsiva, integração das APIs do WhatsApp Business, treinamento do Agente de IA com a base de conhecimento da corretora e montagem do Kanban comercial.</p>
+              <h4>Desenvolvimento do Gerador de Scripts & Criação dos Carrosséis</h4>
+              <p>Programação da ferramenta interna de scripts para os funcionários e produção dos primeiros lotes de carrosséis de alto impacto (curiosidade, escassez e desejo) para o Instagram.</p>
             </div>
           </div>
 
           <div class="timeline-step">
-            <div class="step-time">Fase 3 • Semana 6</div>
+            <div class="step-time">Fase 3 • Semana 4</div>
             <div class="step-info">
-              <h4>Homologação, Testes de Estresse & Capacitação da Equipe</h4>
-              <p>Simulação real de cotações no WhatsApp, testes de acionamento de sinistros, validação do motor de renovações e treinamento prático para toda a equipe de corretores e atendentes.</p>
+              <h4>Mentoria Intensiva de Vendas & Liberação dos Scripts</h4>
+              <p>Treinamento ao vivo com o time de vendas da corretora, simulações de abordagem, entrega das credenciais do Gerador de Scripts e capacitação dos corretores.</p>
             </div>
           </div>
 
           <div class="timeline-step">
-            <div class="step-time">Fase 4 • Semana 7+</div>
+            <div class="step-time">Fase 4 • Semana 5+</div>
             <div class="step-info">
-              <h4>Go-Live Oficial & Acompanhamento de Performance</h4>
-              <p>Lançamento oficial da plataforma, suporte técnico dedicado nas primeiras semanas e análise quinzenal dos relatórios de conversão e renovações automáticas.</p>
+              <h4>Postagens no Instagram, Acompanhamento & Métricas</h4>
+              <p>Início das publicações semanais no Instagram, monitoramento da geração de novos leads e análise quinzenal da evolução de fechamentos do time de vendas.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- SEÇÃO 4: RESUMO DE ROI -->
+      <!-- RESUMO DE IMPACTO -->
       <div class="section-block">
         <div class="section-header">
-          <div class="num-badge">04</div>
-          <h2>Retorno Esperado sobre o Investimento (ROI)</h2>
+          <div class="num-badge">03</div>
+          <h2>Resultados Esperados para a Corretora</h2>
         </div>
 
         <div class="impact-box">
           <div class="impact-item">
-            <h3>3.5x</h3>
-            <p>Retorno estimado sobre o investimento no primeiro ano</p>
-          </div>
-          <div class="impact-item">
-            <h3>+40h</h3>
-            <p>Horas operacionais salvas por mês pela equipe de atendimento</p>
+            <h3>+50%</h3>
+            <p>Aumento estimado na conversão de propostas com os novos scripts</p>
           </div>
           <div class="impact-item">
             <h3>100%</h3>
-            <p>Leads atendidos instantaneamente sem fila de espera</p>
+            <p>Time de vendas padronizado e capacitado em técnicas de fechamento</p>
+          </div>
+          <div class="impact-item">
+            <h3>Constante</h3>
+            <p>Atração de novos clientes via Instagram alimentado com carrosséis</p>
           </div>
         </div>
       </div>
@@ -797,51 +786,46 @@
     <div class="pdf-page-content page-break">
       <div class="section-block">
         <div class="section-header">
-          <div class="num-badge">05</div>
-          <h2>Matriz de Entregáveis & Garantias</h2>
+          <div class="num-badge">04</div>
+          <h2>Matriz de Entregáveis Oficiais</h2>
         </div>
 
         <table class="executive-table">
           <thead>
             <tr>
               <th>Item Entregável</th>
-              <th>Descrição Técnica</th>
+              <th>Descrição do Serviço</th>
               <th>Garantia & Suporte</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Plataforma Web Customizada</strong></td>
-              <td>Site institucional + Portal do Segurado com design exclusivo e alta velocidade.</td>
+              <td><strong>Gerador de Carrosséis para Seguros</strong></td>
+              <td>Pacote de artes visuais e modelos para alimentar o Instagram com gatilhos de venda.</td>
+              <td>Entrega Pronta & Suporte Visual</td>
+            </tr>
+            <tr>
+              <td><strong>Plataforma de Scripts Comerciais</strong></td>
+              <td>Sistema web interno para corretores acessarem roteiros de abordagem e objeções em 1 clique.</td>
               <td>Garantia de 90 dias</td>
             </tr>
             <tr>
-              <td><strong>Agente Vertex IA WhatsApp</strong></td>
-              <td>Assistente treinado em IA para qualificação e coleta de dados 24h.</td>
-              <td>Suporte Contínuo SLA 2h</td>
-            </tr>
-            <tr>
-              <td><strong>CRM Kanban Comercial</strong></td>
-              <td>Funil de vendas estruturado por carteiras de seguro com relatórios em tempo real.</td>
-              <td>Atualizações inclusas</td>
-            </tr>
-            <tr>
-              <td><strong>Módulo de Renovações</strong></td>
-              <td>Automação de lembretes preventivos de apólices no WhatsApp.</td>
-              <td>Funcionamento 99.9%</td>
+              <td><strong>Mentoria com o Time de Vendas</strong></td>
+              <td>Sessões de treinamento ao vivo, simulações de atendimento e playbook comercial da corretora.</td>
+              <td>Acompanhamento de Resultados</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <!-- SEÇÃO 6: TERMO DE ACEITE & ASSINATURAS -->
-      <div class="section-block" style="margin-top: 40px;">
+      <!-- SEÇÃO 5: TERMO DE ACEITE & ASSINATURAS -->
+      <div class="section-block" style="margin-top: 50px;">
         <div class="section-header">
-          <div class="num-badge">06</div>
+          <div class="num-badge">05</div>
           <h2>Aprovação & Termo de Aceite Executivo</h2>
         </div>
         <p class="intro-text" style="font-size: 0.88rem;">
-          Ao assinar este documento, as partes concordam com o escopo técnico, cronograma de execução de 4 fases e diretrizes de confidencialidade dispostas neste Plano de Implementação.
+          Ao assinar este documento, as partes declaram ciência do escopo dos 3 entregáveis estratégicos e concordam com as diretrizes de execução estipuladas neste Plano de Implementação.
         </p>
 
         <div class="signatures-grid">
@@ -856,7 +840,7 @@
         </div>
       </div>
 
-      <div class="pdf-footer" style="margin-top: 60px;">
+      <div class="pdf-footer" style="margin-top: 80px;">
         <div>Vertex Digital • Suporte WhatsApp: (16) 99280-5627</div>
         <div>Página 4 de 4</div>
       </div>
