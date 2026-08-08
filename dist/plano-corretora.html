@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plano de Implementação | Vertex Digital para Corretora de Seguros</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <style>
+    /* ==========================================
+       EXECUTIVE DOCUMENT STYLES - VERTEX DIGITAL
+       Otimizado para Tela e Impressão em PDF A4
+       ========================================== */
+    :root {
+      --color-primary: #ff0a2b;
+      --color-primary-dark: #cc001f;
+      --color-primary-glow: rgba(255, 10, 43, 0.35);
+      --bg-dark: #07070a;
+      --bg-card: #0f1016;
+      --bg-card-light: #161822;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --border-color: rgba(255, 10, 43, 0.25);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --font-display: 'Outfit', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: #030305;
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    /* Screen Action Bar (Não aparece na impressão) */
+    .screen-action-bar {
+      max-width: 900px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0f1016;
+      border: 1px solid var(--border-color);
+      padding: 14px 24px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .screen-action-bar .info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .screen-action-bar .info i {
+      font-size: 1.5rem;
+      color: var(--color-primary);
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, #ff0a2b 0%, #990017 100%);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(255, 10, 43, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-print:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 10, 43, 0.6);
+    }
+
+    /* Container Principal da Folha A4 */
+    .pdf-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #08080c;
+      border: 1px solid rgba(255, 10, 43, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* CAPA EXECUTIVA (COVER PAGE) */
+    .pdf-cover-page {
+      padding: 60px 50px 40px 50px;
+      min-height: 1000px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: radial-gradient(circle at 80% 20%, rgba(255, 10, 43, 0.15) 0%, transparent 60%),
+                  radial-gradient(circle at 10% 80%, rgba(153, 0, 23, 0.2) 0%, transparent 50%),
+                  #07070a;
+      border-bottom: 2px solid var(--color-primary);
+      position: relative;
+    }
+
+    .cover-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo-img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid var(--color-primary);
+      box-shadow: 0 0 15px var(--color-primary-glow);
+    }
+
+    .brand-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .brand-logo-text span {
+      color: var(--color-primary);
+    }
+
+    .confidential-badge {
+      background: rgba(255, 10, 43, 0.12);
+      border: 1px solid rgba(255, 10, 43, 0.4);
+      color: var(--color-primary);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .cover-body {
+      margin: 80px 0;
+    }
+
+    .proposal-tag {
+      color: var(--color-primary);
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .cover-title {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .cover-title span {
+      background: linear-gradient(135deg, #ff0a2b 0%, #ff667d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cover-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .meta-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 720px;
+    }
+
+    .meta-card {
+      background: rgba(15, 16, 22, 0.8);
+      border: 1px solid rgba(255, 10, 43, 0.2);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .meta-card label {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .meta-card strong {
+      font-size: 0.95rem;
+      color: #fff;
+      display: block;
+    }
+
+    .cover-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 20px;
+    }
+
+    .author-info strong {
+      display: block;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .author-info span {
+      color: var(--color-primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .doc-code {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-family: monospace;
+    }
+
+    /* PÁGINAS DO CORPO DO DOCUMENTO */
+    .pdf-page-content {
+      padding: 50px;
+    }
+
+    .section-block {
+      margin-bottom: 45px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+
+    .section-header .num-badge {
+      background: var(--color-primary);
+      color: #fff;
+      font-weight: 900;
+      font-family: var(--font-display);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    p.intro-text {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    /* Highlights / Cards Grid */
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .feature-card.highlight {
+      border-color: var(--color-primary);
+      background: linear-gradient(180deg, rgba(255, 10, 43, 0.1) 0%, var(--bg-card) 100%);
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-card h3 i {
+      color: var(--color-primary);
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .feature-card ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .feature-card ul li {
+      font-size: 0.82rem;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-card ul li i {
+      color: var(--color-primary);
+      font-size: 0.9rem;
+    }
+
+    /* Tabelas Executivas */
+    .executive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: var(--bg-card);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .executive-table th {
+      background: #12141d;
+      color: var(--color-primary);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .executive-table td {
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .executive-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .executive-table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(255, 10, 43, 0.15);
+      color: var(--color-primary);
+      border: 1px solid rgba(255, 10, 43, 0.3);
+    }
+
+    /* Timeline de 4 Fases */
+    .timeline-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .timeline-step {
+      display: flex;
+      gap: 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 18px;
+      border-left: 4px solid var(--color-primary);
+    }
+
+    .step-time {
+      background: rgba(255, 10, 43, 0.15);
+      color: var(--color-primary);
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 8px;
+      height: fit-content;
+      white-space: nowrap;
+    }
+
+    .step-info h4 {
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+
+    .step-info p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    /* ROI / Impact Summary Box */
+    .impact-box {
+      background: linear-gradient(135deg, rgba(255, 10, 43, 0.15) 0%, rgba(15, 16, 22, 0.95) 100%);
+      border: 1px solid var(--color-primary);
+      border-radius: 12px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .impact-item h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--color-primary);
+    }
+
+    .impact-item p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Signatures Section */
+    .signatures-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .signature-line {
+      border-top: 1px solid var(--text-muted);
+      padding-top: 10px;
+      text-align: center;
+    }
+
+    .signature-line strong {
+      display: block;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .signature-line span {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    /* Standard Page Footer */
+    .pdf-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 15px;
+      margin-top: 40px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    /* ==========================================
+       REGRAS EXCLUSIVAS PARA IMPRESSÃO EM PDF
+       ========================================== */
+    @media print {
+      body {
+        background-color: #000 !important;
+        padding: 0 !important;
+      }
+
+      .screen-action-bar {
+        display: none !important;
+      }
+
+      .pdf-container {
+        border: none !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+        background: #07070a !important;
+      }
+
+      .pdf-cover-page {
+        min-height: 100vh !important;
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+
+      .page-break {
+        page-break-before: always !important;
+        break-before: page !important;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Header Action Bar -->
+  <div class="screen-action-bar">
+    <div class="info">
+      <i class="ri-file-pdf-2-line"></i>
+      <div>
+        <strong>Documento Executivo de Implementação</strong>
+        <p style="font-size: 0.8rem; color: #94a3b8;">Formatado em alta definição com a marca oficial Vertex Digital</p>
+      </div>
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      <i class="ri-printer-line"></i> Baixar / Imprimir em PDF
+    </button>
+  </div>
+
+  <!-- PDF Document Wrapper -->
+  <div class="pdf-container">
+
+    <!-- ==========================================
+         PÁGINA 1: CAPA EXECUTIVA
+         ========================================== -->
+    <div class="pdf-cover-page">
+      <div class="cover-header">
+        <div class="brand-logo-group">
+          <img src="./vertex-logo.png" alt="Vertex Digital Logo" class="brand-logo-img" />
+          <div class="brand-logo-text">VERTEX <span>DIGITAL</span></div>
+        </div>
+        <span class="confidential-badge">Documento Oficial • Confidencial</span>
+      </div>
+
+      <div class="cover-body">
+        <span class="proposal-tag">Plano de Implementação Técnica & Estratégica</span>
+        <h1 class="cover-title">Plataforma Vertex para <span>Corretora de Seguros</span></h1>
+        <p class="cover-subtitle">
+          Arquitetura completa de sistemas sob medida, CRM comercial Kanban, automações de renovações e Agente de Inteligência Artificial 24/7 para aceleração comercial.
+        </p>
+
+        <div class="meta-cards-grid">
+          <div class="meta-card">
+            <label>Elaborado Por</label>
+            <strong>Gabriel de Lima</strong>
+            <span style="font-size: 0.8rem; color: #ff0a2b;">Fundador & Estrategista — Vertex Digital</span>
+          </div>
+          <div class="meta-card">
+            <label>Destinado A</label>
+            <strong>Corretora de Seguros (Diretoria)</strong>
+            <span style="font-size: 0.8rem; color: #94a3b8;">Seguros Auto, Vida, Saúde & Empresarial</span>
+          </div>
+          <div class="meta-card">
+            <label>Código da Proposta</label>
+            <strong>VTX-SEG-2026-004</strong>
+          </div>
+          <div class="meta-card">
+            <label>Data de Emissão</label>
+            <strong>Fevereiro de 2026</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-footer">
+        <div class="author-info">
+          <strong>Vertex Digital Soluções Tecnológicas</strong>
+          <span>https://somosvertexdigital.com.br</span>
+        </div>
+        <div class="doc-code">Página 1 de 4</div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         PÁGINA 2: DIAGNÓSTICO & ESCOPO DOS MÓDULOS
+         ========================================== -->
+    <div class="pdf-page-content page-break">
+
+      <!-- SEÇÃO 1: DIAGNÓSTICO -->
+      <div class="section-block">
+        <div class="section-header">
+          <div class="num-badge">01</div>
+          <h2>Diagnóstico Operacional & Desafios</h2>
+        </div>
+        <p class="intro-text">
+          Mapeamos os principais gargalos que limitam o crescimento das corretoras tradicionais no mercado brasileiro de seguros e definimos as metas diretas da implementação:
+        </p>
+
+        <div class="grid-2-col">
+          <div class="feature-card">
+            <h3><i class="ri-error-warning-line"></i> Gargalos Identificados</h3>
+            <ul>
+              <li><i class="ri-close-circle-fill"></i> Demora no envio de cotações de seguros via WhatsApp.</li>
+              <li><i class="ri-close-circle-fill"></i> Perda de renovações de apólices por falta de lembretes automáticos.</li>
+              <li><i class="ri-close-circle-fill"></i> Atendimento estático fora do horário comercial (noites e finais de semana).</li>
+              <li><i class="ri-close-circle-fill"></i> Falta de visibilidade de comissões por seguradora.</li>
+            </ul>
+          </div>
+
+          <div class="feature-card highlight">
+            <h3><i class="ri-checkbox-circle-line"></i> Metas de Eficiência Alcançadas</h3>
+            <ul>
+              <li><i class="ri-checkbox-circle-fill"></i> <strong>-70%</strong> de tempo médio de cotação e envio.</li>
+              <li><i class="ri-checkbox-circle-fill"></i> <strong>+45%</strong> de retenção e renovação automática de carteira.</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Atendimento humanizado com IA <strong>24h por dia</strong>.</li>
+              <li><i class="ri-checkbox-circle-fill"></i> Dashboard unificado com Kanban por corretor.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 2: ESCOPO DOS MÓDULOS -->
+      <div class="section-block">
+        <div class="section-header">
+          <div class="num-badge">02</div>
+          <h2>Escopo dos Módulos da Plataforma</h2>
+        </div>
+        <p class="intro-text">
+          O ecossistema Vertex para a Corretora contempla 5 módulos integrados em nuvem com alta segurança e tecnologia de ponta:
+        </p>
+
+        <table class="executive-table">
+          <thead>
+            <tr>
+              <th>Módulo</th>
+              <th>Funcionalidades Principais</th>
+              <th>Impacto Direto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>🤖 Agente IA WhatsApp 24/7</strong></td>
+              <td>Pré-qualificação de cotações (Auto, Vida, Saúde) e triagem de sinistros.</td>
+              <td><span class="status-pill">Atendimento 24/7</span></td>
+            </tr>
+            <tr>
+              <td><strong>📊 CRM Comercial Kanban</strong></td>
+              <td>Funil visual por tipo de apólice, atribuição de corretores e follow-up.</td>
+              <td><span class="status-pill">Gestão de Leads</span></td>
+            </tr>
+            <tr>
+              <td><strong>🔄 Motor de Renovações</strong></td>
+              <td>Alertas automatizados aos clientes 30, 15 e 7 dias antes do vencimento.</td>
+              <td><span class="status-pill">+ Retention</span></td>
+            </tr>
+            <tr>
+              <td><strong>⚙️ Portal do Segurado</strong></td>
+              <td>Área restrita para consulta de carteira, download de boletos e cartões.</td>
+              <td><span class="status-pill">Self-Service</span></td>
+            </tr>
+            <tr>
+              <td><strong>📈 Dashboard da Diretoria</strong></td>
+              <td>Métricas de comissões por seguradora, ranking de vendas e sinistralidade.</td>
+              <td><span class="status-pill">Gestão BI</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pdf-footer">
+        <div>Vertex Digital • Plano de Implementação para Corretora de Seguros</div>
+        <div>Página 2 de 4</div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         PÁGINA 3: CRONOGRAMA & ROADMAP DE IMPLEMENTAÇÃO
+         ========================================== -->
+    <div class="pdf-page-content page-break">
+      <div class="section-block">
+        <div class="section-header">
+          <div class="num-badge">03</div>
+          <h2>Cronograma de Execução (Roadmap de 4 Fases)</h2>
+        </div>
+        <p class="intro-text">
+          Desenvolvimento ágil estruturado para garantir a entrega rápida e sem interrupções nas rotinas de vendas atuais da corretora:
+        </p>
+
+        <div class="timeline-container">
+          <div class="timeline-step">
+            <div class="step-time">Fase 1 • Semanas 1 e 2</div>
+            <div class="step-info">
+              <h4>Mapeamento & Configuração de Regras de Negócio</h4>
+              <p>Alinhamento de fluxos de cotação por tipo de seguro (Auto, Vida, Saúde, Empresarial). Mapeamento das seguradoras parceiras (Porto, Bradesco, SulAmérica, Tokio, HDI, Azul) e regras de comissionamento.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="step-time">Fase 2 • Semanas 3 a 5</div>
+            <div class="step-info">
+              <h4>Construção da Plataforma Web, CRM & Treinamento da IA</h4>
+              <p>Desenvolvimento da interface responsiva, integração das APIs do WhatsApp Business, treinamento do Agente de IA com a base de conhecimento da corretora e montagem do Kanban comercial.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="step-time">Fase 3 • Semana 6</div>
+            <div class="step-info">
+              <h4>Homologação, Testes de Estresse & Capacitação da Equipe</h4>
+              <p>Simulação real de cotações no WhatsApp, testes de acionamento de sinistros, validação do motor de renovações e treinamento prático para toda a equipe de corretores e atendentes.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="step-time">Fase 4 • Semana 7+</div>
+            <div class="step-info">
+              <h4>Go-Live Oficial & Acompanhamento de Performance</h4>
+              <p>Lançamento oficial da plataforma, suporte técnico dedicado nas primeiras semanas e análise quinzenal dos relatórios de conversão e renovações automáticas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 4: RESUMO DE ROI -->
+      <div class="section-block">
+        <div class="section-header">
+          <div class="num-badge">04</div>
+          <h2>Retorno Esperado sobre o Investimento (ROI)</h2>
+        </div>
+
+        <div class="impact-box">
+          <div class="impact-item">
+            <h3>3.5x</h3>
+            <p>Retorno estimado sobre o investimento no primeiro ano</p>
+          </div>
+          <div class="impact-item">
+            <h3>+40h</h3>
+            <p>Horas operacionais salvas por mês pela equipe de atendimento</p>
+          </div>
+          <div class="impact-item">
+            <h3>100%</h3>
+            <p>Leads atendidos instantaneamente sem fila de espera</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pdf-footer">
+        <div>Vertex Digital • Plano de Implementação para Corretora de Seguros</div>
+        <div>Página 3 de 4</div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         PÁGINA 4: MATRIZ DE ENTREGÁVEIS & ASSINATURA
+         ========================================== -->
+    <div class="pdf-page-content page-break">
+      <div class="section-block">
+        <div class="section-header">
+          <div class="num-badge">05</div>
+          <h2>Matriz de Entregáveis & Garantias</h2>
+        </div>
+
+        <table class="executive-table">
+          <thead>
+            <tr>
+              <th>Item Entregável</th>
+              <th>Descrição Técnica</th>
+              <th>Garantia & Suporte</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Plataforma Web Customizada</strong></td>
+              <td>Site institucional + Portal do Segurado com design exclusivo e alta velocidade.</td>
+              <td>Garantia de 90 dias</td>
+            </tr>
+            <tr>
+              <td><strong>Agente Vertex IA WhatsApp</strong></td>
+              <td>Assistente treinado em IA para qualificação e coleta de dados 24h.</td>
+              <td>Suporte Contínuo SLA 2h</td>
+            </tr>
+            <tr>
+              <td><strong>CRM Kanban Comercial</strong></td>
+              <td>Funil de vendas estruturado por carteiras de seguro com relatórios em tempo real.</td>
+              <td>Atualizações inclusas</td>
+            </tr>
+            <tr>
+              <td><strong>Módulo de Renovações</strong></td>
+              <td>Automação de lembretes preventivos de apólices no WhatsApp.</td>
+              <td>Funcionamento 99.9%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SEÇÃO 6: TERMO DE ACEITE & ASSINATURAS -->
+      <div class="section-block" style="margin-top: 40px;">
+        <div class="section-header">
+          <div class="num-badge">06</div>
+          <h2>Aprovação & Termo de Aceite Executivo</h2>
+        </div>
+        <p class="intro-text" style="font-size: 0.88rem;">
+          Ao assinar este documento, as partes concordam com o escopo técnico, cronograma de execução de 4 fases e diretrizes de confidencialidade dispostas neste Plano de Implementação.
+        </p>
+
+        <div class="signatures-grid">
+          <div class="signature-line">
+            <strong>Vertex Digital Soluções Tecnológicas</strong>
+            <span>Gabriel de Lima — Fundador & Estrategista</span>
+          </div>
+          <div class="signature-line">
+            <strong>Corretora de Seguros (Cliente)</strong>
+            <span>Diretoria Executiva / Responsável do Projeto</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pdf-footer" style="margin-top: 60px;">
+        <div>Vertex Digital • Suporte WhatsApp: (16) 99280-5627</div>
+        <div>Página 4 de 4</div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
