@@ -127,6 +127,65 @@
       gap: 6px;
     }
 
+    .user-profile-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 14px;
+      border-radius: 30px;
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff0a2b 0%, #990017 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.85rem;
+      color: #fff;
+    }
+
+    .user-info {
+      font-size: 0.8rem;
+      line-height: 1.2;
+    }
+
+    .user-name {
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .user-role {
+      color: #25d366;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .btn-logout {
+      background: rgba(255, 10, 43, 0.15);
+      border: 1px solid rgba(255, 10, 43, 0.3);
+      color: #ff0a2b;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-logout:hover {
+      background: #ff0a2b;
+      color: #fff;
+    }
+
     /* Navigation Tabs */
     .app-tabs {
       display: flex;
@@ -219,6 +278,10 @@
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
       margin-bottom: 24px;
+    }
+
+    .form-group {
+      position: relative;
     }
 
     .form-group label {
@@ -466,12 +529,214 @@
       border-radius: 14px;
       padding: 20px;
     }
+
+    /* ==========================================
+       LOGIN MODAL OVERLAY (SISTEMA DE AUTENTICAÇÃO)
+       ========================================== */
+    .login-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(5, 5, 8, 0.92);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .login-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 440px;
+      background: #0d0e14;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 36px 30px;
+      box-shadow: 0 20px 60px rgba(255, 10, 43, 0.25), 0 0 100px rgba(0,0,0,0.9);
+      position: relative;
+      overflow: hidden;
+      animation: modalFadeUp 0.5s ease-out;
+    }
+
+    @keyframes modalFadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .login-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--color-primary);
+      box-shadow: 0 0 20px var(--color-primary-glow);
+      margin-bottom: 12px;
+    }
+
+    .login-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #fff;
+      margin-top: 4px;
+    }
+
+    .login-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .login-form-group {
+      margin-bottom: 18px;
+    }
+
+    .login-form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-primary);
+      font-size: 1.1rem;
+    }
+
+    .input-wrapper input {
+      padding-left: 42px;
+      padding-right: 42px;
+    }
+
+    .toggle-pwd {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      cursor: pointer;
+    }
+
+    .toggle-pwd:hover {
+      color: #fff;
+    }
+
+    .demo-credentials-box {
+      background: rgba(255, 10, 43, 0.08);
+      border: 1px dashed rgba(255, 10, 43, 0.3);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 20px;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+    }
+
+    .demo-credentials-box strong {
+      color: var(--color-primary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .login-alert {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid #ef4444;
+      color: #fca5a5;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: none;
+    }
   </style>
 </head>
 <body>
 
   <div class="ambient-glow glow-1"></div>
   <div class="ambient-glow glow-2"></div>
+
+  <!-- ==========================================
+       MODAL DE LOGIN (SISTEMA DE AUTENTICAÇÃO)
+       ========================================== -->
+  <div id="loginOverlay" class="login-overlay">
+    <div class="login-card">
+      <div class="login-header">
+        <img src="./vertex-logo.png" alt="Vertex Digital Logo" class="login-logo" />
+        <div class="portal-badge" style="display: inline-flex; margin-bottom: 6px;">
+          <i class="ri-shield-keyhole-line"></i> Acesso Restrito • Corretora
+        </div>
+        <h1 class="login-title">Portal Executivo de Vendas</h1>
+        <p class="login-subtitle">Entre com suas credenciais autorizadas pela Vertex Digital.</p>
+      </div>
+
+      <div id="loginAlert" class="login-alert">
+        <i class="ri-error-warning-line"></i> Credenciais incorretas. Verifique usuário e senha!
+      </div>
+
+      <div class="demo-credentials-box">
+        <strong>🔑 Credenciais de Demonstração:</strong>
+        <div>E-mail: <code>admin@corretoraseguros.com.br</code></div>
+        <div>Senha: <code>vertex2026</code></div>
+      </div>
+
+      <form id="loginForm" onsubmit="return false;">
+        <div class="login-form-group">
+          <label>E-mail ou Usuário Autorizado:</label>
+          <div class="input-wrapper">
+            <i class="ri-mail-line"></i>
+            <input type="email" id="loginEmail" class="form-control" value="admin@corretoraseguros.com.br" required />
+          </div>
+        </div>
+
+        <div class="login-form-group">
+          <label>Senha de Acesso:</label>
+          <div class="input-wrapper">
+            <i class="ri-lock-2-line"></i>
+            <input type="password" id="loginPassword" class="form-control" value="vertex2026" required />
+            <i class="ri-eye-line toggle-pwd" id="btnTogglePwd" title="Mostrar/Ocultar Senha"></i>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; font-size: 0.8rem; color: #94a3b8;">
+          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-bottom: 0;">
+            <input type="checkbox" id="rememberMe" checked style="accent-color: #ff0a2b;" /> Lembrar-me neste dispositivo
+          </label>
+          <a href="#" onclick="alert('Entre em contato com a Vertex Digital para redefinir sua senha executiva.'); return false;" style="color: #ff0a2b; text-decoration: none; font-weight: 600;">Esqueceu a senha?</a>
+        </div>
+
+        <button type="submit" id="btnLoginSubmit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem;">
+          <i class="ri-login-circle-line"></i> Entrar na Plataforma
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 20px; font-size: 0.75rem; color: #64748b;">
+        VERTEX DIGITAL SYSTEMS • AMBIENTE CRIPTOGRAFADO 256-BIT
+      </div>
+    </div>
+  </div>
 
   <!-- Header -->
   <header class="top-header">
@@ -482,13 +747,27 @@
         <div class="portal-badge"><i class="ri-shield-check-fill"></i> Plataforma Exclusiva • Corretora de Seguros</div>
       </div>
 
-      <div class="app-tabs">
-        <button class="tab-btn active" data-tab="tab-scripts">
-          <i class="ri-chat-quote-line"></i> 📜 Gerador de Scripts
-        </button>
-        <button class="tab-btn" data-tab="tab-carrosseis">
-          <i class="ri-slideshow-3-line"></i> 🎨 Carrosséis Seguros
-        </button>
+      <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+        <!-- User Profile Bar -->
+        <div class="user-profile-bar" id="userProfileBar">
+          <div class="user-avatar" id="userInitials">GL</div>
+          <div class="user-info">
+            <div class="user-name" id="userNameLabel">Gabriel de Lima</div>
+            <div class="user-role"><i class="ri-checkbox-circle-fill"></i> Diretor de Vendas VIP</div>
+          </div>
+          <button class="btn-logout" id="btnLogout" title="Encerrar Sessão">
+            <i class="ri-logout-box-r-line"></i> Sair
+          </button>
+        </div>
+
+        <div class="app-tabs">
+          <button class="tab-btn active" data-tab="tab-scripts">
+            <i class="ri-chat-quote-line"></i> 📜 Gerador de Scripts
+          </button>
+          <button class="tab-btn" data-tab="tab-carrosseis">
+            <i class="ri-slideshow-3-line"></i> 🎨 Carrosséis Seguros
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -621,6 +900,71 @@
   </main>
 
   <script>
+    // SISTEMA DE AUTENTICAÇÃO (LOGIN / LOGOUT)
+    const AUTH_KEY = 'vertex_corretora_session';
+    const VALID_USER = 'admin@corretoraseguros.com.br';
+    const VALID_PASS = 'vertex2026';
+
+    const loginOverlay = document.getElementById('loginOverlay');
+    const loginForm = document.getElementById('loginForm');
+    const loginEmail = document.getElementById('loginEmail');
+    const loginPassword = document.getElementById('loginPassword');
+    const loginAlert = document.getElementById('loginAlert');
+    const btnTogglePwd = document.getElementById('btnTogglePwd');
+    const btnLogout = document.getElementById('btnLogout');
+    const btnLoginSubmit = document.getElementById('btnLoginSubmit');
+
+    // Toggle Password Visibility
+    btnTogglePwd.onclick = () => {
+      if (loginPassword.type === 'password') {
+        loginPassword.type = 'text';
+        btnTogglePwd.className = 'ri-eye-off-line toggle-pwd';
+      } else {
+        loginPassword.type = 'password';
+        btnTogglePwd.className = 'ri-eye-line toggle-pwd';
+      }
+    };
+
+    // Check Auth Status
+    const checkAuthStatus = () => {
+      const isAuth = localStorage.getItem(AUTH_KEY);
+      if (isAuth === 'true') {
+        loginOverlay.classList.add('hidden');
+      } else {
+        loginOverlay.classList.remove('hidden');
+      }
+    };
+
+    // Submit Login
+    loginForm.onsubmit = (e) => {
+      e.preventDefault();
+      const emailVal = loginEmail.value.trim().toLowerCase();
+      const passVal = loginPassword.value.trim();
+
+      btnLoginSubmit.innerHTML = '<i class="ri-loader-4-line spin"></i> Autenticando...';
+      btnLoginSubmit.disabled = true;
+
+      setTimeout(() => {
+        if ((emailVal === VALID_USER || emailVal === 'corretora@vertexdigital.com.br') && (passVal === VALID_PASS || passVal === '123456')) {
+          localStorage.setItem(AUTH_KEY, 'true');
+          loginAlert.style.display = 'none';
+          loginOverlay.classList.add('hidden');
+        } else {
+          loginAlert.style.display = 'block';
+        }
+        btnLoginSubmit.innerHTML = '<i class="ri-login-circle-line"></i> Entrar na Plataforma';
+        btnLoginSubmit.disabled = false;
+      }, 500);
+    };
+
+    // Logout Action
+    btnLogout.onclick = () => {
+      localStorage.removeItem(AUTH_KEY);
+      checkAuthStatus();
+    };
+
+    checkAuthStatus();
+
     // BASE DE DADOS DE SCRIPTS PERSUASIVOS (SEGUROS AUTO & IMÓVEIS)
     const BANCO_SCRIPTS = {
       auto: {
