@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plataforma Exclusiva | Gerador de Scripts & Carrosséis — Corretora de Seguros</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  
+  <!-- html2canvas for slide export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    :root {
+      --color-primary: #ff0a2b;
+      --color-primary-dark: #cc001f;
+      --color-primary-glow: rgba(255, 10, 43, 0.4);
+      --bg-body: #050508;
+      --bg-card: #0c0d12;
+      --bg-surface: #14151e;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --border-color: rgba(255, 10, 43, 0.25);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --font-display: 'Outfit', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Ambient Glows */
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(140px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.3;
+    }
+    .glow-1 { width: 500px; height: 500px; top: -100px; left: 50%; transform: translateX(-50%); background: radial-gradient(circle, #ff0a2b 0%, transparent 70%); }
+    .glow-2 { width: 400px; height: 400px; bottom: 0; right: 0; background: radial-gradient(circle, #990017 0%, transparent 70%); }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Top Nav Header */
+    .top-header {
+      background: rgba(12, 13, 18, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--color-primary);
+      box-shadow: 0 0 12px var(--color-primary-glow);
+    }
+
+    .brand-text {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .brand-text span {
+      color: var(--color-primary);
+    }
+
+    .portal-badge {
+      background: rgba(255, 10, 43, 0.12);
+      border: 1px solid rgba(255, 10, 43, 0.35);
+      color: var(--color-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Navigation Tabs */
+    .app-tabs {
+      display: flex;
+      gap: 10px;
+      background: #090a0f;
+      padding: 6px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #ff0a2b 0%, #990017 100%);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(255, 10, 43, 0.4);
+    }
+
+    /* Main Layout */
+    .main-wrapper {
+      padding: 40px 0;
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    .section-title {
+      margin-bottom: 30px;
+    }
+
+    .sub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 10, 43, 0.15);
+      border: 1px solid rgba(255, 10, 43, 0.3);
+      color: var(--color-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .section-title h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ff0a2b 0%, #ff667d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Cards & Controls */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 10px var(--color-primary-glow);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff0a2b 0%, #990017 100%);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(255, 10, 43, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 10, 43, 0.6);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+    }
+
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--color-primary);
+    }
+
+    .btn-wa {
+      background: #25d366;
+      color: #000;
+      font-weight: 800;
+    }
+
+    .btn-wa:hover {
+      background: #1eb855;
+      color: #000;
+    }
+
+    /* Script Preview Area */
+    .script-output-card {
+      background: #090a0e;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .script-meta-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .script-tag {
+      background: rgba(255, 10, 43, 0.15);
+      color: var(--color-primary);
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .script-textarea {
+      width: 100%;
+      min-height: 180px;
+      background: #050508;
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 16px;
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      resize: vertical;
+      outline: none;
+    }
+
+    .script-textarea:focus {
+      border-color: var(--color-primary);
+    }
+
+    .script-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Carrossel Grid Preview */
+    .slides-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .slide-card-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .slide-card {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: radial-gradient(circle at 80% 20%, rgba(255, 10, 43, 0.18) 0%, transparent 60%), #07070b;
+      border: 2px solid rgba(255, 10, 43, 0.4);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+    .slide-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-body h4 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .slide-body p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .slide-bullets {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .slide-bullets li {
+      font-size: 0.78rem;
+      color: #fff;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .slide-bullets li i {
+      color: var(--color-primary);
+    }
+
+    .slide-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+    }
+
+    .slide-footer strong {
+      color: var(--color-primary);
+    }
+
+    .slide-dl-btn {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .slide-dl-btn:hover {
+      background: var(--color-primary);
+      border-color: transparent;
+    }
+
+    .caption-box {
+      margin-top: 30px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Header -->
+  <header class="top-header">
+    <div class="container header-content">
+      <div class="brand-group">
+        <img src="./vertex-logo.png" alt="Vertex Digital Logo" class="brand-logo-img" />
+        <div class="brand-text">VERTEX <span>DIGITAL</span></div>
+        <div class="portal-badge"><i class="ri-shield-check-fill"></i> Plataforma Exclusiva • Corretora de Seguros</div>
+      </div>
+
+      <div class="app-tabs">
+        <button class="tab-btn active" data-tab="tab-scripts">
+          <i class="ri-chat-quote-line"></i> 📜 Gerador de Scripts
+        </button>
+        <button class="tab-btn" data-tab="tab-carrosseis">
+          <i class="ri-slideshow-3-line"></i> 🎨 Carrosséis Seguros
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-wrapper">
+
+    <!-- ==========================================
+         TAB 1: GERADOR DE SCRIPTS COMERCIAIS
+         ========================================== -->
+    <div id="tab-scripts" class="tab-pane active">
+      <div class="section-title">
+        <span class="sub-badge"><i class="ri-flashlight-line"></i> Vendas & Objeções</span>
+        <h2>Gerador de Scripts de <span class="gradient-text">Vendas de Seguros</span></h2>
+        <p>Roteiros prontos e testados para seus funcionários utilizarem no WhatsApp para fechar mais Seguros de Carro e Imóveis.</p>
+      </div>
+
+      <div class="glass-card">
+        <div class="controls-grid">
+          <!-- Ramo de Seguro -->
+          <div class="form-group">
+            <label>1. Escolha o Ramo de Seguro:</label>
+            <select id="scriptRamo" class="form-control">
+              <option value="auto">🚗 Seguro Auto / Veículos</option>
+              <option value="imovel">🏠 Seguro Imóvel / Residencial</option>
+            </select>
+          </div>
+
+          <!-- Etapa de Venda -->
+          <div class="form-group">
+            <label>2. Etapa Comercial:</label>
+            <select id="scriptEtapa" class="form-control">
+              <option value="abordagem">1. Abordagem Inicial / Primeiro Contato</option>
+              <option value="cotacao">2. Envio de Cotação & Valor Percebido</option>
+              <option value="obj_caro">3. Objeção ("Tá Caro / Fora do Orçamento")</option>
+              <option value="obj_banco">4. Objeção ("Vou cotar no meu banco")</option>
+              <option value="fechamento">5. Fechamento com Escassez & Urgência</option>
+              <option value="posvenda">6. Pós-Venda & Pedido de Indicação</option>
+            </select>
+          </div>
+
+          <!-- Nome do Cliente Deste Script -->
+          <div class="form-group">
+            <label>3. Nome do Cliente (Opcional):</label>
+            <input type="text" id="scriptClienteNome" class="form-control" placeholder="Ex: Rodrigo" value="Rodrigo" />
+          </div>
+
+          <!-- Modelo ou Imóvel -->
+          <div class="form-group">
+            <label>4. Carro / Imóvel (Opcional):</label>
+            <input type="text" id="scriptObjeto" class="form-control" placeholder="Ex: Civic 2022 / Apê Moema" value="Civic 2022" />
+          </div>
+        </div>
+
+        <button id="btnGerarScript" class="btn btn-primary btn-block">
+          <i class="ri-sparkles-line"></i> Gerar Script Personalizado em 1 Clique
+        </button>
+
+        <!-- Output do Script -->
+        <div class="script-output-card">
+          <div class="script-meta-header">
+            <span class="script-tag" id="scriptBadgeTag">🚗 SEGURO AUTO • ABORDAGEM INICIAL</span>
+            <span style="font-size: 0.8rem; color: #94a3b8;">Pronto para enviar ao cliente no WhatsApp</span>
+          </div>
+
+          <textarea id="scriptOutputTextarea" class="script-textarea"></textarea>
+
+          <div class="script-actions">
+            <button id="btnCopiarScript" class="btn btn-primary">
+              <i class="ri-file-copy-line"></i> Copiar Script
+            </button>
+            <button id="btnEnviarWhatsApp" class="btn btn-wa">
+              <i class="ri-whatsapp-line"></i> Abrir WhatsApp com o Texto
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 2: GERADOR DE CARROSSÉIS PARA INSTAGRAM
+         ========================================== -->
+    <div id="tab-carrosseis" class="tab-pane">
+      <div class="section-title">
+        <span class="sub-badge"><i class="ri-instagram-line"></i> Atração no Instagram</span>
+        <h2>Gerador de Carrosséis para <span class="gradient-text">Corretora de Seguros</span></h2>
+        <p>Gere carrosséis persuasivos focados em <strong>curiosidade, escassez e oportunidade</strong> para fazer o seguidor fechar seguro com a corretora.</p>
+      </div>
+
+      <div class="glass-card">
+        <div class="controls-grid">
+          <div class="form-group">
+            <label>Escolha o Tema do Carrossel:</label>
+            <select id="carrosselTemaSelect" class="form-control">
+              <option value="auto_curiosidade">🚗 Auto: O detalhe escondido no seguro do carro que você precisa saber</option>
+              <option value="auto_economia">🚗 Auto: 3 passos para economizar até 30% na renovação do Seguro Auto</option>
+              <option value="imovel_escassez">🏠 Imóvel: Como proteger seu lar por menos de R$ 1,50 por dia</option>
+              <option value="imovel_mito">🏠 Imóvel: O seguro do condomínio cobre o meu apartamento? (Mito vs Realidade)</option>
+            </select>
+          </div>
+          <div class="form-group" style="display: flex; align-items: flex-end;">
+            <button id="btnGerarCarrossel" class="btn btn-primary style='width: 100%'">
+              <i class="ri-sparkles-line"></i> Gerar Slides & Legenda Pronta
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
+          <h3 style="font-size: 1.1rem; color: #fff;"><i class="ri-image-line"></i> Prévia dos 4 Slides (1080x1080)</h3>
+          <button id="btnBaixarTodosSlides" class="btn btn-glass"><i class="ri-download-cloud-line"></i> Baixar Todos os Slides em PNG</button>
+        </div>
+
+        <!-- Slides Render Area -->
+        <div class="slides-preview-grid" id="slidesGrid">
+          <!-- Renderizado via JS -->
+        </div>
+
+        <!-- Legenda do Instagram -->
+        <div class="caption-box">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <strong style="color: #fff; font-size: 0.95rem;"><i class="ri-file-text-line"></i> Legenda Persuasiva Pronta para o Instagram:</strong>
+            <button id="btnCopiarLegenda" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">
+              <i class="ri-file-copy-line"></i> Copiar Legenda
+            </button>
+          </div>
+          <textarea id="carrosselLegendaTextarea" class="script-textarea" style="min-height: 120px;"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // BASE DE DADOS DE SCRIPTS PERSUASIVOS (SEGUROS AUTO & IMÓVEIS)
+    const BANCO_SCRIPTS = {
+      auto: {
+        abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Sou o consultor da Corretora de Seguros. 👋\n\nVi que o seguro do seu ${objeto} está próximo da renovação (ou vi que você solicitou um orçamento).\n\nFiz um estudo rápido comparando as 3 maiores seguradoras do mercado (Porto, Azul, Tokio) com cobertura completa contra roubo, furto, colisão, terceiros e guincho ilimitado.\n\nPosso te enviar essa simulação sem compromisso agora?`,
+        
+        cotacao: (nome, objeto) => `Olá, ${nome}! Conseguimos uma condição especial para o seu ${objeto}.\n\nO valor aprovado para cobertura total ficou em apenas 10x de R$ 189,00 sem juros.\n\nO que inclui:\n✅ 100% da Tabela FIPE (Perda Total / Roubo)\n✅ Cobertura para Terceiros até R$ 100.000,00\n✅ Carro Reserva por 15 dias\n✅ Guincho sem limite de quilometragem 24h\n\nQuer que eu emita a proposta pra garantir essa tabela especial hoje?`,
+        
+        obj_caro: (nome, objeto) => `${nome}, entendo perfeitamente sua preocupação com o orçamento. Mas me deixa te fazer uma pergunta rápida:\n\nQuanto custaria para você ter que arcar do próprio bolso com R$ 60 mil ou R$ 80 mil se seu ${objeto} for roubado amanhã ou sofrer uma colisão séria?\n\nEsse seguro custa menos de R$ 6,00 por dia — o valor de um cafézinho pra você rodar tranquilo sabendo que seu patrimônio tá 100% blindado.\n\nPodemos parcelar em 10x sem juros no cartão ou boleto. Vamos garantir a proteção hoje?`,
+        
+        obj_banco: (nome, objeto) => `Entendo, ${nome}! Banco costuma colocar cotação genérica tirando coberturas vitais como Carro Reserva ou reduzindo a cobertura de terceiros a valores mínimos.\n\nSe você bater num carro importado de R$ 150 mil, o banco não cobre a diferença.\n\nAqui na nossa Corretora você tem atendimento humano 24h direto no meu WhatsApp. Se você precisar de um guincho às 2h da manhã, você fala direto comigo, sem robô de banco.\n\nDeixa eu ajustar a proposta para cobrir o preço do banco mantendo essa segurança pra você?`,
+        
+        fechamento: (nome, objeto) => `${nome}, a seguradora me notificou que a tabela promocional com 15% de desconto e Carro Reserva cortesia para o seu ${objeto} encerra HOJE às 18h.\n\nSe fecharmos agora, consigo travar esse valor exclusivo pra você sem nenhum reajuste.\n\nPosso dar entrada na emissão da apólice agora?`,
+        
+        posvenda: (nome, objeto) => `Olá, ${nome}! Apólice do seu ${objeto} emitida com sucesso! 🎉\n\nQualquer dúvida ou emergência 24h, meu WhatsApp é seu canal direto.\n\nAh, se tiver algum amigo ou familiar que comprou carro recente ou precisa renovar o seguro, me indica que consigo uma condição promocional pra eles também!`
+      },
+
+      imovel: {
+        abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Sou o especialista em seguro residencial da Corretora. 👋\n\nVocê sabia que menos de 15% dos proprietários sabem que um seguro imobiliário cobre não só incêndio, mas também vazamentos, queima de eletrodomésticos por raio e até chaveiro/eletricista 24h?\n\nFiz um estudo rápido para o seu imóvel (${objeto}). Posso te mostrar como proteger seu patrimônio por menos de R$ 1,50 por dia?`,
+        
+        cotacao: (nome, objeto) => `Olá, ${nome}! A cotação para proteção completa do seu imóvel (${objeto}) ficou aprovada!\n\nValor anual: Apenas 10x de R$ 45,00 (ou R$ 450,00 à vista).\n\nO que sua casa ganha:\n✅ R$ 300.000 de cobertura para a Estrutura\n✅ R$ 50.000 para móveis e eletros contra Incêndio/Queima Elétrica\n✅ Cobertura para Vazamentos e Danos a Vizinhos\n✅ Chaveiro, Eletricista e Encanador 24h Grátis\n\nPodemos emitir a apólice hoje?`,
+        
+        obj_caro: (nome, objeto) => `${nome}, compreendo! Mas veja só: um vazamento de cano no banheiro pode causar R$ 8.000 em estragos no apartamento do vizinho. Com o seguro, a seguradora paga tudo e você não tira 1 real do bolso.\n\nEstamos falando de R$ 1,50 por dia pra proteger todo o seu lar e seus bens.\n\nVamos emitir pra você não correr esse risco desnecessário?`,
+        
+        obj_banco: (nome, objeto) => `${nome}, uma dúvida muito comum: o seguro do condomínio cobre APENAS as áreas comuns do prédio (corredor, elevador). Ele NÃO COBRE nada dentro do seu apartamento — se sua TV queimar ou houver curto na sua cozinha, o condomínio não paga nada.\n\nO Seguro Imobiliário individual é o que protege seus móveis e seu lar de verdade. E custa baratinho. Deixa eu emitir pra você ficar 100% seguro?`,
+        
+        fechamento: (nome, objeto) => `${nome}, a seguradora liberou o pacote especial com Assistência VIP (com conserto de geladeira e ar-condicionado inclusos) apenas para apólices emitidas até o fim do dia.\n\nPosso cadastrar os dados do imóvel (${objeto}) pra garantir esse benefício pra você?`,
+        
+        posvenda: (nome, objeto) => `Parabéns, ${nome}! O seu imóvel (${objeto}) está oficialmente protegido! 🏠🛡️\n\nSegue o cartão digital com todos os contatos da assistência 24h. Qualquer eventualidade, conte sempre com nossa equipe!`
+      }
+    };
+
+    // BANCO DE CARROSSÉIS PERSUASIVOS (INSTAGRAM)
+    const BANCO_CARROSSEIS = {
+      auto_curiosidade: {
+        slides: [
+          { tag: "🚗 SEGURO AUTO • CURIOSIDADE", title: "O detalhe na apólice do seu carro que você só descobre no guincho 🚨", sub: "Evite surpresas amargas na hora da emergência." },
+          { tag: "⚠️ O RISCO ESCONDIDO", title: "Cotações muito baratas costumam cortar coberturas vitais:", bullets: ["Guincho limitado a apenas 100 km", "Sem cobertura para danos a terceiros", "Franquia altíssima na colisão"] },
+          { tag: "🛡️ A SOLUÇÃO CERTA", title: "O que a sua apólice precisa ter de verdade:", bullets: ["Terceiros de no mínimo R$ 100 mil", "Guincho ilimitado sem limite de KM", "Atendimento humano 24h no WhatsApp"] },
+          { tag: "🎯 FAÇA SUA ANÁLISE", title: "Quer revisar sua apólice gratuitamente?", sub: "Mande uma foto da sua cotação atual no nosso WhatsApp e descobrimos se você tá protegido de verdade!", cta: "👉 Clique no link da Bio" }
+        ],
+        caption: `🚗 Você sabe o que a sua apólice de Seguro Auto REALMENTE cobre?\n\nMuitas cotações parecem baratas porque cortam o guincho sem limite ou reduzem a proteção contra terceiros.\n\nNa nossa Corretora de Seguros, analisamos sua apólice sem custo para garantir que você tenha proteção total quando mais precisar.\n\n📲 Mande uma foto do seu seguro no nosso WhatsApp (link na Bio)!\n\n#seguroauto #corretoradeseguros #protecaoveicular #carro #seguros`
+      },
+
+      auto_economia: {
+        slides: [
+          { tag: "💡 ECONOMIA INTELIGENTE", title: "3 passos para economizar até 30% na renovação do seu Seguro Auto 💰🚗", sub: "Sem abrir mão de nenhuma cobertura essencial." },
+          { tag: "PASSO 1 • CLASSE DE BÔNUS", title: "Sua classe de bônus é SUA!", sub: "Ela pertence a você e não à seguradora antiga. Transfira seu bônus acumulado para pagar menos." },
+          { tag: "PASSO 2 • MULTIMARCAS", title: "Compare 5 seguradoras ao mesmo tempo:", bullets: ["Porto Seguro & Azul", "Tokio Marine", "HDI & SulAmérica", "Bradesco Seguros"] },
+          { tag: "PASSO 3 • COTAÇÃO DIRETA", title: "Fale com nossa equipe especialista!", sub: "Achamos a menor franquia com o maior desconto do mercado.", cta: "👉 Solicite no link da Bio" }
+        ],
+        caption: `💰 Quer economizar na renovação do seu Seguro Auto?\n\nNão renove no automático sem cotar com uma corretora especialista multimarcas!\n\n📲 Chame nossa equipe no WhatsApp pelo link da Bio e receba a melhor proposta em 2 minutos.\n\n#seguroauto #economizarnoseguro #corretoradeseguros #carro`
+      },
+
+      imovel_escassez: {
+        slides: [
+          { tag: "🏠 SEGURO RESIDENCIAL", title: "Como proteger sua casa e todos os seus bens por menos de R$ 1,50 por dia 🛡️", sub: "Muito mais barato do que você imagina." },
+          { tag: "O QUE ELE COBRE?", title: "Proteção completa para o seu lar:", bullets: ["Incêndio, raio e explosão", "Danos elétricos em TVs e geladeiras", "Vazamentos e estragos em vizinhos", "Roubo e furto de bens"] },
+          { tag: "SERVIÇOS 24H GRÁTIS", title: "Assistência 24h sem pagar nada a mais:", bullets: ["Chaveiro e Eletricista 24h", "Encanador para desentupimento", "Conserto de ar-condicionado e linha branca"] },
+          { tag: "⚡ OFERTA LIMITADA", title: "Ganta sua simulação promocional este mês!", sub: "Proteja seu imóvel com cobertura completa por um valor simbólico.", cta: "👉 Clique no link da Bio" }
+        ],
+        caption: `🏠 Proteja sua casa e seus móveis por menos do que um cafézinho por dia!\n\nO Seguro Residencial da nossa corretora garante indenização em caso de incêndio, surto elétrico queima-eletro e vazamentos, além de encanador e chaveiro 24h grátis.\n\n📲 Faça sua simulação no WhatsApp pelo link da Bio!\n\n#seguroresidencial #seguroimovel #casa #corretoradeseguros`
+      },
+
+      imovel_mito: {
+        slides: [
+          { tag: "🤔 MITO VS REALIDADE", title: "O Seguro do Condomínio cobre o meu apartamento? 🏠❓", sub: "Descubra a verdade antes que seja tarde." },
+          { tag: "❌ O GRANDE MITO", title: "Mito: 'Moro em prédio, não preciso de seguro'.", sub: "O seguro do condomínio é obrigatório, mas cobre APENAS as áreas comuns (corredor, elevador, portaria)." },
+          { tag: "✅ A REALIDADE", title: "Ele NÃO COBRE nada dentro da sua casa:", bullets: ["Queima de TV/Geladeira por raio", "Vazamento de cano no seu banheiro", "Roubo de bens no seu apartamento"] },
+          { tag: "🛡️ A SOLUÇÃO", title: "O Seguro Residencial Individual é a sua verdadeira blindagem!", sub: "Custa a partir de R$ 40/mês e garante paz de espírito total.", cta: "👉 Simule no link da Bio" }
+        ],
+        caption: `🤔 Morar em condomínio não significa que seu apartamento está seguro!\n\nO seguro do prédio só cobre a estrutura comum. Para proteger seus móveis, eletros e vazamentos, você precisa do Seguro Residencial individual.\n\n📲 Faça seu orçamento rápido pelo link da Bio!\n\n#seguroimovel #apartamento #condominio #corretoradeseguros`
+      }
+    };
+
+    // LÓGICA DAS ABAS E GERADORES
+    document.addEventListener('DOMContentLoaded', () => {
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.onclick = () => {
+          const target = btn.getAttribute('data-tab');
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById(target).classList.add('active');
+        };
+      });
+
+      // GERADOR DE SCRIPTS
+      const scriptRamo = document.getElementById('scriptRamo');
+      const scriptEtapa = document.getElementById('scriptEtapa');
+      const scriptClienteNome = document.getElementById('scriptClienteNome');
+      const scriptObjeto = document.getElementById('scriptObjeto');
+      const btnGerarScript = document.getElementById('btnGerarScript');
+      const scriptBadgeTag = document.getElementById('scriptBadgeTag');
+      const scriptOutputTextarea = document.getElementById('scriptOutputTextarea');
+      const btnCopiarScript = document.getElementById('btnCopiarScript');
+      const btnEnviarWhatsApp = document.getElementById('btnEnviarWhatsApp');
+
+      const gerarScript = () => {
+        const ramo = scriptRamo.value;
+        const etapa = scriptEtapa.value;
+        const nome = scriptClienteNome.value.trim() || 'Cliente';
+        const objeto = scriptObjeto.value.trim() || (ramo === 'auto' ? 'Veículo' : 'Imóvel');
+
+        const scriptFn = BANCO_SCRIPTS[ramo][etapa];
+        if (scriptFn) {
+          const texto = scriptFn(nome, objeto);
+          scriptOutputTextarea.value = texto;
+          scriptBadgeTag.textContent = `${ramo === 'auto' ? '🚗 SEGURO AUTO' : '🏠 SEGURO IMÓVEL'} • ${etapa.toUpperCase()}`;
+        }
+      };
+
+      btnGerarScript.onclick = gerarScript;
+      gerarScript();
+
+      btnCopiarScript.onclick = () => {
+        scriptOutputTextarea.select();
+        navigator.clipboard.writeText(scriptOutputTextarea.value);
+        alert('Script copiado com sucesso!');
+      };
+
+      btnEnviarWhatsApp.onclick = () => {
+        const textEnc = encodeURIComponent(scriptOutputTextarea.value);
+        window.open(`https://wa.me/?text=${textEnc}`, '_blank');
+      };
+
+      // GERADOR DE CARROSSÉIS
+      const carrosselTemaSelect = document.getElementById('carrosselTemaSelect');
+      const btnGerarCarrossel = document.getElementById('btnGerarCarrossel');
+      const slidesGrid = document.getElementById('slidesGrid');
+      const carrosselLegendaTextarea = document.getElementById('carrosselLegendaTextarea');
+      const btnCopiarLegenda = document.getElementById('btnCopiarLegenda');
+      const btnBaixarTodosSlides = document.getElementById('btnBaixarTodosSlides');
+
+      const gerarCarrossel = () => {
+        const key = carrosselTemaSelect.value;
+        const data = BANCO_CARROSSEIS[key];
+        if (!data) return;
+
+        slidesGrid.innerHTML = '';
+        data.slides.forEach((slide, idx) => {
+          const wrap = document.createElement('div');
+          wrap.className = 'slide-card-wrap';
+
+          const card = document.createElement('div');
+          card.className = 'slide-card';
+          card.id = `corretoraSlide_${idx + 1}`;
+
+          let content = `<h4>${slide.title}</h4>`;
+          if (slide.bullets) {
+            content += `
+              <ul class="slide-bullets">
+                ${slide.bullets.map(b => `<li><i class="ri-checkbox-circle-fill"></i> ${b}</li>`).join('')}
+              </ul>
+            `;
+          } else if (slide.sub) {
+            content += `<p>${slide.sub}</p>`;
+          }
+
+          card.innerHTML = `
+            <div class="slide-tag">
+              <span>${slide.tag}</span>
+              <span>0${idx + 1}/04</span>
+            </div>
+            <div class="slide-body">
+              ${content}
+            </div>
+            <div class="slide-footer">
+              <span>CORRETORA DE <strong>SEGUROS</strong></span>
+              <span>${slide.cta || '👉 @corretoradeseguros'}</span>
+            </div>
+          `;
+
+          const dlBtn = document.createElement('button');
+          dlBtn.className = 'slide-dl-btn';
+          dlBtn.innerHTML = `<i class="ri-download-2-line"></i> Baixar Slide 0${idx + 1}`;
+          dlBtn.onclick = () => baixarSlide(card, `Slide_Corretora_0${idx + 1}.png`);
+
+          wrap.appendChild(card);
+          wrap.appendChild(dlBtn);
+          slidesGrid.appendChild(wrap);
+        });
+
+        carrosselLegendaTextarea.value = data.caption;
+      };
+
+      const baixarSlide = (el, filename) => {
+        if (typeof window.html2canvas !== 'function') return;
+        window.html2canvas(el, { scale: 2.5, backgroundColor: '#07070b' }).then(canvas => {
+          const a = document.createElement('a');
+          a.download = filename;
+          a.href = canvas.toDataURL('image/png');
+          a.click();
+        });
+      };
+
+      btnBaixarTodosSlides.onclick = () => {
+        const cards = document.querySelectorAll('.slide-card');
+        cards.forEach((c, i) => {
+          setTimeout(() => baixarSlide(c, `Slide_Corretora_0${i + 1}.png`), i * 600);
+        });
+      };
+
+      btnGerarCarrossel.onclick = gerarCarrossel;
+      gerarCarrossel();
+
+      btnCopiarLegenda.onclick = () => {
+        carrosselLegendaTextarea.select();
+        navigator.clipboard.writeText(carrosselLegendaTextarea.value);
+        alert('Legenda copiada com sucesso!');
+      };
+    });
+  </script>
+</body>
+</html>
