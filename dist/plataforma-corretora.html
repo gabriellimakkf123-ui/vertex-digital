@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plataforma Exclusiva | Gerador de Scripts & Carrosséis — Corretora de Seguros</title>
+  <title>Plataforma Exclusiva | Scripts, Carrosséis & Follow-Up IA — Corretora de Seguros</title>
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./favicon.png" />
@@ -200,10 +200,10 @@
       background: transparent;
       border: none;
       color: var(--text-muted);
-      padding: 10px 20px;
+      padding: 10px 18px;
       border-radius: 8px;
       font-family: var(--font-sans);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -359,7 +359,39 @@
       color: #000;
     }
 
-    /* Script Preview Area */
+    /* Output Tabs & Cards */
+    .output-sub-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 16px;
+    }
+
+    .output-tab-btn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      transition: all 0.2s;
+    }
+
+    .output-tab-btn.active {
+      background: rgba(255, 10, 43, 0.18);
+      border-color: var(--color-primary);
+      color: #fff;
+    }
+
     .script-output-card {
       background: #090a0e;
       border: 1px solid var(--border-color);
@@ -427,7 +459,6 @@
       gap: 10px;
     }
 
-    /* ESTILO VISUAL IDÊNTICO À IMAGEM DO CLIENTE (FUNDO PRETO, ASPAS VERMELHAS E TEXTO BRANCO) */
     .slide-card {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -730,7 +761,6 @@
       </div>
 
       <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
-        <!-- User Profile Bar -->
         <div class="user-profile-bar" id="userProfileBar">
           <div class="user-avatar" id="userInitials">GL</div>
           <div class="user-info">
@@ -744,10 +774,13 @@
 
         <div class="app-tabs">
           <button class="tab-btn active" data-tab="tab-scripts">
-            <i class="ri-chat-quote-line"></i> 📜 Gerador de Scripts
+            <i class="ri-chat-quote-line"></i> 📜 Scripts de Vendas
           </button>
           <button class="tab-btn" data-tab="tab-carrosseis">
-            <i class="ri-slideshow-3-line"></i> 🎨 Carrosséis Seguros
+            <i class="ri-slideshow-3-line"></i> 🎨 Carrosséis Instagram
+          </button>
+          <button class="tab-btn" data-tab="tab-followup">
+            <i class="ri-radar-line"></i> ⚡ Central Follow-Up IA
           </button>
         </div>
       </div>
@@ -821,7 +854,7 @@
       </div>
     </div>
 
-    <!-- TAB 2: GERADOR DE CARROSSÉIS FORMATO CITACÃO/PRETO -->
+    <!-- TAB 2: GERADOR DE CARROSSÉIS -->
     <div id="tab-carrosseis" class="tab-pane">
       <div class="section-title">
         <span class="sub-badge"><i class="ri-instagram-line"></i> Atração Visual no Instagram</span>
@@ -831,19 +864,16 @@
 
       <div class="glass-card">
         <div class="controls-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-          <!-- Nome da Corretora / Seguradora -->
           <div class="form-group">
             <label>Nome da Seguradora / Corretora:</label>
             <input type="text" id="carrosselNomeSeguradora" class="form-control" value="Vertex Seguros" placeholder="Ex: Fernando Lessa / Vertex Seguros" />
           </div>
 
-          <!-- Arroba do Instagram -->
           <div class="form-group">
             <label>Arroba do Instagram (@):</label>
             <input type="text" id="carrosselArrobaSeguradora" class="form-control" value="@vertexseguros" placeholder="Ex: @milionariosbrazil" />
           </div>
 
-          <!-- Tema do Carrossel -->
           <div class="form-group" style="grid-column: span 2;">
             <label>Escolha o Tema de Seguro:</label>
             <select id="carrosselTemaSelect" class="form-control">
@@ -864,12 +894,8 @@
           <button id="btnBaixarTodosSlides" class="btn btn-glass"><i class="ri-download-cloud-line"></i> Baixar Todos os Slides em PNG</button>
         </div>
 
-        <!-- Slides Render Area -->
-        <div class="slides-preview-grid" id="slidesGrid">
-          <!-- Renderizado via JS -->
-        </div>
+        <div class="slides-preview-grid" id="slidesGrid"></div>
 
-        <!-- Legenda do Instagram -->
         <div class="caption-box">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
             <strong style="color: #fff; font-size: 0.95rem;"><i class="ri-file-text-line"></i> Legenda Persuasiva Pronta para o Instagram:</strong>
@@ -878,6 +904,92 @@
             </button>
           </div>
           <textarea id="carrosselLegendaTextarea" class="script-textarea" style="min-height: 120px;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 3: CENTRAL DE FOLLOW-UP INTELIGENTE (NOVO)
+         ========================================== -->
+    <div id="tab-followup" class="tab-pane">
+      <div class="section-title">
+        <span class="sub-badge"><i class="ri-radar-line"></i> Recuperação de Vendas IA</span>
+        <h2>Central de Follow-Up <span class="gradient-text">Inteligente para Corretores</span></h2>
+        <p>Preencha os dados do lead sem resposta e a IA gerará WhatsApp, Roteiro de Áudio, E-mail e Abordagens de Resgate.</p>
+      </div>
+
+      <div class="glass-card">
+        <div class="controls-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+          <!-- Nome do Cliente -->
+          <div class="form-group">
+            <label>1. Nome do Cliente:</label>
+            <input type="text" id="followNome" class="form-control" value="Juliana Alencar" placeholder="Ex: Juliana Alencar" />
+          </div>
+
+          <!-- Tipo de Seguro -->
+          <div class="form-group">
+            <label>2. Tipo de Seguro:</label>
+            <select id="followTipo" class="form-control">
+              <option value="auto">🚗 Seguro Auto / Veículos (Ex: SUV/Civic)</option>
+              <option value="imovel">🏠 Seguro Imóvel / Residencial</option>
+              <option value="vida">❤️ Seguro de Vida & Proteção Familiar</option>
+              <option value="empresa">🏢 Seguro Empresarial</option>
+            </select>
+          </div>
+
+          <!-- Situação Atual -->
+          <div class="form-group">
+            <label>3. Situação Atual do Lead:</label>
+            <select id="followSituacao" class="form-control">
+              <option value="vacuo">1. Visualizou a cotação e não respondeu (Vácuo Total)</option>
+              <option value="pensar">2. Disse que "está caro" ou "vai pensar"</option>
+              <option value="terceiro">3. Disse que "vai falar com o marido/esposa/sócio"</option>
+              <option value="concorrente">4. disse que "está cotando no banco / outra corretora"</option>
+              <option value="sumiu">5. Pediu para ligar semana que vem e sumiu</option>
+            </select>
+          </div>
+
+          <!-- Dias Sem Resposta -->
+          <div class="form-group">
+            <label>4. Dias Sem Resposta:</label>
+            <select id="followDias" class="form-control">
+              <option value="1d">1 a 2 dias sem resposta</option>
+              <option value="3d">3 a 5 dias sem resposta</option>
+              <option value="7d">7 a 15 dias sem resposta</option>
+              <option value="30d">30+ dias (Lead Frio / Resgate de Carteira)</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="btnGerarFollowUp" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem; margin-bottom: 24px;">
+          <i class="ri-sparkles-line"></i> Gerar Estratégia Completa de Follow-Up (WhatsApp, Áudio, E-mail & Ultimato)
+        </button>
+
+        <!-- OUTPUT DOS ENTREGÁVEIS DE FOLLOW-UP -->
+        <div class="output-sub-tabs" id="followSubTabs">
+          <button class="output-tab-btn active" data-target="follow-wa"><i class="ri-whatsapp-line"></i> 📱 1. WhatsApp Imediato</button>
+          <button class="output-tab-btn" data-target="follow-audio"><i class="ri-mic-line"></i> 🎙️ 2. Roteiro do Áudio</button>
+          <button class="output-tab-btn" data-target="follow-email"><i class="ri-mail-line"></i> ✉️ 3. E-mail Executivo</button>
+          <button class="output-tab-btn" data-target="follow-sub1"><i class="ri-repeat-2-line"></i> 🔄 4. 2ª Abordagem (48h)</button>
+          <button class="output-tab-btn" data-target="follow-sub2"><i class="ri-alarm-warning-line"></i> 🔥 5. Ultimato / Despedida</button>
+        </div>
+
+        <div class="script-output-card" style="margin-top: 0;">
+          <div class="script-meta-header">
+            <span class="script-tag" id="followBadgeTag">📱 WHATSAPP • 1 A 2 DIAS DE VÁCUO</span>
+            <span style="font-size: 0.8rem; color: #94a3b8;" id="followOutputSubLabel">Mensagem persuasiva com pergunta de resposta curta</span>
+          </div>
+
+          <textarea id="followTextarea" class="script-textarea" style="min-height: 200px;"></textarea>
+
+          <div class="script-actions">
+            <button id="btnCopiarFollow" class="btn btn-primary">
+              <i class="ri-file-copy-line"></i> Copiar Conteúdo Selecionado
+            </button>
+            <button id="btnWaFollow" class="btn btn-wa">
+              <i class="ri-whatsapp-line"></i> Disparar Mensagem no WhatsApp
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -966,98 +1078,77 @@
       }
     };
 
-    // BANCO DE CARROSSÉIS NO FORMATO CITAÇÃO / FUNDO PRETO CONFORME A FOTO
+    // BANCO DE CARROSSÉIS
     const BANCO_CARROSSEIS = {
       auto_risco: {
         slides: [
-          {
-            title: "Não é sobre economizar na apólice.",
-            body: "É sobre **não perder o carro**, a paciência e **anos de economia** por causa de uma cotação barata que cortou o guincho."
-          },
-          {
-            title: "O seguro mais caro do mundo:",
-            body: "É aquele que você achava que tinha, mas descobre na hora do sinistro que a seguradora **não cobre danos a terceiros**."
-          },
-          {
-            title: "Quem tem seguro não paga por azar.",
-            body: "Paga pela **tranquilidade** de saber que se algo acontecer hoje à noite, **amanhã o problema está 100% resolvido**."
-          },
-          {
-            title: "Proteja seu veículo hoje mesmo.",
-            body: "Solicite uma **cotação personalizada** com as maiores seguradoras e rode **totalmente blindado**."
-          }
+          { title: "Não é sobre economizar na apólice.", body: "É sobre **não perder o carro**, a paciência e **anos de economia** por causa de uma cotação barata que cortou o guincho." },
+          { title: "O seguro mais caro do mundo:", body: "É aquele que você achava que tinha, mas descobre na hora do sinistro que a seguradora **não cobre danos a terceiros**." },
+          { title: "Quem tem seguro não paga por azar.", body: "Paga pela **tranquilidade** de saber que se algo acontecer hoje à noite, **amanhã o problema está 100% resolvido**." },
+          { title: "Proteja seu veículo hoje mesmo.", body: "Solicite uma **cotação personalizada** com as maiores seguradoras e rode **totalmente blindado**." }
         ],
         caption: `🚗 Não arrisque seu patrimônio com apólices genéricas.\n\nFazer um Seguro Auto completo garante guincho sem limite de KM, cobertura de terceiros de verdade e atendimento 24h sem burocracia.\n\n📲 Solicite sua simulação no WhatsApp pelo link da Bio!\n\n#seguroauto #protecaoveicular #corretoradeseguros #carro`
       },
-
       imovel_erro: {
         slides: [
-          {
-            title: "O seguro do condomínio não protege a sua casa.",
-            body: "Ele cobre a fachada e os elevadores. Se uma **TV queimar por raio** ou um **cano estourar na sua cozinha**, o prejuízo é **100% seu**."
-          },
-          {
-            title: "Menos de R$ 1,50 por dia.",
-            body: "É o valor para proteger a **estrutura do seu imóvel**, seus móveis, eletrodomésticos e ainda ter **chaveiro e encanador 24h grátis**."
-          },
-          {
-            title: "Patrimônio não se arrisca.",
-            body: "Um curto-circuito leva **segundos** para destruir o que você levou **anos para construir**. Proteção é inteligência financeira."
-          },
-          {
-            title: "Garanta a paz de espírito do seu lar.",
-            body: "Chame nossa equipe especialista no WhatsApp e faça uma **simulação rápida para o seu imóvel**."
-          }
+          { title: "O seguro do condomínio não protege a sua casa.", body: "Ele cobre a fachada e os elevadores. Se uma **TV queimar por raio** ou um **cano estourar na sua cozinha**, o prejuízo é **100% seu**." },
+          { title: "Menos de R$ 1,50 por dia.", body: "É o valor para proteger a **estrutura do seu imóvel**, seus móveis, eletrodomésticos e ainda ter **chaveiro e encanador 24h grátis**." },
+          { title: "Patrimônio não se arrisca.", body: "Um curto-circuito leva **segundos** para destruir o que você levou **anos para construir**. Proteção é inteligência financeira." },
+          { title: "Garanta a paz de espírito do seu lar.", body: "Chame nossa equipe especialista no WhatsApp e faça uma **simulação rápida para o seu imóvel**." }
         ],
         caption: `🏠 Morar em prédio não significa que seu apartamento está coberto!\n\nO Seguro Residencial individual custa menos de R$ 1,50/dia e protege tudo dentro da sua casa contra surtos elétricos, vazamentos e incêndio.\n\n📲 Simule agora mesmo no link da Bio!\n\n#seguroresidencial #seguroimovel #apartamento #casa`
       },
-
       vida_familia: {
         slides: [
-          {
-            title: "Seguro de Vida não é sobre você.",
-            body: "É sobre garantir que a sua **família mantenha o mesmo padrão de vida**, mesmo se você **não estiver mais aqui amanhã**."
-          },
-          {
-            title: "Você faz seguro para o seu carro.",
-            body: "Por que não faz seguro para a **sua própria vida** e para a **segurança de quem você mais ama** neste mundo?"
-          },
-          {
-            title: "Seguro de vida se faz com saúde.",
-            body: "Quando o imprevisto acontece, **já é tarde demais para contratar**. O momento de proteger sua família é **agora**."
-          },
-          {
-            title: "Proteja quem você ama hoje.",
-            body: "Fale com nosso consultor e descubra planos sob medida de **Seguro de Vida e Proteção Familiar**."
-          }
+          { title: "Seguro de Vida não é sobre você.", body: "É sobre garantir que a sua **família mantenha o mesmo padrão de vida**, mesmo se você **não estiver mais aqui amanhã**." },
+          { title: "Você faz seguro para o seu carro.", body: "Por que não faz seguro para a **sua própria vida** e para a **segurança de quem você mais ama** neste mundo?" },
+          { title: "Seguro de vida se faz com saúde.", body: "Quando o imprevisto acontece, **já é tarde demais para contratar**. O momento de proteger sua família é **agora**." },
+          { title: "Proteja quem você ama hoje.", body: "Fale com nosso consultor e descubra planos sob medida de **Seguro de Vida e Proteção Familiar**." }
         ],
         caption: `❤️ O maior ato de amor pela sua família é garantir o futuro deles.\n\nConheça nossas apólices de Seguro de Vida com cobertura para diagnósticos graves e proteção financeira familiar.\n\n📲 Fale conosco no WhatsApp pelo link da Bio!\n\n#segurodevida #protecaofamiliar #seguros #planejametofinanceiro`
       },
-
       auto_renovacao: {
         slides: [
-          {
-            title: "Não renove seu seguro no automático.",
-            body: "Sua **classe de bônus pertence a você**, e não à sua antiga seguradora. Cotar em outras marcas pode te fazer **economizar até 30%**."
-          },
-          {
-            title: "O segredo das corretoras multimarcas:",
-            body: "Comparamos **Porto, Azul, Tokio, HDI e SulAmérica** ao mesmo tempo para encontrar a **menor franquia pelo menor preço**."
-          },
-          {
-            title: "Renovar sem pesquisar é rasgar dinheiro.",
-            body: "Em 2 minutos nossa equipe faz o estudo completo e garante **Carro Reserva grátis** e **desconto exclusivo**."
-          },
-          {
-            title: "Sua renovação está chegando?",
-            body: "Envie sua apólice atual para nosso WhatsApp e receba um **estudo comparativo 100% gratuito**."
-          }
+          { title: "Não renove seu seguro no automático.", body: "Sua **classe de bônus pertence a você**, e não à sua antiga seguradora. Cotar em outras marcas pode te fazer **economizar até 30%**." },
+          { title: "O segredo das corretoras multimarcas:", body: "Comparamos **Porto, Azul, Tokio, HDI e SulAmérica** ao mesmo tempo para encontrar a **menor franquia pelo menor preço**." },
+          { title: "Renovar sem pesquisar é rasgar dinheiro.", body: "Em 2 minutos nossa equipe faz o estudo completo e garante **Carro Reserva grátis** e **desconto exclusivo**." },
+          { title: "Sua renovação está chegando?", body: "Envie sua apólice atual para nosso WhatsApp e receba um **estudo comparativo 100% gratuito**." }
         ],
         caption: `💡 Economize na renovação do seu Seguro Auto sem abrir mão da qualidade!\n\nCotamos em 5 seguradoras ao mesmo tempo para garantir a melhor condição para seu veículo.\n\n📲 Chame no WhatsApp e economize até 30%!\n\n#seguroauto #renovacaodeseguro #economizarnoseguro #corretoradeseguros`
       }
     };
 
-    // LÓGICA DE GERAÇÃO
+    // BANCO DE INTELIGÊNCIA DE FOLLOW-UP
+    const BANCO_FOLLOWUP = {
+      auto: {
+        vacuo: (nome, dias) => ({
+          wa: `Oi, ${nome}! Tudo bem? 👋\n\nTe mandei a cotação do seguro do seu veículo há alguns dias e queria saber se você conseguiu dar uma olhadinha.\n\nFicou alguma dúvida sobre o valor da franquia ou sobre o guincho ilimitado?\n\nMe avisa aqui pra eu não deixar sua tabela promocional vencer!`,
+          audio: `[TOM DESCONTRAÍDO E AMIGÁVEL]:\n"Oi ${nome}, tudo bem por aí? Aqui é o consultor da Corretora. Tô te mandando esse áudio bem rápido porque vi que você não me respondeu sobre a cotação do seguro do carro. Conseguiu olhar a proposta da Porto Seguro que te mandei? Me dá um retorno aqui só pra eu saber se te ajudo por aqui, tá bom? Um abraço!"`,
+          email: `Assunto: Re: Cotação de Seguro Auto - ${nome}\n\nOlá, ${nome},\n\nEspero que esteja bem.\n\nEstou entrando em contato para saber se teve a oportunidade de analisar a proposta de Seguro Auto que enviamos.\n\nCaso necessite de algum ajuste no valor das franquias ou inclusão de condutores adicionais, fico à total disposição para personalizar a apólice conforme suas necessidades.\n\nPodemos conversar hoje rapidamente por telefone ou WhatsApp?\n\nAtenciosamente,\nEquipe de Vendas - Corretora de Seguros`,
+          sub1: `Oi, ${nome}! Passando rapidinho pra avisar que a seguradora liberou um bônus especial de **Carro Reserva Grátis por 15 dias** para as propostas aprovadas até esta sexta-feira.\n\nConsigo incluir essa cortesia na sua apólice do veículo. Quer que eu emita pra travar essa condição?`,
+          sub2: `Oi, ${nome}. Como não tive seu retorno nas mensagens anteriores, imagino que você tenha decidido postergar a contratação do seguro do veículo por enquanto.\n\nEstou encerrando o seu protocolo de desconto para liberar a tabela para outros clientes. Se precisar no futuro, meu contato continua à disposição!\n\nUm abraço!`
+        }),
+        pensar: (nome, dias) => ({
+          wa: `Oi, ${nome}! Tudo bem?\n\nSei que você comentou que iria analisar a proposta do Seguro Auto com calma. Teve a chance de avaliar?\n\nConsigo parcelar a primeira parcela sem juros no cartão ou ajustar a franquia para caber perfeitamente no seu orçamento. O que acha de resolvermos isso hoje?`,
+          audio: `[TOM CONSULTIVO E RESOLUTIVO]:\n"Oi ${nome}! Tudo bem? Tô te mandando esse áudio porque pensei na nossa conversa. Sei que você falou que ia dar uma pensada no orçamento do seguro. Consegui uma flexibilização no parcelamento com a seguradora pra te ajudar a fechar sem apertar seu mês. Me avisa se podemos ajustar!"`,
+          email: `Assunto: Proposta Personalizada de Seguro Auto - ${nome}\n\nOlá, ${nome},\n\nCompreendo perfeitamente a importância de analisar o orçamento antes de tomar uma decisão.\n\nPara facilitar sua escolha, reavaliei as opções com as seguradoras parceiras e consegui uma opção com franquia reduzida mantendo a proteção total de terceiros e guincho 24h.\n\nPodemos fazer um ajuste rápido na proposta?\n\nAtenciosamente,\nCorretora de Seguros`,
+          sub1: `Oi, ${nome}! Para você não rodar desprotegido, consegui autorização para recalcular sua proposta reduzindo a franquia pela metade com a mesma cobertura FIPE 100%.\n\nO valor ficou super acessível. Posso te enviar o resumo em 1 minuto?`,
+          sub2: `${nome}, entendo que o momento pode não ser o ideal. Estou pausando seu atendimento para não te incomodar.\n\nLembre-se apenas de que trafegar sem seguro exige arcar com 100% do valor do carro em caso de colisão ou roubo. Se mudar de ideia, estou por aqui! Abraço.`
+        })
+      },
+
+      imovel: {
+        vacuo: (nome, dias) => ({
+          wa: `Oi, ${nome}! Tudo bem?\n\nTe enviei a simulação do Seguro Residencial por R$ 1,50/dia há alguns dias. Conseguiu avaliar as coberturas contra vazamentos e surtos elétricos?\n\nFicou alguma dúvida sobre os serviços de chaveiro e eletricista 24h inclusos?`,
+          audio: `[TOM CALMO E PROFISSIONAL]:\n"Oi ${nome}, tudo bem? Aqui é da Corretora de Seguros. Tô te mandando um áudio rápido sobre a proteção da sua casa. Sei que a correria do dia a dia é grande, mas queria saber se você conseguiu ver o valor anual da apólice que te mandei. É super baratinho. Me avisa se tiver dúvidas!"`,
+          email: `Assunto: Acompanhamento de Cotação - Seguro Residencial - ${nome}\n\nOlá, ${nome},\n\nComo está?\n\nEncaminhei recentemente o estudo para proteção do seu imóvel com cobertura contra incêndio, danos elétricos e assistência 24h.\n\nGostaria de verificar se restou alguma dúvida quanto aos valores e benefícios inclusos na apólice.\n\nPermaneço à disposição.\n\nAtenciosamente,\nCorretora de Seguros`,
+          sub1: `Oi, ${nome}! Consegui incluir no seu Seguro Residencial a Assistência VIP sem custo extra (com conserto de geladeira, fogão e ar-condicionado inclusos).\n\nPosso emitir a apólice com essa cortesia hoje?`,
+          sub2: `${nome}, como não recebi sua confirmação, estou finalizando sua proposta residencial no sistema. Se desejar proteger seu imóvel no futuro, será um prazer atendê-lo. Forte abraço!`
+        })
+      }
+    };
+
+    // LÓGICA DE INTERFACE E EVENTOS
     document.addEventListener('DOMContentLoaded', () => {
       const tabBtns = document.querySelectorAll('.tab-btn');
       const tabPanes = document.querySelectorAll('.tab-pane');
@@ -1110,7 +1201,7 @@
         window.open(`https://wa.me/?text=${textEnc}`, '_blank');
       };
 
-      // CARROSSÉIS NO ESTILO MINIMALISTA / FOTO ENVIADA
+      // CARROSSÉIS MINIMALISTAS
       const carrosselNomeSeguradora = document.getElementById('carrosselNomeSeguradora');
       const carrosselArrobaSeguradora = document.getElementById('carrosselArrobaSeguradora');
       const carrosselTemaSelect = document.getElementById('carrosselTemaSelect');
@@ -1120,9 +1211,7 @@
       const btnCopiarLegenda = document.getElementById('btnCopiarLegenda');
       const btnBaixarTodosSlides = document.getElementById('btnBaixarTodosSlides');
 
-      const parseMarkdownBold = (text) => {
-        return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      };
+      const parseMarkdownBold = (text) => text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
       const gerarCarrossel = () => {
         const key = carrosselTemaSelect.value;
@@ -1141,7 +1230,6 @@
           card.className = 'slide-card';
           card.id = `corretoraSlide_${idx + 1}`;
 
-          // ESTRUTURA VISUAL IDÊNTICA À FOTO ENVIADA PELO USUÁRIO
           card.innerHTML = `
             <div class="slide-quotes">“</div>
             <div class="slide-minimal-title">${slide.title}</div>
@@ -1162,12 +1250,10 @@
         carrosselLegendaTextarea.value = data.caption;
       };
 
-      // Atualizar em tempo real quando digitar nos inputs
       carrosselNomeSeguradora.oninput = gerarCarrossel;
       carrosselArrobaSeguradora.oninput = gerarCarrossel;
       carrosselTemaSelect.onchange = gerarCarrossel;
       btnGerarCarrossel.onclick = gerarCarrossel;
-
       gerarCarrossel();
 
       const baixarSlide = (el, filename) => {
@@ -1191,6 +1277,92 @@
         carrosselLegendaTextarea.select();
         navigator.clipboard.writeText(carrosselLegendaTextarea.value);
         alert('Legenda copiada com sucesso!');
+      };
+
+      // CENTRAL DE FOLLOW-UP INTELIGENTE IA
+      const followNome = document.getElementById('followNome');
+      const followTipo = document.getElementById('followTipo');
+      const followSituacao = document.getElementById('followSituacao');
+      const followDias = document.getElementById('followDias');
+      const btnGerarFollowUp = document.getElementById('btnGerarFollowUp');
+      const followSubTabs = document.getElementById('followSubTabs');
+      const followBadgeTag = document.getElementById('followBadgeTag');
+      const followOutputSubLabel = document.getElementById('followOutputSubLabel');
+      const followTextarea = document.getElementById('followTextarea');
+      const btnCopiarFollow = document.getElementById('btnCopiarFollow');
+      const btnWaFollow = document.getElementById('btnWaFollow');
+
+      let currentFollowData = null;
+      let activeSubTarget = 'follow-wa';
+
+      const gerarFollowUp = () => {
+        const nome = followNome.value.trim() || 'Cliente';
+        const tipo = followTipo.value;
+        const sit = followSituacao.value;
+        const dias = followDias.value;
+
+        // Fallback genérico inteligente se não houver ramo exato no banco
+        const ramoData = BANCO_FOLLOWUP[tipo] || BANCO_FOLLOWUP['auto'];
+        const sitFn = ramoData[sit] || ramoData['vacuo'];
+        currentFollowData = sitFn(nome, dias);
+
+        renderFollowSubTab(activeSubTarget);
+      };
+
+      const renderFollowSubTab = (targetKey) => {
+        activeSubTarget = targetKey;
+        if (!currentFollowData) return;
+
+        const nome = followNome.value.trim() || 'Cliente';
+
+        if (targetKey === 'follow-wa') {
+          followTextarea.value = currentFollowData.wa;
+          followBadgeTag.textContent = `📱 WHATSAPP • SEGURO ${followTipo.value.toUpperCase()}`;
+          followOutputSubLabel.textContent = `Mensagem direta adaptada para o WhatsApp do cliente ${nome}`;
+        } else if (targetKey === 'follow-audio') {
+          followTextarea.value = currentFollowData.audio;
+          followBadgeTag.textContent = `🎙️ ROTEIRO ÁUDIO • GRAVAR NO WHATSAPP`;
+          followOutputSubLabel.textContent = `Roteiro curto de 15 a 30 seg para você ler e gravar a voz com tom natural`;
+        } else if (targetKey === 'follow-email') {
+          followTextarea.value = currentFollowData.email;
+          followBadgeTag.textContent = `✉️ E-MAIL EXECUTIVO • REENGAJAMENTO B2B`;
+          followOutputSubLabel.textContent = `E-mail formal com assunto e corpo prontos para cópia`;
+        } else if (targetKey === 'follow-sub1') {
+          followTextarea.value = currentFollowData.sub1;
+          followBadgeTag.textContent = `🔄 2ª ABORDAGEM • TROCA DE ÂNGULO (+48H)`;
+          followOutputSubLabel.textContent = `Mandar 2 dias depois caso o cliente continue em vácuo com novo benefício`;
+        } else if (targetKey === 'follow-sub2') {
+          followTextarea.value = currentFollowData.sub2;
+          followBadgeTag.textContent = `🔥 ULTIMATO / BREAK-UP MESSAGE (DESPEDIDA)`;
+          followOutputSubLabel.textContent = `Mensagem de arquivamento que gera forte gatilho da perda (taxa de resposta de >70%)`;
+        }
+      };
+
+      // Eventos das sub-abas
+      if (followSubTabs) {
+        const btns = followSubTabs.querySelectorAll('.output-tab-btn');
+        btns.forEach(b => {
+          b.onclick = () => {
+            btns.forEach(x => x.classList.remove('active'));
+            b.classList.add('active');
+            const target = b.getAttribute('data-target');
+            renderFollowSubTab(target);
+          };
+        });
+      }
+
+      btnGerarFollowUp.onclick = gerarFollowUp;
+      gerarFollowUp();
+
+      btnCopiarFollow.onclick = () => {
+        followTextarea.select();
+        navigator.clipboard.writeText(followTextarea.value);
+        alert('Conteúdo copiado com sucesso!');
+      };
+
+      btnWaFollow.onclick = () => {
+        const textEnc = encodeURIComponent(followTextarea.value);
+        window.open(`https://wa.me/?text=${textEnc}`, '_blank');
       };
     });
   </script>
