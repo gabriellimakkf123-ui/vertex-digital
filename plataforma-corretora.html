@@ -416,8 +416,8 @@
     /* Carrossel Grid Preview */
     .slides-preview-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
       margin-top: 25px;
     }
 
@@ -427,77 +427,63 @@
       gap: 10px;
     }
 
+    /* ESTILO VISUAL IDÊNTICO À IMAGEM DO CLIENTE (FUNDO PRETO, ASPAS VERMELHAS E TEXTO BRANCO) */
     .slide-card {
       width: 100%;
       aspect-ratio: 1 / 1;
-      background: radial-gradient(circle at 80% 20%, rgba(255, 10, 43, 0.18) 0%, transparent 60%), #07070b;
-      border: 2px solid rgba(255, 10, 43, 0.4);
-      border-radius: 16px;
-      padding: 20px;
+      background: #08080a;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 32px 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+      font-family: 'Inter', sans-serif;
+      text-align: left;
     }
 
-    .slide-tag {
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: var(--color-primary);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .slide-body h4 {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
+    .slide-quotes {
+      font-size: 3rem;
       font-weight: 900;
-      color: #fff;
-      line-height: 1.3;
-      margin-bottom: 8px;
+      color: #ff0a2b;
+      line-height: 0.8;
+      margin-bottom: 16px;
+      font-family: Georgia, serif;
+      letter-spacing: -2px;
     }
 
-    .slide-body p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
+    .slide-minimal-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .slide-minimal-body {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #f1f5f9;
       line-height: 1.5;
     }
 
-    .slide-bullets {
-      list-style: none;
-      margin-top: 8px;
+    .slide-minimal-body strong {
+      font-weight: 800;
+      color: #ffffff;
     }
 
-    .slide-bullets li {
-      font-size: 0.78rem;
-      color: #fff;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .slide-bullets li i {
-      color: var(--color-primary);
-    }
-
-    .slide-footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.72rem;
-      color: var(--text-dim);
-    }
-
-    .slide-footer strong {
-      color: var(--color-primary);
+    .slide-minimal-footer {
+      margin-top: auto;
+      padding-top: 24px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #94a3b8;
+      letter-spacing: -0.2px;
     }
 
     .slide-dl-btn {
@@ -505,9 +491,9 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       color: #fff;
-      padding: 8px;
+      padding: 10px;
       border-radius: 8px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -530,9 +516,7 @@
       padding: 20px;
     }
 
-    /* ==========================================
-       LOGIN MODAL OVERLAY (SISTEMA DE AUTENTICAÇÃO)
-       ========================================== */
+    /* MODAL DE LOGIN */
     .login-overlay {
       position: fixed;
       top: 0;
@@ -678,9 +662,7 @@
   <div class="ambient-glow glow-1"></div>
   <div class="ambient-glow glow-2"></div>
 
-  <!-- ==========================================
-       MODAL DE LOGIN (SISTEMA DE AUTENTICAÇÃO)
-       ========================================== -->
+  <!-- MODAL DE LOGIN -->
   <div id="loginOverlay" class="login-overlay">
     <div class="login-card">
       <div class="login-header">
@@ -774,9 +756,7 @@
 
   <main class="container main-wrapper">
 
-    <!-- ==========================================
-         TAB 1: GERADOR DE SCRIPTS COMERCIAIS
-         ========================================== -->
+    <!-- TAB 1: GERADOR DE SCRIPTS -->
     <div id="tab-scripts" class="tab-pane active">
       <div class="section-title">
         <span class="sub-badge"><i class="ri-flashlight-line"></i> Vendas & Objeções</span>
@@ -786,7 +766,6 @@
 
       <div class="glass-card">
         <div class="controls-grid">
-          <!-- Ramo de Seguro -->
           <div class="form-group">
             <label>1. Escolha o Ramo de Seguro:</label>
             <select id="scriptRamo" class="form-control">
@@ -795,7 +774,6 @@
             </select>
           </div>
 
-          <!-- Etapa de Venda -->
           <div class="form-group">
             <label>2. Etapa Comercial:</label>
             <select id="scriptEtapa" class="form-control">
@@ -808,13 +786,11 @@
             </select>
           </div>
 
-          <!-- Nome do Cliente Deste Script -->
           <div class="form-group">
             <label>3. Nome do Cliente (Opcional):</label>
             <input type="text" id="scriptClienteNome" class="form-control" placeholder="Ex: Rodrigo" value="Rodrigo" />
           </div>
 
-          <!-- Modelo ou Imóvel -->
           <div class="form-group">
             <label>4. Carro / Imóvel (Opcional):</label>
             <input type="text" id="scriptObjeto" class="form-control" placeholder="Ex: Civic 2022 / Apê Moema" value="Civic 2022" />
@@ -825,7 +801,6 @@
           <i class="ri-sparkles-line"></i> Gerar Script Personalizado em 1 Clique
         </button>
 
-        <!-- Output do Script -->
         <div class="script-output-card">
           <div class="script-meta-header">
             <span class="script-tag" id="scriptBadgeTag">🚗 SEGURO AUTO • ABORDAGEM INICIAL</span>
@@ -846,36 +821,46 @@
       </div>
     </div>
 
-    <!-- ==========================================
-         TAB 2: GERADOR DE CARROSSÉIS PARA INSTAGRAM
-         ========================================== -->
+    <!-- TAB 2: GERADOR DE CARROSSÉIS FORMATO CITACÃO/PRETO -->
     <div id="tab-carrosseis" class="tab-pane">
       <div class="section-title">
-        <span class="sub-badge"><i class="ri-instagram-line"></i> Atração no Instagram</span>
-        <h2>Gerador de Carrosséis para <span class="gradient-text">Corretora de Seguros</span></h2>
-        <p>Gere carrosséis persuasivos focados em <strong>curiosidade, escassez e oportunidade</strong> para fazer o seguidor fechar seguro com a corretora.</p>
+        <span class="sub-badge"><i class="ri-instagram-line"></i> Atração Visual no Instagram</span>
+        <h2>Gerador de Carrosséis <span class="gradient-text">Fundo Preto & Citações</span></h2>
+        <p>Posts minimalistas com fundo preto, escritas marcantes e assinatura personalizada da sua seguradora.</p>
       </div>
 
       <div class="glass-card">
-        <div class="controls-grid">
+        <div class="controls-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+          <!-- Nome da Corretora / Seguradora -->
           <div class="form-group">
-            <label>Escolha o Tema do Carrossel:</label>
-            <select id="carrosselTemaSelect" class="form-control">
-              <option value="auto_curiosidade">🚗 Auto: O detalhe escondido no seguro do carro que você precisa saber</option>
-              <option value="auto_economia">🚗 Auto: 3 passos para economizar até 30% na renovação do Seguro Auto</option>
-              <option value="imovel_escassez">🏠 Imóvel: Como proteger seu lar por menos de R$ 1,50 por dia</option>
-              <option value="imovel_mito">🏠 Imóvel: O seguro do condomínio cobre o meu apartamento? (Mito vs Realidade)</option>
-            </select>
+            <label>Nome da Seguradora / Corretora:</label>
+            <input type="text" id="carrosselNomeSeguradora" class="form-control" value="Vertex Seguros" placeholder="Ex: Fernando Lessa / Vertex Seguros" />
           </div>
-          <div class="form-group" style="display: flex; align-items: flex-end;">
-            <button id="btnGerarCarrossel" class="btn btn-primary style='width: 100%'">
-              <i class="ri-sparkles-line"></i> Gerar Slides & Legenda Pronta
-            </button>
+
+          <!-- Arroba do Instagram -->
+          <div class="form-group">
+            <label>Arroba do Instagram (@):</label>
+            <input type="text" id="carrosselArrobaSeguradora" class="form-control" value="@vertexseguros" placeholder="Ex: @milionariosbrazil" />
+          </div>
+
+          <!-- Tema do Carrossel -->
+          <div class="form-group" style="grid-column: span 2;">
+            <label>Escolha o Tema de Seguro:</label>
+            <select id="carrosselTemaSelect" class="form-control">
+              <option value="auto_risco">🚗 Seguro Auto: Não é sobre economizar na apólice (Provocação & Sinistro)</option>
+              <option value="imovel_erro">🏠 Seguro Residencial: O seguro do condomínio não protege sua casa (Mito vs Realidade)</option>
+              <option value="vida_familia">❤️ Seguro de Vida: Não é sobre você, é sobre a sua família (Sensibilização)</option>
+              <option value="auto_renovacao">💡 Renovação Auto: Não renove no automático (Economia Multimarcas)</option>
+            </select>
           </div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
-          <h3 style="font-size: 1.1rem; color: #fff;"><i class="ri-image-line"></i> Prévia dos 4 Slides (1080x1080)</h3>
+        <button id="btnGerarCarrossel" class="btn btn-primary" style="width: 100%; margin-bottom: 20px;">
+          <i class="ri-sparkles-line"></i> Gerar Slides no Formato Citação (Fundo Preto & Aspas)
+        </button>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 10px;">
+          <h3 style="font-size: 1.1rem; color: #fff;"><i class="ri-image-line"></i> Prévia dos 4 Slides em Fundo Preto (1080x1080)</h3>
           <button id="btnBaixarTodosSlides" class="btn btn-glass"><i class="ri-download-cloud-line"></i> Baixar Todos os Slides em PNG</button>
         </div>
 
@@ -900,7 +885,7 @@
   </main>
 
   <script>
-    // SISTEMA DE AUTENTICAÇÃO (LOGIN / LOGOUT)
+    // AUTENTICAÇÃO
     const AUTH_KEY = 'vertex_corretora_session';
     const VALID_USER = 'admin@corretoraseguros.com.br';
     const VALID_PASS = 'vertex2026';
@@ -914,7 +899,6 @@
     const btnLogout = document.getElementById('btnLogout');
     const btnLoginSubmit = document.getElementById('btnLoginSubmit');
 
-    // Toggle Password Visibility
     btnTogglePwd.onclick = () => {
       if (loginPassword.type === 'password') {
         loginPassword.type = 'text';
@@ -925,7 +909,6 @@
       }
     };
 
-    // Check Auth Status
     const checkAuthStatus = () => {
       const isAuth = localStorage.getItem(AUTH_KEY);
       if (isAuth === 'true') {
@@ -935,7 +918,6 @@
       }
     };
 
-    // Submit Login
     loginForm.onsubmit = (e) => {
       e.preventDefault();
       const emailVal = loginEmail.value.trim().toLowerCase();
@@ -957,7 +939,6 @@
       }, 500);
     };
 
-    // Logout Action
     btnLogout.onclick = () => {
       localStorage.removeItem(AUTH_KEY);
       checkAuthStatus();
@@ -965,83 +946,119 @@
 
     checkAuthStatus();
 
-    // BASE DE DADOS DE SCRIPTS PERSUASIVOS (SEGUROS AUTO & IMÓVEIS)
+    // BANCO DE SCRIPTS DE VENDAS
     const BANCO_SCRIPTS = {
       auto: {
         abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Sou o consultor da Corretora de Seguros. 👋\n\nVi que o seguro do seu ${objeto} está próximo da renovação (ou vi que você solicitou um orçamento).\n\nFiz um estudo rápido comparando as 3 maiores seguradoras do mercado (Porto, Azul, Tokio) com cobertura completa contra roubo, furto, colisão, terceiros e guincho ilimitado.\n\nPosso te enviar essa simulação sem compromisso agora?`,
-        
         cotacao: (nome, objeto) => `Olá, ${nome}! Conseguimos uma condição especial para o seu ${objeto}.\n\nO valor aprovado para cobertura total ficou em apenas 10x de R$ 189,00 sem juros.\n\nO que inclui:\n✅ 100% da Tabela FIPE (Perda Total / Roubo)\n✅ Cobertura para Terceiros até R$ 100.000,00\n✅ Carro Reserva por 15 dias\n✅ Guincho sem limite de quilometragem 24h\n\nQuer que eu emita a proposta pra garantir essa tabela especial hoje?`,
-        
-        obj_caro: (nome, objeto) => `${nome}, entendo perfeitamente sua preocupação com o orçamento. Mas me deixa te fazer uma pergunta rápida:\n\nQuanto custaria para você ter que arcar do próprio bolso com R$ 60 mil ou R$ 80 mil se seu ${objeto} for roubado amanhã ou sofrer uma colisão séria?\n\nEsse seguro custa menos de R$ 6,00 por dia — o valor de um cafézinho pra você rodar tranquilo sabendo que seu patrimônio tá 100% blindado.\n\nPodemos parcelar em 10x sem juros no cartão ou boleto. Vamos garantir a proteção hoje?`,
-        
-        obj_banco: (nome, objeto) => `Entendo, ${nome}! Banco costuma colocar cotação genérica tirando coberturas vitais como Carro Reserva ou reduzindo a cobertura de terceiros a valores mínimos.\n\nSe você bater num carro importado de R$ 150 mil, o banco não cobre a diferença.\n\nAqui na nossa Corretora você tem atendimento humano 24h direto no meu WhatsApp. Se você precisar de um guincho às 2h da manhã, você fala direto comigo, sem robô de banco.\n\nDeixa eu ajustar a proposta para cobrir o preço do banco mantendo essa segurança pra você?`,
-        
+        obj_caro: (nome, objeto) => `${nome}, entendo perfeitamente sua preocupação com o orçamento. Mas me deixa te fazer uma pergunta rápida:\n\nQuanto custaria para você ter que arcar do próprio bolso com R$ 60 mil se seu ${objeto} for roubado amanhã ou sofrer uma colisão?\n\nEsse seguro custa menos de R$ 6,00 por dia — o valor de um cafézinho pra você rodar tranquilo sabendo que seu patrimônio tá 100% blindado.\n\nPodemos parcelar em 10x sem juros. Vamos garantir a proteção hoje?`,
+        obj_banco: (nome, objeto) => `Entendo, ${nome}! Banco costuma colocar cotação genérica tirando coberturas vitais como Carro Reserva ou reduzindo a cobertura de terceiros a valores mínimos.\n\nAqui na nossa Corretora você tem atendimento humano 24h direto no meu WhatsApp. Se precisar de guincho às 2h da manhã, você fala direto comigo, sem robô de banco.\n\nDeixa eu ajustar a proposta para cobrir o preço do banco mantendo essa segurança?`,
         fechamento: (nome, objeto) => `${nome}, a seguradora me notificou que a tabela promocional com 15% de desconto e Carro Reserva cortesia para o seu ${objeto} encerra HOJE às 18h.\n\nSe fecharmos agora, consigo travar esse valor exclusivo pra você sem nenhum reajuste.\n\nPosso dar entrada na emissão da apólice agora?`,
-        
-        posvenda: (nome, objeto) => `Olá, ${nome}! Apólice do seu ${objeto} emitida com sucesso! 🎉\n\nQualquer dúvida ou emergência 24h, meu WhatsApp é seu canal direto.\n\nAh, se tiver algum amigo ou familiar que comprou carro recente ou precisa renovar o seguro, me indica que consigo uma condição promocional pra eles também!`
+        posvenda: (nome, objeto) => `Olá, ${nome}! Apólice do seu ${objeto} emitida com sucesso! 🎉\n\nQualquer emergência 24h, meu WhatsApp é seu canal direto. Se tiver algum amigo ou familiar que comprou carro recente ou precisa renovar o seguro, me indica que dou uma condição promocional pra eles também!`
       },
-
       imovel: {
-        abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Sou o especialista em seguro residencial da Corretora. 👋\n\nVocê sabia que menos de 15% dos proprietários sabem que um seguro imobiliário cobre não só incêndio, mas também vazamentos, queima de eletrodomésticos por raio e até chaveiro/eletricista 24h?\n\nFiz um estudo rápido para o seu imóvel (${objeto}). Posso te mostrar como proteger seu patrimônio por menos de R$ 1,50 por dia?`,
-        
+        abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Sou o especialista em seguro residencial da Corretora. 👋\n\nVocê sabia que menos de 15% dos proprietários sabem que o seguro imobiliário cobre não só incêndio, mas também vazamentos, queima de eletrodomésticos por raio e até chaveiro/eletricista 24h?\n\nFiz um estudo para o seu imóvel (${objeto}). Posso te mostrar como proteger seu patrimônio por menos de R$ 1,50 por dia?`,
         cotacao: (nome, objeto) => `Olá, ${nome}! A cotação para proteção completa do seu imóvel (${objeto}) ficou aprovada!\n\nValor anual: Apenas 10x de R$ 45,00 (ou R$ 450,00 à vista).\n\nO que sua casa ganha:\n✅ R$ 300.000 de cobertura para a Estrutura\n✅ R$ 50.000 para móveis e eletros contra Incêndio/Queima Elétrica\n✅ Cobertura para Vazamentos e Danos a Vizinhos\n✅ Chaveiro, Eletricista e Encanador 24h Grátis\n\nPodemos emitir a apólice hoje?`,
-        
-        obj_caro: (nome, objeto) => `${nome}, compreendo! Mas veja só: um vazamento de cano no banheiro pode causar R$ 8.000 em estragos no apartamento do vizinho. Com o seguro, a seguradora paga tudo e você não tira 1 real do bolso.\n\nEstamos falando de R$ 1,50 por dia pra proteger todo o seu lar e seus bens.\n\nVamos emitir pra você não correr esse risco desnecessário?`,
-        
-        obj_banco: (nome, objeto) => `${nome}, uma dúvida muito comum: o seguro do condomínio cobre APENAS as áreas comuns do prédio (corredor, elevador). Ele NÃO COBRE nada dentro do seu apartamento — se sua TV queimar ou houver curto na sua cozinha, o condomínio não paga nada.\n\nO Seguro Imobiliário individual é o que protege seus móveis e seu lar de verdade. E custa baratinho. Deixa eu emitir pra você ficar 100% seguro?`,
-        
-        fechamento: (nome, objeto) => `${nome}, a seguradora liberou o pacote especial com Assistência VIP (com conserto de geladeira e ar-condicionado inclusos) apenas para apólices emitidas até o fim do dia.\n\nPosso cadastrar os dados do imóvel (${objeto}) pra garantir esse benefício pra você?`,
-        
-        posvenda: (nome, objeto) => `Parabéns, ${nome}! O seu imóvel (${objeto}) está oficialmente protegido! 🏠🛡️\n\nSegue o cartão digital com todos os contatos da assistência 24h. Qualquer eventualidade, conte sempre com nossa equipe!`
+        obj_caro: (nome, objeto) => `${nome}, compreendo! Mas um vazamento de cano no banheiro pode causar R$ 8.000 em estragos no apartamento do vizinho. Com o seguro, a seguradora paga tudo.\n\nEstamos falando de R$ 1,50 por dia pra proteger todo o seu lar. Vamos emitir pra você não correr esse risco?`,
+        obj_banco: (nome, objeto) => `${nome}, o seguro do condomínio cobre APENAS as áreas comuns do prédio (corredor, elevador). Ele NÃO COBRE nada dentro do seu apartamento — se sua TV queimar ou houver curto na sua cozinha, o condomínio não paga nada.\n\nO Seguro Imobiliário individual é o que protege seus móveis de verdade. Deixa eu emitir pra você ficar 100% seguro?`,
+        fechamento: (nome, objeto) => `${nome}, a seguradora liberou o pacote especial com Assistência VIP (com conserto de geladeira e ar-condicionado inclusos) apenas para apólices emitidas até o fim do dia.\n\nPosso cadastrar os dados do imóvel (${objeto}) pra garantir esse benefício?`,
+        posvenda: (nome, objeto) => `Parabéns, ${nome}! O seu imóvel (${objeto}) está oficialmente protegido! 🏠🛡️ Segue o cartão digital com a assistência 24h.`
       }
     };
 
-    // BANCO DE CARROSSÉIS PERSUASIVOS (INSTAGRAM)
+    // BANCO DE CARROSSÉIS NO FORMATO CITAÇÃO / FUNDO PRETO CONFORME A FOTO
     const BANCO_CARROSSEIS = {
-      auto_curiosidade: {
+      auto_risco: {
         slides: [
-          { tag: "🚗 SEGURO AUTO • CURIOSIDADE", title: "O detalhe na apólice do seu carro que você só descobre no guincho 🚨", sub: "Evite surpresas amargas na hora da emergência." },
-          { tag: "⚠️ O RISCO ESCONDIDO", title: "Cotações muito baratas costumam cortar coberturas vitais:", bullets: ["Guincho limitado a apenas 100 km", "Sem cobertura para danos a terceiros", "Franquia altíssima na colisão"] },
-          { tag: "🛡️ A SOLUÇÃO CERTA", title: "O que a sua apólice precisa ter de verdade:", bullets: ["Terceiros de no mínimo R$ 100 mil", "Guincho ilimitado sem limite de KM", "Atendimento humano 24h no WhatsApp"] },
-          { tag: "🎯 FAÇA SUA ANÁLISE", title: "Quer revisar sua apólice gratuitamente?", sub: "Mande uma foto da sua cotação atual no nosso WhatsApp e descobrimos se você tá protegido de verdade!", cta: "👉 Clique no link da Bio" }
+          {
+            title: "Não é sobre economizar na apólice.",
+            body: "É sobre **não perder o carro**, a paciência e **anos de economia** por causa de uma cotação barata que cortou o guincho."
+          },
+          {
+            title: "O seguro mais caro do mundo:",
+            body: "É aquele que você achava que tinha, mas descobre na hora do sinistro que a seguradora **não cobre danos a terceiros**."
+          },
+          {
+            title: "Quem tem seguro não paga por azar.",
+            body: "Paga pela **tranquilidade** de saber que se algo acontecer hoje à noite, **amanhã o problema está 100% resolvido**."
+          },
+          {
+            title: "Proteja seu veículo hoje mesmo.",
+            body: "Solicite uma **cotação personalizada** com as maiores seguradoras e rode **totalmente blindado**."
+          }
         ],
-        caption: `🚗 Você sabe o que a sua apólice de Seguro Auto REALMENTE cobre?\n\nMuitas cotações parecem baratas porque cortam o guincho sem limite ou reduzem a proteção contra terceiros.\n\nNa nossa Corretora de Seguros, analisamos sua apólice sem custo para garantir que você tenha proteção total quando mais precisar.\n\n📲 Mande uma foto do seu seguro no nosso WhatsApp (link na Bio)!\n\n#seguroauto #corretoradeseguros #protecaoveicular #carro #seguros`
+        caption: `🚗 Não arrisque seu patrimônio com apólices genéricas.\n\nFazer um Seguro Auto completo garante guincho sem limite de KM, cobertura de terceiros de verdade e atendimento 24h sem burocracia.\n\n📲 Solicite sua simulação no WhatsApp pelo link da Bio!\n\n#seguroauto #protecaoveicular #corretoradeseguros #carro`
       },
 
-      auto_economia: {
+      imovel_erro: {
         slides: [
-          { tag: "💡 ECONOMIA INTELIGENTE", title: "3 passos para economizar até 30% na renovação do seu Seguro Auto 💰🚗", sub: "Sem abrir mão de nenhuma cobertura essencial." },
-          { tag: "PASSO 1 • CLASSE DE BÔNUS", title: "Sua classe de bônus é SUA!", sub: "Ela pertence a você e não à seguradora antiga. Transfira seu bônus acumulado para pagar menos." },
-          { tag: "PASSO 2 • MULTIMARCAS", title: "Compare 5 seguradoras ao mesmo tempo:", bullets: ["Porto Seguro & Azul", "Tokio Marine", "HDI & SulAmérica", "Bradesco Seguros"] },
-          { tag: "PASSO 3 • COTAÇÃO DIRETA", title: "Fale com nossa equipe especialista!", sub: "Achamos a menor franquia com o maior desconto do mercado.", cta: "👉 Solicite no link da Bio" }
+          {
+            title: "O seguro do condomínio não protege a sua casa.",
+            body: "Ele cobre a fachada e os elevadores. Se uma **TV queimar por raio** ou um **cano estourar na sua cozinha**, o prejuízo é **100% seu**."
+          },
+          {
+            title: "Menos de R$ 1,50 por dia.",
+            body: "É o valor para proteger a **estrutura do seu imóvel**, seus móveis, eletrodomésticos e ainda ter **chaveiro e encanador 24h grátis**."
+          },
+          {
+            title: "Patrimônio não se arrisca.",
+            body: "Um curto-circuito leva **segundos** para destruir o que você levou **anos para construir**. Proteção é inteligência financeira."
+          },
+          {
+            title: "Garanta a paz de espírito do seu lar.",
+            body: "Chame nossa equipe especialista no WhatsApp e faça uma **simulação rápida para o seu imóvel**."
+          }
         ],
-        caption: `💰 Quer economizar na renovação do seu Seguro Auto?\n\nNão renove no automático sem cotar com uma corretora especialista multimarcas!\n\n📲 Chame nossa equipe no WhatsApp pelo link da Bio e receba a melhor proposta em 2 minutos.\n\n#seguroauto #economizarnoseguro #corretoradeseguros #carro`
+        caption: `🏠 Morar em prédio não significa que seu apartamento está coberto!\n\nO Seguro Residencial individual custa menos de R$ 1,50/dia e protege tudo dentro da sua casa contra surtos elétricos, vazamentos e incêndio.\n\n📲 Simule agora mesmo no link da Bio!\n\n#seguroresidencial #seguroimovel #apartamento #casa`
       },
 
-      imovel_escassez: {
+      vida_familia: {
         slides: [
-          { tag: "🏠 SEGURO RESIDENCIAL", title: "Como proteger sua casa e todos os seus bens por menos de R$ 1,50 por dia 🛡️", sub: "Muito mais barato do que você imagina." },
-          { tag: "O QUE ELE COBRE?", title: "Proteção completa para o seu lar:", bullets: ["Incêndio, raio e explosão", "Danos elétricos em TVs e geladeiras", "Vazamentos e estragos em vizinhos", "Roubo e furto de bens"] },
-          { tag: "SERVIÇOS 24H GRÁTIS", title: "Assistência 24h sem pagar nada a mais:", bullets: ["Chaveiro e Eletricista 24h", "Encanador para desentupimento", "Conserto de ar-condicionado e linha branca"] },
-          { tag: "⚡ OFERTA LIMITADA", title: "Ganta sua simulação promocional este mês!", sub: "Proteja seu imóvel com cobertura completa por um valor simbólico.", cta: "👉 Clique no link da Bio" }
+          {
+            title: "Seguro de Vida não é sobre você.",
+            body: "É sobre garantir que a sua **família mantenha o mesmo padrão de vida**, mesmo se você **não estiver mais aqui amanhã**."
+          },
+          {
+            title: "Você faz seguro para o seu carro.",
+            body: "Por que não faz seguro para a **sua própria vida** e para a **segurança de quem você mais ama** neste mundo?"
+          },
+          {
+            title: "Seguro de vida se faz com saúde.",
+            body: "Quando o imprevisto acontece, **já é tarde demais para contratar**. O momento de proteger sua família é **agora**."
+          },
+          {
+            title: "Proteja quem você ama hoje.",
+            body: "Fale com nosso consultor e descubra planos sob medida de **Seguro de Vida e Proteção Familiar**."
+          }
         ],
-        caption: `🏠 Proteja sua casa e seus móveis por menos do que um cafézinho por dia!\n\nO Seguro Residencial da nossa corretora garante indenização em caso de incêndio, surto elétrico queima-eletro e vazamentos, além de encanador e chaveiro 24h grátis.\n\n📲 Faça sua simulação no WhatsApp pelo link da Bio!\n\n#seguroresidencial #seguroimovel #casa #corretoradeseguros`
+        caption: `❤️ O maior ato de amor pela sua família é garantir o futuro deles.\n\nConheça nossas apólices de Seguro de Vida com cobertura para diagnósticos graves e proteção financeira familiar.\n\n📲 Fale conosco no WhatsApp pelo link da Bio!\n\n#segurodevida #protecaofamiliar #seguros #planejametofinanceiro`
       },
 
-      imovel_mito: {
+      auto_renovacao: {
         slides: [
-          { tag: "🤔 MITO VS REALIDADE", title: "O Seguro do Condomínio cobre o meu apartamento? 🏠❓", sub: "Descubra a verdade antes que seja tarde." },
-          { tag: "❌ O GRANDE MITO", title: "Mito: 'Moro em prédio, não preciso de seguro'.", sub: "O seguro do condomínio é obrigatório, mas cobre APENAS as áreas comuns (corredor, elevador, portaria)." },
-          { tag: "✅ A REALIDADE", title: "Ele NÃO COBRE nada dentro da sua casa:", bullets: ["Queima de TV/Geladeira por raio", "Vazamento de cano no seu banheiro", "Roubo de bens no seu apartamento"] },
-          { tag: "🛡️ A SOLUÇÃO", title: "O Seguro Residencial Individual é a sua verdadeira blindagem!", sub: "Custa a partir de R$ 40/mês e garante paz de espírito total.", cta: "👉 Simule no link da Bio" }
+          {
+            title: "Não renove seu seguro no automático.",
+            body: "Sua **classe de bônus pertence a você**, e não à sua antiga seguradora. Cotar em outras marcas pode te fazer **economizar até 30%**."
+          },
+          {
+            title: "O segredo das corretoras multimarcas:",
+            body: "Comparamos **Porto, Azul, Tokio, HDI e SulAmérica** ao mesmo tempo para encontrar a **menor franquia pelo menor preço**."
+          },
+          {
+            title: "Renovar sem pesquisar é rasgar dinheiro.",
+            body: "Em 2 minutos nossa equipe faz o estudo completo e garante **Carro Reserva grátis** e **desconto exclusivo**."
+          },
+          {
+            title: "Sua renovação está chegando?",
+            body: "Envie sua apólice atual para nosso WhatsApp e receba um **estudo comparativo 100% gratuito**."
+          }
         ],
-        caption: `🤔 Morar em condomínio não significa que seu apartamento está seguro!\n\nO seguro do prédio só cobre a estrutura comum. Para proteger seus móveis, eletros e vazamentos, você precisa do Seguro Residencial individual.\n\n📲 Faça seu orçamento rápido pelo link da Bio!\n\n#seguroimovel #apartamento #condominio #corretoradeseguros`
+        caption: `💡 Economize na renovação do seu Seguro Auto sem abrir mão da qualidade!\n\nCotamos em 5 seguradoras ao mesmo tempo para garantir a melhor condição para seu veículo.\n\n📲 Chame no WhatsApp e economize até 30%!\n\n#seguroauto #renovacaodeseguro #economizarnoseguro #corretoradeseguros`
       }
     };
 
-    // LÓGICA DAS ABAS E GERADORES
+    // LÓGICA DE GERAÇÃO
     document.addEventListener('DOMContentLoaded', () => {
-      // Tab switcher
       const tabBtns = document.querySelectorAll('.tab-btn');
       const tabPanes = document.querySelectorAll('.tab-pane');
 
@@ -1055,7 +1072,7 @@
         };
       });
 
-      // GERADOR DE SCRIPTS
+      // SCRIPTS
       const scriptRamo = document.getElementById('scriptRamo');
       const scriptEtapa = document.getElementById('scriptEtapa');
       const scriptClienteNome = document.getElementById('scriptClienteNome');
@@ -1074,8 +1091,7 @@
 
         const scriptFn = BANCO_SCRIPTS[ramo][etapa];
         if (scriptFn) {
-          const texto = scriptFn(nome, objeto);
-          scriptOutputTextarea.value = texto;
+          scriptOutputTextarea.value = scriptFn(nome, objeto);
           scriptBadgeTag.textContent = `${ramo === 'auto' ? '🚗 SEGURO AUTO' : '🏠 SEGURO IMÓVEL'} • ${etapa.toUpperCase()}`;
         }
       };
@@ -1094,7 +1110,9 @@
         window.open(`https://wa.me/?text=${textEnc}`, '_blank');
       };
 
-      // GERADOR DE CARROSSÉIS
+      // CARROSSÉIS NO ESTILO MINIMALISTA / FOTO ENVIADA
+      const carrosselNomeSeguradora = document.getElementById('carrosselNomeSeguradora');
+      const carrosselArrobaSeguradora = document.getElementById('carrosselArrobaSeguradora');
       const carrosselTemaSelect = document.getElementById('carrosselTemaSelect');
       const btnGerarCarrossel = document.getElementById('btnGerarCarrossel');
       const slidesGrid = document.getElementById('slidesGrid');
@@ -1102,10 +1120,17 @@
       const btnCopiarLegenda = document.getElementById('btnCopiarLegenda');
       const btnBaixarTodosSlides = document.getElementById('btnBaixarTodosSlides');
 
+      const parseMarkdownBold = (text) => {
+        return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      };
+
       const gerarCarrossel = () => {
         const key = carrosselTemaSelect.value;
         const data = BANCO_CARROSSEIS[key];
         if (!data) return;
+
+        const nomeSeg = carrosselNomeSeguradora.value.trim() || 'Nome da Seguradora';
+        const arrobaSeg = carrosselArrobaSeguradora.value.trim() || '@arroba';
 
         slidesGrid.innerHTML = '';
         data.slides.forEach((slide, idx) => {
@@ -1116,35 +1141,18 @@
           card.className = 'slide-card';
           card.id = `corretoraSlide_${idx + 1}`;
 
-          let content = `<h4>${slide.title}</h4>`;
-          if (slide.bullets) {
-            content += `
-              <ul class="slide-bullets">
-                ${slide.bullets.map(b => `<li><i class="ri-checkbox-circle-fill"></i> ${b}</li>`).join('')}
-              </ul>
-            `;
-          } else if (slide.sub) {
-            content += `<p>${slide.sub}</p>`;
-          }
-
+          // ESTRUTURA VISUAL IDÊNTICA À FOTO ENVIADA PELO USUÁRIO
           card.innerHTML = `
-            <div class="slide-tag">
-              <span>${slide.tag}</span>
-              <span>0${idx + 1}/04</span>
-            </div>
-            <div class="slide-body">
-              ${content}
-            </div>
-            <div class="slide-footer">
-              <span>CORRETORA DE <strong>SEGUROS</strong></span>
-              <span>${slide.cta || '👉 @corretoradeseguros'}</span>
-            </div>
+            <div class="slide-quotes">“</div>
+            <div class="slide-minimal-title">${slide.title}</div>
+            <div class="slide-minimal-body">${parseMarkdownBold(slide.body)}</div>
+            <div class="slide-minimal-footer">${nomeSeg} | ${arrobaSeg}</div>
           `;
 
           const dlBtn = document.createElement('button');
           dlBtn.className = 'slide-dl-btn';
-          dlBtn.innerHTML = `<i class="ri-download-2-line"></i> Baixar Slide 0${idx + 1}`;
-          dlBtn.onclick = () => baixarSlide(card, `Slide_Corretora_0${idx + 1}.png`);
+          dlBtn.innerHTML = `<i class="ri-download-2-line"></i> Baixar Slide 0${idx + 1} (PNG)`;
+          dlBtn.onclick = () => baixarSlide(card, `${nomeSeg.replace(/\s+/g, '_')}_Slide_0${idx + 1}.png`);
 
           wrap.appendChild(card);
           wrap.appendChild(dlBtn);
@@ -1154,9 +1162,17 @@
         carrosselLegendaTextarea.value = data.caption;
       };
 
+      // Atualizar em tempo real quando digitar nos inputs
+      carrosselNomeSeguradora.oninput = gerarCarrossel;
+      carrosselArrobaSeguradora.oninput = gerarCarrossel;
+      carrosselTemaSelect.onchange = gerarCarrossel;
+      btnGerarCarrossel.onclick = gerarCarrossel;
+
+      gerarCarrossel();
+
       const baixarSlide = (el, filename) => {
         if (typeof window.html2canvas !== 'function') return;
-        window.html2canvas(el, { scale: 2.5, backgroundColor: '#07070b' }).then(canvas => {
+        window.html2canvas(el, { scale: 2.5, backgroundColor: '#08080a' }).then(canvas => {
           const a = document.createElement('a');
           a.download = filename;
           a.href = canvas.toDataURL('image/png');
@@ -1170,9 +1186,6 @@
           setTimeout(() => baixarSlide(c, `Slide_Corretora_0${i + 1}.png`), i * 600);
         });
       };
-
-      btnGerarCarrossel.onclick = gerarCarrossel;
-      gerarCarrossel();
 
       btnCopiarLegenda.onclick = () => {
         carrosselLegendaTextarea.select();
