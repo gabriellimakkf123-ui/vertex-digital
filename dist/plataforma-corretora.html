@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VERTEX SEGUROS | Plataforma de Implementação & SaaS IA</title>
+  <title>VERTEX SEGUROS | Plataforma de Implementação Comercial & SaaS IA</title>
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./favicon.png" />
   
-  <!-- Google Fonts: Outfit & Inter & Space Grotesk -->
+  <!-- Google Fonts: Outfit, Inter & Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
@@ -21,9 +21,9 @@
 
   <style>
     :root {
-      --cyan-glow: #00d2ff;
-      --cyan-bright: #38ef7d;
       --primary-red: #ff0a2b;
+      --cyan-glow: #00d2ff;
+      --navy-dark: #040812;
       --bg-dark: #020306;
       --font-display: 'Outfit', sans-serif;
       --font-body: 'Inter', sans-serif;
@@ -46,15 +46,15 @@
     }
 
     /* =========================================================
-       1. CUSTOM ROBOT LAUNCH SCREEN (NOVO ROBÔ VERTEX EXCLUSIVO)
+       1. EXECUTIVE PORTAL LAUNCH SCREEN (AUTO & IMÓVEIS BACKGROUND)
        ========================================================= */
-    #robotLaunchScreen {
+    #executivePortalScreen {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: #020306;
+      background: var(--bg-dark);
       z-index: 500;
       display: flex;
       flex-direction: column;
@@ -63,14 +63,14 @@
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s ease;
     }
 
-    #robotLaunchScreen.launch-fade-out {
+    #executivePortalScreen.launch-fade-out {
       opacity: 0;
       pointer-events: none;
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
-    /* Background Robot Image Container */
-    .robot-bg-stage {
+    /* Background Image Container */
+    .portal-bg-stage {
       position: absolute;
       top: 0;
       left: 0;
@@ -78,343 +78,303 @@
       height: 100%;
       z-index: 1;
       overflow: hidden;
-      background: #020306;
     }
 
-    .robot-custom-img {
+    .portal-hero-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: right center;
+      object-position: center;
       transition: transform 1.2s ease, filter 1.2s ease;
-      animation: customRobotBreathing 7s ease-in-out infinite alternate;
+      animation: subtleHeroZoom 12s ease-in-out infinite alternate;
     }
 
-    @keyframes customRobotBreathing {
-      0% { transform: scale(1) translateY(0); }
-      100% { transform: scale(1.02) translateY(-8px); }
+    @keyframes subtleHeroZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.03); }
     }
 
-    .robot-custom-img.charging {
-      transform: scale(1.06) translateY(-12px) !important;
-      filter: brightness(1.35) contrast(1.15);
+    .portal-hero-img.zooming {
+      transform: scale(1.08) !important;
+      filter: brightness(1.2) contrast(1.1);
     }
 
-    /* Chest Energy Laser Core (Positioned on the robot's chest core) */
-    .custom-chest-core {
+    /* Dark Obsidian & Navy Gradient Overlays for High Contrast Readability */
+    .portal-gradient-overlay {
       position: absolute;
-      right: 28%;
-      top: 48%;
-      width: 160px;
-      height: 160px;
-      transform: translate(50%, -50%);
-      pointer-events: none;
-      border-radius: 50%;
-      z-index: 5;
-      background: radial-gradient(circle, rgba(0, 225, 255, 0.85) 0%, rgba(0, 120, 255, 0.45) 45%, transparent 70%);
-      mix-blend-mode: screen;
-      opacity: 0.6;
-      animation: pulseCustomCore 2.5s ease-in-out infinite alternate;
-      transition: all 0.5s ease;
-    }
-
-    @keyframes pulseCustomCore {
-      0% { opacity: 0.45; transform: translate(50%, -50%) scale(0.9); }
-      100% { opacity: 0.9; transform: translate(50%, -50%) scale(1.18); box-shadow: 0 0 50px rgba(0, 210, 255, 0.8); }
-    }
-
-    .custom-chest-core.super-charging {
-      opacity: 1 !important;
-      width: 120vw !important;
-      height: 120vw !important;
-      right: 30% !important;
-      top: 50% !important;
-      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,225,255,0.95) 25%, rgba(0,100,255,0.85) 50%, transparent 80%) !important;
-      box-shadow: 0 0 200px rgba(0, 225, 255, 1), 0 0 400px rgba(0, 150, 255, 1) !important;
-      animation: expandSuperLaser 1.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1) !important;
-    }
-
-    @keyframes expandSuperLaser {
-      0% { transform: translate(50%, -50%) scale(0.15); opacity: 0.8; }
-      50% { transform: translate(50%, -50%) scale(2.5); opacity: 1; }
-      100% { transform: translate(50%, -50%) scale(6); opacity: 1; }
-    }
-
-    /* Fullscreen Energy Flash Overlay */
-    .custom-laser-overlay {
-      position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,210,255,0.95) 35%, rgba(2,3,6,0.98) 100%);
-      z-index: 600;
-      opacity: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      background: 
+        linear-gradient(90deg, rgba(2, 3, 6, 0.94) 0%, rgba(2, 3, 6, 0.78) 45%, rgba(2, 3, 6, 0.4) 100%),
+        linear-gradient(0deg, rgba(2, 3, 6, 0.95) 0%, transparent 40%, rgba(2, 3, 6, 0.75) 100%);
       pointer-events: none;
-      transition: opacity 0.4s ease;
-      mix-blend-mode: screen;
     }
 
-    .custom-laser-overlay.active {
-      opacity: 1;
-    }
-
-    /* UI Overlay Content */
-    .launch-ui-layer {
+    /* UI Layer */
+    .portal-ui-layer {
       position: relative;
       z-index: 10;
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 40px 60px;
+      padding: 44px 60px;
     }
 
     @media (max-width: 900px) {
-      .launch-ui-layer {
+      .portal-ui-layer {
         padding: 24px 20px;
       }
     }
 
-    .launch-top-row {
+    /* Top Bar */
+    .portal-top-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .brand-group-vertex {
+    .brand-group-executive {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
-    .brand-icon-vertex {
-      width: 40px;
-      height: 40px;
-      filter: drop-shadow(0 0 12px rgba(0,210,255,0.9));
+    .brand-logo-img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid var(--primary-red);
+      box-shadow: 0 0 20px rgba(255, 10, 43, 0.5);
     }
 
-    .brand-text-vertex {
-      font-family: var(--font-tech);
-      font-size: 1.4rem;
+    .brand-name-txt {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
       font-weight: 900;
-      letter-spacing: 2.5px;
+      letter-spacing: -0.5px;
       color: #fff;
     }
 
-    .brand-sub-vertex {
-      font-size: 0.72rem;
-      color: var(--cyan-glow);
-      letter-spacing: 2px;
-      font-weight: 700;
+    .brand-name-txt span {
+      color: var(--primary-red);
     }
 
-    .system-online-badge {
+    .status-badge-active {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 210, 255, 0.08);
-      border: 1px solid rgba(0, 210, 255, 0.35);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
       padding: 6px 16px;
       border-radius: 20px;
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      font-family: var(--font-tech);
-      color: var(--cyan-glow);
+      color: #34d399;
     }
 
-    .system-online-dot {
+    .active-dot-green {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--cyan-glow);
-      box-shadow: 0 0 12px var(--cyan-glow);
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
       animation: dotPulse 1.6s infinite;
     }
 
     @keyframes dotPulse {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+      50% { opacity: 0.35; }
     }
 
-    /* Left Hero Content */
-    .launch-hero-card {
-      max-width: 540px;
+    /* Hero Left Box */
+    .portal-hero-box {
+      max-width: 580px;
       margin-top: auto;
       margin-bottom: auto;
     }
 
-    .launch-tagline-sm {
-      font-size: 0.78rem;
+    .portal-tag-sub {
+      font-size: 0.8rem;
       font-weight: 800;
-      color: #94a3b8;
+      color: var(--primary-red);
       letter-spacing: 3px;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-family: var(--font-tech);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .launch-title-lg {
+    .portal-main-heading {
       font-family: var(--font-display);
-      font-size: 3.2rem;
+      font-size: 3.1rem;
       font-weight: 900;
       line-height: 1.05;
       color: #ffffff;
       letter-spacing: -1px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
-    .launch-title-cyan {
-      font-family: var(--font-tech);
-      font-size: 1.7rem;
+    .portal-sub-heading {
+      font-family: var(--font-display);
+      font-size: 2rem;
       font-weight: 900;
-      color: var(--cyan-glow);
-      letter-spacing: 2px;
-      margin-bottom: 18px;
-      text-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+      color: var(--primary-red);
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
     }
 
-    .launch-desc-text {
-      font-size: 0.95rem;
+    .portal-desc-paragraph {
+      font-size: 1rem;
       color: #cbd5e1;
-      line-height: 1.65;
-      margin-bottom: 28px;
+      line-height: 1.7;
+      margin-bottom: 30px;
     }
 
-    /* Feature Cards List */
-    .launch-features-grid {
+    /* Features Grid */
+    .portal-features-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-bottom: 36px;
+      gap: 14px;
+      margin-bottom: 38px;
     }
 
-    .feature-card-box {
-      background: rgba(8, 12, 22, 0.7);
-      border: 1px solid rgba(0, 210, 255, 0.22);
-      border-radius: 12px;
-      padding: 12px 18px;
+    .portal-feature-item {
+      background: rgba(12, 16, 28, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
-      gap: 14px;
-      backdrop-filter: blur(12px);
+      gap: 16px;
+      backdrop-filter: blur(14px);
       transition: all 0.3s ease;
     }
 
-    .feature-card-box:hover {
-      border-color: var(--cyan-glow);
-      box-shadow: 0 0 25px rgba(0, 210, 255, 0.3);
+    .portal-feature-item:hover {
+      border-color: var(--primary-red);
+      background: rgba(255, 10, 43, 0.08);
       transform: translateX(6px);
+      box-shadow: 0 0 25px rgba(255, 10, 43, 0.2);
     }
 
-    .feature-icon-wrap {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: rgba(0, 210, 255, 0.12);
-      border: 1px solid rgba(0, 210, 255, 0.3);
-      color: var(--cyan-glow);
+    .portal-feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 10, 43, 0.15);
+      border: 1px solid rgba(255, 10, 43, 0.3);
+      color: var(--primary-red);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.25rem;
     }
 
-    .feature-title-bold {
-      font-size: 0.85rem;
+    .portal-feature-title {
+      font-size: 0.9rem;
       font-weight: 800;
       color: #fff;
-      font-family: var(--font-tech);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
     }
 
-    .feature-sub-text {
-      font-size: 0.78rem;
+    .portal-feature-sub {
+      font-size: 0.8rem;
       color: #94a3b8;
     }
 
-    /* Big Glowing INICIAR Button */
-    .btn-iniciar-custom {
+    /* Big Executive INICIAR Button */
+    .btn-iniciar-executive {
       display: inline-flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      background: linear-gradient(135deg, rgba(0, 100, 255, 0.35) 0%, rgba(0, 210, 255, 0.25) 100%);
-      border: 2px solid var(--cyan-glow);
-      border-radius: 14px;
-      padding: 16px 28px;
+      gap: 24px;
+      background: linear-gradient(135deg, #ff0a2b 0%, #cc001f 100%);
+      border: none;
+      border-radius: 16px;
+      padding: 18px 32px;
       color: #ffffff;
-      font-family: var(--font-tech);
-      font-size: 1.35rem;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
       font-weight: 900;
-      letter-spacing: 3px;
+      letter-spacing: 1px;
       cursor: pointer;
-      box-shadow: 0 0 35px rgba(0, 210, 255, 0.4), inset 0 0 15px rgba(0, 210, 255, 0.25);
+      box-shadow: 0 8px 30px rgba(255, 10, 43, 0.45);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       width: 100%;
-      max-width: 320px;
+      max-width: 350px;
     }
 
-    .btn-iniciar-custom:hover {
-      transform: scale(1.04);
-      box-shadow: 0 0 55px rgba(0, 210, 255, 0.8), inset 0 0 30px rgba(0, 210, 255, 0.5);
-      background: linear-gradient(135deg, rgba(0, 150, 255, 0.55) 0%, rgba(0, 210, 255, 0.45) 100%);
+    .btn-iniciar-executive:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 45px rgba(255, 10, 43, 0.65);
+      background: linear-gradient(135deg, #ff2442 0%, #e60021 100%);
     }
 
-    .arrow-box-cyan {
+    .arrow-icon-circle {
       width: 38px;
       height: 38px;
-      border-radius: 8px;
-      background: var(--cyan-glow);
-      color: #000;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.2rem;
-      box-shadow: 0 0 15px var(--cyan-glow);
+      transition: transform 0.3s;
     }
 
-    /* Footer Stats Bar */
-    .launch-footer-bar {
+    .btn-iniciar-executive:hover .arrow-icon-circle {
+      transform: translateX(4px);
+    }
+
+    /* Footer Stats */
+    .portal-footer-stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 16px;
-      background: rgba(4, 7, 14, 0.75);
-      border: 1px solid rgba(0, 210, 255, 0.18);
-      border-radius: 16px;
-      padding: 14px 24px;
-      backdrop-filter: blur(12px);
-      max-width: 650px;
+      gap: 20px;
+      background: rgba(8, 12, 22, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 16px 28px;
+      backdrop-filter: blur(14px);
+      max-width: 700px;
     }
 
-    .stat-col-item {
+    .pstat-item {
       text-align: center;
     }
 
-    .stat-lbl-sm {
-      font-size: 0.68rem;
+    .pstat-lbl {
+      font-size: 0.7rem;
       font-weight: 700;
       color: #94a3b8;
       letter-spacing: 1px;
-      font-family: var(--font-tech);
+      text-transform: uppercase;
       margin-bottom: 2px;
     }
 
-    .stat-num-lg {
-      font-family: var(--font-tech);
-      font-size: 1.35rem;
-      font-weight: 800;
+    .pstat-num {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 900;
       color: #fff;
       line-height: 1;
     }
 
-    .stat-sub-cyan {
-      font-size: 0.65rem;
-      color: var(--cyan-glow);
-      font-weight: 600;
+    .pstat-sub {
+      font-size: 0.68rem;
+      color: var(--primary-red);
+      font-weight: 700;
       text-transform: uppercase;
       margin-top: 2px;
     }
+
 
     /* =========================================================
        2. EXECUTIVE SAAS STUDIO UI (PLATAFORMA SAAS EXCLUSIVA)
@@ -509,15 +469,15 @@
       color: #fff;
     }
 
-    .btn-robot-back {
-      background: rgba(0, 210, 255, 0.12);
-      border: 1px solid rgba(0, 210, 255, 0.35);
-      color: var(--cyan-glow);
+    .btn-portal-back {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
       padding: 8px 16px;
       border-radius: 20px;
       font-size: 0.82rem;
       font-weight: 800;
-      font-family: var(--font-tech);
+      font-family: var(--font-body);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -525,10 +485,10 @@
       transition: all 0.25s;
     }
 
-    .btn-robot-back:hover {
-      background: var(--cyan-glow);
-      color: #000;
-      box-shadow: 0 0 20px var(--cyan-glow);
+    .btn-portal-back:hover {
+      background: rgba(255, 10, 43, 0.2);
+      border-color: var(--primary-red);
+      color: #fff;
     }
 
     .tab-nav-bar {
@@ -779,107 +739,105 @@
 </head>
 <body>
 
-  <!-- Fullscreen Energy Flash Overlay -->
-  <div id="customLaserOverlay" class="custom-laser-overlay"></div>
-
   <!-- =========================================================
-       1. ROBOT LAUNCH SCREEN (NOVO ROBÔ VERTEX EXCLUSIVO)
+       1. EXECUTIVE PORTAL LAUNCH SCREEN (BACKGROUND AUTO & IMÓVEL)
        ========================================================= -->
-  <div id="robotLaunchScreen">
-    <div class="robot-bg-stage">
-      <img src="./vertex-robot-custom.png" alt="Vertex Custom Robot" id="robotCustomImg" class="robot-custom-img" />
-      
-      <!-- Chest Core Energy Overlay -->
-      <div id="customChestCore" class="custom-chest-core"></div>
+  <div id="executivePortalScreen">
+    <div class="portal-bg-stage">
+      <img src="./vertex-insurance-bg.png" alt="Vertex Insurance Background" id="portalHeroImg" class="portal-hero-img" />
+      <div class="portal-gradient-overlay"></div>
     </div>
 
-    <div class="launch-ui-layer">
-      <!-- Top Row Navigation -->
-      <div class="launch-top-row">
-        <div class="brand-group-vertex">
-          <img src="./vertex-logo.png" alt="Vertex Logo" class="brand-icon-vertex" />
+    <div class="portal-ui-layer">
+      <!-- Top Row Header -->
+      <div class="portal-top-bar">
+        <div class="brand-group-executive">
+          <img src="./vertex-logo.png" alt="Vertex Logo" class="brand-logo-img" />
           <div>
-            <div class="brand-text-vertex">VERTEX</div>
-            <div class="brand-sub-vertex">SEGUROS</div>
+            <div class="brand-name-txt">VERTEX <span>DIGITAL</span></div>
+            <div style="font-size: 0.72rem; color: #94a3b8; font-weight: 700; letter-spacing: 1px;">SISTEMA COMERCIAL DE SEGUROS</div>
           </div>
         </div>
 
         <div style="display: flex; align-items: center; gap: 14px;">
-          <div class="system-online-badge">
-            <div class="system-online-dot"></div> SISTEMA ONLINE
+          <div class="status-badge-active">
+            <div class="active-dot-green"></div> PLATAFORMA ATIVA
           </div>
-          <div style="font-family: var(--font-tech); font-size: 0.75rem; color: #64748b;">VERSÃO 2.6.0</div>
+          <div style="font-family: var(--font-tech); font-size: 0.78rem; color: #64748b;">v2.6.0</div>
         </div>
       </div>
 
       <!-- Hero Content Left Box -->
-      <div class="launch-hero-card">
-        <div class="launch-tagline-sm">PLATAFORMA DE IMPLEMENTAÇÃO</div>
-        <h1 class="launch-title-lg">PLATAFORMA DE</h1>
-        <div class="launch-title-lg" style="color: #fff;">IMPLEMENTAÇÃO</div>
-        <div class="launch-title-cyan">VERTEX SEGUROS</div>
+      <div class="portal-hero-box">
+        <div class="portal-tag-sub">
+          <i class="ri-shield-star-line"></i> PLATAFORMA DE IMPLEMENTAÇÃO
+        </div>
+        <h1 class="portal-main-heading">PLATAFORMA DE</h1>
+        <h1 class="portal-main-heading" style="color: #fff;">IMPLEMENTAÇÃO</h1>
+        <div class="portal-sub-heading">VERTEX SEGUROS</div>
 
-        <p class="launch-desc-text">
-          Bem-vindo à nova era da proteção inteligente. Automação, tecnologia e inteligência trabalhando juntas para revolucionar o mercado de seguros.
+        <p class="portal-desc-paragraph">
+          Soluções de Inteligência & Automação Comercial sob medida para Corretoras de Seguros de Veículos e Imóveis. Aumente a conversão da sua equipe de vendas.
         </p>
 
-        <div class="launch-features-grid">
-          <div class="feature-card-box">
-            <div class="feature-icon-wrap"><i class="ri-shield-check-line"></i></div>
+        <!-- Features Grid -->
+        <div class="portal-features-list">
+          <div class="portal-feature-item">
+            <div class="portal-feature-icon"><i class="ri-car-line"></i></div>
             <div>
-              <div class="feature-title-bold">SEGURANÇA AVANÇADA</div>
-              <div class="feature-sub-text">Proteção de dados e processos executivos</div>
+              <div class="portal-feature-title">SEGUROS AUTO & FROTA</div>
+              <div class="portal-feature-sub">Gerador de scripts e estratégias para vencer objeções</div>
             </div>
           </div>
 
-          <div class="feature-card-box">
-            <div class="feature-icon-wrap"><i class="ri-flashlight-line"></i></div>
+          <div class="portal-feature-item">
+            <div class="portal-feature-icon"><i class="ri-home-4-line"></i></div>
             <div>
-              <div class="feature-title-bold">AUTOMAÇÃO INTELIGENTE</div>
-              <div class="feature-sub-text">Fluxos otimizados e eficientes de atendimento</div>
+              <div class="portal-feature-title">SEGUROS IMOBILIÁRIOS</div>
+              <div class="portal-feature-sub">Conteúdos persuasivos e conscientização de proprietários</div>
             </div>
           </div>
 
-          <div class="feature-card-box">
-            <div class="feature-icon-wrap"><i class="ri-bar-chart-box-line"></i></div>
+          <div class="portal-feature-item">
+            <div class="portal-feature-icon"><i class="ri-radar-line"></i></div>
             <div>
-              <div class="feature-title-bold">RESULTADOS REAIS</div>
-              <div class="feature-sub-text">Performance e escalabilidade comprovadas</div>
+              <div class="portal-feature-title">CENTRAL DE FOLLOW-UP IA</div>
+              <div class="portal-feature-sub">Recuperação automatizada de cotações em vácuo no WhatsApp</div>
             </div>
           </div>
         </div>
 
-        <!-- Big Glowing INICIAR Button -->
-        <button id="btnIniciarCustom" class="btn-iniciar-custom">
-          <span>INICIAR</span>
-          <div class="arrow-box-cyan"><i class="ri-arrow-right-line"></i></div>
+        <!-- Big Executive Button INICIAR -->
+        <button id="btnIniciarExecutive" class="btn-iniciar-executive">
+          <span>INICIAR PLATAFORMA</span>
+          <div class="arrow-icon-circle"><i class="ri-arrow-right-line"></i></div>
         </button>
       </div>
 
       <!-- Footer Stats Bar -->
-      <div class="launch-footer-bar">
-        <div class="stat-col-item">
-          <div class="stat-lbl-sm">PROJETOS</div>
-          <div class="stat-num-lg">24</div>
-          <div class="stat-sub-cyan">EM ANDAMENTO</div>
+      <div class="portal-footer-stats">
+        <div class="pstat-item">
+          <div class="pstat-lbl">PROJETOS</div>
+          <div class="pstat-num">24</div>
+          <div class="pstat-sub">EM ANDAMENTO</div>
         </div>
 
-        <div class="stat-col-item">
-          <div class="stat-lbl-sm">AUTOMAÇÕES</div>
-          <div class="stat-num-lg">156</div>
-          <div class="stat-sub-cyan">ATIVAS</div>
+        <div class="pstat-item">
+          <div class="pstat-lbl">AUTOMAÇÕES</div>
+          <div class="pstat-num">156</div>
+          <div class="pstat-sub">ATIVAS</div>
         </div>
 
-        <div class="stat-col-item">
-          <div class="stat-lbl-sm">CLIENTES</div>
-          <div class="stat-num-lg">89</div>
-          <div class="stat-sub-cyan">ATIVOS</div>
+        <div class="pstat-item">
+          <div class="pstat-lbl">CLIENTES</div>
+          <div class="pstat-num">89</div>
+          <div class="pstat-sub">ATIVOS</div>
         </div>
 
-        <div class="stat-col-item">
-          <div class="stat-lbl-sm">PERFORMANCE</div>
-          <div class="stat-num-lg">98.7%</div>
-          <div class="stat-sub-cyan">EFICIÊNCIA</div>
+        <div class="pstat-item">
+          <div class="pstat-lbl">PERFORMANCE</div>
+          <div class="pstat-num">98.7%</div>
+          <div class="pstat-sub">EFICIÊNCIA</div>
         </div>
       </div>
     </div>
@@ -905,8 +863,8 @@
         </div>
 
         <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
-          <button id="btnVoltarRobo" class="btn-robot-back">
-            <i class="ri-robot-2-line"></i> 🤖 Ver Robô Cyber
+          <button id="btnVoltarPortal" class="btn-portal-back">
+            <i class="ri-home-5-line"></i> 🏠 Tela Inicial
           </button>
 
           <div class="user-pill">
@@ -1176,76 +1134,32 @@
   </div>
 
   <script>
-    // LÓGICA DA ANIMAÇÃO DO ROBÔ CUSTOMIZADO E RAIO LASER DO PEITO
+    // TRANSIÇÃO ELEGANTE DA TELA DE APRESENTAÇÃO EXECUTIVA DA VERTEX SEGUROS (SEM EFEITOS SONOROS)
     document.addEventListener('DOMContentLoaded', () => {
-      const btnIniciarCustom = document.getElementById('btnIniciarCustom');
-      const robotScreen = document.getElementById('robotLaunchScreen');
-      const robotCustomImg = document.getElementById('robotCustomImg');
-      const customChestCore = document.getElementById('customChestCore');
-      const customLaserOverlay = document.getElementById('customLaserOverlay');
+      const btnIniciarExecutive = document.getElementById('btnIniciarExecutive');
+      const portalScreen = document.getElementById('executivePortalScreen');
+      const portalHeroImg = document.getElementById('portalHeroImg');
       const studioApp = document.getElementById('executiveStudioApp');
-      const btnVoltarRobo = document.getElementById('btnVoltarRobo');
+      const btnVoltarPortal = document.getElementById('btnVoltarPortal');
 
-      // Efeito de som sci-fi sintetizado (Web Audio API)
-      const playLaserSound = () => {
-        try {
-          const AudioCtx = window.AudioContext || window.webkitAudioContext;
-          if (!AudioCtx) return;
-          const ctx = new AudioCtx();
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
+      if (btnIniciarExecutive) {
+        btnIniciarExecutive.onclick = () => {
+          // 1. Efeito suave de zoom de câmera na imagem executiva de fundo (sem som)
+          portalHeroImg.classList.add('zooming');
 
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(140, ctx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(1500, ctx.currentTime + 0.7);
-          osc.frequency.exponentialRampToValueAtTime(50, ctx.currentTime + 1.3);
-
-          gain.gain.setValueAtTime(0.01, ctx.currentTime);
-          gain.gain.linearRampToValueAtTime(0.5, ctx.currentTime + 0.5);
-          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.4);
-
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-
-          osc.start();
-          osc.stop(ctx.currentTime + 1.4);
-        } catch (e) {
-          console.log('Audio Context disabled');
-        }
-      };
-
-      if (btnIniciarCustom) {
-        btnIniciarCustom.onclick = () => {
-          playLaserSound();
-
-          // 1. Carga de Energia do Robô
-          robotCustomImg.classList.add('charging');
-          customChestCore.classList.add('super-charging');
-
-          // 2. Raio explode a tela
+          // 2. Transição suave de fade para o SaaS Studio
           setTimeout(() => {
-            customLaserOverlay.classList.add('active');
-          }, 650);
-
-          // 3. Revela a plataforma SaaS
-          setTimeout(() => {
-            robotScreen.classList.add('launch-fade-out');
+            portalScreen.classList.add('launch-fade-out');
             studioApp.classList.add('visible');
-            
-            setTimeout(() => {
-              customLaserOverlay.classList.remove('active');
-            }, 600);
-          }, 1150);
+          }, 600);
         };
       }
 
-      if (btnVoltarRobo) {
-        btnVoltarRobo.onclick = () => {
+      if (btnVoltarPortal) {
+        btnVoltarPortal.onclick = () => {
           studioApp.classList.remove('visible');
-          robotScreen.classList.remove('launch-fade-out');
-          robotCustomImg.classList.remove('charging');
-          customChestCore.classList.remove('super-charging');
-          customLaserOverlay.classList.remove('active');
+          portalScreen.classList.remove('launch-fade-out');
+          portalHeroImg.classList.remove('zooming');
         };
       }
 
