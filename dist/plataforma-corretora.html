@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VERTEX SEGUROS | Plataforma de Implementação Comercial & SaaS IA</title>
+  <title>VERTEX SEGUROS | Plataforma Comercial & SaaS IA Executivo</title>
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./favicon.png" />
@@ -46,7 +46,7 @@
     }
 
     /* =========================================================
-       1. EXECUTIVE PORTAL LAUNCH SCREEN (AUTO & IMÓVEIS BACKGROUND)
+       1. TELA DE APRESENTAÇÃO INICIAL (ENTRADA DO PORTAL EXECUTIVO)
        ========================================================= */
     #executivePortalScreen {
       position: fixed;
@@ -69,7 +69,6 @@
       transform: scale(1.04);
     }
 
-    /* Background Image Container */
     .portal-bg-stage {
       position: absolute;
       top: 0;
@@ -99,7 +98,6 @@
       filter: brightness(1.2) contrast(1.1);
     }
 
-    /* Dark Obsidian & Navy Gradient Overlays for High Contrast Readability */
     .portal-gradient-overlay {
       position: absolute;
       top: 0;
@@ -108,12 +106,11 @@
       height: 100%;
       z-index: 2;
       background: 
-        linear-gradient(90deg, rgba(2, 3, 6, 0.94) 0%, rgba(2, 3, 6, 0.78) 45%, rgba(2, 3, 6, 0.4) 100%),
+        linear-gradient(90deg, rgba(2, 3, 6, 0.95) 0%, rgba(2, 3, 6, 0.8) 45%, rgba(2, 3, 6, 0.45) 100%),
         linear-gradient(0deg, rgba(2, 3, 6, 0.95) 0%, transparent 40%, rgba(2, 3, 6, 0.75) 100%);
       pointer-events: none;
     }
 
-    /* UI Layer */
     .portal-ui-layer {
       position: relative;
       z-index: 10;
@@ -130,7 +127,6 @@
       }
     }
 
-    /* Top Bar */
     .portal-top-bar {
       display: flex;
       justify-content: space-between;
@@ -190,7 +186,6 @@
       50% { opacity: 0.35; }
     }
 
-    /* Hero Left Box */
     .portal-hero-box {
       max-width: 580px;
       margin-top: auto;
@@ -236,7 +231,6 @@
       margin-bottom: 30px;
     }
 
-    /* Features Grid */
     .portal-features-list {
       display: flex;
       flex-direction: column;
@@ -288,7 +282,6 @@
       color: #94a3b8;
     }
 
-    /* Big Executive INICIAR Button */
     .btn-iniciar-executive {
       display: inline-flex;
       align-items: center;
@@ -333,7 +326,6 @@
       transform: translateX(4px);
     }
 
-    /* Footer Stats */
     .portal-footer-stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -377,12 +369,15 @@
 
 
     /* =========================================================
-       2. EXECUTIVE SAAS STUDIO UI (PLATAFORMA SAAS EXCLUSIVA)
+       2. PLATAFORMA SAAS COM PLANOS DE FUNDO DINÂMICOS POR ABA
        ========================================================= */
     #executiveStudioApp {
+      position: relative;
+      min-height: 100vh;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+      z-index: 10;
     }
 
     #executiveStudioApp.visible {
@@ -390,10 +385,53 @@
       transform: translateY(0);
     }
 
+    /* Fullscreen Dynamic Background Container Behind SaaS Studio */
+    .saas-dynamic-bg-stage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .saas-bg-img-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s ease;
+    }
+
+    .saas-bg-img-layer.active-bg {
+      opacity: 0.45;
+      transform: scale(1);
+    }
+
+    .saas-bg-dark-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 50% 20%, rgba(13, 17, 30, 0.65) 0%, rgba(2, 3, 6, 0.95) 85%),
+        linear-gradient(180deg, rgba(2, 3, 6, 0.85) 0%, rgba(2, 3, 6, 0.96) 100%);
+      pointer-events: none;
+    }
+
+    /* Header Nav Executivo */
     .header-nav {
-      background: rgba(6, 8, 14, 0.92);
+      background: rgba(6, 8, 14, 0.82);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(24px);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -491,67 +529,79 @@
       color: #fff;
     }
 
+    /* Abas Super Estilizadas com Transição */
     .tab-nav-bar {
       display: flex;
       gap: 8px;
-      background: rgba(5, 6, 10, 0.9);
+      background: rgba(5, 6, 10, 0.85);
       padding: 6px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .nav-tab-item {
       background: transparent;
       border: none;
       color: #94a3b8;
-      padding: 10px 18px;
-      border-radius: 10px;
+      padding: 11px 20px;
+      border-radius: 12px;
       font-family: var(--font-body);
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
-      transition: all 0.3s;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-tab-item:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .nav-tab-item.active {
       background: linear-gradient(135deg, #ff0a2b 0%, #cc001f 100%);
       color: #fff;
-      box-shadow: 0 4px 20px rgba(255, 10, 43, 0.4);
+      box-shadow: 0 6px 25px rgba(255, 10, 43, 0.5);
     }
 
     .container-studio {
+      position: relative;
+      z-index: 10;
       max-width: 1200px;
       margin: 0 auto;
       padding: 32px 24px;
     }
 
+    /* Banner Stats Quick Info */
     .hero-stats-banner {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 16px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .stat-card-mini {
-      background: rgba(13, 14, 22, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 14, 24, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 16px;
       padding: 18px 22px;
       display: flex;
       align-items: center;
       gap: 16px;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
     .stat-icon-wrap {
       width: 46px;
       height: 46px;
       border-radius: 12px;
-      background: rgba(255, 10, 43, 0.12);
-      border: 1px solid rgba(255, 10, 43, 0.25);
+      background: rgba(255, 10, 43, 0.15);
+      border: 1px solid rgba(255, 10, 43, 0.3);
       color: var(--primary-red);
       display: flex;
       align-items: center;
@@ -559,13 +609,14 @@
       font-size: 1.3rem;
     }
 
+    /* Studio Glass Panels */
     .studio-panel {
-      background: rgba(13, 14, 22, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 32px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+      background: rgba(8, 11, 20, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 36px;
+      backdrop-filter: blur(24px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
       margin-bottom: 40px;
     }
 
@@ -583,9 +634,9 @@
     }
 
     .field-group label {
-      font-size: 0.83rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      color: #cbd5e1;
+      color: #e2e8f0;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -593,10 +644,10 @@
 
     .input-box {
       width: 100%;
-      padding: 13px 16px;
-      background: #08090f;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
+      padding: 14px 18px;
+      background: rgba(5, 7, 14, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 14px;
       color: #fff;
       font-family: var(--font-body);
       font-size: 0.95rem;
@@ -606,7 +657,7 @@
 
     .input-box:focus {
       border-color: var(--primary-red);
-      box-shadow: 0 0 14px rgba(255, 10, 43, 0.4);
+      box-shadow: 0 0 16px rgba(255, 10, 43, 0.4);
     }
 
     .btn-action {
@@ -614,10 +665,10 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 14px 24px;
-      border-radius: 12px;
+      padding: 15px 26px;
+      border-radius: 14px;
       font-family: var(--font-body);
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       font-weight: 800;
       cursor: pointer;
       border: none;
@@ -628,8 +679,13 @@
     .btn-action-primary {
       background: linear-gradient(135deg, #ff0a2b 0%, #cc001f 100%);
       color: #fff;
-      box-shadow: 0 6px 20px rgba(255, 10, 43, 0.35);
+      box-shadow: 0 8px 25px rgba(255, 10, 43, 0.4);
       width: 100%;
+    }
+
+    .btn-action-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(255, 10, 43, 0.6);
     }
 
     .btn-action-wa {
@@ -639,25 +695,29 @@
     }
 
     .btn-action-glass {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: #fff;
     }
 
+    .btn-action-glass:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
     .output-console {
-      background: #06070a;
-      border: 1px solid rgba(255, 10, 43, 0.3);
-      border-radius: 16px;
-      padding: 22px;
-      margin-top: 24px;
+      background: rgba(4, 5, 9, 0.92);
+      border: 1px solid rgba(255, 10, 43, 0.35);
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 28px;
     }
 
     .console-textarea {
       width: 100%;
       min-height: 190px;
-      background: #030407;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
+      background: rgba(2, 3, 5, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
       padding: 18px;
       color: #f8fafc;
       font-family: var(--font-body);
@@ -673,26 +733,27 @@
       overflow-x: auto;
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .sub-tab-btn {
       background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       color: #94a3b8;
-      padding: 9px 16px;
-      border-radius: 10px;
-      font-size: 0.82rem;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
       display: flex;
       align-items: center;
       gap: 6px;
+      transition: all 0.25s;
     }
 
     .sub-tab-btn.active {
-      background: rgba(255, 10, 43, 0.2);
+      background: rgba(255, 10, 43, 0.22);
       border-color: var(--primary-red);
       color: #fff;
     }
@@ -708,8 +769,8 @@
       width: 100%;
       aspect-ratio: 1 / 1;
       background: #08080a;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 18px;
       padding: 32px 28px;
       display: flex;
       flex-direction: column;
@@ -731,16 +792,22 @@
 
     .tab-content-pane {
       display: none;
+      animation: tabFadeIn 0.5s ease;
     }
     .tab-content-pane.active {
       display: block;
+    }
+
+    @keyframes tabFadeIn {
+      0% { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
   <!-- =========================================================
-       1. EXECUTIVE PORTAL LAUNCH SCREEN (BACKGROUND AUTO & IMÓVEL)
+       1. TELA DE APRESENTAÇÃO INICIAL (ENTRADA DO PORTAL EXECUTIVO)
        ========================================================= -->
   <div id="executivePortalScreen">
     <div class="portal-bg-stage">
@@ -845,10 +912,18 @@
 
 
   <!-- =========================================================
-       2. EXECUTIVE SAAS STUDIO UI (PLATAFORMA SAAS EXCLUSIVA)
+       2. PLATAFORMA SAAS COM PLANOS DE FUNDO DINÂMICOS POR ABA
        ========================================================= -->
   <div id="executiveStudioApp">
-    <!-- Header Executivo -->
+    <!-- Dynamic Fullscreen Background Stage Behind SaaS -->
+    <div class="saas-dynamic-bg-stage">
+      <img src="./vertex-bg-scripts.png" alt="Scripts Background" id="saasBgScripts" class="saas-bg-img-layer active-bg" />
+      <img src="./vertex-bg-carrosseis.png" alt="Carrosséis Background" id="saasBgCarrosseis" class="saas-bg-img-layer" />
+      <img src="./vertex-bg-followup.png" alt="Follow-Up Background" id="saasBgFollowup" class="saas-bg-img-layer" />
+      <div class="saas-bg-dark-overlay"></div>
+    </div>
+
+    <!-- Header Executivo Glassmorphism -->
     <header class="header-nav">
       <div class="container-studio header-flex" style="padding-top:0; padding-bottom:0;">
         <div class="brand-logo-box">
@@ -877,13 +952,13 @@
 
           <!-- Main Navigation Pills -->
           <div class="tab-nav-bar">
-            <button class="nav-tab-item active" data-tab="tab-scripts">
+            <button class="nav-tab-item active" data-tab="tab-scripts" data-bg="saasBgScripts">
               <i class="ri-chat-quote-line"></i> 📜 Scripts Vendas
             </button>
-            <button class="nav-tab-item" data-tab="tab-carrosseis">
+            <button class="nav-tab-item" data-tab="tab-carrosseis" data-bg="saasBgCarrosseis">
               <i class="ri-slideshow-3-line"></i> 🎨 Carrosséis Instagram
             </button>
-            <button class="nav-tab-item" data-tab="tab-followup">
+            <button class="nav-tab-item" data-tab="tab-followup" data-bg="saasBgFollowup">
               <i class="ri-radar-line"></i> ⚡ Follow-Up IA
             </button>
           </div>
@@ -924,13 +999,13 @@
       <div id="tab-scripts" class="tab-content-pane active">
         <div class="studio-panel">
           <div style="margin-bottom: 24px;">
-            <span style="background: rgba(255,10,43,0.15); color: #ff0a2b; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">
-              <i class="ri-flashlight-line"></i> ACELERADOR COMERCIAL
+            <span style="background: rgba(255,10,43,0.18); color: #ff0a2b; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">
+              <i class="ri-flashlight-line"></i> ACELERADOR COMERCIAL AUTO & IMÓVEL
             </span>
-            <h2 style="font-family: var(--font-display); font-size: 1.85rem; font-weight: 900; color: #fff; margin-top: 6px;">
+            <h2 style="font-family: var(--font-display); font-size: 1.95rem; font-weight: 900; color: #fff; margin-top: 8px;">
               Gerador de Scripts de <span style="color: #ff0a2b;">Vendas de Seguros</span>
             </h2>
-            <p style="color: #94a3b8; font-size: 0.95rem;">Roteiros prontos para seus funcionários usarem no WhatsApp e contornarem objeções instantaneamente.</p>
+            <p style="color: #94a3b8; font-size: 0.95rem;">Roteiros estratégicos para seus funcionários usarem no WhatsApp e fecharem apólices com alta conversão.</p>
           </div>
 
           <div class="form-grid">
@@ -993,13 +1068,13 @@
       <div id="tab-carrosseis" class="tab-content-pane">
         <div class="studio-panel">
           <div style="margin-bottom: 24px;">
-            <span style="background: rgba(255,10,43,0.15); color: #ff0a2b; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">
-              <i class="ri-instagram-line"></i> INSTAGRAM EXECUTIVO
+            <span style="background: rgba(255,10,43,0.18); color: #ff0a2b; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">
+              <i class="ri-instagram-line"></i> INSTAGRAM MARKETING SEGUROS
             </span>
-            <h2 style="font-family: var(--font-display); font-size: 1.85rem; font-weight: 900; color: #fff; margin-top: 6px;">
+            <h2 style="font-family: var(--font-display); font-size: 1.95rem; font-weight: 900; color: #fff; margin-top: 8px;">
               Gerador de Carrosséis <span style="color: #ff0a2b;">Fundo Preto & Citações</span>
             </h2>
-            <p style="color: #94a3b8; font-size: 0.95rem;">Posts minimalistas com aspas marcantes, fundo preto e assinatura da sua seguradora.</p>
+            <p style="color: #94a3b8; font-size: 0.95rem;">Posts minimalistas de alto engajamento com aspas vermelhas e a marca da sua seguradora.</p>
           </div>
 
           <div class="form-grid">
@@ -1051,10 +1126,10 @@
       <div id="tab-followup" class="tab-content-pane">
         <div class="studio-panel">
           <div style="margin-bottom: 24px;">
-            <span style="background: rgba(255,10,43,0.15); color: #ff0a2b; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">
+            <span style="background: rgba(255,10,43,0.18); color: #ff0a2b; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">
               <i class="ri-radar-line"></i> RECUPERAÇÃO DE LEADS IA
             </span>
-            <h2 style="font-family: var(--font-display); font-size: 1.85rem; font-weight: 900; color: #fff; margin-top: 6px;">
+            <h2 style="font-family: var(--font-display); font-size: 1.95rem; font-weight: 900; color: #fff; margin-top: 8px;">
               Central de Follow-Up <span style="color: #ff0a2b;">Inteligente para Corretores</span>
             </h2>
             <p style="color: #94a3b8; font-size: 0.95rem;">Preencha os dados do lead sem resposta e a IA gerará WhatsApp, Roteiro de Áudio, E-mail e Ultimato.</p>
@@ -1134,8 +1209,8 @@
   </div>
 
   <script>
-    // TRANSIÇÃO ELEGANTE DA TELA DE APRESENTAÇÃO EXECUTIVA DA VERTEX SEGUROS (SEM EFEITOS SONOROS)
     document.addEventListener('DOMContentLoaded', () => {
+      // 1. TRANSIÇÃO DA TELA DE APRESENTAÇÃO
       const btnIniciarExecutive = document.getElementById('btnIniciarExecutive');
       const portalScreen = document.getElementById('executivePortalScreen');
       const portalHeroImg = document.getElementById('portalHeroImg');
@@ -1144,10 +1219,7 @@
 
       if (btnIniciarExecutive) {
         btnIniciarExecutive.onclick = () => {
-          // 1. Efeito suave de zoom de câmera na imagem executiva de fundo (sem som)
           portalHeroImg.classList.add('zooming');
-
-          // 2. Transição suave de fade para o SaaS Studio
           setTimeout(() => {
             portalScreen.classList.add('launch-fade-out');
             studioApp.classList.add('visible');
@@ -1163,17 +1235,29 @@
         };
       }
 
-      // BANCO DE DADOS E NAVEGAÇÃO DA PLATAFORMA SAAS
+      // 2. TROCA DE ABAS COM PLANOS DE FUNDO DINÂMICOS EXCLUSIVOS
       const navTabs = document.querySelectorAll('.nav-tab-item');
       const contentPanes = document.querySelectorAll('.tab-content-pane');
+      const saasBgLayers = document.querySelectorAll('.saas-bg-img-layer');
 
       navTabs.forEach(tab => {
         tab.onclick = () => {
-          const target = tab.getAttribute('data-tab');
+          const targetTab = tab.getAttribute('data-tab');
+          const targetBgId = tab.getAttribute('data-bg');
+
+          // Troca estado ativo das abas
           navTabs.forEach(t => t.classList.remove('active'));
-          contentPanes.forEach(p => p.classList.remove('active'));
           tab.classList.add('active');
-          document.getElementById(target).classList.add('active');
+
+          // Troca de painéis de conteúdo
+          contentPanes.forEach(p => p.classList.remove('active'));
+          const targetPane = document.getElementById(targetTab);
+          if (targetPane) targetPane.classList.add('active');
+
+          // Troca suave de imagem de fundo com transição de opacidade
+          saasBgLayers.forEach(bg => bg.classList.remove('active-bg'));
+          const targetBg = document.getElementById(targetBgId);
+          if (targetBg) targetBg.classList.add('active-bg');
         };
       });
 
