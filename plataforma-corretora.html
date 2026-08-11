@@ -8,7 +8,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./favicon.png" />
   
-  <!-- Google Fonts: Outfit & Inter & Space Grotesk -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
@@ -43,13 +43,10 @@
       line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 60%, rgba(0, 150, 255, 0.1) 0%, transparent 45%);
     }
 
     /* =========================================================
-       1. ROBOT LAUNCH SCREEN (TELA DE INÍCIO COM ROBÔ INTERATIVO)
+       1. ROBOT LAUNCH SCREEN (TELA 100% FIEL SEM TEXTOS DUPLICADOS)
        ========================================================= */
     #robotLaunchScreen {
       position: fixed;
@@ -59,100 +56,139 @@
       height: 100vh;
       background: #020306;
       z-index: 500;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       overflow: hidden;
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s ease;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
     #robotLaunchScreen.launch-fade-out {
       opacity: 0;
       pointer-events: none;
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
 
-    /* Robot Image Container & Background Layer */
-    .robot-bg-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
+    /* Image Background Container */
+    .robot-stage-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #020306;
+    }
+
+    .robot-master-img {
       width: 100%;
       height: 100%;
-      z-index: 1;
-      overflow: hidden;
+      object-fit: contain;
+      object-position: center;
+      transition: transform 1s ease, filter 1s ease;
     }
 
-    .robot-bg-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: right center;
-      transition: transform 1.2s ease, filter 1.2s ease;
-      animation: robotIdleBreathing 6s ease-in-out infinite alternate;
+    .robot-master-img.charging-state {
+      transform: scale(1.03);
+      filter: brightness(1.25) contrast(1.1);
     }
 
-    @keyframes robotIdleBreathing {
-      0% { transform: scale(1) translateY(0); }
-      100% { transform: scale(1.015) translateY(-6px); }
-    }
-
-    /* Robot Charging Action */
-    .robot-bg-img.charging {
-      transform: scale(1.06) translateY(-10px) !important;
-      filter: brightness(1.3) contrast(1.1);
-    }
-
-    /* Chest Beam Energy Core Overlay */
-    .chest-energy-core {
+    /* Interactive Hotspot for INICIAR Button (Aligned over the button in the image) */
+    .iniciar-hotspot-btn {
       position: absolute;
-      /* Located around robot's chest V emblem */
-      right: 28%;
-      top: 54%;
-      width: 180px;
-      height: 180px;
-      transform: translate(50%, -50%);
+      left: 4.2%;
+      bottom: 16%;
+      width: 27.5%;
+      height: 9%;
+      border-radius: 18px;
+      cursor: pointer;
+      z-index: 20;
+      background: transparent;
+      border: 2px solid rgba(0, 210, 255, 0.4);
+      box-shadow: 0 0 25px rgba(0, 210, 255, 0.3), inset 0 0 15px rgba(0, 210, 255, 0.2);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .iniciar-hotspot-btn:hover {
+      border-color: #00d2ff;
+      background: rgba(0, 210, 255, 0.15);
+      box-shadow: 0 0 50px rgba(0, 210, 255, 0.8), inset 0 0 30px rgba(0, 210, 255, 0.4);
+    }
+
+    .iniciar-pulse-text {
+      font-family: var(--font-tech);
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: #ffffff;
+      text-shadow: 0 0 15px #00d2ff;
+      opacity: 0.9;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .iniciar-pulse-text i {
+      color: #00d2ff;
+      font-size: 1.5rem;
+      animation: arrowPulse 1.2s infinite alternate;
+    }
+
+    @keyframes arrowPulse {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(6px); }
+    }
+
+    /* Chest Energy Core (Positioned over the Robot's Chest emblem) */
+    .robot-chest-core {
+      position: absolute;
+      left: 71.5%;
+      top: 59.5%;
+      width: 120px;
+      height: 120px;
+      transform: translate(-50%, -50%);
       pointer-events: none;
       border-radius: 50%;
-      z-index: 5;
-      background: radial-gradient(circle, rgba(0,210,255,0.8) 0%, rgba(0,150,255,0.4) 40%, transparent 70%);
-      opacity: 0.6;
+      z-index: 10;
+      background: radial-gradient(circle, rgba(0, 225, 255, 0.9) 0%, rgba(0, 120, 255, 0.5) 45%, transparent 70%);
       mix-blend-mode: screen;
-      animation: corePulse 2.5s ease-in-out infinite alternate;
-      transition: all 0.5s ease;
+      opacity: 0.6;
+      animation: chestGlowPulse 2s ease-in-out infinite alternate;
+      transition: all 0.4s ease;
     }
 
-    @keyframes corePulse {
-      0% { opacity: 0.4; transform: translate(50%, -50%) scale(0.9); }
-      100% { opacity: 0.85; transform: translate(50%, -50%) scale(1.15); box-shadow: 0 0 40px rgba(0, 210, 255, 0.8); }
+    @keyframes chestGlowPulse {
+      0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+      100% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 0 35px #00d2ff; }
     }
 
-    /* Laser Energy Blast Super State */
-    .chest-energy-core.super-charging {
+    /* Laser Energy Blast (Super Charging State when clicking INICIAR) */
+    .robot-chest-core.laser-blast-active {
       opacity: 1 !important;
-      width: 100vw !important;
-      height: 100vw !important;
-      right: 30% !important;
+      width: 120vw !important;
+      height: 120vw !important;
+      left: 50% !important;
       top: 50% !important;
-      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,225,255,0.95) 25%, rgba(0,100,255,0.8) 50%, transparent 80%) !important;
-      box-shadow: 0 0 150px rgba(0, 225, 255, 1), 0 0 300px rgba(0, 150, 255, 1) !important;
-      animation: blastExpand 1.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,225,255,0.95) 25%, rgba(0,100,255,0.85) 50%, transparent 80%) !important;
+      box-shadow: 0 0 200px rgba(0, 225, 255, 1), 0 0 400px rgba(0, 150, 255, 1) !important;
+      animation: expandLaserBeam 1.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1) !important;
     }
 
-    @keyframes blastExpand {
-      0% { transform: translate(50%, -50%) scale(0.2); }
-      50% { transform: translate(50%, -50%) scale(2.5); opacity: 1; }
-      100% { transform: translate(50%, -50%) scale(6); opacity: 1; }
+    @keyframes expandLaserBeam {
+      0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0.8; }
+      50% { transform: translate(-50%, -50%) scale(2.5); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(6); opacity: 1; }
     }
 
-    /* Fullscreen Energy Flash Overlay */
-    .beam-flash-overlay {
+    /* Fullscreen Energy Flash Transition Overlay */
+    .laser-flash-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,210,255,0.9) 40%, rgba(2,3,6,0.95) 100%);
+      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,210,255,0.95) 35%, rgba(2,3,6,0.98) 100%);
       z-index: 600;
       opacity: 0;
       pointer-events: none;
@@ -160,269 +196,12 @@
       mix-blend-mode: screen;
     }
 
-    .beam-flash-overlay.active {
+    .laser-flash-overlay.active {
       opacity: 1;
     }
 
-    /* UI Content Overlay on Launch Screen */
-    .launch-ui-content {
-      position: relative;
-      z-index: 10;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 40px 60px;
-    }
-
-    @media (max-width: 900px) {
-      .launch-ui-content {
-        padding: 24px 20px;
-      }
-    }
-
-    .launch-top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand-vertex-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-vertex-logo {
-      width: 36px;
-      height: 36px;
-      filter: drop-shadow(0 0 10px rgba(0,210,255,0.8));
-    }
-
-    .brand-vertex-title {
-      font-family: var(--font-tech);
-      font-size: 1.3rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: #fff;
-    }
-
-    .brand-vertex-sub {
-      font-size: 0.7rem;
-      color: var(--cyan-glow);
-      letter-spacing: 1.5px;
-      font-weight: 700;
-    }
-
-    .online-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0, 210, 255, 0.08);
-      border: 1px solid rgba(0, 210, 255, 0.3);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      font-family: var(--font-tech);
-      color: var(--cyan-glow);
-    }
-
-    .online-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--cyan-glow);
-      box-shadow: 0 0 10px var(--cyan-glow);
-      animation: blinkDot 1.5s infinite;
-    }
-
-    @keyframes blinkDot {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    /* Main Left Hero Box */
-    .launch-hero-body {
-      max-width: 520px;
-      margin-top: auto;
-      margin-bottom: auto;
-    }
-
-    .launch-tagline {
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: #94a3b8;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      font-family: var(--font-tech);
-    }
-
-    .launch-main-title {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      font-weight: 900;
-      line-height: 1.05;
-      color: #ffffff;
-      letter-spacing: -1px;
-      margin-bottom: 6px;
-    }
-
-    .launch-subtitle-cyan {
-      font-family: var(--font-tech);
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--cyan-glow);
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-      text-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
-    }
-
-    .launch-desc {
-      font-size: 0.95rem;
-      color: #cbd5e1;
-      line-height: 1.6;
-      margin-bottom: 28px;
-    }
-
-    /* Feature Cards */
-    .launch-features-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 36px;
-    }
-
-    .feature-item-box {
-      background: rgba(8, 12, 22, 0.65);
-      border: 1px solid rgba(0, 210, 255, 0.2);
-      border-radius: 12px;
-      padding: 12px 18px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-
-    .feature-item-box:hover {
-      border-color: var(--cyan-glow);
-      box-shadow: 0 0 20px rgba(0, 210, 255, 0.25);
-      transform: translateX(6px);
-    }
-
-    .feature-icon-cyan {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: rgba(0, 210, 255, 0.12);
-      border: 1px solid rgba(0, 210, 255, 0.3);
-      color: var(--cyan-glow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-
-    .feature-text-bold {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: #fff;
-      font-family: var(--font-tech);
-      letter-spacing: 0.5px;
-    }
-
-    .feature-text-sub {
-      font-size: 0.78rem;
-      color: #94a3b8;
-    }
-
-    /* Big Glowing INICIAR Button */
-    .btn-iniciar-glow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      background: linear-gradient(135deg, rgba(0, 100, 255, 0.3) 0%, rgba(0, 210, 255, 0.2) 100%);
-      border: 2px solid var(--cyan-glow);
-      border-radius: 14px;
-      padding: 16px 28px;
-      color: #ffffff;
-      font-family: var(--font-tech);
-      font-size: 1.3rem;
-      font-weight: 900;
-      letter-spacing: 3px;
-      cursor: pointer;
-      box-shadow: 0 0 30px rgba(0, 210, 255, 0.35), inset 0 0 15px rgba(0, 210, 255, 0.2);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      width: 100%;
-      max-width: 320px;
-    }
-
-    .btn-iniciar-glow:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 50px rgba(0, 210, 255, 0.7), inset 0 0 30px rgba(0, 210, 255, 0.4);
-      background: linear-gradient(135deg, rgba(0, 150, 255, 0.5) 0%, rgba(0, 210, 255, 0.4) 100%);
-    }
-
-    .btn-arrow-box {
-      width: 38px;
-      height: 38px;
-      border-radius: 8px;
-      background: var(--cyan-glow);
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      box-shadow: 0 0 15px var(--cyan-glow);
-    }
-
-    /* Footer Stats Bar */
-    .launch-footer-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 16px;
-      background: rgba(4, 7, 14, 0.7);
-      border: 1px solid rgba(0, 210, 255, 0.15);
-      border-radius: 16px;
-      padding: 14px 24px;
-      backdrop-filter: blur(12px);
-      max-width: 650px;
-    }
-
-    .stat-item-col {
-      text-align: center;
-    }
-
-    .stat-item-lbl {
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: #94a3b8;
-      letter-spacing: 1px;
-      font-family: var(--font-tech);
-      margin-bottom: 2px;
-    }
-
-    .stat-item-num {
-      font-family: var(--font-tech);
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1;
-    }
-
-    .stat-item-sub {
-      font-size: 0.65rem;
-      color: var(--cyan-glow);
-      font-weight: 600;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
     /* =========================================================
-       2. EXECUTIVE SAAS STUDIO UI (DASHBOARD APÓS O RAIO)
+       2. EXECUTIVE SAAS STUDIO (DASHBOARD COMPLETO)
        ========================================================= */
     #executiveStudioApp {
       opacity: 0;
@@ -437,7 +216,7 @@
 
     /* Header Nav Executivo */
     .header-nav {
-      background: rgba(6, 8, 14, 0.9);
+      background: rgba(6, 8, 14, 0.92);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(20px);
       position: sticky;
@@ -479,7 +258,7 @@
       color: var(--primary-red);
     }
 
-    .status-badge-red {
+    .status-badge-green {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -517,24 +296,24 @@
 
     .btn-robot-back {
       background: rgba(0, 210, 255, 0.12);
-      border: 1px solid rgba(0, 210, 255, 0.3);
+      border: 1px solid rgba(0, 210, 255, 0.35);
       color: var(--cyan-glow);
       padding: 8px 16px;
       border-radius: 20px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 800;
       font-family: var(--font-tech);
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       transition: all 0.25s;
     }
 
     .btn-robot-back:hover {
       background: var(--cyan-glow);
       color: #000;
-      box-shadow: 0 0 15px var(--cyan-glow);
+      box-shadow: 0 0 20px var(--cyan-glow);
     }
 
     /* Tabs Bar */
@@ -607,9 +386,9 @@
       font-size: 1.3rem;
     }
 
-    /* Main Studio Glass Panels */
+    /* Studio Panels */
     .studio-panel {
-      background: rgba(13, 14, 22, 0.8);
+      background: rgba(13, 14, 22, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
       padding: 32px;
@@ -789,116 +568,34 @@
 <body>
 
   <!-- Fullscreen Energy Flash Overlay -->
-  <div id="beamFlashOverlay" class="beam-flash-overlay"></div>
+  <div id="laserFlashOverlay" class="laser-flash-overlay"></div>
 
   <!-- =========================================================
-       1. ROBOT LAUNCH SCREEN (TELA INICIAL DO ROBÔ CYBERNETICO)
+       1. ROBOT LAUNCH SCREEN (LAYOUT FIEL A IMAGEM SEM DUPLICAÇÃO DE TEXTOS)
        ========================================================= -->
   <div id="robotLaunchScreen">
-    <div class="robot-bg-wrapper">
-      <img src="./robot-hero.jpg" alt="Vertex Robot Cyberpunk" id="robotHeroImg" class="robot-bg-img" />
-      <!-- Chest Energy Core Overlay (Located on Robot's V Chest Emblem) -->
-      <div id="robotChestCore" class="chest-energy-core"></div>
-    </div>
+    <div class="robot-stage-container">
+      <img src="./robot-hero.jpg" alt="Vertex Robot Implementation Platform" id="robotMasterImg" class="robot-master-img" />
+      
+      <!-- Chest Energy Core Glow Overlay (Over the robot's chest V emblem) -->
+      <div id="robotChestCore" class="robot-chest-core"></div>
 
-    <div class="launch-ui-content">
-      <!-- Top Header Bar -->
-      <div class="launch-top-bar">
-        <div class="brand-vertex-header">
-          <img src="./vertex-logo.png" alt="Vertex Logo" class="brand-vertex-logo" />
-          <div>
-            <div class="brand-vertex-title">VERTEX</div>
-            <div class="brand-vertex-sub">SEGUROS</div>
-          </div>
-        </div>
-
-        <div style="display: flex; align-items: center; gap: 14px;">
-          <div class="online-tag">
-            <div class="online-dot"></div> SISTEMA ONLINE
-          </div>
-          <div style="font-family: var(--font-tech); font-size: 0.75rem; color: #64748b;">VERSÃO 2.6.0</div>
-        </div>
-      </div>
-
-      <!-- Main Left Hero Box -->
-      <div class="launch-hero-body">
-        <div class="launch-tagline">PLATAFORMA DE IMPLEMENTAÇÃO</div>
-        <h1 class="launch-main-title">PLATAFORMA DE</h1>
-        <div class="launch-main-title" style="color: #fff;">IMPLEMENTAÇÃO</div>
-        <div class="launch-subtitle-cyan">VERTEX SEGUROS</div>
-
-        <p class="launch-desc">
-          Bem-vindo à nova era da proteção inteligente. Automação, tecnologia e inteligência trabalhando juntas para revolucionar o mercado de seguros.
-        </p>
-
-        <div class="launch-features-list">
-          <div class="feature-item-box">
-            <div class="feature-icon-cyan"><i class="ri-shield-check-line"></i></div>
-            <div>
-              <div class="feature-text-bold">SEGURANÇA AVANÇADA</div>
-              <div class="feature-text-sub">Proteção de dados e processos executivos</div>
-            </div>
-          </div>
-
-          <div class="feature-item-box">
-            <div class="feature-icon-cyan"><i class="ri-flashlight-line"></i></div>
-            <div>
-              <div class="feature-text-bold">AUTOMAÇÃO INTELIGENTE</div>
-              <div class="feature-text-sub">Fluxos otimizados e eficientes de atendimento</div>
-            </div>
-          </div>
-
-          <div class="feature-item-box">
-            <div class="feature-icon-cyan"><i class="ri-bar-chart-box-line"></i></div>
-            <div>
-              <div class="feature-text-bold">RESULTADOS REAIS</div>
-              <div class="feature-text-sub">Performance e escalabilidade comprovadas</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Big Glowing INICIAR Button -->
-        <button id="btnIniciarRobot" class="btn-iniciar-glow">
+      <!-- Hotspot Clickable Area for INICIAR Button in the Image -->
+      <button id="btnIniciarHotspot" class="iniciar-hotspot-btn" title="Clique para iniciar e disparar o raio de energia!">
+        <div class="iniciar-pulse-text">
           <span>INICIAR</span>
-          <div class="btn-arrow-box"><i class="ri-arrow-right-line"></i></div>
-        </button>
-      </div>
-
-      <!-- Footer Stats Bar -->
-      <div class="launch-footer-stats">
-        <div class="stat-item-col">
-          <div class="stat-item-lbl">PROJETOS</div>
-          <div class="stat-item-num">24</div>
-          <div class="stat-item-sub">EM ANDAMENTO</div>
+          <i class="ri-arrow-right-line"></i>
         </div>
-
-        <div class="stat-item-col">
-          <div class="stat-item-lbl">AUTOMAÇÕES</div>
-          <div class="stat-item-num">156</div>
-          <div class="stat-item-sub">ATIVAS</div>
-        </div>
-
-        <div class="stat-item-col">
-          <div class="stat-item-lbl">CLIENTES</div>
-          <div class="stat-item-num">89</div>
-          <div class="stat-item-sub">ATIVOS</div>
-        </div>
-
-        <div class="stat-item-col">
-          <div class="stat-item-lbl">PERFORMANCE</div>
-          <div class="stat-item-num">98.7%</div>
-          <div class="stat-item-sub">EFICIÊNCIA</div>
-        </div>
-      </div>
+      </button>
     </div>
   </div>
 
 
   <!-- =========================================================
-       2. EXECUTIVE SAAS STUDIO UI (PAINEL SAAS COMPLETO)
+       2. EXECUTIVE SAAS STUDIO UI (PLATAFORMA SAAS EXCLUSIVA)
        ========================================================= -->
   <div id="executiveStudioApp">
-    <!-- Top Header -->
+    <!-- Header Executivo -->
     <header class="header-nav">
       <div class="container-studio header-flex" style="padding-top:0; padding-bottom:0;">
         <div class="brand-logo-box">
@@ -907,7 +604,7 @@
             <div class="brand-title">VERTEX <span>CORE</span></div>
             <div style="font-size: 0.72rem; color: #94a3b8; font-weight: 600;">PLATAFORMA SAAS • SEGUROS</div>
           </div>
-          <div class="status-badge-red">
+          <div class="status-badge-green">
             <i class="ri-checkbox-circle-fill"></i> IA CONECTADA
           </div>
         </div>
@@ -1184,18 +881,18 @@
   </div>
 
   <script>
-    // LÓGICA DA ANIMAÇÃO CINEMÁTICA DO ROBÔ E RAIO LASER NO PEITO
+    // LÓGICA DA ANIMAÇÃO DO ROBÔ E RAIO LASER DO PEITO (100% FIEL À IMAGEM)
     document.addEventListener('DOMContentLoaded', () => {
-      const btnIniciar = document.getElementById('btnIniciarRobot');
+      const btnIniciarHotspot = document.getElementById('btnIniciarHotspot');
       const robotScreen = document.getElementById('robotLaunchScreen');
-      const robotHeroImg = document.getElementById('robotHeroImg');
+      const robotMasterImg = document.getElementById('robotMasterImg');
       const robotChestCore = document.getElementById('robotChestCore');
-      const beamFlashOverlay = document.getElementById('beamFlashOverlay');
+      const laserFlashOverlay = document.getElementById('laserFlashOverlay');
       const studioApp = document.getElementById('executiveStudioApp');
       const btnVoltarRobo = document.getElementById('btnVoltarRobo');
 
-      // Tocar efeito de áudio sintetizado (Web Audio API)
-      const playLaserAudio = () => {
+      // Efeito sonoro sintetizado de carga e disparo laser (Web Audio API)
+      const playLaserSound = () => {
         try {
           const AudioCtx = window.AudioContext || window.webkitAudioContext;
           if (!AudioCtx) return;
@@ -1204,46 +901,46 @@
           const gain = ctx.createGain();
 
           osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(150, ctx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.8);
-          osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 1.4);
+          osc.frequency.setValueAtTime(120, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(1400, ctx.currentTime + 0.7);
+          osc.frequency.exponentialRampToValueAtTime(60, ctx.currentTime + 1.3);
 
           gain.gain.setValueAtTime(0.01, ctx.currentTime);
-          gain.gain.linearRampToValueAtTime(0.4, ctx.currentTime + 0.6);
-          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.5);
+          gain.gain.linearRampToValueAtTime(0.5, ctx.currentTime + 0.5);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.4);
 
           osc.connect(gain);
           gain.connect(ctx.destination);
 
           osc.start();
-          osc.stop(ctx.currentTime + 1.5);
+          osc.stop(ctx.currentTime + 1.4);
         } catch (e) {
-          console.log('Web Audio disabled');
+          console.log('Web Audio Context disabled');
         }
       };
 
-      if (btnIniciar) {
-        btnIniciar.onclick = () => {
-          playLaserAudio();
+      if (btnIniciarHotspot) {
+        btnIniciarHotspot.onclick = () => {
+          playLaserSound();
 
-          // 1. Robô entra em modo de carga (inclina pra frente e aumenta o brilho)
-          robotHeroImg.classList.add('charging');
-          robotChestCore.classList.add('super-charging');
+          // 1. Robô entra em modo de carga extrema
+          robotMasterImg.classList.add('charging-state');
+          robotChestCore.classList.add('laser-blast-active');
 
-          // 2. Apó 700ms: Raio de energia explode a tela
+          // 2. Apó 650ms: Raio laser cobre a tela inteira com luz plasma
           setTimeout(() => {
-            beamFlashOverlay.classList.add('active');
-          }, 700);
+            laserFlashOverlay.classList.add('active');
+          }, 650);
 
-          // 3. Após 1200ms: Transição para a plataforma SaaS
+          // 3. Após 1150ms: Transição suave para o SaaS de Seguros
           setTimeout(() => {
             robotScreen.classList.add('launch-fade-out');
             studioApp.classList.add('visible');
             
             setTimeout(() => {
-              beamFlashOverlay.classList.remove('active');
+              laserFlashOverlay.classList.remove('active');
             }, 600);
-          }, 1200);
+          }, 1150);
         };
       }
 
@@ -1251,13 +948,13 @@
         btnVoltarRobo.onclick = () => {
           studioApp.classList.remove('visible');
           robotScreen.classList.remove('launch-fade-out');
-          robotHeroImg.classList.remove('charging');
-          robotChestCore.classList.remove('super-charging');
-          beamFlashOverlay.classList.remove('active');
+          robotMasterImg.classList.remove('charging-state');
+          robotChestCore.classList.remove('laser-blast-active');
+          laserFlashOverlay.classList.remove('active');
         };
       }
 
-      // BANCO DE DADOS E NAVEGAÇÃO INTERNA DO SAAS
+      // BANCO DE DADOS E NAVEGAÇÃO DA PLATAFORMA SAAS
       const navTabs = document.querySelectorAll('.nav-tab-item');
       const contentPanes = document.querySelectorAll('.tab-content-pane');
 
