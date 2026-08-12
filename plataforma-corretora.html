@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VERTEX SEGUROS | Plataforma Comercial & SaaS IA Executivo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>EXSEGUROS | Plataforma Comercial & SaaS IA Executivo</title>
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./favicon.png" />
@@ -34,6 +34,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -46,7 +47,7 @@
     }
 
     /* =========================================================
-       1. TELA DE APRESENTAÇÃO INICIAL (RESPONSIVA E COM SCROLL LIBERADO)
+       1. TELA DE APRESENTAÇÃO INICIAL (RESPONSIVA & MOBILE ERGOLÓGICA)
        ========================================================= */
     #executivePortalScreen {
       position: fixed;
@@ -59,8 +60,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow-y: auto; /* PERMITE ROLAR SE NÃO COUBER NA TELA JANELADA */
+      overflow-y: auto;
       overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s ease;
     }
 
@@ -81,13 +83,12 @@
       pointer-events: none;
     }
 
-    /* IMAGEM DA HOME MAIS CLARA E ILUMINADA (BRIGHTNESS 1.3) */
     .portal-hero-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
-      filter: brightness(1.3) contrast(1.1) saturate(1.1);
+      filter: brightness(1.35) contrast(1.1) saturate(1.15);
       transition: transform 1.2s ease, filter 1.2s ease;
       animation: subtleHeroZoom 12s ease-in-out infinite alternate;
     }
@@ -102,7 +103,6 @@
       filter: brightness(1.4) contrast(1.15);
     }
 
-    /* MÁSCARA DE SOMBRA SUAVE PARA DESTACAR A FOTO */
     .portal-gradient-overlay {
       position: absolute;
       top: 0;
@@ -125,12 +125,6 @@
       justify-content: space-between;
       padding: 28px 48px;
       gap: 20px;
-    }
-
-    @media (max-width: 900px) {
-      .portal-ui-layer {
-        padding: 20px 20px;
-      }
     }
 
     .portal-top-bar {
@@ -274,6 +268,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1.15rem;
+      flex-shrink: 0;
     }
 
     .portal-feature-title {
@@ -327,6 +322,7 @@
       justify-content: center;
       font-size: 1.1rem;
       transition: transform 0.3s;
+      flex-shrink: 0;
     }
 
     .btn-iniciar-executive:hover .arrow-icon-circle {
@@ -376,7 +372,7 @@
 
 
     /* =========================================================
-       2. PLATAFORMA SAAS COM PLANOS DE FUNDO MUITO MAIS CLAROS E BRILHANTES
+       2. PLATAFORMA SAAS COM PLANOS DE FUNDO DINÂMICOS
        ========================================================= */
     #executiveStudioApp {
       position: relative;
@@ -403,7 +399,6 @@
       overflow: hidden;
     }
 
-    /* IMAGENS DAS ABAS 100% VISÍVEIS COM ALTO BRILHO (BRIGHTNESS 1.35) */
     .saas-bg-img-layer {
       position: absolute;
       top: 0;
@@ -418,13 +413,11 @@
       filter: brightness(1.35) contrast(1.1) saturate(1.15);
     }
 
-    /* 100% TOTAL OPACIDADE PARA ENXERGAR PERFEITAMENTE A FOTO */
     .saas-bg-img-layer.active-bg {
       opacity: 1;
       transform: scale(1);
     }
 
-    /* SOMBRA SUAVE PARA PROTEGER A LEITURA SEM ESCURECER A IMAGEM */
     .saas-bg-dark-overlay {
       position: absolute;
       top: 0;
@@ -439,13 +432,13 @@
 
     /* Header Nav Executivo Glassmorphism */
     .header-nav {
-      background: rgba(6, 8, 14, 0.85);
+      background: rgba(6, 8, 14, 0.88);
       border-bottom: 1px solid rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(24px);
       position: sticky;
       top: 0;
       z-index: 100;
-      padding: 16px 0;
+      padding: 14px 0;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
     }
 
@@ -541,7 +534,7 @@
       color: #fff;
     }
 
-    /* Abas Super Estilizadas com Transição */
+    /* Abas Super Estilizadas */
     .tab-nav-bar {
       display: flex;
       gap: 8px;
@@ -566,6 +559,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      white-space: nowrap;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -588,7 +582,6 @@
       padding: 32px 24px;
     }
 
-    /* Banner Stats Quick Info com Efeito Vidro Fosco Cristalo */
     .hero-stats-banner {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -619,9 +612,9 @@
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
+      flex-shrink: 0;
     }
 
-    /* Studio Glass Panels com Transparência Elegante */
     .studio-panel {
       background: rgba(6, 9, 18, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.18);
@@ -662,7 +655,7 @@
       border-radius: 14px;
       color: #fff;
       font-family: var(--font-body);
-      font-size: 0.95rem;
+      font-size: 16px; /* EVITA ZOOM AUTOMÁTICO DO SAFARI / IOS */
       outline: none;
       transition: all 0.25s ease;
     }
@@ -733,7 +726,7 @@
       padding: 18px;
       color: #f8fafc;
       font-family: var(--font-body);
-      font-size: 0.98rem;
+      font-size: 16px; /* EVITA ZOOM AUTOMÁTICO EM SMARTPHONES */
       line-height: 1.7;
       resize: vertical;
       outline: none;
@@ -746,6 +739,7 @@
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(255,255,255,0.12);
       margin-bottom: 20px;
+      -webkit-overflow-scrolling: touch;
     }
 
     .sub-tab-btn {
@@ -814,16 +808,138 @@
       0% { opacity: 0; transform: translateY(12px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+
+    /* =========================================================
+       3. REGRAS DE OTIMIZAÇÃO EXCLUSIVAS PARA SMARTPHONES (MOBILE ANDROID / IOS)
+       Sem alterar NADA da experiência perfeita de Computadores!
+       ========================================================= */
+    @media (max-width: 768px) {
+      .portal-ui-layer {
+        padding: 20px 16px 28px 16px;
+        gap: 16px;
+      }
+
+      .portal-top-bar {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand-logo-img {
+        width: 38px;
+        height: 38px;
+      }
+
+      .brand-name-txt {
+        font-size: 1.25rem;
+      }
+
+      .portal-main-heading {
+        font-size: 2.1rem;
+      }
+
+      .portal-sub-heading {
+        font-size: 1.45rem;
+      }
+
+      .portal-desc-paragraph {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 18px;
+      }
+
+      .portal-feature-item {
+        padding: 10px 14px;
+        gap: 12px;
+      }
+
+      .btn-iniciar-executive {
+        max-width: 100%;
+        width: 100%;
+        padding: 16px 20px;
+        font-size: 1.1rem;
+      }
+
+      .portal-footer-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 12px 16px;
+      }
+
+      .header-flex {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .brand-logo-box {
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .tab-nav-bar {
+        overflow-x: auto;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .nav-tab-item {
+        padding: 9px 14px;
+        font-size: 0.82rem;
+        flex-shrink: 0;
+      }
+
+      .container-studio {
+        padding: 16px 12px;
+      }
+
+      .studio-panel {
+        padding: 20px 16px;
+        border-radius: 18px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .field-group style {
+        grid-column: auto !important;
+      }
+
+      .field-group[style*="grid-column"] {
+        grid-column: auto !important;
+      }
+
+      .slide-preview-box {
+        padding: 22px 18px;
+      }
+
+      .output-console {
+        padding: 16px;
+      }
+
+      .sub-tabs-bar {
+        padding-bottom: 8px;
+      }
+
+      .sub-tab-btn {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- =========================================================
-       1. TELA DE APRESENTAÇÃO INICIAL (RESPONSIVA E COM SCROLL LIBERADO)
+       1. TELA DE APRESENTAÇÃO INICIAL (PERSONALIZADA EXSEGUROS)
        ========================================================= -->
   <div id="executivePortalScreen">
     <div class="portal-bg-stage">
-      <img src="./vertex-insurance-bg.png?v=2.6.3" alt="Vertex Insurance Background" id="portalHeroImg" class="portal-hero-img" />
+      <img src="./vertex-insurance-bg.png?v=3.0" alt="EXSeguros Background" id="portalHeroImg" class="portal-hero-img" />
       <div class="portal-gradient-overlay"></div>
     </div>
 
@@ -831,10 +947,10 @@
       <!-- Top Row Header -->
       <div class="portal-top-bar">
         <div class="brand-group-executive">
-          <img src="./vertex-logo.png" alt="Vertex Logo" class="brand-logo-img" />
+          <img src="./vertex-logo.png" alt="EXSeguros Logo" class="brand-logo-img" />
           <div>
-            <div class="brand-name-txt">VERTEX <span>DIGITAL</span></div>
-            <div style="font-size: 0.72rem; color: #cbd5e1; font-weight: 700; letter-spacing: 1px;">SISTEMA COMERCIAL DE SEGUROS</div>
+            <div class="brand-name-txt">EX<span>SEGUROS</span></div>
+            <div style="font-size: 0.72rem; color: #cbd5e1; font-weight: 700; letter-spacing: 1px;">SISTEMA COMERCIAL & IA EXECUTIVO</div>
           </div>
         </div>
 
@@ -842,21 +958,21 @@
           <div class="status-badge-active">
             <div class="active-dot-green"></div> PLATAFORMA ATIVA
           </div>
-          <div style="font-family: var(--font-tech); font-size: 0.78rem; color: #94a3b8;">v2.6.0</div>
+          <div style="font-family: var(--font-tech); font-size: 0.78rem; color: #94a3b8;">v3.0.0</div>
         </div>
       </div>
 
       <!-- Hero Content Left Box -->
       <div class="portal-hero-box">
         <div class="portal-tag-sub">
-          <i class="ri-shield-star-line"></i> PLATAFORMA DE IMPLEMENTAÇÃO
+          <i class="ri-shield-star-line"></i> PLATAFORMA EXCLUSIVA DE VENDAS
         </div>
-        <h1 class="portal-main-heading">PLATAFORMA DE</h1>
-        <h1 class="portal-main-heading" style="color: #fff;">IMPLEMENTAÇÃO</h1>
-        <div class="portal-sub-heading">VERTEX SEGUROS</div>
+        <h1 class="portal-main-heading">SISTEMA COMERCIAL</h1>
+        <h1 class="portal-main-heading" style="color: #fff;">DE ALTA PERFORMANCE</h1>
+        <div class="portal-sub-heading">EXSEGUROS</div>
 
         <p class="portal-desc-paragraph">
-          Soluções de Inteligência & Automação Comercial sob medida para Corretoras de Seguros de Veículos e Imóveis. Aumente a conversão da sua equipe de vendas.
+          Soluções de Inteligência & Automação Comercial sob medida para a EXSeguros. Aumente a conversão da sua equipe em apólices de Veículos e Imóveis.
         </p>
 
         <!-- Features Grid -->
@@ -886,9 +1002,9 @@
           </div>
         </div>
 
-        <!-- Big Executive Button INICIAR (SEMPRE VISÍVEL E ALCANÇÁVEL!) -->
+        <!-- Big Executive Button INICIAR -->
         <button id="btnIniciarExecutive" class="btn-iniciar-executive">
-          <span>INICIAR PLATAFORMA</span>
+          <span>INICIAR SISTEMA EXSEGUROS</span>
           <div class="arrow-icon-circle"><i class="ri-arrow-right-line"></i></div>
         </button>
       </div>
@@ -924,14 +1040,14 @@
 
 
   <!-- =========================================================
-       2. PLATAFORMA SAAS COM PLANOS DE FUNDO MUITO MAIS CLAROS E BRILHANTES POR ABA
+       2. PLATAFORMA SAAS COM PLANOS DE FUNDO DINÂMICOS (EXSEGUROS)
        ========================================================= -->
   <div id="executiveStudioApp">
-    <!-- Stage de Imagens Fotográficas Dinâmicas por Aba (100% Iluminadas e Brilhantes!) -->
+    <!-- Stage de Imagens Fotográficas Dinâmicas por Aba -->
     <div class="saas-dynamic-bg-stage">
-      <img src="./vertex-bg-scripts.png?v=2.6.3" alt="Scripts Background Showroom Auto" id="saasBgScripts" class="saas-bg-img-layer active-bg" />
-      <img src="./vertex-bg-carrosseis.png?v=2.6.3" alt="Carrosséis Background Villa Imóveis" id="saasBgCarrosseis" class="saas-bg-img-layer" />
-      <img src="./vertex-bg-followup.png?v=2.6.3" alt="Follow-Up Background Desk IA" id="saasBgFollowup" class="saas-bg-img-layer" />
+      <img src="./vertex-bg-scripts.png?v=3.0" alt="Scripts Background Showroom Auto" id="saasBgScripts" class="saas-bg-img-layer active-bg" />
+      <img src="./vertex-bg-carrosseis.png?v=3.0" alt="Carrosséis Background Villa Imóveis" id="saasBgCarrosseis" class="saas-bg-img-layer" />
+      <img src="./vertex-bg-followup.png?v=3.0" alt="Follow-Up Background Desk IA" id="saasBgFollowup" class="saas-bg-img-layer" />
       <div class="saas-bg-dark-overlay"></div>
     </div>
 
@@ -939,30 +1055,32 @@
     <header class="header-nav">
       <div class="container-studio header-flex" style="padding-top:0; padding-bottom:0;">
         <div class="brand-logo-box">
-          <img src="./vertex-logo.png" alt="Vertex Digital" class="brand-img" />
-          <div>
-            <div class="brand-title">VERTEX <span>CORE</span></div>
-            <div style="font-size: 0.72rem; color: #94a3b8; font-weight: 600;">PLATAFORMA SAAS • SEGUROS</div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="./vertex-logo.png" alt="EXSeguros" class="brand-img" />
+            <div>
+              <div class="brand-title">EX<span>SEGUROS</span></div>
+              <div style="font-size: 0.72rem; color: #94a3b8; font-weight: 600;">PLATAFORMA COMERCIAL SAAS</div>
+            </div>
           </div>
           <div class="status-badge-green">
             <i class="ri-checkbox-circle-fill"></i> IA CONECTADA
           </div>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
           <button id="btnVoltarPortal" class="btn-portal-back">
-            <i class="ri-home-5-line"></i> 🏠 Tela Inicial
+            <i class="ri-home-5-line"></i> 🏠 Início
           </button>
 
           <div class="user-pill">
-            <div class="user-avatar-circle">GL</div>
+            <div class="user-avatar-circle">EX</div>
             <div style="font-size: 0.8rem; line-height: 1.2;">
-              <div style="font-weight: 800; color: #fff;">Gabriel de Lima</div>
-              <div style="color: #34d399; font-size: 0.7rem; font-weight: 700;">Diretor de Vendas</div>
+              <div style="font-weight: 800; color: #fff;">EXSeguros</div>
+              <div style="color: #34d399; font-size: 0.7rem; font-weight: 700;">Equipe Comercial</div>
             </div>
           </div>
 
-          <!-- Main Navigation Pills -->
+          <!-- Main Navigation Pills (Com Rolagem Suave no Celular) -->
           <div class="tab-nav-bar">
             <button class="nav-tab-item active" data-tab="tab-scripts" data-bg="saasBgScripts">
               <i class="ri-chat-quote-line"></i> 📜 Scripts Vendas
@@ -1007,17 +1125,17 @@
         </div>
       </div>
 
-      <!-- TAB 1: GERADOR DE SCRIPTS (FUNDO: SHOWROOM LUXURY CAR) -->
+      <!-- TAB 1: GERADOR DE SCRIPTS (SHOWROOM LUXURY CAR) -->
       <div id="tab-scripts" class="tab-content-pane active">
         <div class="studio-panel">
           <div style="margin-bottom: 24px;">
             <span style="background: rgba(255,10,43,0.25); border: 1px solid rgba(255,10,43,0.5); color: #ff334b; padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; text-transform: uppercase;">
-              <i class="ri-car-line"></i> AMBIENTE AUTO & FROTA • SHOWROOM EXECUTIVO
+              <i class="ri-car-line"></i> AMBIENTE AUTO & FROTA • EXSEGUROS
             </span>
             <h2 style="font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: #fff; margin-top: 10px;">
-              Gerador de Scripts de <span style="color: #ff0a2b;">Vendas de Seguros</span>
+              Gerador de Scripts de <span style="color: #ff0a2b;">Vendas EXSeguros</span>
             </h2>
-            <p style="color: #cbd5e1; font-size: 0.98rem;">Roteiros estratégicos para seus funcionários usarem no WhatsApp e fecharem apólices com alta conversão.</p>
+            <p style="color: #cbd5e1; font-size: 0.98rem;">Roteiros estratégicos para a equipe da EXSeguros usar no WhatsApp e fechar apólices com alta conversão.</p>
           </div>
 
           <div class="form-grid">
@@ -1057,7 +1175,7 @@
           </button>
 
           <div class="output-console">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
               <span style="background: rgba(255,10,43,0.22); color: #ff334b; font-size: 0.78rem; font-weight: 800; padding: 4px 14px; border-radius: 20px;" id="scriptBadgeTag">🚗 SEGURO AUTO • ABORDAGEM INICIAL</span>
               <span style="font-size: 0.8rem; color: #94a3b8;">Pronto para copiar e colar no WhatsApp</span>
             </div>
@@ -1076,28 +1194,28 @@
         </div>
       </div>
 
-      <!-- TAB 2: GERADOR DE CARROSSÉIS (FUNDO: ARCHITECTURAL RESIDENCE VILLA) -->
+      <!-- TAB 2: GERADOR DE CARROSSÉIS (EXSEGUROS BRANDING) -->
       <div id="tab-carrosseis" class="tab-content-pane">
         <div class="studio-panel">
           <div style="margin-bottom: 24px;">
             <span style="background: rgba(0,210,255,0.25); border: 1px solid rgba(0,210,255,0.5); color: #00d2ff; padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; text-transform: uppercase;">
-              <i class="ri-home-4-line"></i> AMBIENTE IMOBILIÁRIO • ARQUITETURA DE LUXO
+              <i class="ri-home-4-line"></i> AMBIENTE IMOBILIÁRIO • EXSEGUROS
             </span>
             <h2 style="font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: #fff; margin-top: 10px;">
               Gerador de Carrosséis <span style="color: #ff0a2b;">Fundo Preto & Citações</span>
             </h2>
-            <p style="color: #cbd5e1; font-size: 0.98rem;">Posts minimalistas de alto engajamento com aspas vermelhas e a marca da sua seguradora.</p>
+            <p style="color: #cbd5e1; font-size: 0.98rem;">Posts minimalistas de alto engajamento com aspas vermelhas e a marca EXSeguros.</p>
           </div>
 
           <div class="form-grid">
             <div class="field-group">
               <label><i class="ri-building-line" style="color: #ff0a2b;"></i> Nome da Seguradora / Corretora:</label>
-              <input type="text" id="carrosselNomeSeguradora" class="input-box" value="Vertex Seguros" placeholder="Ex: Fernando Lessa / Vertex Seguros" />
+              <input type="text" id="carrosselNomeSeguradora" class="input-box" value="EXSeguros" placeholder="Ex: EXSeguros" />
             </div>
 
             <div class="field-group">
               <label><i class="ri-at-line" style="color: #ff0a2b;"></i> Arroba do Instagram (@):</label>
-              <input type="text" id="carrosselArrobaSeguradora" class="input-box" value="@vertexseguros" placeholder="Ex: @milionariosbrazil" />
+              <input type="text" id="carrosselArrobaSeguradora" class="input-box" value="@exseguros" placeholder="Ex: @exseguros" />
             </div>
 
             <div class="field-group" style="grid-column: span 2;">
@@ -1123,7 +1241,7 @@
           <div class="slide-grid-wrap" id="slidesGrid"></div>
 
           <div class="output-console" style="margin-top: 30px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
               <strong style="color: #fff; font-size: 0.95rem;"><i class="ri-file-text-line"></i> Legenda Persuasiva Pronta para o Instagram:</strong>
               <button id="btnCopiarLegenda" class="btn-action btn-action-primary" style="padding: 6px 14px; font-size: 0.82rem;">
                 <i class="ri-file-copy-line"></i> Copiar Legenda
@@ -1134,15 +1252,15 @@
         </div>
       </div>
 
-      <!-- TAB 3: CENTRAL DE FOLLOW-UP (FUNDO: EXECUTIVE DESK & IA ANALYTICS) -->
+      <!-- TAB 3: CENTRAL DE FOLLOW-UP (EXSEGUROS INTELLIGENCE) -->
       <div id="tab-followup" class="tab-content-pane">
         <div class="studio-panel">
           <div style="margin-bottom: 24px;">
             <span style="background: rgba(16,185,129,0.25); border: 1px solid rgba(16,185,129,0.5); color: #34d399; padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; text-transform: uppercase;">
-              <i class="ri-radar-line"></i> AMBIENTE INTELIGÊNCIA ARTIFICIAL & RECOVERY
+              <i class="ri-radar-line"></i> CENTRAL INTELIGENTE • EXSEGUROS
             </span>
             <h2 style="font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: #fff; margin-top: 10px;">
-              Central de Follow-Up <span style="color: #ff0a2b;">Inteligente para Corretores</span>
+              Central de Follow-Up <span style="color: #ff0a2b;">Inteligente EXSeguros</span>
             </h2>
             <p style="color: #cbd5e1; font-size: 0.98rem;">Preencha os dados do lead sem resposta e a IA gerará WhatsApp, Roteiro de Áudio, E-mail e Ultimato.</p>
           </div>
@@ -1198,7 +1316,7 @@
           </div>
 
           <div class="output-console" style="margin-top: 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
               <span style="background: rgba(255,10,43,0.22); color: #ff334b; font-size: 0.78rem; font-weight: 800; padding: 4px 14px; border-radius: 20px;" id="followBadgeTag">📱 WHATSAPP • 1 A 2 DIAS DE VÁCUO</span>
               <span style="font-size: 0.8rem; color: #94a3b8;" id="followOutputSubLabel">Mensagem persuasiva com pergunta de resposta curta</span>
             </div>
@@ -1273,23 +1391,23 @@
         };
       });
 
-      // SCRIPTS
+      // SCRIPTS EXSEGUROS
       const BANCO_SCRIPTS = {
         auto: {
-          abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Sou o consultor da Corretora de Seguros. 👋\n\nVi que o seguro do seu ${objeto} está próximo da renovação (ou vi que você solicitou um orçamento).\n\nFiz um estudo rápido comparando as 3 maiores seguradoras do mercado (Porto, Azul, Tokio) com cobertura completa contra roubo, furto, colisão, terceiros e guincho ilimitado.\n\nPosso te enviar essa simulação sem compromisso agora?`,
-          cotacao: (nome, objeto) => `Olá, ${nome}! Conseguimos uma condição especial para o seu ${objeto}.\n\nO valor aprovado para cobertura total ficou em apenas 10x de R$ 189,00 sem juros.\n\nO que inclui:\n✅ 100% da Tabela FIPE (Perda Total / Roubo)\n✅ Cobertura para Terceiros até R$ 100.000,00\n✅ Carro Reserva por 15 dias\n✅ Guincho sem limite de quilometragem 24h\n\nQuer que eu emita a proposta pra garantir essa tabela especial hoje?`,
-          obj_caro: (nome, objeto) => `${nome}, entendo perfeitamente sua preocupação com o orçamento. Mas me deixa te fazer uma pergunta rápida:\n\nQuanto custaria para você ter que arcar do próprio bolso com R$ 60 mil se seu ${objeto} for roubado amanhã ou sofrer uma colisão?\n\nEsse seguro custa menos de R$ 6,00 por dia — o valor de um cafézinho pra você rodar tranquilo sabendo que seu patrimônio tá 100% blindado.\n\nPodemos parcelar em 10x sem juros. Vamos garantir a proteção hoje?`,
-          obj_banco: (nome, objeto) => `Entendo, ${nome}! Banco costuma colocar cotação genérica tirando coberturas vitais como Carro Reserva ou reduzindo a cobertura de terceiros a valores mínimos.\n\nAqui na nossa Corretora você tem atendimento humano 24h direto no meu WhatsApp. Se precisar de guincho às 2h da manhã, você fala direto comigo, sem robô de banco.\n\nDeixa eu ajustar a proposta para cobrir o preço do banco mantendo essa segurança?`,
-          fechamento: (nome, objeto) => `${nome}, a seguradora me notificou que a tabela promocional com 15% de desconto e Carro Reserva cortesia para o seu ${objeto} encerra HOJE às 18h.\n\nSe fecharmos agora, consigo travar esse valor exclusivo pra você sem nenhum reajuste.\n\nPosso dar entrada na emissão da apólice agora?`,
-          posvenda: (nome, objeto) => `Olá, ${nome}! Apólice do seu ${objeto} emitida com sucesso! 🎉\n\nQualquer emergência 24h, meu WhatsApp é seu canal direto. Se tiver algum amigo ou familiar que comprou carro recente ou precisa renovar o seguro, me indica que dou uma condição promocional pra eles também!`
+          abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Sou o consultor especialista da EXSeguros. 👋\n\nVi que o seguro do seu ${objeto} está próximo da renovação (ou vi que você solicitou um orçamento).\n\nFiz um estudo rápido comparando as 3 maiores seguradoras do mercado (Porto, Azul, Tokio) com cobertura completa contra roubo, furto, colisão, terceiros e guincho ilimitado.\n\nPosso te enviar essa simulação sem compromisso agora?`,
+          cotacao: (nome, objeto) => `Olá, ${nome}! Conseguimos uma condição especial na EXSeguros para o seu ${objeto}.\n\nO valor aprovado para cobertura total ficou em apenas 10x de R$ 189,00 sem juros.\n\nO que inclui:\n✅ 100% da Tabela FIPE (Perda Total / Roubo)\n✅ Cobertura para Terceiros até R$ 100.000,00\n✅ Carro Reserva por 15 dias\n✅ Guincho sem limite de quilometragem 24h\n\nQuer que eu emita a proposta pra garantir essa tabela especial hoje?`,
+          obj_caro: (nome, objeto) => `${nome}, entendo perfeitamente sua preocupação com o orçamento. Mas me deixa te fazer uma pergunta rápida:\n\nQuanto custaria para você ter que arcar do próprio bolso com R$ 60 mil se seu ${objeto} for roubado amanhã ou sofrer uma colisão?\n\nNa EXSeguros, esse seguro custa menos de R$ 6,00 por dia — o valor de um cafézinho pra você rodar tranquilo sabendo que seu patrimônio tá 100% blindado.\n\nPodemos parcelar em 10x sem juros. Vamos garantir a proteção hoje?`,
+          obj_banco: (nome, objeto) => `Entendo, ${nome}! Banco costuma colocar cotação genérica tirando coberturas vitais como Carro Reserva ou reduzindo a cobertura de terceiros a valores mínimos.\n\nAqui na EXSeguros você tem atendimento humano 24h direto no meu WhatsApp. Se precisar de guincho às 2h da manhã, você fala direto comigo, sem robô de banco.\n\nDeixa eu ajustar a proposta para cobrir o preço do banco mantendo essa segurança?`,
+          fechamento: (nome, objeto) => `${nome}, a seguradora me notificou que a tabela promocional da EXSeguros com 15% de desconto e Carro Reserva cortesia para o seu ${objeto} encerra HOJE às 18h.\n\nSe fecharmos agora, consigo travar esse valor exclusivo pra você sem nenhum reajuste.\n\nPosso dar entrada na emissão da apólice agora?`,
+          posvenda: (nome, objeto) => `Olá, ${nome}! Apólice do seu ${objeto} emitida com sucesso na EXSeguros! 🎉\n\nQualquer emergência 24h, meu WhatsApp é seu canal direto. Se tiver algum amigo ou familiar que comprou carro recente ou precisa renovar o seguro, me indica que dou uma condição promocional pra eles também!`
         },
         imovel: {
-          abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Sou o especialista em seguro residencial da Corretora. 👋\n\nVocê sabia que menos de 15% dos proprietários sabem que o seguro imobiliário cobre não só incêndio, mas também vazamentos, queima de eletrodomésticos por raio e até chaveiro/eletricista 24h?\n\nFiz um estudo para o seu imóvel (${objeto}). Posso te mostrar como proteger seu patrimônio por menos de R$ 1,50 por dia?`,
-          cotacao: (nome, objeto) => `Olá, ${nome}! A cotação para proteção completa do seu imóvel (${objeto}) ficou aprovada!\n\nValor anual: Apenas 10x de R$ 45,00 (ou R$ 450,00 à vista).\n\nO que sua casa ganha:\n✅ R$ 300.000 de cobertura para a Estrutura\n✅ R$ 50.000 para móveis e eletros contra Incêndio/Queima Elétrica\n✅ Cobertura para Vazamentos e Danos a Vizinhos\n✅ Chaveiro, Eletricista e Encanador 24h Grátis\n\nPodemos emitir a apólice hoje?`,
-          obj_caro: (nome, objeto) => `${nome}, compreendo! Mas um vazamento de cano no banheiro pode causar R$ 8.000 em estragos no apartamento do vizinho. Com o seguro, a seguradora paga tudo.\n\nEstamos falando de R$ 1,50 por dia pra proteger todo o seu lar. Vamos emitir pra você não correr esse risco?`,
-          obj_banco: (nome, objeto) => `${nome}, o seguro do condomínio cobre APENAS as áreas comuns do prédio (corredor, elevador). Ele NÃO COBRE nada dentro do seu apartamento — se sua TV queimar ou houver curto na sua cozinha, o condomínio não paga nada.\n\nO Seguro Imobiliário individual é o que protege seus móveis de verdade. Deixa eu emitir pra você ficar 100% seguro?`,
-          fechamento: (nome, objeto) => `${nome}, a seguradora liberou o pacote especial com Assistência VIP (com conserto de geladeira e ar-condicionado inclusos) apenas para apólices emitidas até o fim do dia.\n\nPosso cadastrar os dados do imóvel (${objeto}) pra garantir esse benefício?`,
-          posvenda: (nome, objeto) => `Parabéns, ${nome}! O seu imóvel (${objeto}) está oficialmente protegido! 🏠🛡️ Segue o cartão digital com a assistência 24h.`
+          abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Sou o especialista em seguro residencial da EXSeguros. 👋\n\nVocê sabia que menos de 15% dos proprietários sabem que o seguro imobiliário cobre não só incêndio, mas também vazamentos, queima de eletrodomésticos por raio e até chaveiro/eletricista 24h?\n\nFiz um estudo para o seu imóvel (${objeto}). Posso te mostrar como proteger seu patrimônio por menos de R$ 1,50 por dia?`,
+          cotacao: (nome, objeto) => `Olá, ${nome}! A cotação EXSeguros para proteção completa do seu imóvel (${objeto}) ficou aprovada!\n\nValor anual: Apenas 10x de R$ 45,00 (ou R$ 450,00 à vista).\n\nO que sua casa ganha:\n✅ R$ 300.000 de cobertura para a Estrutura\n✅ R$ 50.000 para móveis e eletros contra Incêndio/Queima Elétrica\n✅ Cobertura para Vazamentos e Danos a Vizinhos\n✅ Chaveiro, Eletricista e Encanador 24h Grátis\n\nPodemos emitir a apólice hoje?`,
+          obj_caro: (nome, objeto) => `${nome}, compreendo! Mas um vazamento de cano no banheiro pode causar R$ 8.000 em estragos no apartamento do vizinho. Com o seguro EXSeguros, a seguradora paga tudo.\n\nEstamos falando de R$ 1,50 por dia pra proteger todo o seu lar. Vamos emitir pra você não correr esse risco?`,
+          obj_banco: (nome, objeto) => `${nome}, o seguro do condomínio cobre APENAS as áreas comuns do prédio (corredor, elevador). Ele NÃO COBRE nada dentro do seu apartamento — se sua TV queimar ou houver curto na sua cozinha, o condomínio não paga nada.\n\nO Seguro Imobiliário individual EXSeguros é o que protege seus móveis de verdade. Deixa eu emitir pra você ficar 100% seguro?`,
+          fechamento: (nome, objeto) => `${nome}, a EXSeguros liberou o pacote especial com Assistência VIP (com conserto de geladeira e ar-condicionado inclusos) apenas para apólices emitidas até o fim do dia.\n\nPosso cadastrar os dados do imóvel (${objeto}) pra garantir esse benefício?`,
+          posvenda: (nome, objeto) => `Parabéns, ${nome}! O seu imóvel (${objeto}) está oficialmente protegido pela EXSeguros! 🏠🛡️ Segue o cartão digital com a assistência 24h.`
         }
       };
 
@@ -1330,43 +1448,43 @@
         window.open(`https://wa.me/?text=${textEnc}`, '_blank');
       };
 
-      // CARROSSÉIS
+      // CARROSSÉIS EXSEGUROS
       const BANCO_CARROSSEIS = {
         auto_risco: {
           slides: [
             { title: "Não é sobre economizar na apólice.", body: "É sobre **não perder o carro**, a paciência e **anos de economia** por causa de uma cotação barata que cortou o guincho." },
             { title: "O seguro mais caro do mundo:", body: "É aquele que você achava que tinha, mas descobre na hora do sinistro que a seguradora **não cobre danos a terceiros**." },
             { title: "Quem tem seguro não paga por azar.", body: "Paga pela **tranquilidade** de saber que se algo acontecer hoje à noite, **amanhã o problema está 100% resolvido**." },
-            { title: "Proteja seu veículo hoje mesmo.", body: "Solicite uma **cotação personalizada** com as maiores seguradoras e rode **totalmente blindado**." }
+            { title: "Proteja seu veículo hoje mesmo.", body: "Solicite uma **cotação personalizada na EXSeguros** e rode **totalmente blindado**." }
           ],
-          caption: `🚗 Não arrisque seu patrimônio com apólices genéricas.\n\nFazer um Seguro Auto completo garante guincho sem limite de KM, cobertura de terceiros de verdade e atendimento 24h sem burocracia.\n\n📲 Solicite sua simulação no WhatsApp pelo link da Bio!\n\n#seguroauto #protecaoveicular #corretoradeseguros #carro`
+          caption: `🚗 Não arrisque seu patrimônio com apólices genéricas.\n\nFazer um Seguro Auto completo na EXSeguros garante guincho sem limite de KM, cobertura de terceiros de verdade e atendimento 24h sem burocracia.\n\n📲 Solicite sua simulação no WhatsApp pelo link da Bio!\n\n#exseguros #seguroauto #protecaoveicular #corretoradeseguros #carro`
         },
         imovel_erro: {
           slides: [
             { title: "O seguro do condomínio não protege a sua casa.", body: "Ele cobre a fachada e os elevadores. Se uma **TV queimar por raio** ou um **cano estourar na sua cozinha**, o prejuízo é **100% seu**." },
             { title: "Menos de R$ 1,50 por dia.", body: "É o valor para proteger a **estrutura do seu imóvel**, seus móveis, eletrodomésticos e ainda ter **chaveiro e encanador 24h grátis**." },
             { title: "Patrimônio não se arrisca.", body: "Um curto-circuito leva **segundos** para destruir o que você levou **anos para construir**. Proteção é inteligência financeira." },
-            { title: "Garanta a paz de espírito do seu lar.", body: "Chame nossa equipe especialista no WhatsApp e faça uma **simulação rápida para o seu imóvel**." }
+            { title: "Garanta a paz de espírito do seu lar.", body: "Chame a equipe da EXSeguros no WhatsApp e faça uma **simulação rápida para o seu imóvel**." }
           ],
-          caption: `🏠 Morar em prédio não significa que seu apartamento está coberto!\n\nO Seguro Residencial individual custa menos de R$ 1,50/dia e protege tudo dentro da sua casa contra surtos elétricos, vazamentos e incêndio.\n\n📲 Simule agora mesmo no link da Bio!\n\n#seguroresidencial #seguroimovel #apartamento #casa`
+          caption: `🏠 Morar em prédio não significa que seu apartamento está coberto!\n\nO Seguro Residencial individual EXSeguros custa menos de R$ 1,50/dia e protege tudo dentro da sua casa contra surtos elétricos, vazamentos e incêndio.\n\n📲 Simule agora mesmo no link da Bio!\n\n#exseguros #seguroresidencial #seguroimovel #apartamento #casa`
         },
         vida_familia: {
           slides: [
             { title: "Seguro de Vida não é sobre você.", body: "É sobre garantir que a sua **família mantenha o mesmo padrão de vida**, mesmo se você **não estiver mais aqui amanhã**." },
             { title: "Você faz seguro para o seu carro.", body: "Por que não faz seguro para a **sua própria vida** e para a **segurança de quem você mais ama** neste mundo?" },
             { title: "Seguro de vida se faz com saúde.", body: "Quando o imprevisto acontece, **já é tarde demais para contratar**. O momento de proteger sua família é **agora**." },
-            { title: "Proteja quem você ama hoje.", body: "Fale com nosso consultor e descubra planos sob medida de **Seguro de Vida e Proteção Familiar**." }
+            { title: "Proteja quem você ama hoje.", body: "Fale com o consultor EXSeguros e descubra planos sob medida de **Seguro de Vida e Proteção Familiar**." }
           ],
-          caption: `❤️ O maior ato de amor pela sua família é garantir o futuro deles.\n\nConheça nossas apólices de Seguro de Vida com cobertura para diagnósticos graves e proteção financeira familiar.\n\n📲 Fale conosco no WhatsApp pelo link da Bio!\n\n#segurodevida #protecaofamiliar #seguros #planejametofinanceiro`
+          caption: `❤️ O maior ato de amor pela sua família é garantir o futuro deles.\n\nConheça nossas apólices EXSeguros de Seguro de Vida com cobertura para diagnósticos graves e proteção financeira familiar.\n\n📲 Fale conosco no WhatsApp pelo link da Bio!\n\n#exseguros #segurodevida #protecaofamiliar #seguros #planejametofinanceiro`
         },
         auto_renovacao: {
           slides: [
             { title: "Não renove seu seguro no automático.", body: "Sua **classe de bônus pertence a você**, e não à sua antiga seguradora. Cotar em outras marcas pode te fazer **economizar até 30%**." },
             { title: "O segredo das corretoras multimarcas:", body: "Comparamos **Porto, Azul, Tokio, HDI e SulAmérica** ao mesmo tempo para encontrar a **menor franquia pelo menor preço**." },
-            { title: "Renovar sem pesquisar é rasgar dinheiro.", body: "Em 2 minutos nossa equipe faz o estudo completo e garante **Carro Reserva grátis** e **desconto exclusivo**." },
+            { title: "Renovar sem pesquisar é rasgar dinheiro.", body: "Em 2 minutos nossa equipe EXSeguros faz o estudo completo e garante **Carro Reserva grátis** e **desconto exclusivo**." },
             { title: "Sua renovação está chegando?", body: "Envie sua apólice atual para nosso WhatsApp e receba um **estudo comparativo 100% gratuito**." }
           ],
-          caption: `💡 Economize na renovação do seu Seguro Auto sem abrir mão da qualidade!\n\nCotamos em 5 seguradoras ao mesmo tempo para garantir a melhor condição para seu veículo.\n\n📲 Chame no WhatsApp e economize até 30%!\n\n#seguroauto #renovacaodeseguro #economizarnoseguro #corretoradeseguros`
+          caption: `💡 Economize na renovação do seu Seguro Auto com a EXSeguros!\n\nCotamos em 5 seguradoras ao mesmo tempo para garantir a melhor condição para seu veículo.\n\n📲 Chame no WhatsApp e economize até 30%!\n\n#exseguros #seguroauto #renovacaodeseguro #economizarnoseguro #corretoradeseguros`
         }
       };
 
@@ -1385,8 +1503,8 @@
         const data = BANCO_CARROSSEIS[carrosselTemaSelect.value];
         if (!data) return;
 
-        const nomeSeg = carrosselNomeSeguradora.value.trim() || 'Vertex Seguros';
-        const arrobaSeg = carrosselArrobaSeguradora.value.trim() || '@vertexseguros';
+        const nomeSeg = carrosselNomeSeguradora.value.trim() || 'EXSeguros';
+        const arrobaSeg = carrosselArrobaSeguradora.value.trim() || '@exseguros';
 
         slidesGrid.innerHTML = '';
         data.slides.forEach((slide, idx) => {
@@ -1438,7 +1556,7 @@
       btnBaixarTodosSlides.onclick = () => {
         const cards = document.querySelectorAll('.slide-preview-box');
         cards.forEach((c, i) => {
-          setTimeout(() => baixarSlide(c, `Slide_Corretora_0${i + 1}.png`), i * 600);
+          setTimeout(() => baixarSlide(c, `Slide_EXSeguros_0${i + 1}.png`), i * 600);
         });
       };
 
@@ -1448,22 +1566,22 @@
         alert('Legenda copiada com sucesso!');
       };
 
-      // FOLLOW-UP GENERATOR
+      // FOLLOW-UP GENERATOR EXSEGUROS
       const BANCO_FOLLOWUP = {
         auto: {
           vacuo: (nome, dias) => ({
-            wa: `Oi, ${nome}! Tudo bem? 👋\n\nTe mandei a cotação do seguro do seu veículo há alguns dias e queria saber se você conseguiu dar uma olhadinha.\n\nFicou alguma dúvida sobre o valor da franquia ou sobre o guincho ilimitado?\n\nMe avisa aqui pra eu não deixar sua tabela promocional vencer!`,
-            audio: `[TOM DESCONTRAÍDO E AMIGÁVEL]:\n"Oi ${nome}, tudo bem por aí? Aqui é o consultor da Corretora. Tô te mandando esse áudio bem rápido porque vi que você não me respondeu sobre a cotação do seguro do carro. Conseguiu olhar a proposta da Porto Seguro que te mandei? Me dá um retorno aqui só pra eu saber se te ajudo por aqui, tá bom? Um abraço!"`,
-            email: `Assunto: Re: Cotação de Seguro Auto - ${nome}\n\nOlá, ${nome},\n\nEspero que esteja bem.\n\nEstou entrando em contato para saber se teve a oportunidade de analisar a proposta de Seguro Auto que enviamos.\n\nCaso necessite de algum ajuste no valor das franquias ou inclusão de condutores adicionais, fico à total disposição para personalizar a apólice conforme suas necessidades.\n\nPodemos conversar hoje rapidamente por telefone ou WhatsApp?\n\nAtenciosamente,\nEquipe de Vendas - Corretora de Seguros`,
-            sub1: `Oi, ${nome}! Passando rapidinho pra avisar que a seguradora liberou um bônus especial de **Carro Reserva Grátis por 15 dias** para as propostas aprovadas até esta sexta-feira.\n\nConsigo incluir essa cortesia na sua apólice do veículo. Quer que eu emita pra travar essa condição?`,
-            sub2: `Oi, ${nome}. Como não tive seu retorno nas mensagens anteriores, imagino que você tenha decidido postergar a contratação do seguro do veículo por enquanto.\n\nEstou encerrando o seu protocolo de desconto para liberar a tabela para outros clientes. Se precisar no futuro, meu contato continua à disposição!\n\nUm abraço!`
+            wa: `Oi, ${nome}! Tudo bem? 👋\n\nTe mandei a cotação do seguro do seu veículo pela EXSeguros há alguns dias e queria saber se você conseguiu dar uma olhadinha.\n\nFicou alguma dúvida sobre o valor da franquia ou sobre o guincho ilimitado?\n\nMe avisa aqui pra eu não deixar sua tabela promocional vencer!`,
+            audio: `[TOM DESCONTRAÍDO E AMIGÁVEL]:\n"Oi ${nome}, tudo bem por aí? Aqui é o consultor da EXSeguros. Tô te mandando esse áudio bem rápido porque vi que você não me respondeu sobre a cotação do seguro do carro. Conseguiu olhar a proposta da Porto Seguro que te mandei? Me dá um retorno aqui só pra eu saber se te ajudo por aqui, tá bom? Um abraço!"`,
+            email: `Assunto: Re: Cotação de Seguro Auto - ${nome} (EXSeguros)\n\nOlá, ${nome},\n\nEspero que esteja bem.\n\nEstou entrando em contato pela EXSeguros para saber se teve a oportunidade de analisar a proposta de Seguro Auto que enviamos.\n\nCaso necessite de algum ajuste no valor das franquias ou inclusão de condutores adicionais, fico à total disposição para personalizar a apólice conforme suas necessidades.\n\nPodemos conversar hoje rapidamente por telefone ou WhatsApp?\n\nAtenciosamente,\nEquipe de Vendas - EXSeguros`,
+            sub1: `Oi, ${nome}! Passando rapidinho pela EXSeguros pra avisar que a seguradora liberou um bônus especial de **Carro Reserva Grátis por 15 dias** para as propostas aprovadas até esta sexta-feira.\n\nConsigo incluir essa cortesia na sua apólice do veículo. Quer que eu emita pra travar essa condição?`,
+            sub2: `Oi, ${nome}. Como não tive seu retorno nas mensagens anteriores, imagino que você tenha decidido postergar a contratação do seguro do veículo por enquanto.\n\nEstou encerrando o seu protocolo de desconto na EXSeguros para liberar a tabela para outros clientes. Se precisar no futuro, meu contato continua à disposição!\n\nUm abraço!`
           }),
           pensar: (nome, dias) => ({
-            wa: `Oi, ${nome}! Tudo bem?\n\nSei que você comentou que iria analisar a proposta do Seguro Auto com calma. Teve a chance de avaliar?\n\nConsigo parcelar a primeira parcela sem juros no cartão ou ajustar a franquia para caber perfeitamente no seu orçamento. O que acha de resolvermos isso hoje?`,
-            audio: `[TOM CONSULTIVO E RESOLUTIVO]:\n"Oi ${nome}! Tudo bem? Tô te mandando esse áudio porque pensei na nossa conversa. Sei que você falou que ia dar uma pensada no orçamento do seguro. Consegui uma flexibilização no parcelamento com a seguradora pra te ajudar a fechar sem apertar seu mês. Me avisa se podemos ajustar!"`,
-            email: `Assunto: Proposta Personalizada de Seguro Auto - ${nome}\n\nOlá, ${nome},\n\nCompreendo perfeitamente a importância de analisar o orçamento antes de tomar uma decisão.\n\nPara facilitar sua escolha, reavaliei as opções com as seguradoras parceiras e consegui uma opção com franquia reduzida mantendo a proteção total de terceiros e guincho 24h.\n\nPodemos fazer um ajuste rápido na proposta?\n\nAtenciosamente,\nCorretora de Seguros`,
-            sub1: `Oi, ${nome}! Para você não rodar desprotegido, consegui autorização para recalcular sua proposta reduzindo a franquia pela metade com a mesma cobertura FIPE 100%.\n\nO valor ficou super acessível. Posso te enviar o resumo em 1 minuto?`,
-            sub2: `${nome}, entendo que o momento pode não ser o ideal. Estou pausando seu atendimento para não te incomodar.\n\nLembre-se apenas de que trafegar sem seguro exige arcar com 100% do valor do carro em caso de colisão ou roubo. Se mudar de ideia, estou por aqui! Abraço.`
+            wa: `Oi, ${nome}! Tudo bem?\n\nSei que você comentou que iria analisar a proposta do Seguro Auto com calma. Teve a chance de avaliar?\n\nConsigo parcelar a primeira parcela sem juros no cartão ou ajustar a franquia para caber perfeitamente no seu orçamento na EXSeguros. O que acha de resolvermos isso hoje?`,
+            audio: `[TOM CONSULTIVO E RESOLUTIVO]:\n"Oi ${nome}! Tudo bem? Tô te mandando esse áudio porque pensei na nossa conversa. Sei que você falou que ia dar uma pensada no orçamento do seguro. Consegui uma flexibilização no parcelamento pela EXSeguros pra te ajudar a fechar sem apertar seu mês. Me avisa se podemos ajustar!"`,
+            email: `Assunto: Proposta Personalizada EXSeguros - ${nome}\n\nOlá, ${nome},\n\nCompreendo perfeitamente a importância de analisar o orçamento antes de tomar uma decisão.\n\nPara facilitar sua escolha, reavaliei as opções com as seguradoras parceiras da EXSeguros e consegui uma opção com franquia reduzida mantendo a proteção total de terceiros e guincho 24h.\n\nPodemos fazer um ajuste rápido na proposta?\n\nAtenciosamente,\nEXSeguros`,
+            sub1: `Oi, ${nome}! Para você não rodar desprotegido, consegui autorização na EXSeguros para recalcular sua proposta reduzindo a franquia pela metade com a mesma cobertura FIPE 100%.\n\nO valor ficou super acessível. Posso te enviar o resumo em 1 minuto?`,
+            sub2: `${nome}, entendo que o momento pode não ser o ideal. Estou pausando seu atendimento na EXSeguros para não te incomodar.\n\nLembre-se apenas de que trafegar sem seguro exige arcar com 100% do valor do carro em caso de colisão ou roubo. Se mudar de ideia, estou por aqui! Abraço.`
           })
         }
       };

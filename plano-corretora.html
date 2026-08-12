@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VERTEX SEGUROS | Proposta Comercial & Plano de Implementação SaaS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>EXSEGUROS | Proposta Comercial & Plano de Implementação SaaS</title>
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./favicon.png" />
@@ -33,6 +33,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -76,7 +77,7 @@
       pointer-events: none;
     }
 
-    /* Top Action Bar Float (Não aparece na impressão) */
+    /* Top Action Bar Float */
     .top-action-bar {
       position: sticky;
       top: 0;
@@ -286,6 +287,7 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 6px 20px rgba(255, 10, 43, 0.4);
+      flex-shrink: 0;
     }
 
     .section-title-text {
@@ -378,9 +380,10 @@
     .bullet-item i {
       color: var(--primary-red);
       font-size: 1rem;
+      flex-shrink: 0;
     }
 
-    /* ANCORAGEM DE VALOR (TABELA DE PREÇOS TRADICIONAIS) */
+    /* ANCORAGEM DE VALOR */
     .anchoring-box {
       background: rgba(255, 10, 43, 0.06);
       border: 1px solid rgba(255, 10, 43, 0.25);
@@ -417,7 +420,7 @@
       text-decoration: line-through;
     }
 
-    /* AS 2 OPÇÕES DE INVESTIMENTO ESTRATÉGICO (PRICING TIERS) */
+    /* AS 2 OPÇÕES DE INVESTIMENTO ESTRATÉGICO */
     .pricing-tiers-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -523,6 +526,7 @@
       color: #34d399;
       font-size: 1.1rem;
       margin-top: 1px;
+      flex-shrink: 0;
     }
 
     .btn-pricing-cta {
@@ -563,7 +567,7 @@
       background: rgba(255, 255, 255, 0.16);
     }
 
-    /* Roadmap em 4 Fases */
+    /* Roadmap */
     .roadmap-list {
       display: flex;
       flex-direction: column;
@@ -590,9 +594,10 @@
       border-radius: 10px;
       white-space: nowrap;
       font-family: var(--font-tech);
+      flex-shrink: 0;
     }
 
-    /* Termo de Aceite & Assinatura Executiva */
+    /* Signatures */
     .signatures-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -609,6 +614,99 @@
     .sig-line {
       border-top: 1px solid rgba(255, 255, 255, 0.3);
       padding-top: 10px;
+    }
+
+    /* =========================================================
+       REGRAS DE RESPONSIVIDADE E OTIMIZAÇÃO PARA SMARTPHONES (MOBILE)
+       Mantendo 100% intacta a visualização para desktop!
+       ========================================================= */
+    @media (max-width: 768px) {
+      .top-action-flex {
+        padding: 0 16px;
+      }
+      .brand-title {
+        font-size: 1.15rem;
+      }
+      .btn-group-top {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .btn-action-sm {
+        flex: 1;
+        justify-content: center;
+        padding: 8px 12px;
+        font-size: 0.78rem;
+      }
+
+      .proposal-container {
+        padding: 0 12px 40px 12px;
+        margin: 20px auto;
+      }
+
+      .proposal-hero-card {
+        padding: 24px 18px;
+        border-radius: 18px;
+        margin-bottom: 24px;
+      }
+
+      .hero-main-title {
+        font-size: 1.95rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+      }
+
+      .meta-cards-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .meta-item-box {
+        padding: 12px;
+      }
+
+      .meta-item-val {
+        font-size: 0.85rem;
+      }
+
+      .glass-card-panel {
+        padding: 20px 16px;
+        border-radius: 18px;
+        margin-bottom: 24px;
+      }
+
+      .section-title-text {
+        font-size: 1.35rem;
+      }
+
+      .pilar-feature-card {
+        padding: 18px 14px;
+      }
+
+      .pilar-card-title {
+        font-size: 1.2rem;
+      }
+
+      .pilar-bullets-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-tiers-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-card.featured {
+        transform: none;
+      }
+
+      .roadmap-step-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 14px 16px;
+      }
     }
 
     /* REGRA DE IMPRESSÃO EM PDF A4 */
@@ -648,7 +746,7 @@
 
   <!-- Stage de Imagem Fotográfica de Fundo Fixo Iluminada -->
   <div class="proposal-bg-stage">
-    <img src="./vertex-insurance-bg.png?v=2.6" alt="Vertex Insurance Background" class="proposal-bg-img" />
+    <img src="./vertex-insurance-bg.png?v=3.0" alt="EXSeguros Proposal Background" class="proposal-bg-img" />
     <div class="proposal-bg-overlay"></div>
   </div>
 
@@ -656,19 +754,19 @@
   <div class="top-action-bar">
     <div class="top-action-flex">
       <div class="brand-group">
-        <img src="./vertex-logo.png" alt="Vertex Digital Logo" class="brand-logo-img" />
+        <img src="./vertex-logo.png" alt="EXSeguros Logo" class="brand-logo-img" />
         <div>
-          <div class="brand-title">VERTEX <span>DIGITAL</span></div>
-          <div style="font-size: 0.72rem; color: #94a3b8; font-weight: 600;">PROPOSTA COMERCIAL EXECUÇÃO SAAS</div>
+          <div class="brand-title">EX<span>SEGUROS</span></div>
+          <div style="font-size: 0.72rem; color: #94a3b8; font-weight: 600;">PROPOSTA COMERCIAL SAAS</div>
         </div>
       </div>
 
       <div class="btn-group-top">
         <a href="./plataforma-corretora.html" class="btn-action-sm btn-demo">
-          <i class="ri-rocket-line"></i> Testar Plataforma Ao Vivo
+          <i class="ri-rocket-line"></i> Testar Sistema Ao Vivo
         </a>
         <button onclick="window.print()" class="btn-action-sm btn-print">
-          <i class="ri-printer-line"></i> Imprimir / Baixar PDF
+          <i class="ri-printer-line"></i> Imprimir / PDF
         </button>
       </div>
     </div>
@@ -680,7 +778,7 @@
     <!-- HERO COVER CARD -->
     <div class="proposal-hero-card">
       <div class="tag-confidential">
-        <i class="ri-shield-check-line"></i> PROPOSTA COMERCIAL EXECUÇÃO • CORRETORA DE SEGUROS
+        <i class="ri-shield-check-line"></i> PROPOSTA COMERCIAL EXCLUSIVA • EXSEGUROS
       </div>
 
       <h1 class="hero-main-title">
@@ -688,7 +786,7 @@
       </h1>
 
       <p class="hero-subtitle">
-        Implementação da Plataforma SaaS Executiva da <strong>Vertex Digital</strong> contendo o Gerador de Scripts Comerciais, Gerador de Carrosséis para Instagram e Central de Follow-Up Inteligente com IA para Corretoras de Seguros de Automóveis e Imóveis.
+        Implementação da Plataforma SaaS Executiva da <strong>EXSeguros</strong> contendo o Gerador de Scripts Comerciais, Gerador de Carrosséis para Instagram e Central de Follow-Up Inteligente com IA para Seguros de Automóveis e Imóveis.
       </p>
 
       <div class="meta-cards-row">
@@ -700,7 +798,7 @@
 
         <div class="meta-item-box">
           <div class="meta-item-lbl">Destinado A</div>
-          <div class="meta-item-val">Corretora de Seguros</div>
+          <div class="meta-item-val">EXSeguros</div>
           <div style="font-size: 0.75rem; color: #34d399;">Diretoria & Equipe Comercial</div>
         </div>
 
@@ -712,7 +810,7 @@
 
         <div class="meta-item-box">
           <div class="meta-item-lbl">Código do Projeto</div>
-          <div class="meta-item-val" style="font-family: var(--font-tech);">VTX-SEG-2026-SAAS</div>
+          <div class="meta-item-val" style="font-family: var(--font-tech);">EXSEG-2026-SAAS</div>
           <div style="font-size: 0.75rem; color: #34d399;">Pronto para Ativação</div>
         </div>
       </div>
@@ -722,11 +820,11 @@
     <div class="glass-card-panel">
       <div class="section-title-wrap">
         <div class="section-badge-num">01</div>
-        <div class="section-title-text">Os 3 Pilares da Plataforma Comercial</div>
+        <div class="section-title-text">Os 3 Pilares da Plataforma EXSeguros</div>
       </div>
 
       <p style="color: #cbd5e1; font-size: 0.98rem; margin-bottom: 24px;">
-        A plataforma foi desenhada especificamente para resolver os maiores gargalos de vendas de uma corretora: a falta de tempo para criar conteúdos de atração, o vácuo de cotações enviadas e a ausência de padronização na abordagem dos corretores.
+        A plataforma foi desenhada especificamente para a EXSeguros resolver os maiores gargalos comerciais: a falta de tempo para criar conteúdos de atração, o vácuo de cotações enviadas e a ausência de padronização na abordagem dos corretores.
       </p>
 
       <div class="pilares-cards-grid">
@@ -735,10 +833,10 @@
         <div class="pilar-feature-card">
           <div class="pilar-header-tag"><i class="ri-chat-quote-line"></i> PILAR 01 • PRODUTIVIDADE COMERCIAL</div>
           <div class="pilar-card-title">
-            <i class="ri-car-line" style="color: #ff0a2b;"></i> 📜 Gerador de Scripts de Vendas de Seguros
+            <i class="ri-car-line" style="color: #ff0a2b;"></i> 📜 Gerador de Scripts de Vendas EXSeguros
           </div>
           <div class="pilar-card-desc">
-            Sistema interno onde todos os corretores da empresa geram em 1 clique scripts sob medida para <strong>Seguro Auto</strong> e <strong>Seguro Imobiliário</strong>, prontos para copiar e disparar no WhatsApp.
+            Sistema interno onde todos os corretores da EXSeguros geram em 1 clique scripts sob medida para <strong>Seguro Auto</strong> e <strong>Seguro Imobiliário</strong>, prontos para copiar e disparar no WhatsApp.
           </div>
           <div class="pilar-bullets-grid">
             <div class="bullet-item"><i class="ri-checkbox-circle-fill"></i> Abordagem inicial de alta resposta</div>
@@ -755,7 +853,7 @@
             <i class="ri-home-4-line" style="color: #00d2ff;"></i> 🎨 Gerador de Carrosséis de Alto Engajamento
           </div>
           <div class="pilar-card-desc">
-            Ferramenta visual que gera carrosséis de 4 slides no formato minimalista de <strong>Fundo Preto com Aspas Vermelhas e Citações</strong>, personalizado com o nome da seguradora, arroba do Instagram e legenda pronta com gatilhos de dor e oportunidade.
+            Ferramenta visual que gera carrosséis de 4 slides no formato minimalista de <strong>Fundo Preto com Aspas Vermelhas e Citações</strong>, personalizado com o nome da EXSeguros, arroba @exseguros e legenda pronta com gatilhos de dor e oportunidade.
           </div>
           <div class="pilar-bullets-grid">
             <div class="bullet-item"><i class="ri-checkbox-circle-fill"></i> Posts de Sinistro vs Economia Barata no Auto</div>
@@ -800,7 +898,7 @@
           <strong style="color: #fff; font-size: 1rem;">Ancoragem de Mercado: Custo Tradicional de Desenvolvimento</strong>
         </div>
         <p style="font-size: 0.88rem; color: #cbd5e1;">
-          Se a corretora fosse contratar equipe própria para desenvolver uma plataforma web personalizada + redator publicitário de seguros + designer gráfico, o investimento seria:
+          Se a EXSeguros fosse contratar equipe própria para desenvolver uma plataforma web personalizada + redator publicitário de seguros + designer gráfico, o investimento seria:
         </p>
 
         <div class="anchoring-grid">
@@ -827,7 +925,7 @@
       </div>
 
       <p style="color: #cbd5e1; font-size: 1rem; margin-bottom: 20px; font-weight: 600;">
-        Para proporcionar viabilidade financeira imediata para a corretora, apresentamos <span style="color: #ff0a2b;">2 Opções Comerciais Flexíveis</span>:
+        Apresentamos as <span style="color: #ff0a2b;">2 Opções Comerciais Flexíveis</span> para a EXSeguros:
       </p>
 
       <!-- PRICING TIERS GRID -->
@@ -854,11 +952,11 @@
             <div class="pricing-features-list">
               <div class="pfeature-item">
                 <i class="ri-checkbox-circle-fill"></i>
-                <div><strong>Acesso Total à Plataforma:</strong> Scripts, Carrosséis e Follow-Up IA ilimitados para toda a equipe.</div>
+                <div><strong>Acesso Total à Plataforma:</strong> Scripts, Carrosséis e Follow-Up IA ilimitados para toda a equipe da EXSeguros.</div>
               </div>
               <div class="pfeature-item">
                 <i class="ri-checkbox-circle-fill"></i>
-                <div><strong>Evolução Contínua sob Medida:</strong> Criamos novos scripts, novos temas de carrosséis e novos recursos sob demanda da sua corretora.</div>
+                <div><strong>Evolução Contínua sob Medida:</strong> Criamos novos scripts, novos temas de carrosséis e novos recursos sob demanda da EXSeguros.</div>
               </div>
               <div class="pfeature-item">
                 <i class="ri-checkbox-circle-fill"></i>
@@ -871,7 +969,7 @@
             </div>
           </div>
 
-          <a href="https://wa.me/5516992805627?text=Ol%C3%A1%20Gabriel!%20Quero%20fechar%20o%20Plano%20Mensal%20da%20Plataforma%20Vertex%20Seguros%20por%20R$%201.500/m%C3%AAs" target="_blank" class="btn-pricing-cta btn-pricing-primary">
+          <a href="https://wa.me/5516992805627?text=Ol%C3%A1%20Gabriel!%20Fechado%20com%20a%20EXSeguros%20o%20Plano%20Mensal%20de%20R$%201.500/m%C3%AAs" target="_blank" class="btn-pricing-cta btn-pricing-primary">
             <i class="ri-whatsapp-line"></i> Contratar Plano Mensal (R$ 1.500/mês)
           </a>
         </div>
@@ -881,7 +979,7 @@
           <div>
             <div class="pricing-title">Aquisição Definitiva da Plataforma</div>
             <div class="pricing-subtitle">
-              Compra única da versão atual da plataforma configurada exclusivamente com a marca da sua corretora.
+              Compra única da versão atual da plataforma configurada exclusivamente com a marca da EXSeguros.
             </div>
 
             <div class="price-amount-box">
@@ -893,11 +991,11 @@
             <div class="pricing-features-list">
               <div class="pfeature-item">
                 <i class="ri-checkbox-circle-fill"></i>
-                <div><strong>Licença Definitiva:</strong> Propriedade e uso vitalício do sistema atual personalizado.</div>
+                <div><strong>Licença Definitiva:</strong> Propriedade e uso vitalício do sistema atual personalizado para EXSeguros.</div>
               </div>
               <div class="pfeature-item">
                 <i class="ri-checkbox-circle-fill"></i>
-                <div><strong>Personalização com a Marca:</strong> Logo, cores e arroba da sua seguradora gravados no sistema.</div>
+                <div><strong>Personalização com a Marca EXSeguros:</strong> Logo, cores e arroba @exseguros gravados no sistema.</div>
               </div>
               <div class="pfeature-item">
                 <i class="ri-checkbox-circle-fill"></i>
@@ -910,7 +1008,7 @@
             </div>
           </div>
 
-          <a href="https://wa.me/5516992805627?text=Ol%C3%A1%20Gabriel!%20Quero%20comprar%20a%20licen%C3%A7a%20definitiva%20da%20Plataforma%20Vertex%20Seguros%20por%20R$%204.000%20%C3%BAnico" target="_blank" class="btn-pricing-cta btn-pricing-secondary">
+          <a href="https://wa.me/5516992805627?text=Ol%C3%A1%20Gabriel!%20Fechado%20com%20a%20EXSeguros%20a%20licen%C3%A7a%20definitiva%20de%20R$%204.000%20%C3%BAnico" target="_blank" class="btn-pricing-cta btn-pricing-secondary">
             <i class="ri-shield-keyhole-line"></i> Comprar Licença Definitiva (R$ 4.000)
           </a>
         </div>
@@ -923,7 +1021,7 @@
     <div class="glass-card-panel">
       <div class="section-title-wrap">
         <div class="section-badge-num">03</div>
-        <div class="section-title-text">Cronograma de Ativação (48 Horas)</div>
+        <div class="section-title-text">Cronograma de Ativação EXSeguros (48 Horas)</div>
       </div>
 
       <div class="roadmap-list">
@@ -938,8 +1036,8 @@
         <div class="roadmap-step-card">
           <div class="roadmap-phase-badge">ETAPA 02 • 24 HORAS</div>
           <div>
-            <div style="font-weight: 800; color: #fff; font-size: 1rem;">Personalização da Marca & Credenciais</div>
-            <div style="font-size: 0.86rem; color: #94a3b8;">Configuração do logotipo da corretora, arroba do Instagram e liberação das senhas de acesso para os corretores.</div>
+            <div style="font-weight: 800; color: #fff; font-size: 1rem;">Personalização da Marca EXSeguros & Credenciais</div>
+            <div style="font-size: 0.86rem; color: #94a3b8;">Configuração do logotipo da EXSeguros, arroba @exseguros do Instagram e liberação das senhas de acesso para os corretores.</div>
           </div>
         </div>
 
@@ -947,7 +1045,7 @@
           <div class="roadmap-phase-badge">ETAPA 03 • 48 HORAS</div>
           <div>
             <div style="font-weight: 800; color: #fff; font-size: 1rem;">Treinamento Rápido & Início de Uso no Comercial</div>
-            <div style="font-size: 0.86rem; color: #94a3b8;">Treinamento de 20 minutos com os vendedores para uso dos Scripts, Carrosséis e disparo dos Follow-ups de resgate.</div>
+            <div style="font-size: 0.86rem; color: #94a3b8;">Treinamento de 20 minutos com os vendedores da EXSeguros para uso dos Scripts, Carrosséis e disparo dos Follow-ups de resgate.</div>
           </div>
         </div>
       </div>
@@ -962,7 +1060,7 @@
       </div>
 
       <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 24px;">
-        Ao dar o aceite nesta proposta comercial, a Corretora de Seguros ratifica a contratação do Plano de Implementação SaaS da Vertex Digital conforme as especificações descritas.
+        Ao dar o aceite nesta proposta comercial, a EXSeguros ratifica a contratação do Plano de Implementação SaaS da Vertex Digital conforme as especificações descritas.
       </p>
 
       <div class="signatures-row">
@@ -973,9 +1071,9 @@
         </div>
 
         <div class="sig-block">
-          <div style="font-weight: 800; color: #fff; margin-bottom: 4px;">CORRETORA DE SEGUROS (CLIENTE)</div>
+          <div style="font-weight: 800; color: #fff; margin-bottom: 4px;">EXSEGUROS (CLIENTE CONTRATANTE)</div>
           <div style="font-size: 0.82rem; color: #34d399; font-weight: 700;">Diretoria Executiva / Responsável Comercial</div>
-          <div class="sig-line" style="margin-top: 20px;">Assinatura do Cliente / Contratante</div>
+          <div class="sig-line" style="margin-top: 20px;">Assinatura EXSeguros</div>
         </div>
       </div>
     </div>
