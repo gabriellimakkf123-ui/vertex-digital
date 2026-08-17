@@ -8,10 +8,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./favicon.png" />
   
-  <!-- Google Fonts: Outfit, Inter & Space Grotesk -->
+  <!-- Google Fonts: Outfit, Inter, Space Grotesk, Montserrat & Bebas Neue -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
   
   <!-- Remix Icon -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
@@ -22,6 +22,8 @@
   <style>
     :root {
       --primary-red: #ff0a2b;
+      --primary-dark: #cc001f;
+      --purple-accent: #7c3aed;
       --cyan-glow: #00d2ff;
       --navy-dark: #040812;
       --bg-dark: #020306;
@@ -47,7 +49,7 @@
     }
 
     /* =========================================================
-       1. TELA DE APRESENTAÇÃO INICIAL (RESPONSIVA & MOBILE ERGOLÓGICA)
+       1. TELA DE APRESENTAÇÃO INICIAL (RESPONSIVA & MOBILE ERGONÔMICA)
        ========================================================= */
     #executivePortalScreen {
       position: fixed;
@@ -68,19 +70,18 @@
 
     #executivePortalScreen.launch-fade-out {
       opacity: 0;
+      transform: scale(1.03);
       pointer-events: none;
-      transform: scale(1.04);
     }
 
-    .portal-bg-stage {
-      position: fixed;
+    .portal-bg-layer {
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 1;
+      z-index: 0;
       overflow: hidden;
-      pointer-events: none;
     }
 
     .portal-hero-img {
@@ -89,54 +90,51 @@
       object-fit: cover;
       object-position: center;
       filter: brightness(1.35) contrast(1.1) saturate(1.15);
-      transition: transform 1.2s ease, filter 1.2s ease;
-      animation: subtleHeroZoom 12s ease-in-out infinite alternate;
-    }
-
-    @keyframes subtleHeroZoom {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.03); }
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .portal-hero-img.zooming {
-      transform: scale(1.08) !important;
-      filter: brightness(1.4) contrast(1.15);
+      transform: scale(1.12);
+      filter: brightness(1.7) contrast(1.2);
     }
 
-    .portal-gradient-overlay {
+    .portal-overlay-gradient {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 2;
       background: 
-        linear-gradient(90deg, rgba(2, 3, 6, 0.88) 0%, rgba(2, 3, 6, 0.7) 48%, rgba(2, 3, 6, 0.3) 100%),
-        linear-gradient(0deg, rgba(2, 3, 6, 0.85) 0%, transparent 40%, rgba(2, 3, 6, 0.5) 100%);
+        linear-gradient(180deg, rgba(2, 4, 10, 0.65) 0%, rgba(2, 3, 6, 0.75) 50%, rgba(2, 3, 6, 0.94) 100%),
+        radial-gradient(circle at 70% 30%, rgba(255, 10, 43, 0.18) 0%, transparent 60%);
       pointer-events: none;
     }
 
     .portal-ui-layer {
       position: relative;
       z-index: 10;
-      min-height: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 28px 48px;
-      gap: 20px;
+      max-width: 1240px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 32px 24px 36px 24px;
     }
 
     .portal-top-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    .brand-group-executive {
+    .brand-logo-box {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .brand-logo-img {
@@ -178,31 +176,36 @@
       border-radius: 50%;
       background: #10b981;
       box-shadow: 0 0 10px #10b981;
-      animation: dotPulse 1.6s infinite;
+      animation: greenDotPulse 1.6s infinite;
     }
 
-    @keyframes dotPulse {
+    @keyframes greenDotPulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.35; }
     }
 
     .portal-hero-box {
-      max-width: 580px;
-      margin-top: 10px;
-      margin-bottom: 10px;
+      max-width: 680px;
+      margin-top: auto;
+      margin-bottom: auto;
+      padding: 20px 0;
     }
 
     .portal-tag-sub {
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: var(--primary-red);
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      font-family: var(--font-tech);
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
+      background: rgba(255, 10, 43, 0.18);
+      border: 1px solid rgba(255, 10, 43, 0.4);
+      color: #ff334b;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      font-family: var(--font-tech);
     }
 
     .portal-main-heading {
@@ -239,43 +242,26 @@
     }
 
     .portal-feature-item {
-      background: rgba(10, 14, 26, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 12px;
-      padding: 12px 18px;
       display: flex;
-      align-items: center;
-      gap: 14px;
-      backdrop-filter: blur(14px);
-      transition: all 0.3s ease;
-    }
-
-    .portal-feature-item:hover {
-      border-color: var(--primary-red);
-      background: rgba(255, 10, 43, 0.12);
-      transform: translateX(6px);
-      box-shadow: 0 0 25px rgba(255, 10, 43, 0.3);
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(4, 6, 12, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 10px 14px;
+      backdrop-filter: blur(12px);
     }
 
     .portal-feature-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: rgba(255, 10, 43, 0.2);
-      border: 1px solid rgba(255, 10, 43, 0.4);
       color: var(--primary-red);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.15rem;
-      flex-shrink: 0;
+      font-size: 1.2rem;
+      margin-top: 1px;
     }
 
     .portal-feature-title {
-      font-size: 0.88rem;
       font-weight: 800;
+      font-size: 0.88rem;
       color: #fff;
-      letter-spacing: 0.3px;
     }
 
     .portal-feature-sub {
@@ -283,109 +269,94 @@
       color: #94a3b8;
     }
 
-    /* Botão INICIAR em Destaque */
     .btn-iniciar-executive {
       display: inline-flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 20px;
+      width: 100%;
+      max-width: 440px;
       background: linear-gradient(135deg, #ff0a2b 0%, #cc001f 100%);
       border: none;
-      border-radius: 14px;
-      padding: 16px 28px;
+      border-radius: 16px;
+      padding: 18px 28px;
       color: #ffffff;
       font-family: var(--font-display);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 900;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       cursor: pointer;
-      box-shadow: 0 8px 30px rgba(255, 10, 43, 0.5);
+      box-shadow: 0 10px 35px rgba(255, 10, 43, 0.55);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      width: 100%;
-      max-width: 350px;
     }
 
     .btn-iniciar-executive:hover {
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 14px 45px rgba(255, 10, 43, 0.75);
-      background: linear-gradient(135deg, #ff2442 0%, #e60021 100%);
+      box-shadow: 0 16px 50px rgba(255, 10, 43, 0.75);
     }
 
     .arrow-icon-circle {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.25);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
-      transition: transform 0.3s;
-      flex-shrink: 0;
-    }
-
-    .btn-iniciar-executive:hover .arrow-icon-circle {
-      transform: translateX(4px);
+      font-size: 1.2rem;
     }
 
     .portal-footer-stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 16px;
-      background: rgba(8, 12, 22, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 16px;
-      padding: 14px 24px;
-      backdrop-filter: blur(14px);
-      max-width: 700px;
+      gap: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 16px;
     }
 
     .pstat-item {
+      background: rgba(4, 6, 12, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 10px;
       text-align: center;
     }
 
     .pstat-lbl {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      color: #cbd5e1;
+      color: #94a3b8;
       letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 2px;
     }
 
     .pstat-num {
       font-family: var(--font-display);
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 900;
       color: #fff;
-      line-height: 1;
     }
 
     .pstat-sub {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       color: var(--primary-red);
       font-weight: 700;
-      text-transform: uppercase;
-      margin-top: 2px;
     }
-
 
     /* =========================================================
        2. PLATAFORMA SAAS COM PLANOS DE FUNDO DINÂMICOS
        ========================================================= */
     #executiveStudioApp {
-      position: relative;
+      display: none;
       min-height: 100vh;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+      position: relative;
       z-index: 10;
+      opacity: 0;
+      transition: opacity 0.8s ease;
     }
 
     #executiveStudioApp.visible {
+      display: block;
       opacity: 1;
-      transform: translateY(0);
     }
 
     .saas-dynamic-bg-stage {
@@ -407,15 +378,14 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      opacity: 0;
-      transform: scale(1.05);
-      transition: opacity 0.8s ease-in-out, transform 1s ease-in-out, filter 1s ease-in-out;
       filter: brightness(1.35) contrast(1.1) saturate(1.15);
+      opacity: 0;
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 12s ease-in-out infinite alternate;
     }
 
     .saas-bg-img-layer.active-bg {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1.03);
     }
 
     .saas-bg-dark-overlay {
@@ -425,21 +395,29 @@
       width: 100%;
       height: 100%;
       background: 
-        linear-gradient(180deg, rgba(2, 4, 10, 0.45) 0%, rgba(2, 3, 6, 0.6) 50%, rgba(2, 3, 6, 0.8) 100%),
-        radial-gradient(circle at 30% 40%, rgba(255, 10, 43, 0.15) 0%, transparent 60%);
+        linear-gradient(180deg, rgba(2, 4, 10, 0.72) 0%, rgba(2, 3, 6, 0.84) 50%, rgba(2, 3, 6, 0.94) 100%),
+        radial-gradient(circle at 80% 20%, rgba(255, 10, 43, 0.14) 0%, transparent 65%);
       pointer-events: none;
     }
 
-    /* Header Nav Executivo Glassmorphism */
+    /* Top Nav Bar SaaS */
     .header-nav {
-      background: rgba(6, 8, 14, 0.88);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(24px);
       position: sticky;
       top: 0;
       z-index: 100;
-      padding: 14px 0;
+      background: rgba(6, 8, 14, 0.88);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(24px);
+      padding: 12px 0;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .container-studio {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
     }
 
     .header-flex {
@@ -450,53 +428,45 @@
       gap: 16px;
     }
 
-    .brand-logo-box {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
     .brand-img {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       border: 2px solid var(--primary-red);
-      box-shadow: 0 0 16px rgba(255, 10, 43, 0.5);
+      box-shadow: 0 0 20px rgba(255, 10, 43, 0.5);
     }
 
     .brand-title {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 900;
       letter-spacing: -0.5px;
+      color: #fff;
     }
 
-    .brand-title span {
-      color: var(--primary-red);
-    }
+    .brand-title span { color: var(--primary-red); }
 
     .status-badge-green {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.4);
+      border: 1px solid rgba(16, 185, 129, 0.35);
       color: #34d399;
+      font-size: 0.72rem;
+      font-weight: 800;
       padding: 4px 12px;
       border-radius: 20px;
-      font-size: 0.76rem;
-      font-weight: 700;
     }
 
     .user-pill {
       display: flex;
       align-items: center;
       gap: 10px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.15);
       padding: 6px 14px;
       border-radius: 30px;
-      backdrop-filter: blur(10px);
     }
 
     .user-avatar-circle {
@@ -520,7 +490,6 @@
       border-radius: 20px;
       font-size: 0.82rem;
       font-weight: 800;
-      font-family: var(--font-body);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -534,7 +503,7 @@
       color: #fff;
     }
 
-    /* Abas Super Estilizadas */
+    /* Navigation Bar das Abas Principais */
     .tab-nav-bar {
       display: flex;
       gap: 8px;
@@ -544,66 +513,54 @@
       border: 1px solid rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(20px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .nav-tab-item {
       background: transparent;
       border: none;
-      color: #cbd5e1;
-      padding: 11px 20px;
+      color: #94a3b8;
+      padding: 10px 20px;
       border-radius: 12px;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      font-weight: 800;
       cursor: pointer;
+      white-space: nowrap;
       display: flex;
       align-items: center;
       gap: 8px;
-      white-space: nowrap;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .nav-tab-item:hover {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .nav-tab-item.active {
       background: linear-gradient(135deg, #ff0a2b 0%, #cc001f 100%);
-      color: #fff;
-      box-shadow: 0 6px 25px rgba(255, 10, 43, 0.55);
-    }
-
-    .container-studio {
-      position: relative;
-      z-index: 10;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 32px 24px;
+      color: #ffffff;
+      box-shadow: 0 6px 20px rgba(255, 10, 43, 0.5);
     }
 
     .hero-stats-banner {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
-      margin-bottom: 28px;
+      margin: 24px 0;
     }
 
     .stat-card-mini {
-      background: rgba(10, 14, 26, 0.78);
+      background: rgba(8, 12, 22, 0.82);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 16px;
-      padding: 18px 22px;
+      padding: 16px;
+      backdrop-filter: blur(20px);
       display: flex;
       align-items: center;
-      gap: 16px;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      gap: 14px;
     }
 
     .stat-icon-wrap {
-      width: 46px;
-      height: 46px;
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
       background: rgba(255, 10, 43, 0.18);
       border: 1px solid rgba(255, 10, 43, 0.35);
@@ -611,15 +568,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
-      flex-shrink: 0;
+      font-size: 1.2rem;
     }
 
     .studio-panel {
-      background: rgba(6, 9, 18, 0.85);
+      background: rgba(8, 12, 22, 0.84);
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 24px;
-      padding: 36px;
+      padding: 32px;
       backdrop-filter: blur(28px);
       box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
       margin-bottom: 40px;
@@ -655,7 +611,7 @@
       border-radius: 14px;
       color: #fff;
       font-family: var(--font-body);
-      font-size: 16px; /* EVITA ZOOM AUTOMÁTICO DO SAFARI / IOS */
+      font-size: 16px;
       outline: none;
       transition: all 0.25s ease;
     }
@@ -726,7 +682,7 @@
       padding: 18px;
       color: #f8fafc;
       font-family: var(--font-body);
-      font-size: 16px; /* EVITA ZOOM AUTOMÁTICO EM SMARTPHONES */
+      font-size: 16px;
       line-height: 1.7;
       resize: vertical;
       outline: none;
@@ -764,42 +720,11 @@
       color: #fff;
     }
 
-    .slide-grid-wrap {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 24px;
-    }
-
-    .slide-preview-box {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      background: #08080a;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 18px;
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85);
-      text-align: left;
-    }
-
-    .slide-quotes-mark {
-      font-size: 3.2rem;
-      font-weight: 900;
-      color: #ff0a2b;
-      line-height: 0.8;
-      margin-bottom: 16px;
-      font-family: Georgia, serif;
-    }
-
     .tab-content-pane {
       display: none;
       animation: tabFadeIn 0.5s ease;
     }
+
     .tab-content-pane.active {
       display: block;
     }
@@ -810,125 +735,438 @@
     }
 
     /* =========================================================
-       3. REGRAS DE OTIMIZAÇÃO EXCLUSIVAS PARA SMARTPHONES (MOBILE ANDROID / IOS)
-       Sem alterar NADA da experiência perfeita de Computadores!
+       3. NOVO DESIGN DO CAROUSEL STUDIO & EDITOR UI (TIPO CANVA PRO)
        ========================================================= */
+    .carousel-studio-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 1024px) {
+      .carousel-studio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .studio-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8, 12, 22, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
+      padding: 14px 20px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(20px);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .studio-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-icon-studio {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-icon-studio:hover {
+      background: rgba(255, 10, 43, 0.2);
+      border-color: var(--primary-red);
+      color: #fff;
+    }
+
+    .btn-export-purple {
+      background: linear-gradient(135deg, #7c3aed 0%, #ff0a2b 100%);
+      color: #fff;
+      font-weight: 800;
+      padding: 10px 22px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+      transition: all 0.25s;
+    }
+
+    .btn-export-purple:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 10, 43, 0.55);
+    }
+
+    .slides-strip-section {
+      margin-bottom: 20px;
+    }
+
+    .slides-strip-row {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .slide-thumb-card {
+      flex: 0 0 135px;
+      aspect-ratio: 1 / 1;
+      background: #080a12;
+      border: 2px solid rgba(255, 255, 255, 0.14);
+      border-radius: 14px;
+      padding: 12px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      user-select: none;
+    }
+
+    .slide-thumb-card:hover {
+      border-color: rgba(255, 10, 43, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .slide-thumb-card.active {
+      border-color: #ff0a2b;
+      box-shadow: 0 0 18px rgba(255, 10, 43, 0.5), inset 0 0 10px rgba(255, 10, 43, 0.2);
+    }
+
+    .slide-badge-num {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(255, 10, 43, 0.9);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-thumb-preview-text {
+      font-size: 0.68rem;
+      color: #e2e8f0;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-top: 22px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .add-slide-thumb-btn {
+      flex: 0 0 135px;
+      aspect-ratio: 1 / 1;
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 14px;
+      color: #94a3b8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .add-slide-thumb-btn:hover {
+      background: rgba(255, 10, 43, 0.12);
+      border-color: var(--primary-red);
+      color: #fff;
+    }
+
+    .main-canvas-stage {
+      background: rgba(4, 6, 12, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 20px;
+      padding: 36px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.85);
+    }
+
+    .canvas-nav-arrow {
+      position: absolute;
+      top: 42%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(12, 16, 28, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.25s;
+      font-size: 1.2rem;
+    }
+
+    .canvas-nav-arrow:hover {
+      background: var(--primary-red);
+      box-shadow: 0 0 15px rgba(255,10,43,0.6);
+    }
+
+    .canvas-nav-arrow.left { left: 16px; }
+    .canvas-nav-arrow.right { right: 16px; }
+
+    .active-slide-card-view {
+      width: 100%;
+      max-width: 460px;
+      aspect-ratio: 1 / 1;
+      background: #080a12;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .card-quotes-mark {
+      font-size: 3.8rem;
+      font-weight: 900;
+      color: var(--primary-red);
+      line-height: 0.8;
+      margin-bottom: 14px;
+      font-family: Georgia, serif;
+      text-shadow: 0 0 20px rgba(255, 10, 43, 0.5);
+    }
+
+    .card-main-title {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .card-main-body {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #f1f5f9;
+      line-height: 1.5;
+    }
+
+    .card-brand-footer {
+      margin-top: auto;
+      padding-top: 24px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+
+    .canvas-bottom-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 20px;
+      background: rgba(10, 14, 24, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      color: #cbd5e1;
+    }
+
+    .suggested-phrases-section {
+      margin-top: 24px;
+      width: 100%;
+    }
+
+    .suggested-phrases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .phrase-card-box {
+      background: rgba(8, 12, 22, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .phrase-card-box:hover {
+      border-color: var(--primary-red);
+      background: rgba(255, 10, 43, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .phrase-card-text {
+      font-size: 0.82rem;
+      color: #e2e8f0;
+      line-height: 1.4;
+    }
+
+    .phrase-heart-icon {
+      color: #94a3b8;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .phrase-card-box:hover .phrase-heart-icon {
+      color: #ff0a2b;
+    }
+
+    .inspector-panel-sidebar {
+      background: rgba(8, 12, 22, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 20px;
+      padding: 24px;
+      backdrop-filter: blur(24px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .inspector-tabs-nav {
+      display: flex;
+      gap: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 10px;
+    }
+
+    .inspector-tab-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .inspector-tab-btn.active {
+      background: rgba(255, 10, 43, 0.18);
+      color: #fff;
+    }
+
+    .inspector-group-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .color-circles-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .color-circle-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .color-circle-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .elements-buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+
+    .btn-element-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 10px;
+      color: #fff;
+      padding: 8px 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-element-item:hover {
+      background: rgba(255, 10, 43, 0.2);
+      border-color: var(--primary-red);
+    }
+
+    .gold-tip-card {
+      background: rgba(251, 191, 36, 0.08);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 0.78rem;
+      color: #fef08a;
+      line-height: 1.5;
+    }
+
+    /* Otimização Responsiva para Telas Menores */
     @media (max-width: 768px) {
       .portal-ui-layer {
         padding: 20px 16px 28px 16px;
         gap: 16px;
       }
-
-      .portal-top-bar {
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .brand-logo-img {
-        width: 38px;
-        height: 38px;
-      }
-
-      .brand-name-txt {
-        font-size: 1.25rem;
-      }
-
-      .portal-main-heading {
-        font-size: 2.1rem;
-      }
-
-      .portal-sub-heading {
-        font-size: 1.45rem;
-      }
-
-      .portal-desc-paragraph {
-        font-size: 0.9rem;
-        line-height: 1.5;
-        margin-bottom: 18px;
-      }
-
-      .portal-feature-item {
-        padding: 10px 14px;
-        gap: 12px;
-      }
-
-      .btn-iniciar-executive {
-        max-width: 100%;
-        width: 100%;
-        padding: 16px 20px;
-        font-size: 1.1rem;
-      }
-
-      .portal-footer-stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        padding: 12px 16px;
-      }
-
-      .header-flex {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-      }
-
-      .brand-logo-box {
-        justify-content: space-between;
-        width: 100%;
-      }
-
-      .tab-nav-bar {
-        overflow-x: auto;
-        width: 100%;
-        justify-content: flex-start;
-        padding: 4px;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .nav-tab-item {
-        padding: 9px 14px;
-        font-size: 0.82rem;
-        flex-shrink: 0;
-      }
-
-      .container-studio {
-        padding: 16px 12px;
-      }
-
-      .studio-panel {
-        padding: 20px 16px;
-        border-radius: 18px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .field-group style {
-        grid-column: auto !important;
-      }
-
-      .field-group[style*="grid-column"] {
-        grid-column: auto !important;
-      }
-
-      .slide-preview-box {
-        padding: 22px 18px;
-      }
-
-      .output-console {
-        padding: 16px;
-      }
-
-      .sub-tabs-bar {
-        padding-bottom: 8px;
-      }
-
-      .sub-tab-btn {
-        padding: 8px 14px;
-        font-size: 0.8rem;
-      }
+      .brand-logo-img { width: 38px; height: 38px; }
+      .brand-name-txt { font-size: 1.25rem; }
+      .portal-main-heading { font-size: 2.1rem; }
+      .studio-panel { padding: 20px 16px; border-radius: 18px; }
+      .form-grid { grid-template-columns: 1fr; gap: 16px; }
+      .canvas-nav-arrow { display: none; }
+      .active-slide-card-view { padding: 24px 20px; }
+      .card-main-title { font-size: 1.35rem; }
+      .card-main-body { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -938,15 +1176,15 @@
        1. TELA DE APRESENTAÇÃO INICIAL (PERSONALIZADA EXSEGUROS)
        ========================================================= -->
   <div id="executivePortalScreen">
-    <div class="portal-bg-stage">
-      <img src="./vertex-insurance-bg.png?v=3.0" alt="EXSeguros Background" id="portalHeroImg" class="portal-hero-img" />
-      <div class="portal-gradient-overlay"></div>
+    <div class="portal-bg-layer">
+      <img src="./vertex-insurance-hero.png" alt="EXSeguros Luxury Showroom" id="portalHeroImg" class="portal-hero-img" />
+      <div class="portal-overlay-gradient"></div>
     </div>
 
     <div class="portal-ui-layer">
-      <!-- Top Row Header -->
+      <!-- Top Brand Row -->
       <div class="portal-top-bar">
-        <div class="brand-group-executive">
+        <div class="brand-logo-box">
           <img src="./vertex-logo.png" alt="EXSeguros Logo" class="brand-logo-img" />
           <div>
             <div class="brand-name-txt">EX<span>SEGUROS</span></div>
@@ -1080,13 +1318,13 @@
             </div>
           </div>
 
-          <!-- Main Navigation Pills (Com Rolagem Suave no Celular) -->
+          <!-- Main Navigation Pills -->
           <div class="tab-nav-bar">
             <button class="nav-tab-item active" data-tab="tab-scripts" data-bg="saasBgScripts">
               <i class="ri-chat-quote-line"></i> 📜 Scripts Vendas
             </button>
             <button class="nav-tab-item" data-tab="tab-carrosseis" data-bg="saasBgCarrosseis">
-              <i class="ri-slideshow-3-line"></i> 🎨 Carrosséis Instagram
+              <i class="ri-slideshow-3-line"></i> 🎨 Studio Carrosséis
             </button>
             <button class="nav-tab-item" data-tab="tab-followup" data-bg="saasBgFollowup">
               <i class="ri-radar-line"></i> ⚡ Follow-Up IA
@@ -1125,7 +1363,7 @@
         </div>
       </div>
 
-      <!-- TAB 1: GERADOR DE SCRIPTS (SHOWROOM LUXURY CAR) -->
+      <!-- TAB 1: GERADOR DE SCRIPTS -->
       <div id="tab-scripts" class="tab-content-pane active">
         <div class="studio-panel">
           <div style="margin-bottom: 24px;">
@@ -1148,25 +1386,23 @@
             </div>
 
             <div class="field-group">
-              <label><i class="ri-route-line" style="color: #ff0a2b;"></i> 2. Etapa Comercial:</label>
-              <select id="scriptEtapa" class="input-box">
-                <option value="abordagem">1. Abordagem Inicial / Primeiro Contato</option>
-                <option value="cotacao">2. Envio de Cotação & Valor Percebido</option>
-                <option value="obj_caro">3. Objeção ("Tá Caro / Fora do Orçamento")</option>
-                <option value="obj_banco">4. Objeção ("Vou cotar no meu banco")</option>
-                <option value="fechamento">5. Fechamento com Escassez & Urgência</option>
-                <option value="posvenda">6. Pós-Venda & Pedido de Indicação</option>
+              <label><i class="ri-user-line" style="color: #ff0a2b;"></i> 2. Nome do Cliente:</label>
+              <input type="text" id="scriptNomeCliente" class="input-box" value="Marcos Silva" placeholder="Ex: Marcos Silva" />
+            </div>
+
+            <div class="field-group">
+              <label><i class="ri-car-washing-line" style="color: #ff0a2b;"></i> 3. Veículo / Imóvel:</label>
+              <input type="text" id="scriptObjeto" class="input-box" value="Corolla Cross" placeholder="Ex: Corolla / Casa" />
+            </div>
+
+            <div class="field-group">
+              <label><i class="ri-target-line" style="color: #ff0a2b;"></i> 4. Objetivo da Mensagem:</label>
+              <select id="scriptObjetivo" class="input-box">
+                <option value="abordagem">1. Abordagem Inicial / Envio de Cotação</option>
+                <option value="cotacao">2. Apresentação de Proposta sem compromisso</option>
+                <option value="obj_caro">3. Superar Objeção: "Tá Caro / Fora do Orçamento"</option>
+                <option value="obj_banco">4. Superar Objeção: "Vou cotar no meu Banco"</option>
               </select>
-            </div>
-
-            <div class="field-group">
-              <label><i class="ri-user-line" style="color: #ff0a2b;"></i> 3. Nome do Cliente:</label>
-              <input type="text" id="scriptClienteNome" class="input-box" value="Rodrigo" placeholder="Ex: Rodrigo" />
-            </div>
-
-            <div class="field-group">
-              <label><i class="ri-shield-star-line" style="color: #ff0a2b;"></i> 4. Veículo / Imóvel:</label>
-              <input type="text" id="scriptObjeto" class="input-box" value="Civic 2022" placeholder="Ex: Civic 2022" />
             </div>
           </div>
 
@@ -1194,65 +1430,214 @@
         </div>
       </div>
 
-      <!-- TAB 2: GERADOR DE CARROSSÉIS (EXSEGUROS BRANDING) -->
+      <!-- TAB 2: GERADOR E STUDIO DE CARROSSÉIS (EXSEGUROS STUDIO UI PRO) -->
       <div id="tab-carrosseis" class="tab-content-pane">
-        <div class="studio-panel">
-          <div style="margin-bottom: 24px;">
-            <span style="background: rgba(0,210,255,0.25); border: 1px solid rgba(0,210,255,0.5); color: #00d2ff; padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; text-transform: uppercase;">
-              <i class="ri-home-4-line"></i> AMBIENTE IMOBILIÁRIO • EXSEGUROS
+        
+        <!-- Studio Top Bar Header -->
+        <div class="studio-top-bar">
+          <div class="studio-title-group">
+            <span style="background: rgba(124,58,237,0.2); color: #a78bfa; border: 1px solid rgba(124,58,237,0.4); padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; font-family: var(--font-tech);">
+              🎨 STUDIO PRO
             </span>
-            <h2 style="font-family: var(--font-display); font-size: 2rem; font-weight: 900; color: #fff; margin-top: 10px;">
-              Gerador de Carrosséis <span style="color: #ff0a2b;">Fundo Preto & Citações</span>
-            </h2>
-            <p style="color: #cbd5e1; font-size: 0.98rem;">Posts minimalistas de alto engajamento com aspas vermelhas e a marca EXSeguros.</p>
+            <input type="text" id="studioCarouselTitle" class="studio-title-input" value="Carrossel EXSeguros" />
+            <span style="font-size: 0.75rem; color: #94a3b8;"><i class="ri-cloud-line"></i> Salvo automaticamente</span>
           </div>
 
-          <div class="form-grid">
-            <div class="field-group">
-              <label><i class="ri-building-line" style="color: #ff0a2b;"></i> Nome da Seguradora / Corretora:</label>
-              <input type="text" id="carrosselNomeSeguradora" class="input-box" value="EXSeguros" placeholder="Ex: EXSeguros" />
-            </div>
+          <div class="studio-actions-group">
+            <button id="btnUndo" class="btn-icon-studio" title="Desfazer"><i class="ri-arrow-go-back-line"></i></button>
+            <button id="btnRedo" class="btn-icon-studio" title="Refazer"><i class="ri-arrow-go-forward-line"></i></button>
+            <button id="btnPreviewModal" class="btn-icon-studio" title="Pré-visualizar"><i class="ri-eye-line"></i></button>
 
-            <div class="field-group">
-              <label><i class="ri-at-line" style="color: #ff0a2b;"></i> Arroba do Instagram (@):</label>
-              <input type="text" id="carrosselArrobaSeguradora" class="input-box" value="@exseguros" placeholder="Ex: @exseguros" />
-            </div>
-
-            <div class="field-group" style="grid-column: span 2;">
-              <label><i class="ri-article-line" style="color: #ff0a2b;"></i> Tema de Conteúdo do Carrossel:</label>
-              <select id="carrosselTemaSelect" class="input-box">
-                <option value="auto_risco">🚗 Seguro Auto: Não é sobre economizar na apólice (Provocação & Sinistro)</option>
-                <option value="imovel_erro">🏠 Seguro Residencial: O seguro do condomínio não protege sua casa (Mito vs Realidade)</option>
-                <option value="vida_familia">❤️ Seguro de Vida: Não é sobre você, é sobre a sua família (Sensibilização)</option>
-                <option value="auto_renovacao">💡 Renovação Auto: Não renove no automático (Economia Multimarcas)</option>
-              </select>
-            </div>
-          </div>
-
-          <button id="btnGerarCarrossel" class="btn-action btn-action-primary" style="padding: 16px; margin-bottom: 24px;">
-            <i class="ri-sparkles-line"></i> Gerar 4 Slides no Formato Citação (Fundo Preto & Aspas)
-          </button>
-
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-            <h3 style="font-size: 1.15rem; color: #fff; font-family: var(--font-display);"><i class="ri-image-line"></i> Slides Gerados (1080x1080)</h3>
-            <button id="btnBaixarTodosSlides" class="btn-action btn-action-glass"><i class="ri-download-cloud-line"></i> Baixar Todos os Slides em PNG</button>
-          </div>
-
-          <div class="slide-grid-wrap" id="slidesGrid"></div>
-
-          <div class="output-console" style="margin-top: 30px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
-              <strong style="color: #fff; font-size: 0.95rem;"><i class="ri-file-text-line"></i> Legenda Persuasiva Pronta para o Instagram:</strong>
-              <button id="btnCopiarLegenda" class="btn-action btn-action-primary" style="padding: 6px 14px; font-size: 0.82rem;">
-                <i class="ri-file-copy-line"></i> Copiar Legenda
-              </button>
-            </div>
-            <textarea id="carrosselLegendaTextarea" class="console-textarea" style="min-height: 120px;"></textarea>
+            <button id="btnBaixarTodosSlides" class="btn-export-purple">
+              <i class="ri-download-2-line"></i> Exportar Todos (PNG)
+            </button>
           </div>
         </div>
+
+        <!-- Studio Grid Layout (Main Canvas Stage + Inspector Sidebar) -->
+        <div class="carousel-studio-grid">
+          
+          <!-- LEFT / CENTER AREA: SLIDES STRIP + MAIN CANVAS STAGE -->
+          <div>
+            
+            <!-- Slides Strip (Horizontal Thumbnails) -->
+            <div class="slides-strip-section">
+              <div class="slides-strip-header">
+                <span><i class="ri-slideshow-line" style="color: var(--primary-red);"></i> Slides do Carrossel EXSeguros</span>
+                <span style="font-size: 0.78rem; color: #94a3b8;" id="slideCountTotalLabel">4 Slides</span>
+              </div>
+
+              <div class="slides-strip-row" id="slidesThumbStrip">
+                <!-- Inner thumbnails dynamic injection -->
+              </div>
+            </div>
+
+            <!-- Main Canvas View Stage -->
+            <div class="main-canvas-stage">
+              <button class="canvas-nav-arrow left" id="btnPrevSlideCanvas" title="Slide Anterior"><i class="ri-arrow-left-s-line"></i></button>
+              <button class="canvas-nav-arrow right" id="btnNextSlideCanvas" title="Próximo Slide"><i class="ri-arrow-right-s-line"></i></button>
+
+              <!-- Central 1080x1080 Active Slide Stage -->
+              <div class="active-slide-card-view" id="activeSlideCanvasBox">
+                <div class="card-quotes-mark" id="stageQuoteMark">“</div>
+                <div class="card-main-title" id="stageTitleTxt">Não é sobre economizar na apólice.</div>
+                <div class="card-main-body" id="stageBodyTxt">É sobre **não perder o carro**, a paciência e **anos de economia** por causa de uma cotação barata.</div>
+                <div class="card-brand-footer" id="stageBrandTxt">EXSeguros | @exseguros</div>
+              </div>
+
+              <!-- Bottom Canvas Control Bar -->
+              <div class="canvas-bottom-bar">
+                <span>1:1 Instagram Feed</span>
+                <span style="color: rgba(255,255,255,0.2);">|</span>
+                <span>Zoom 100%</span>
+                <span style="color: rgba(255,255,255,0.2);">|</span>
+                <span style="color: #34d399; font-weight: 700;"><i class="ri-checkbox-circle-fill"></i> Render HD</span>
+              </div>
+            </div>
+
+            <!-- Frases Sugeridas / Banco de Ideias -->
+            <div class="suggested-phrases-section">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.9rem; font-weight: 800; color: #fff; font-family: var(--font-display);">
+                  <i class="ri-sparkles-line" style="color: var(--primary-red);"></i> Frases Sugeridas EXSeguros
+                </span>
+                <span style="font-size: 0.78rem; color: #94a3b8;">Clique para aplicar no slide ativo</span>
+              </div>
+
+              <div class="suggested-phrases-grid">
+                <div class="phrase-card-box" onclick="aplicarFraseSugerida('O seguro mais caro do mundo:', 'É aquele que você achava que tinha, mas descobre no sinistro que cortou terceiros.')">
+                  <div class="phrase-card-text">"O seguro mais caro é aquele que descobre no sinistro que não cobre terceiros."</div>
+                  <i class="ri-heart-line phrase-heart-icon"></i>
+                </div>
+
+                <div class="phrase-card-box" onclick="aplicarFraseSugerida('O seguro do condomínio não cobre sua casa.', 'Cobre a fachada e elevadores. Se o cano estourar no seu apartamento, o prejuízo é 100% seu.')">
+                  <div class="phrase-card-text">"O seguro do condomínio cobre o prédio, mas não os móveis da sua casa."</div>
+                  <i class="ri-heart-line phrase-heart-icon"></i>
+                </div>
+
+                <div class="phrase-card-box" onclick="aplicarFraseSugerida('Seguro de Vida não é sobre você.', 'É sobre garantir que sua família mantenha o mesmo padrão mesmo se você faltar amanhã.')">
+                  <div class="phrase-card-text">"Seguro de Vida é sobre não deixar dívidas para quem você mais ama neste mundo."</div>
+                  <i class="ri-heart-line phrase-heart-icon"></i>
+                </div>
+
+                <div class="phrase-card-box" onclick="aplicarFraseSugerida('Não renove seu seguro no automático.', 'Sua classe de bônus pertence a você! Cotamos Porto, Azul, Tokio e HDI ao mesmo tempo.')">
+                  <div class="phrase-card-text">"Renovar sem cotar em outras seguradoras é rasgar até 30% de economia."</div>
+                  <i class="ri-heart-line phrase-heart-icon"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Console da Legenda do Instagram -->
+            <div class="output-console" style="margin-top: 24px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                <strong style="color: #fff; font-size: 0.95rem;"><i class="ri-file-text-line"></i> Legenda Persuasiva Pronta para o Instagram:</strong>
+                <button id="btnCopiarLegenda" class="btn-action btn-action-primary" style="padding: 6px 16px; font-size: 0.82rem; width: auto;">
+                  <i class="ri-file-copy-line"></i> Copiar Legenda
+                </button>
+              </div>
+              <textarea id="carrosselLegendaTextarea" class="console-textarea" style="min-height: 120px;"></textarea>
+            </div>
+
+          </div>
+
+          <!-- RIGHT SIDEBAR: INSPECTOR & CONTROLS PANEL -->
+          <div class="inspector-panel-sidebar">
+            <div class="inspector-tabs-nav">
+              <button class="inspector-tab-btn active">Design</button>
+              <button class="inspector-tab-btn">Frases</button>
+              <button class="inspector-tab-btn">Elementos</button>
+              <button class="inspector-tab-btn">Configurações</button>
+            </div>
+
+            <!-- Template Preset Selector -->
+            <div>
+              <div class="inspector-group-title">TEMPLATE EXSEGUROS</div>
+              <select id="carrosselTemaSelect" class="input-box" style="padding: 10px 14px; font-size: 0.85rem;">
+                <option value="auto_risco">🚗 Seguro Auto: Provocação & Sinistro</option>
+                <option value="imovel_erro">🏠 Seguro Residencial: Mito vs Realidade</option>
+                <option value="vida_familia">❤️ Seguro de Vida: Proteção Familiar</option>
+                <option value="auto_renovacao">💡 Renovação Auto: Economia Multimarcas</option>
+              </select>
+            </div>
+
+            <!-- Dados da Marca -->
+            <div>
+              <div class="inspector-group-title">DADOS DA MARCA</div>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <input type="text" id="carrosselNomeSeguradora" class="input-box" value="EXSeguros" style="padding: 10px; font-size: 0.85rem;" placeholder="Nome da Marca" />
+                <input type="text" id="carrosselArrobaSeguradora" class="input-box" value="@exseguros" style="padding: 10px; font-size: 0.85rem;" placeholder="Arroba @instagram" />
+              </div>
+            </div>
+
+            <!-- Paleta de Cores -->
+            <div>
+              <div class="inspector-group-title">PALETA DE CORES</div>
+              <div class="color-circles-row">
+                <div class="color-circle-btn" style="background: #ffffff;" title="Branco Puríssimo" onclick="alterarCorAspas('#ffffff')"></div>
+                <div class="color-circle-btn" style="background: #ff0a2b;" title="Vermelho EXSeguros" onclick="alterarCorAspas('#ff0a2b')"></div>
+                <div class="color-circle-btn" style="background: #7c3aed;" title="Roxo Purpura" onclick="alterarCorAspas('#7c3aed')"></div>
+                <div class="color-circle-btn" style="background: #fbbf24;" title="Dourado Luxo" onclick="alterarCorAspas('#fbbf24')"></div>
+                <div class="color-circle-btn" style="background: #00d2ff;" title="Ciano Glow" onclick="alterarCorAspas('#00d2ff')"></div>
+              </div>
+            </div>
+
+            <!-- Tipografia -->
+            <div>
+              <div class="inspector-group-title">TIPOGRAFIA</div>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <select id="fontSelectTitle" class="input-box" style="padding: 8px; font-size: 0.82rem;" onchange="alterarFonteTitulo(this.value)">
+                  <option value="'Outfit', sans-serif">Outfit (Moderna & Impactante)</option>
+                  <option value="'Bebas Neue', sans-serif">Bebas Neue (Caixa Alta Forte)</option>
+                  <option value="'Inter', sans-serif">Inter (Executiva Minimalista)</option>
+                  <option value="'Montserrat', sans-serif">Montserrat (Elegante)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Imagem de Fundo Presets -->
+            <div>
+              <div class="inspector-group-title">FUNDO DO SLIDE</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <button class="btn-element-item" onclick="alterarFundoCanvas('./vertex-bg-scripts.png')">
+                  <i class="ri-car-line"></i> Showroom
+                </button>
+                <button class="btn-element-item" onclick="alterarFundoCanvas('./vertex-bg-carrosseis.png')">
+                  <i class="ri-home-4-line"></i> Villa Luxo
+                </button>
+                <button class="btn-element-item" onclick="alterarFundoCanvas('./vertex-bg-followup.png')">
+                  <i class="ri-briefcase-line"></i> Escritório
+                </button>
+                <button class="btn-element-item" onclick="alterarFundoCanvas('')">
+                  <i class="ri-contrast-2-line"></i> Fundo Preto
+                </button>
+              </div>
+            </div>
+
+            <!-- Elementos Rápidos -->
+            <div>
+              <div class="inspector-group-title">ELEMENTOS VISUAIS</div>
+              <div class="elements-buttons-grid">
+                <div class="btn-element-item"><i class="ri-text"></i> Texto</div>
+                <div class="btn-element-item"><i class="ri-star-line"></i> Ícone</div>
+                <div class="btn-element-item"><i class="ri-shape-line"></i> Forma</div>
+                <div class="btn-element-item"><i class="ri-separator"></i> Linha</div>
+                <div class="btn-element-item"><i class="ri-double-quotes-l"></i> Citação</div>
+              </div>
+            </div>
+
+            <!-- Dica de Ouro Card -->
+            <div class="gold-tip-card">
+              ✨ <strong>Dica de Ouro EXSeguros:</strong><br/>
+              Use frases curtas no Fundo Preto com Aspas Vermelhas para ter 3x mais engajamento e salvar de apólices no Instagram!
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <!-- TAB 3: CENTRAL DE FOLLOW-UP (EXSEGUROS INTELLIGENCE) -->
+      <!-- TAB 3: CENTRAL DE FOLLOW-UP -->
       <div id="tab-followup" class="tab-content-pane">
         <div class="studio-panel">
           <div style="margin-bottom: 24px;">
@@ -1365,7 +1750,7 @@
         };
       }
 
-      // 2. TROCA DE ABAS COM PLANOS DE FUNDO DINÂMICOS EXCLUSIVOS
+      // 2. TROCA DE ABAS COM PLANOS DE FUNDO DINÂMICOS
       const navTabs = document.querySelectorAll('.nav-tab-item');
       const contentPanes = document.querySelectorAll('.tab-content-pane');
       const saasBgLayers = document.querySelectorAll('.saas-bg-img-layer');
@@ -1375,85 +1760,87 @@
           const targetTab = tab.getAttribute('data-tab');
           const targetBgId = tab.getAttribute('data-bg');
 
-          // Troca estado ativo das abas
           navTabs.forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
 
-          // Troca de painéis de conteúdo
           contentPanes.forEach(p => p.classList.remove('active'));
           const targetPane = document.getElementById(targetTab);
           if (targetPane) targetPane.classList.add('active');
 
-          // Troca suave de imagem de fundo com transição de opacidade
           saasBgLayers.forEach(bg => bg.classList.remove('active-bg'));
           const targetBg = document.getElementById(targetBgId);
           if (targetBg) targetBg.classList.add('active-bg');
         };
       });
 
-      // SCRIPTS EXSEGUROS
+      // 3. SCRIPTS EXSEGUROS LOGIC
       const BANCO_SCRIPTS = {
         auto: {
           abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Sou o consultor especialista da EXSeguros. 👋\n\nVi que o seguro do seu ${objeto} está próximo da renovação (ou vi que você solicitou um orçamento).\n\nFiz um estudo rápido comparando as 3 maiores seguradoras do mercado (Porto, Azul, Tokio) com cobertura completa contra roubo, furto, colisão, terceiros e guincho ilimitado.\n\nPosso te enviar essa simulação sem compromisso agora?`,
           cotacao: (nome, objeto) => `Olá, ${nome}! Conseguimos uma condição especial na EXSeguros para o seu ${objeto}.\n\nO valor aprovado para cobertura total ficou em apenas 10x de R$ 189,00 sem juros.\n\nO que inclui:\n✅ 100% da Tabela FIPE (Perda Total / Roubo)\n✅ Cobertura para Terceiros até R$ 100.000,00\n✅ Carro Reserva por 15 dias\n✅ Guincho sem limite de quilometragem 24h\n\nQuer que eu emita a proposta pra garantir essa tabela especial hoje?`,
           obj_caro: (nome, objeto) => `${nome}, entendo perfeitamente sua preocupação com o orçamento. Mas me deixa te fazer uma pergunta rápida:\n\nQuanto custaria para você ter que arcar do próprio bolso com R$ 60 mil se seu ${objeto} for roubado amanhã ou sofrer uma colisão?\n\nNa EXSeguros, esse seguro custa menos de R$ 6,00 por dia — o valor de um cafézinho pra você rodar tranquilo sabendo que seu patrimônio tá 100% blindado.\n\nPodemos parcelar em 10x sem juros. Vamos garantir a proteção hoje?`,
-          obj_banco: (nome, objeto) => `Entendo, ${nome}! Banco costuma colocar cotação genérica tirando coberturas vitais como Carro Reserva ou reduzindo a cobertura de terceiros a valores mínimos.\n\nAqui na EXSeguros você tem atendimento humano 24h direto no meu WhatsApp. Se precisar de guincho às 2h da manhã, você fala direto comigo, sem robô de banco.\n\nDeixa eu ajustar a proposta para cobrir o preço do banco mantendo essa segurança?`,
-          fechamento: (nome, objeto) => `${nome}, a seguradora me notificou que a tabela promocional da EXSeguros com 15% de desconto e Carro Reserva cortesia para o seu ${objeto} encerra HOJE às 18h.\n\nSe fecharmos agora, consigo travar esse valor exclusivo pra você sem nenhum reajuste.\n\nPosso dar entrada na emissão da apólice agora?`,
-          posvenda: (nome, objeto) => `Olá, ${nome}! Apólice do seu ${objeto} emitida com sucesso na EXSeguros! 🎉\n\nQualquer emergência 24h, meu WhatsApp é seu canal direto. Se tiver algum amigo ou familiar que comprou carro recente ou precisa renovar o seguro, me indica que dou uma condição promocional pra eles também!`
+          obj_banco: (nome, objeto) => `Entendo, ${nome}! Banco costuma colocar cotação genérica tirando coberturas vitais como Carro Reserva ou reduzindo a cobertura de terceiros a valores mínimos.\n\nAqui na EXSeguros você tem atendimento humano 24h direto no meu WhatsApp. Se precisar de guincho às 2h da manhã, você fala direto comigo, sem robô de banco.\n\nDeixa eu ajustar a proposta para cobrir o preço do banco mantendo essa segurança?`
         },
         imovel: {
-          abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Sou o especialista em seguro residencial da EXSeguros. 👋\n\nVocê sabia que menos de 15% dos proprietários sabem que o seguro imobiliário cobre não só incêndio, mas também vazamentos, queima de eletrodomésticos por raio e até chaveiro/eletricista 24h?\n\nFiz um estudo para o seu imóvel (${objeto}). Posso te mostrar como proteger seu patrimônio por menos de R$ 1,50 por dia?`,
-          cotacao: (nome, objeto) => `Olá, ${nome}! A cotação EXSeguros para proteção completa do seu imóvel (${objeto}) ficou aprovada!\n\nValor anual: Apenas 10x de R$ 45,00 (ou R$ 450,00 à vista).\n\nO que sua casa ganha:\n✅ R$ 300.000 de cobertura para a Estrutura\n✅ R$ 50.000 para móveis e eletros contra Incêndio/Queima Elétrica\n✅ Cobertura para Vazamentos e Danos a Vizinhos\n✅ Chaveiro, Eletricista e Encanador 24h Grátis\n\nPodemos emitir a apólice hoje?`,
-          obj_caro: (nome, objeto) => `${nome}, compreendo! Mas um vazamento de cano no banheiro pode causar R$ 8.000 em estragos no apartamento do vizinho. Com o seguro EXSeguros, a seguradora paga tudo.\n\nEstamos falando de R$ 1,50 por dia pra proteger todo o seu lar. Vamos emitir pra você não correr esse risco?`,
-          obj_banco: (nome, objeto) => `${nome}, o seguro do condomínio cobre APENAS as áreas comuns do prédio (corredor, elevador). Ele NÃO COBRE nada dentro do seu apartamento — se sua TV queimar ou houver curto na sua cozinha, o condomínio não paga nada.\n\nO Seguro Imobiliário individual EXSeguros é o que protege seus móveis de verdade. Deixa eu emitir pra você ficar 100% seguro?`,
-          fechamento: (nome, objeto) => `${nome}, a EXSeguros liberou o pacote especial com Assistência VIP (com conserto de geladeira e ar-condicionado inclusos) apenas para apólices emitidas até o fim do dia.\n\nPosso cadastrar os dados do imóvel (${objeto}) pra garantir esse benefício?`,
-          posvenda: (nome, objeto) => `Parabéns, ${nome}! O seu imóvel (${objeto}) está oficialmente protegido pela EXSeguros! 🏠🛡️ Segue o cartão digital com a assistência 24h.`
+          abordagem: (nome, objeto) => `Olá, ${nome}! Tudo bem? Aqui é da EXSeguros. 👋\n\nSabe aquele detalhe que quase todo proprietário de ${objeto} esquece? O seguro do condomínio NÃO cobre o que está dentro do seu imóvel (móveis, eletrônicos, incêndio e roubo).\n\nConseguimos uma proteção completa para a sua casa custando menos de R$ 1,50 por dia.\n\nPosso fazer uma cotação express em 2 minutos pra você?`,
+          cotacao: (nome, objeto) => `Olá, ${nome}! Montei o plano de Proteção Residencial EXSeguros para o seu ${objeto}.\n\nFicou em apenas 10x de R$ 39,90 no cartão.\n\nInclui:\n✅ Cobertura de R$ 300.000 para Incêndio e Surtos Elétricos\n✅ Cobertura de R$ 50.000 para Roubo e Furtos\n✅ Assistência 24h: Chaveiro, Encanador e Eletricista grátis\n\nVamos ativar essa segurança hoje?`,
+          obj_caro: (nome, objeto) => `${nome}, R$ 39 reais por mês é menos de R$ 1,30 por dia! Se um curto-circuito queimar sua TV ou causar um pequeno incêndio, o prejuízo pode passar de R$ 20.000 facilmente.\n\nCom a EXSeguros você dorme tranquilo sabendo que qualquer imprevisto está coberto. Vamos garantir essa taxa?`,
+          obj_banco: (nome, objeto) => `${nome}, no banco você fala com uma central que não sabe nem o seu nome. Na EXSeguros temos equipe dedicada para acionar encanador ou chaveiro na hora sem burocracia.\n\nPosso emitir sua apólice agora?`
         }
       };
 
       const scriptRamo = document.getElementById('scriptRamo');
-      const scriptEtapa = document.getElementById('scriptEtapa');
-      const scriptClienteNome = document.getElementById('scriptClienteNome');
+      const scriptNomeCliente = document.getElementById('scriptNomeCliente');
       const scriptObjeto = document.getElementById('scriptObjeto');
+      const scriptObjetivo = document.getElementById('scriptObjetivo');
       const btnGerarScript = document.getElementById('btnGerarScript');
-      const scriptBadgeTag = document.getElementById('scriptBadgeTag');
       const scriptOutputTextarea = document.getElementById('scriptOutputTextarea');
+      const scriptBadgeTag = document.getElementById('scriptBadgeTag');
       const btnCopiarScript = document.getElementById('btnCopiarScript');
       const btnEnviarWhatsApp = document.getElementById('btnEnviarWhatsApp');
 
-      const renderScript = () => {
-        const r = scriptRamo.value;
-        const e = scriptEtapa.value;
-        const n = scriptClienteNome.value.trim() || 'Cliente';
-        const o = scriptObjeto.value.trim() || (r === 'auto' ? 'Veículo' : 'Imóvel');
+      const gerarScript = () => {
+        const ramo = scriptRamo.value;
+        const nome = scriptNomeCliente.value.trim() || 'Cliente';
+        const obj = scriptObjeto.value.trim() || (ramo === 'auto' ? 'Veículo' : 'Residência');
+        const objetivo = scriptObjetivo.value;
 
-        const fn = BANCO_SCRIPTS[r]?.[e] || BANCO_SCRIPTS.auto[e];
-        if (fn) {
-          scriptOutputTextarea.value = fn(n, o);
-          scriptBadgeTag.textContent = `${r === 'auto' ? '🚗 SEGURO AUTO' : '🏠 SEGURO IMÓVEL'} • ${e.toUpperCase()}`;
+        const templateFunc = BANCO_SCRIPTS[ramo]?.[objetivo];
+        if (templateFunc) {
+          const txt = templateFunc(nome, obj);
+          scriptOutputTextarea.value = txt;
+          const ramoTxt = ramo === 'auto' ? '🚗 SEGURO AUTO' : '🏠 SEGURO RESIDENCIAL';
+          const objTxt = objetivo.toUpperCase().replace('_', ' ');
+          scriptBadgeTag.textContent = `${ramoTxt} • ${objTxt}`;
         }
       };
 
-      btnGerarScript.onclick = renderScript;
-      renderScript();
+      if (btnGerarScript) btnGerarScript.onclick = gerarScript;
+      gerarScript();
 
-      btnCopiarScript.onclick = () => {
-        scriptOutputTextarea.select();
-        navigator.clipboard.writeText(scriptOutputTextarea.value);
-        alert('Script copiado com sucesso!');
-      };
+      if (btnCopiarScript) {
+        btnCopiarScript.onclick = () => {
+          scriptOutputTextarea.select();
+          navigator.clipboard.writeText(scriptOutputTextarea.value);
+          alert('Script copiado para a área de transferência!');
+        };
+      }
 
-      btnEnviarWhatsApp.onclick = () => {
-        const textEnc = encodeURIComponent(scriptOutputTextarea.value);
-        window.open(`https://wa.me/?text=${textEnc}`, '_blank');
-      };
+      if (btnEnviarWhatsApp) {
+        btnEnviarWhatsApp.onclick = () => {
+          const txt = encodeURIComponent(scriptOutputTextarea.value);
+          window.open(`https://api.whatsapp.com/send?text=${txt}`, '_blank');
+        };
+      }
 
-      // CARROSSÉIS EXSEGUROS
+      // =========================================================
+      // 4. CAROUSEL STUDIO & EDITOR PRO LOGIC (MOCKUP LIKE UI)
+      // =========================================================
       const BANCO_CARROSSEIS = {
         auto_risco: {
           slides: [
             { title: "Não é sobre economizar na apólice.", body: "É sobre **não perder o carro**, a paciência e **anos de economia** por causa de uma cotação barata que cortou o guincho." },
-            { title: "O seguro mais caro do mundo:", body: "É aquele que você achava que tinha, mas descobre na hora do sinistro que a seguradora **não cobre danos a terceiros**." },
+            { title: "O seguro mais caro do mundo:", body: "É aquele que você achava que tinha, mas descobre no sinistro que a seguradora **não cobre danos a terceiros**." },
             { title: "Quem tem seguro não paga por azar.", body: "Paga pela **tranquilidade** de saber que se algo acontecer hoje à noite, **amanhã o problema está 100% resolvido**." },
             { title: "Proteja seu veículo hoje mesmo.", body: "Solicite uma **cotação personalizada na EXSeguros** e rode **totalmente blindado**." }
           ],
@@ -1461,12 +1848,12 @@
         },
         imovel_erro: {
           slides: [
-            { title: "O seguro do condomínio não protege a sua casa.", body: "Ele cobre a fachada e os elevadores. Se uma **TV queimar por raio** ou um **cano estourar na sua cozinha**, o prejuízo é **100% seu**." },
-            { title: "Menos de R$ 1,50 por dia.", body: "É o valor para proteger a **estrutura do seu imóvel**, seus móveis, eletrodomésticos e ainda ter **chaveiro e encanador 24h grátis**." },
+            { title: "O seguro do condomínio não cobre sua casa.", body: "Ele cobre a fachada e os elevadores. Se um **cano estourar no seu apartamento**, o prejuízo é **100% seu**." },
+            { title: "Menos de R$ 1,50 por dia.", body: "É o valor para proteger seus móveis, eletrodomésticos e ter **chaveiro e encanador 24h grátis**." },
             { title: "Patrimônio não se arrisca.", body: "Um curto-circuito leva **segundos** para destruir o que você levou **anos para construir**. Proteção é inteligência financeira." },
             { title: "Garanta a paz de espírito do seu lar.", body: "Chame a equipe da EXSeguros no WhatsApp e faça uma **simulação rápida para o seu imóvel**." }
           ],
-          caption: `🏠 Morar em prédio não significa que seu apartamento está coberto!\n\nO Seguro Residencial individual EXSeguros custa menos de R$ 1,50/dia e protege tudo dentro da sua casa contra surtos elétricos, vazamentos e incêndio.\n\n📲 Simule agora mesmo no link da Bio!\n\n#exseguros #seguroresidencial #seguroimovel #apartamento #casa`
+          caption: `🏠 Morar em prédio não significa que seu apartamento está coberto!\n\nO Seguro Residencial individual EXSeguros custa menos de R$ 1,50/dia e protege tudo dentro da sua casa.\n\n📲 Simule agora mesmo no link da Bio!\n\n#exseguros #seguroresidencial #seguroimovel #apartamento`
         },
         vida_familia: {
           slides: [
@@ -1475,7 +1862,7 @@
             { title: "Seguro de vida se faz com saúde.", body: "Quando o imprevisto acontece, **já é tarde demais para contratar**. O momento de proteger sua família é **agora**." },
             { title: "Proteja quem você ama hoje.", body: "Fale com o consultor EXSeguros e descubra planos sob medida de **Seguro de Vida e Proteção Familiar**." }
           ],
-          caption: `❤️ O maior ato de amor pela sua família é garantir o futuro deles.\n\nConheça nossas apólices EXSeguros de Seguro de Vida com cobertura para diagnósticos graves e proteção financeira familiar.\n\n📲 Fale conosco no WhatsApp pelo link da Bio!\n\n#exseguros #segurodevida #protecaofamiliar #seguros #planejametofinanceiro`
+          caption: `❤️ O maior ato de amor pela sua família é garantir o futuro deles.\n\nConheça nossas apólices EXSeguros de Seguro de Vida com cobertura para diagnósticos graves e proteção financeira familiar.\n\n📲 Fale conosco no WhatsApp pelo link da Bio!\n\n#exseguros #segurodevida #protecaofamiliar #seguros`
         },
         auto_renovacao: {
           slides: [
@@ -1484,66 +1871,128 @@
             { title: "Renovar sem pesquisar é rasgar dinheiro.", body: "Em 2 minutos nossa equipe EXSeguros faz o estudo completo e garante **Carro Reserva grátis** e **desconto exclusivo**." },
             { title: "Sua renovação está chegando?", body: "Envie sua apólice atual para nosso WhatsApp e receba um **estudo comparativo 100% gratuito**." }
           ],
-          caption: `💡 Economize na renovação do seu Seguro Auto com a EXSeguros!\n\nCotamos em 5 seguradoras ao mesmo tempo para garantir a melhor condição para seu veículo.\n\n📲 Chame no WhatsApp e economize até 30%!\n\n#exseguros #seguroauto #renovacaodeseguro #economizarnoseguro #corretoradeseguros`
+          caption: `💡 Economize na renovação do seu Seguro Auto com a EXSeguros!\n\nCotamos em 5 seguradoras ao mesmo tempo para garantir a melhor condição para seu veículo.\n\n📲 Chame no WhatsApp e economize até 30%!\n\n#exseguros #seguroauto #renovacaodeseguro #economizarnoseguro`
         }
       };
 
+      // State do Studio
+      let currentActiveSlideIdx = 0;
+      let slidesList = [...BANCO_CARROSSEIS.auto_risco.slides];
+
+      const carrosselTemaSelect = document.getElementById('carrosselTemaSelect');
       const carrosselNomeSeguradora = document.getElementById('carrosselNomeSeguradora');
       const carrosselArrobaSeguradora = document.getElementById('carrosselArrobaSeguradora');
-      const carrosselTemaSelect = document.getElementById('carrosselTemaSelect');
-      const btnGerarCarrossel = document.getElementById('btnGerarCarrossel');
-      const slidesGrid = document.getElementById('slidesGrid');
+      const slidesThumbStrip = document.getElementById('slidesThumbStrip');
+      const activeSlideCanvasBox = document.getElementById('activeSlideCanvasBox');
+      const stageQuoteMark = document.getElementById('stageQuoteMark');
+      const stageTitleTxt = document.getElementById('stageTitleTxt');
+      const stageBodyTxt = document.getElementById('stageBodyTxt');
+      const stageBrandTxt = document.getElementById('stageBrandTxt');
+      const slideCountTotalLabel = document.getElementById('slideCountTotalLabel');
       const carrosselLegendaTextarea = document.getElementById('carrosselLegendaTextarea');
       const btnCopiarLegenda = document.getElementById('btnCopiarLegenda');
       const btnBaixarTodosSlides = document.getElementById('btnBaixarTodosSlides');
+      const btnPrevSlideCanvas = document.getElementById('btnPrevSlideCanvas');
+      const btnNextSlideCanvas = document.getElementById('btnNextSlideCanvas');
 
-      const parseMarkdownBold = text => text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      const parseMarkdownBold = text => text ? text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') : '';
 
-      const renderCarrossel = () => {
-        const data = BANCO_CARROSSEIS[carrosselTemaSelect.value];
-        if (!data) return;
-
+      const renderStudioEditor = () => {
         const nomeSeg = carrosselNomeSeguradora.value.trim() || 'EXSeguros';
         const arrobaSeg = carrosselArrobaSeguradora.value.trim() || '@exseguros';
 
-        slidesGrid.innerHTML = '';
-        data.slides.forEach((slide, idx) => {
-          const wrap = document.createElement('div');
-          wrap.className = 'slide-card-wrap';
+        // Atualiza Strip de Thumbnails
+        slidesThumbStrip.innerHTML = '';
+        slidesList.forEach((slide, idx) => {
+          const thumb = document.createElement('div');
+          thumb.className = `slide-thumb-card ${idx === currentActiveSlideIdx ? 'active' : ''}`;
+          thumb.onclick = () => selectSlideIndex(idx);
 
-          const card = document.createElement('div');
-          card.className = 'slide-preview-box';
-          card.id = `slideCardPreview_${idx + 1}`;
-
-          card.innerHTML = `
-            <div class="slide-quotes-mark">“</div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 1.55rem; font-weight: 800; color: #ffffff; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.5px;">${slide.title}</div>
-            <div style="font-size: 1.05rem; font-weight: 400; color: #f1f5f9; line-height: 1.5;">${parseMarkdownBold(slide.body)}</div>
-            <div style="margin-top: auto; padding-top: 24px; font-size: 0.9rem; font-weight: 500; color: #94a3b8;">${nomeSeg} | ${arrobaSeg}</div>
+          thumb.innerHTML = `
+            <div class="slide-badge-num">${idx + 1}</div>
+            <div class="slide-thumb-preview-text">${slide.title}</div>
+            <div style="font-size: 0.62rem; color: #94a3b8; margin-top: auto;">${nomeSeg}</div>
           `;
-
-          const dlBtn = document.createElement('button');
-          dlBtn.className = 'btn-action btn-action-glass';
-          dlBtn.style.padding = '10px';
-          dlBtn.style.fontSize = '0.82rem';
-          dlBtn.innerHTML = `<i class="ri-download-2-line"></i> Baixar Slide 0${idx + 1} (PNG)`;
-          dlBtn.onclick = () => baixarSlide(card, `${nomeSeg.replace(/\s+/g, '_')}_Slide_0${idx + 1}.png`);
-
-          wrap.appendChild(card);
-          wrap.appendChild(dlBtn);
-          slidesGrid.appendChild(wrap);
+          slidesThumbStrip.appendChild(thumb);
         });
 
-        carrosselLegendaTextarea.value = data.caption;
+        // Botão + Adicionar Slide
+        const addBtn = document.createElement('div');
+        addBtn.className = 'add-slide-thumb-btn';
+        addBtn.onclick = adicionarNovoSlide;
+        addBtn.innerHTML = `<i class="ri-add-line" style="font-size: 1.4rem;"></i><span>Adicionar Slide</span>`;
+        slidesThumbStrip.appendChild(addBtn);
+
+        // Atualiza Stage Central 1080x1080
+        if (slidesList[currentActiveSlideIdx]) {
+          const cur = slidesList[currentActiveSlideIdx];
+          stageTitleTxt.innerHTML = cur.title;
+          stageBodyTxt.innerHTML = parseMarkdownBold(cur.body);
+          stageBrandTxt.textContent = `${nomeSeg} | ${arrobaSeg}`;
+        }
+
+        slideCountTotalLabel.textContent = `${slidesList.length} Slides`;
       };
 
-      carrosselNomeSeguradora.oninput = renderCarrossel;
-      carrosselArrobaSeguradora.oninput = renderCarrossel;
-      carrosselTemaSelect.onchange = renderCarrossel;
-      btnGerarCarrossel.onclick = renderCarrossel;
-      renderCarrossel();
+      const selectSlideIndex = (idx) => {
+        if (idx >= 0 && idx < slidesList.length) {
+          currentActiveSlideIdx = idx;
+          renderStudioEditor();
+        }
+      };
 
-      const baixarSlide = (el, filename) => {
+      const adicionarNovoSlide = () => {
+        slidesList.push({
+          title: "Novo Slide de Engajamento",
+          body: "Insira aqui uma frase provocativa ou dica importante da **EXSeguros**."
+        });
+        currentActiveSlideIdx = slidesList.length - 1;
+        renderStudioEditor();
+      };
+
+      window.aplicarFraseSugerida = (titulo, corpo) => {
+        slidesList[currentActiveSlideIdx] = { title: titulo, body: corpo };
+        renderStudioEditor();
+      };
+
+      window.alterarCorAspas = (corHex) => {
+        stageQuoteMark.style.color = corHex;
+        stageQuoteMark.style.textShadow = `0 0 20px ${corHex}`;
+      };
+
+      window.alterarFonteTitulo = (fonteCss) => {
+        stageTitleTxt.style.fontFamily = fonteCss;
+      };
+
+      window.alterarFundoCanvas = (imgUrl) => {
+        if (imgUrl) {
+          activeSlideCanvasBox.style.backgroundImage = `linear-gradient(180deg, rgba(8,10,18,0.75) 0%, rgba(8,10,18,0.92) 100%), url('${imgUrl}')`;
+        } else {
+          activeSlideCanvasBox.style.backgroundImage = 'none';
+          activeSlideCanvasBox.style.backgroundColor = '#080a12';
+        }
+      };
+
+      carrosselTemaSelect.onchange = () => {
+        const key = carrosselTemaSelect.value;
+        if (BANCO_CARROSSEIS[key]) {
+          slidesList = [...BANCO_CARROSSEIS[key].slides];
+          carrosselLegendaTextarea.value = BANCO_CARROSSEIS[key].caption;
+          currentActiveSlideIdx = 0;
+          renderStudioEditor();
+        }
+      };
+
+      carrosselNomeSeguradora.oninput = renderStudioEditor;
+      carrosselArrobaSeguradora.oninput = renderStudioEditor;
+
+      if (btnPrevSlideCanvas) btnPrevSlideCanvas.onclick = () => selectSlideIndex(currentActiveSlideIdx - 1);
+      if (btnNextSlideCanvas) btnNextSlideCanvas.onclick = () => selectSlideIndex(currentActiveSlideIdx + 1);
+
+      carrosselLegendaTextarea.value = BANCO_CARROSSEIS.auto_risco.caption;
+      renderStudioEditor();
+
+      const baixarSlideElemento = (el, filename) => {
         if (typeof window.html2canvas !== 'function') return;
         window.html2canvas(el, { scale: 2.5, backgroundColor: '#08080a' }).then(canvas => {
           const a = document.createElement('a');
@@ -1553,20 +2002,30 @@
         });
       };
 
-      btnBaixarTodosSlides.onclick = () => {
-        const cards = document.querySelectorAll('.slide-preview-box');
-        cards.forEach((c, i) => {
-          setTimeout(() => baixarSlide(c, `Slide_EXSeguros_0${i + 1}.png`), i * 600);
-        });
-      };
+      if (btnBaixarTodosSlides) {
+        btnBaixarTodosSlides.onclick = () => {
+          const originalIdx = currentActiveSlideIdx;
+          slidesList.forEach((_, i) => {
+            setTimeout(() => {
+              selectSlideIndex(i);
+              baixarSlideElemento(activeSlideCanvasBox, `EXSeguros_Slide_0${i + 1}.png`);
+              if (i === slidesList.length - 1) {
+                setTimeout(() => selectSlideIndex(originalIdx), 500);
+              }
+            }, i * 700);
+          });
+        };
+      }
 
-      btnCopiarLegenda.onclick = () => {
-        carrosselLegendaTextarea.select();
-        navigator.clipboard.writeText(carrosselLegendaTextarea.value);
-        alert('Legenda copiada com sucesso!');
-      };
+      if (btnCopiarLegenda) {
+        btnCopiarLegenda.onclick = () => {
+          carrosselLegendaTextarea.select();
+          navigator.clipboard.writeText(carrosselLegendaTextarea.value);
+          alert('Legenda do Instagram copiada com sucesso!');
+        };
+      }
 
-      // FOLLOW-UP GENERATOR EXSEGUROS
+      // 5. FOLLOW-UP GENERATOR EXSEGUROS LOGIC
       const BANCO_FOLLOWUP = {
         auto: {
           vacuo: (nome, dias) => ({
@@ -1599,73 +2058,78 @@
       const btnWaFollow = document.getElementById('btnWaFollow');
 
       let currentFollowData = null;
-      let activeTarget = 'follow-wa';
+      let currentSubTabKey = 'wa';
 
-      const renderFollowUp = () => {
+      const gerarFollowUp = () => {
         const nome = followNome.value.trim() || 'Cliente';
         const tipo = followTipo.value;
-        const sit = followSituacao.value;
+        const situacao = followSituacao.value;
         const dias = followDias.value;
 
-        const ramoData = BANCO_FOLLOWUP[tipo] || BANCO_FOLLOWUP.auto;
-        const sitFn = ramoData[sit] || ramoData.vacuo;
-        currentFollowData = sitFn(nome, dias);
+        const dataset = BANCO_FOLLOWUP[tipo] || BANCO_FOLLOWUP.auto;
+        const generator = dataset[situacao] || dataset.vacuo;
+        currentFollowData = generator(nome, dias);
 
-        renderFollowSubTab(activeTarget);
+        renderFollowSubTab(currentSubTabKey);
       };
 
-      const renderFollowSubTab = key => {
-        activeTarget = key;
+      const renderFollowSubTab = (key) => {
         if (!currentFollowData) return;
-        const nome = followNome.value.trim() || 'Cliente';
+        currentSubTabKey = key;
 
-        if (key === 'follow-wa') {
-          followTextarea.value = currentFollowData.wa;
-          followBadgeTag.textContent = `📱 WHATSAPP • SEGURO ${followTipo.value.toUpperCase()}`;
-          followOutputSubLabel.textContent = `Mensagem direta adaptada para o WhatsApp de ${nome}`;
-        } else if (key === 'follow-audio') {
-          followTextarea.value = currentFollowData.audio;
-          followBadgeTag.textContent = `🎙️ ROTEIRO ÁUDIO • GRAVAR NO WHATSAPP`;
-          followOutputSubLabel.textContent = `Roteiro curto para gravar áudio com tom natural`;
-        } else if (key === 'follow-email') {
-          followTextarea.value = currentFollowData.email;
-          followBadgeTag.textContent = `✉️ E-MAIL EXECUTIVO • REENGAJAMENTO B2B`;
-          followOutputSubLabel.textContent = `E-mail formal pronto para cópia`;
-        } else if (key === 'follow-sub1') {
-          followTextarea.value = currentFollowData.sub1;
-          followBadgeTag.textContent = `🔄 2ª ABORDAGEM • TROCA DE ÂNGULO (+48H)`;
-          followOutputSubLabel.textContent = `Troca de ângulo com novo benefício exclusivo`;
-        } else if (key === 'follow-sub2') {
-          followTextarea.value = currentFollowData.sub2;
-          followBadgeTag.textContent = `🔥 ULTIMATO / BREAK-UP MESSAGE (DESPEDIDA)`;
-          followOutputSubLabel.textContent = `Mensagem de arquivamento com forte gatilho da perda`;
+        const text = currentFollowData[key] || '';
+        followTextarea.value = text;
+
+        const labelsMap = {
+          wa: { tag: '📱 WHATSAPP IMEDIATO', sub: 'Mensagem curta com pergunta direta' },
+          audio: { tag: '🎙️ ROTEIRO DE ÁUDIO', sub: 'Roteiro de 20s para você gravar com tom amigável' },
+          email: { tag: '✉️ E-MAIL EXECUTIVO', sub: 'Assunto persuasivo e corpo formal' },
+          sub1: { tag: '🔄 2ª ABORDAGEM (+48H)', sub: 'Mensagem com bônus de cortesia/franquia' },
+          sub2: { tag: '🔥 ULTIMATO / DESPEDIDA', sub: 'Aviso de encerramento de protocolo com gatilho de escassez' }
+        };
+
+        const info = labelsMap[key] || labelsMap.wa;
+        followBadgeTag.textContent = info.tag;
+        followOutputSubLabel.textContent = info.sub;
+
+        if (followSubTabs) {
+          const btns = followSubTabs.querySelectorAll('.sub-tab-btn');
+          btns.forEach(b => {
+            const target = b.getAttribute('data-target');
+            if (target === `follow-${key}`) b.classList.add('active');
+            else b.classList.remove('active');
+          });
         }
       };
+
+      if (btnGerarFollowUp) btnGerarFollowUp.onclick = gerarFollowUp;
 
       if (followSubTabs) {
         const btns = followSubTabs.querySelectorAll('.sub-tab-btn');
         btns.forEach(b => {
           b.onclick = () => {
-            btns.forEach(x => x.classList.remove('active'));
-            b.classList.add('active');
-            renderFollowSubTab(b.getAttribute('data-target'));
+            const target = b.getAttribute('data-target').replace('follow-', '');
+            renderFollowSubTab(target);
           };
         });
       }
 
-      btnGerarFollowUp.onclick = renderFollowUp;
-      renderFollowUp();
+      gerarFollowUp();
 
-      btnCopiarFollow.onclick = () => {
-        followTextarea.select();
-        navigator.clipboard.writeText(followTextarea.value);
-        alert('Conteúdo copiado com sucesso!');
-      };
+      if (btnCopiarFollow) {
+        btnCopiarFollow.onclick = () => {
+          followTextarea.select();
+          navigator.clipboard.writeText(followTextarea.value);
+          alert('Mensagem de follow-up copiada com sucesso!');
+        };
+      }
 
-      btnWaFollow.onclick = () => {
-        const textEnc = encodeURIComponent(followTextarea.value);
-        window.open(`https://wa.me/?text=${textEnc}`, '_blank');
-      };
+      if (btnWaFollow) {
+        btnWaFollow.onclick = () => {
+          const txt = encodeURIComponent(followTextarea.value);
+          window.open(`https://api.whatsapp.com/send?text=${txt}`, '_blank');
+        };
+      }
     });
   </script>
 </body>
