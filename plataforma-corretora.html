@@ -105,7 +105,7 @@
       width: 100%;
       height: 100%;
       background: 
-        linear-gradient(180deg, rgba(2, 4, 10, 0.65) 0%, rgba(2, 3, 6, 0.75) 50%, rgba(2, 3, 6, 0.94) 100%),
+        linear-gradient(180deg, rgba(2, 4, 10, 0.55) 0%, rgba(2, 3, 6, 0.70) 50%, rgba(2, 3, 6, 0.92) 100%),
         radial-gradient(circle at 70% 30%, rgba(255, 10, 43, 0.18) 0%, transparent 60%);
       pointer-events: none;
     }
@@ -153,9 +153,7 @@
       color: #fff;
     }
 
-    .brand-name-txt span {
-      color: var(--primary-red);
-    }
+    .brand-name-txt span { color: var(--primary-red); }
 
     .status-badge-active {
       display: inline-flex;
@@ -413,7 +411,7 @@
     }
 
     .container-studio {
-      max-width: 1380px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 0 20px;
       position: relative;
@@ -503,7 +501,6 @@
       color: #fff;
     }
 
-    /* Navigation Bar das Abas Principais */
     .tab-nav-bar {
       display: flex;
       gap: 8px;
@@ -735,44 +732,67 @@
     }
 
     /* =========================================================
-       3. NOVO DESIGN DO CAROUSEL STUDIO & EDITOR UI (TIPO CANVA PRO)
+       3. REESTRUTURAÇÃO COMPLETA DO CAROUSEL STUDIO PRO (PERFEIÇÃO E HARMONIA)
        ========================================================= */
-    .carousel-studio-grid {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 24px;
-      margin-top: 16px;
-    }
-
-    @media (max-width: 1024px) {
-      .carousel-studio-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .studio-top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .studio-header-strip {
       background: rgba(8, 12, 22, 0.92);
       border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 16px;
-      padding: 14px 20px;
+      border-radius: 18px;
+      padding: 12px 20px;
       margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       backdrop-filter: blur(20px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
       flex-wrap: wrap;
       gap: 12px;
     }
 
-    .studio-title-group {
+    .studio-left-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .studio-badge-purple {
+      background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+      color: #fff;
+      font-family: var(--font-tech);
+      font-size: 0.75rem;
+      font-weight: 900;
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
+    }
+
+    .title-input-editable {
+      background: transparent;
+      border: none;
+      border-bottom: 1px dashed rgba(255,255,255,0.3);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      outline: none;
+      padding-bottom: 2px;
+      transition: all 0.2s;
+    }
+
+    .title-input-editable:focus {
+      border-bottom-color: var(--primary-red);
+    }
+
+    .studio-right-tools {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .btn-icon-studio {
-      width: 36px;
-      height: 36px;
+    .tool-btn-square {
+      width: 38px;
+      height: 38px;
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.16);
@@ -781,49 +801,75 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      font-size: 1rem;
       transition: all 0.2s;
     }
 
-    .btn-icon-studio:hover {
-      background: rgba(255, 10, 43, 0.2);
+    .tool-btn-square:hover {
+      background: rgba(255, 10, 43, 0.25);
       border-color: var(--primary-red);
       color: #fff;
     }
 
-    .btn-export-purple {
+    .btn-export-gradient {
       background: linear-gradient(135deg, #7c3aed 0%, #ff0a2b 100%);
       color: #fff;
-      font-weight: 800;
-      padding: 10px 22px;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 900;
+      padding: 10px 24px;
       border-radius: 12px;
       border: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.9rem;
-      box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
-      transition: all 0.25s;
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+      transition: all 0.3s;
     }
 
-    .btn-export-purple:hover {
+    .btn-export-gradient:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255, 10, 43, 0.55);
+      box-shadow: 0 10px 30px rgba(255, 10, 43, 0.65);
     }
 
-    .slides-strip-section {
+    .carousel-studio-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+    }
+
+    @media (max-width: 1080px) {
+      .carousel-studio-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .slides-strip-container {
       margin-bottom: 20px;
     }
 
-    .slides-strip-row {
+    .slides-strip-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .slides-cards-scroll-row {
       display: flex;
       gap: 14px;
       overflow-x: auto;
-      padding-bottom: 12px;
+      padding-bottom: 10px;
       -webkit-overflow-scrolling: touch;
     }
 
-    .slide-thumb-card {
+    .slide-mini-thumb {
       flex: 0 0 135px;
       aspect-ratio: 1 / 1;
       background: #080a12;
@@ -839,17 +885,17 @@
       user-select: none;
     }
 
-    .slide-thumb-card:hover {
+    .slide-mini-thumb:hover {
       border-color: rgba(255, 10, 43, 0.6);
       transform: translateY(-2px);
     }
 
-    .slide-thumb-card.active {
+    .slide-mini-thumb.active {
       border-color: #ff0a2b;
       box-shadow: 0 0 18px rgba(255, 10, 43, 0.5), inset 0 0 10px rgba(255, 10, 43, 0.2);
     }
 
-    .slide-badge-num {
+    .badge-slide-num {
       position: absolute;
       top: 6px;
       left: 6px;
@@ -865,7 +911,28 @@
       justify-content: center;
     }
 
-    .slide-thumb-preview-text {
+    .btn-delete-slide-mini {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ef4444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .slide-mini-thumb:hover .btn-delete-slide-mini {
+      opacity: 1;
+    }
+
+    .thumb-preview-txt {
       font-size: 0.68rem;
       color: #e2e8f0;
       font-weight: 700;
@@ -877,7 +944,7 @@
       overflow: hidden;
     }
 
-    .add-slide-thumb-btn {
+    .add-slide-card-btn {
       flex: 0 0 135px;
       aspect-ratio: 1 / 1;
       background: rgba(255, 255, 255, 0.03);
@@ -895,17 +962,17 @@
       font-weight: 700;
     }
 
-    .add-slide-thumb-btn:hover {
+    .add-slide-card-btn:hover {
       background: rgba(255, 10, 43, 0.12);
       border-color: var(--primary-red);
       color: #fff;
     }
 
-    .main-canvas-stage {
+    .stage-canvas-outer {
       background: rgba(4, 6, 12, 0.94);
       border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 20px;
-      padding: 36px 24px;
+      padding: 32px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -913,7 +980,7 @@
       box-shadow: 0 20px 50px rgba(0,0,0,0.85);
     }
 
-    .canvas-nav-arrow {
+    .stage-arrow-btn {
       position: absolute;
       top: 42%;
       transform: translateY(-50%);
@@ -932,15 +999,15 @@
       font-size: 1.2rem;
     }
 
-    .canvas-nav-arrow:hover {
+    .stage-arrow-btn:hover {
       background: var(--primary-red);
       box-shadow: 0 0 15px rgba(255,10,43,0.6);
     }
 
-    .canvas-nav-arrow.left { left: 16px; }
-    .canvas-nav-arrow.right { right: 16px; }
+    .stage-arrow-btn.left { left: 16px; }
+    .stage-arrow-btn.right { right: 16px; }
 
-    .active-slide-card-view {
+    .slide-card-stage-1080 {
       width: 100%;
       max-width: 460px;
       aspect-ratio: 1 / 1;
@@ -959,7 +1026,7 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    .card-quotes-mark {
+    .quote-symbol-large {
       font-size: 3.8rem;
       font-weight: 900;
       color: var(--primary-red);
@@ -969,7 +1036,7 @@
       text-shadow: 0 0 20px rgba(255, 10, 43, 0.5);
     }
 
-    .card-main-title {
+    .stage-title-render {
       font-size: 1.65rem;
       font-weight: 900;
       color: #ffffff;
@@ -978,14 +1045,14 @@
       letter-spacing: -0.5px;
     }
 
-    .card-main-body {
+    .stage-body-render {
       font-size: 1.05rem;
       font-weight: 400;
       color: #f1f5f9;
       line-height: 1.5;
     }
 
-    .card-brand-footer {
+    .stage-footer-brand {
       margin-top: auto;
       padding-top: 24px;
       font-size: 0.88rem;
@@ -993,7 +1060,7 @@
       color: #94a3b8;
     }
 
-    .canvas-bottom-bar {
+    .canvas-status-bar {
       display: flex;
       align-items: center;
       gap: 14px;
@@ -1006,19 +1073,19 @@
       color: #cbd5e1;
     }
 
-    .suggested-phrases-section {
+    .phrases-ideas-wrapper {
       margin-top: 24px;
       width: 100%;
     }
 
-    .suggested-phrases-grid {
+    .phrases-ideas-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 12px;
       margin-top: 12px;
     }
 
-    .phrase-card-box {
+    .phrase-box-item {
       background: rgba(8, 12, 22, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 14px;
@@ -1031,29 +1098,13 @@
       gap: 10px;
     }
 
-    .phrase-card-box:hover {
+    .phrase-box-item:hover {
       border-color: var(--primary-red);
       background: rgba(255, 10, 43, 0.08);
       transform: translateY(-2px);
     }
 
-    .phrase-card-text {
-      font-size: 0.82rem;
-      color: #e2e8f0;
-      line-height: 1.4;
-    }
-
-    .phrase-heart-icon {
-      color: #94a3b8;
-      font-size: 1rem;
-      transition: color 0.2s;
-    }
-
-    .phrase-card-box:hover .phrase-heart-icon {
-      color: #ff0a2b;
-    }
-
-    .inspector-panel-sidebar {
+    .inspector-sidebar-card {
       background: rgba(8, 12, 22, 0.92);
       border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 20px;
@@ -1061,17 +1112,17 @@
       backdrop-filter: blur(24px);
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
-    .inspector-tabs-nav {
+    .inspector-nav-tabs {
       display: flex;
       gap: 4px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       padding-bottom: 10px;
     }
 
-    .inspector-tab-btn {
+    .inspector-nav-btn {
       background: transparent;
       border: none;
       color: #94a3b8;
@@ -1083,12 +1134,12 @@
       transition: all 0.2s;
     }
 
-    .inspector-tab-btn.active {
+    .inspector-nav-btn.active {
       background: rgba(255, 10, 43, 0.18);
       color: #fff;
     }
 
-    .inspector-group-title {
+    .inspector-label-sm {
       font-size: 0.75rem;
       font-weight: 800;
       color: #94a3b8;
@@ -1097,12 +1148,12 @@
       margin-bottom: 8px;
     }
 
-    .color-circles-row {
+    .swatch-circles-flex {
       display: flex;
       gap: 10px;
     }
 
-    .color-circle-btn {
+    .swatch-circle-item {
       width: 28px;
       height: 28px;
       border-radius: 50%;
@@ -1111,62 +1162,51 @@
       transition: transform 0.2s;
     }
 
-    .color-circle-btn:hover {
+    .swatch-circle-item:hover {
       transform: scale(1.2);
     }
 
-    .elements-buttons-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 6px;
-    }
-
-    .btn-element-item {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 10px;
-      color: #fff;
-      padding: 8px 4px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      display: flex;
-      flex-direction: column;
+    /* FULLSCREEN PREVIEW MODAL */
+    .preview-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(2, 3, 6, 0.94);
+      backdrop-filter: blur(24px);
+      z-index: 1000;
+      display: none;
       align-items: center;
-      gap: 4px;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .preview-modal-backdrop.open {
+      display: flex;
+    }
+
+    .preview-modal-content {
+      position: relative;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .btn-close-modal {
+      position: absolute;
+      top: -46px;
+      right: 0;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
       cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-element-item:hover {
-      background: rgba(255, 10, 43, 0.2);
-      border-color: var(--primary-red);
-    }
-
-    .gold-tip-card {
-      background: rgba(251, 191, 36, 0.08);
-      border: 1px solid rgba(251, 191, 36, 0.3);
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 0.78rem;
-      color: #fef08a;
-      line-height: 1.5;
-    }
-
-    /* Otimização Responsiva para Telas Menores */
-    @media (max-width: 768px) {
-      .portal-ui-layer {
-        padding: 20px 16px 28px 16px;
-        gap: 16px;
-      }
-      .brand-logo-img { width: 38px; height: 38px; }
-      .brand-name-txt { font-size: 1.25rem; }
-      .portal-main-heading { font-size: 2.1rem; }
-      .studio-panel { padding: 20px 16px; border-radius: 18px; }
-      .form-grid { grid-template-columns: 1fr; gap: 16px; }
-      .canvas-nav-arrow { display: none; }
-      .active-slide-card-view { padding: 24px 20px; }
-      .card-main-title { font-size: 1.35rem; }
-      .card-main-body { font-size: 0.9rem; }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
     }
   </style>
 </head>
@@ -1177,7 +1217,7 @@
        ========================================================= -->
   <div id="executivePortalScreen">
     <div class="portal-bg-layer">
-      <img src="./vertex-insurance-hero.png" alt="EXSeguros Luxury Showroom" id="portalHeroImg" class="portal-hero-img" />
+      <img src="./vertex-insurance-bg.png?v=3.0" alt="EXSeguros Luxury Background" id="portalHeroImg" class="portal-hero-img" />
       <div class="portal-overlay-gradient"></div>
     </div>
 
@@ -1278,7 +1318,7 @@
 
 
   <!-- =========================================================
-       2. PLATAFORMA SAAS COM PLANOS DE FUNDO DINÂMICOS (EXSEGUROS)
+       2. PLATAFORMA SAAS COM PLANOS DE FUNDO DINÂMICOS
        ========================================================= -->
   <div id="executiveStudioApp">
     <!-- Stage de Imagens Fotográficas Dinâmicas por Aba -->
@@ -1430,73 +1470,73 @@
         </div>
       </div>
 
-      <!-- TAB 2: GERADOR E STUDIO DE CARROSSÉIS (EXSEGUROS STUDIO UI PRO) -->
+      <!-- TAB 2: CAROUSEL STUDIO PRO EDITOR (DESIGN REFINADO & HARMONIOSO) -->
       <div id="tab-carrosseis" class="tab-content-pane">
         
-        <!-- Studio Top Bar Header -->
-        <div class="studio-top-bar">
-          <div class="studio-title-group">
-            <span style="background: rgba(124,58,237,0.2); color: #a78bfa; border: 1px solid rgba(124,58,237,0.4); padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; font-family: var(--font-tech);">
-              🎨 STUDIO PRO
+        <!-- Studio Header Tools Strip -->
+        <div class="studio-header-strip">
+          <div class="studio-left-info">
+            <span class="studio-badge-purple">
+              <i class="ri-paint-brush-line"></i> STUDIO PRO
             </span>
-            <input type="text" id="studioCarouselTitle" class="studio-title-input" value="Carrossel EXSeguros" />
+            <input type="text" id="studioCarouselTitle" class="title-input-editable" value="Carrossel EXSeguros" />
             <span style="font-size: 0.75rem; color: #94a3b8;"><i class="ri-cloud-line"></i> Salvo automaticamente</span>
           </div>
 
-          <div class="studio-actions-group">
-            <button id="btnUndo" class="btn-icon-studio" title="Desfazer"><i class="ri-arrow-go-back-line"></i></button>
-            <button id="btnRedo" class="btn-icon-studio" title="Refazer"><i class="ri-arrow-go-forward-line"></i></button>
-            <button id="btnPreviewModal" class="btn-icon-studio" title="Pré-visualizar"><i class="ri-eye-line"></i></button>
+          <div class="studio-right-tools">
+            <button id="btnUndoStudio" class="tool-btn-square" title="Desfazer"><i class="ri-arrow-go-back-line"></i></button>
+            <button id="btnRedoStudio" class="tool-btn-square" title="Refazer"><i class="ri-arrow-go-forward-line"></i></button>
+            <button id="btnOpenModalPreview" class="tool-btn-square" title="Pré-visualizar"><i class="ri-eye-line"></i></button>
 
-            <button id="btnBaixarTodosSlides" class="btn-export-purple">
+            <button id="btnExportAllSlides" class="btn-export-gradient">
               <i class="ri-download-2-line"></i> Exportar Todos (PNG)
             </button>
           </div>
         </div>
 
-        <!-- Studio Grid Layout (Main Canvas Stage + Inspector Sidebar) -->
-        <div class="carousel-studio-grid">
+        <!-- Studio Grid Architecture -->
+        <div class="carousel-studio-layout">
           
-          <!-- LEFT / CENTER AREA: SLIDES STRIP + MAIN CANVAS STAGE -->
+          <!-- LEFT / MAIN WORKSPACE -->
           <div>
             
-            <!-- Slides Strip (Horizontal Thumbnails) -->
-            <div class="slides-strip-section">
-              <div class="slides-strip-header">
+            <!-- Slides Thumbnails Strip -->
+            <div class="slides-strip-container">
+              <div class="slides-strip-label-row">
                 <span><i class="ri-slideshow-line" style="color: var(--primary-red);"></i> Slides do Carrossel EXSeguros</span>
-                <span style="font-size: 0.78rem; color: #94a3b8;" id="slideCountTotalLabel">4 Slides</span>
+                <span id="slideTotalBadgeTxt" style="color: #94a3b8; font-size: 0.78rem;">4 Slides</span>
               </div>
 
-              <div class="slides-strip-row" id="slidesThumbStrip">
-                <!-- Inner thumbnails dynamic injection -->
-              </div>
+              <div class="slides-cards-scroll-row" id="slidesThumbScrollRow"></div>
             </div>
 
-            <!-- Main Canvas View Stage -->
-            <div class="main-canvas-stage">
-              <button class="canvas-nav-arrow left" id="btnPrevSlideCanvas" title="Slide Anterior"><i class="ri-arrow-left-s-line"></i></button>
-              <button class="canvas-nav-arrow right" id="btnNextSlideCanvas" title="Próximo Slide"><i class="ri-arrow-right-s-line"></i></button>
+            <!-- Central 1080x1080 Stage View -->
+            <div class="stage-canvas-outer">
+              <button class="stage-arrow-btn left" id="btnPrevSlideStage" title="Slide Anterior"><i class="ri-arrow-left-s-line"></i></button>
+              <button class="stage-arrow-btn right" id="btnNextSlideStage" title="Próximo Slide"><i class="ri-arrow-right-s-line"></i></button>
 
-              <!-- Central 1080x1080 Active Slide Stage -->
-              <div class="active-slide-card-view" id="activeSlideCanvasBox">
-                <div class="card-quotes-mark" id="stageQuoteMark">“</div>
-                <div class="card-main-title" id="stageTitleTxt">Não é sobre economizar na apólice.</div>
-                <div class="card-main-body" id="stageBodyTxt">É sobre **não perder o carro**, a paciência e **anos de economia** por causa de uma cotação barata.</div>
-                <div class="card-brand-footer" id="stageBrandTxt">EXSeguros | @exseguros</div>
+              <!-- 1080x1080 Card Render -->
+              <div class="slide-card-stage-1080" id="slideCardStage1080">
+                <div class="quote-symbol-large" id="renderQuoteMark">“</div>
+                <div class="stage-title-render" id="renderTitleTxt">Não é sobre economizar na apólice.</div>
+                <div class="stage-body-render" id="renderBodyTxt">É sobre **não perder o carro**, a paciência e **anos de economia** por causa de uma cotação barata.</div>
+                <div class="stage-footer-brand" id="renderBrandTxt">EXSeguros | @exseguros</div>
               </div>
 
-              <!-- Bottom Canvas Control Bar -->
-              <div class="canvas-bottom-bar">
+              <!-- Canvas Status Bar -->
+              <div class="canvas-status-bar">
                 <span>1:1 Instagram Feed</span>
                 <span style="color: rgba(255,255,255,0.2);">|</span>
                 <span>Zoom 100%</span>
                 <span style="color: rgba(255,255,255,0.2);">|</span>
-                <span style="color: #34d399; font-weight: 700;"><i class="ri-checkbox-circle-fill"></i> Render HD</span>
+                <button onclick="document.getElementById('carouselPreviewModal').classList.add('open')" style="background:transparent; border:none; color:#34d399; font-weight:700; cursor:pointer;">
+                  <i class="ri-fullscreen-line"></i> Ver em Tela Cheia
+                </button>
               </div>
             </div>
 
-            <!-- Frases Sugeridas / Banco de Ideias -->
-            <div class="suggested-phrases-section">
+            <!-- Frases Sugeridas Row -->
+            <div class="phrases-ideas-wrapper">
               <div style="display: flex; justify-content: space-between; align-items: center;">
                 <span style="font-size: 0.9rem; font-weight: 800; color: #fff; font-family: var(--font-display);">
                   <i class="ri-sparkles-line" style="color: var(--primary-red);"></i> Frases Sugeridas EXSeguros
@@ -1504,25 +1544,25 @@
                 <span style="font-size: 0.78rem; color: #94a3b8;">Clique para aplicar no slide ativo</span>
               </div>
 
-              <div class="suggested-phrases-grid">
-                <div class="phrase-card-box" onclick="aplicarFraseSugerida('O seguro mais caro do mundo:', 'É aquele que você achava que tinha, mas descobre no sinistro que cortou terceiros.')">
-                  <div class="phrase-card-text">"O seguro mais caro é aquele que descobre no sinistro que não cobre terceiros."</div>
-                  <i class="ri-heart-line phrase-heart-icon"></i>
+              <div class="phrases-ideas-grid">
+                <div class="phrase-box-item" onclick="aplicarFraseNoSlide('O seguro mais caro do mundo:', 'É aquele que você achava que tinha, mas descobre no sinistro que cortou terceiros.')">
+                  <div style="font-size: 0.82rem; color: #e2e8f0; line-height: 1.4;">"O seguro mais caro é o que não cobre terceiros na colisão."</div>
+                  <i class="ri-heart-line" style="color: #ff0a2b;"></i>
                 </div>
 
-                <div class="phrase-card-box" onclick="aplicarFraseSugerida('O seguro do condomínio não cobre sua casa.', 'Cobre a fachada e elevadores. Se o cano estourar no seu apartamento, o prejuízo é 100% seu.')">
-                  <div class="phrase-card-text">"O seguro do condomínio cobre o prédio, mas não os móveis da sua casa."</div>
-                  <i class="ri-heart-line phrase-heart-icon"></i>
+                <div class="phrase-box-item" onclick="aplicarFraseNoSlide('O seguro do condomínio não cobre sua casa.', 'Cobre a fachada e elevadores. Se o cano estourar no seu apartamento, o prejuízo é 100% seu.')">
+                  <div style="font-size: 0.82rem; color: #e2e8f0; line-height: 1.4;">"O seguro do prédio não protege seus móveis e eletrônicos."</div>
+                  <i class="ri-heart-line" style="color: #ff0a2b;"></i>
                 </div>
 
-                <div class="phrase-card-box" onclick="aplicarFraseSugerida('Seguro de Vida não é sobre você.', 'É sobre garantir que sua família mantenha o mesmo padrão mesmo se você faltar amanhã.')">
-                  <div class="phrase-card-text">"Seguro de Vida é sobre não deixar dívidas para quem você mais ama neste mundo."</div>
-                  <i class="ri-heart-line phrase-heart-icon"></i>
+                <div class="phrase-box-item" onclick="aplicarFraseNoSlide('Seguro de Vida não é sobre você.', 'É sobre garantir que sua família mantenha o mesmo padrão mesmo se você faltar amanhã.')">
+                  <div style="font-size: 0.82rem; color: #e2e8f0; line-height: 1.4;">"Seguro de Vida é proteger o futuro da sua família."</div>
+                  <i class="ri-heart-line" style="color: #ff0a2b;"></i>
                 </div>
 
-                <div class="phrase-card-box" onclick="aplicarFraseSugerida('Não renove seu seguro no automático.', 'Sua classe de bônus pertence a você! Cotamos Porto, Azul, Tokio e HDI ao mesmo tempo.')">
-                  <div class="phrase-card-text">"Renovar sem cotar em outras seguradoras é rasgar até 30% de economia."</div>
-                  <i class="ri-heart-line phrase-heart-icon"></i>
+                <div class="phrase-box-item" onclick="aplicarFraseNoSlide('Não renove seu seguro no automático.', 'Sua classe de bônus pertence a você! Cotamos Porto, Azul, Tokio e HDI ao mesmo tempo.')">
+                  <div style="font-size: 0.82rem; color: #e2e8f0; line-height: 1.4;">"Renovar sem cotar em outras marcas é perder até 30%."</div>
+                  <i class="ri-heart-line" style="color: #ff0a2b;"></i>
                 </div>
               </div>
             </div>
@@ -1540,19 +1580,30 @@
 
           </div>
 
-          <!-- RIGHT SIDEBAR: INSPECTOR & CONTROLS PANEL -->
-          <div class="inspector-panel-sidebar">
-            <div class="inspector-tabs-nav">
-              <button class="inspector-tab-btn active">Design</button>
-              <button class="inspector-tab-btn">Frases</button>
-              <button class="inspector-tab-btn">Elementos</button>
-              <button class="inspector-tab-btn">Configurações</button>
+          <!-- RIGHT SIDEBAR: INSPECTOR PANEL -->
+          <div class="inspector-sidebar-card">
+            
+            <div class="inspector-nav-tabs">
+              <button class="inspector-nav-btn active">Editar Textos</button>
+              <button class="inspector-nav-btn">Design</button>
+              <button class="inspector-nav-btn">Estilo</button>
             </div>
 
-            <!-- Template Preset Selector -->
+            <!-- EDITOR DE TEXTO DIRETO DO SLIDE ATIVO -->
             <div>
-              <div class="inspector-group-title">TEMPLATE EXSEGUROS</div>
-              <select id="carrosselTemaSelect" class="input-box" style="padding: 10px 14px; font-size: 0.85rem;">
+              <div class="inspector-label-sm"><i class="ri-edit-line" style="color: var(--primary-red);"></i> TÍTULO DO SLIDE ATIVO</div>
+              <input type="text" id="activeSlideTitleInput" class="input-box" style="padding: 10px; font-size: 0.85rem;" placeholder="Título do Slide" />
+            </div>
+
+            <div>
+              <div class="inspector-label-sm"><i class="ri-text" style="color: var(--primary-red);"></i> CORPO DO SLIDE (ACEITA **NEGRITO**)</div>
+              <textarea id="activeSlideBodyInput" class="input-box" style="min-height: 90px; padding: 10px; font-size: 0.85rem; resize: vertical;" placeholder="Texto principal do slide"></textarea>
+            </div>
+
+            <!-- TEMPLATE CONTENT PRESET -->
+            <div>
+              <div class="inspector-label-sm">TEMPLATE DE CONTEÚDO</div>
+              <select id="carrosselTemaSelect" class="input-box" style="padding: 10px; font-size: 0.85rem;">
                 <option value="auto_risco">🚗 Seguro Auto: Provocação & Sinistro</option>
                 <option value="imovel_erro">🏠 Seguro Residencial: Mito vs Realidade</option>
                 <option value="vida_familia">❤️ Seguro de Vida: Proteção Familiar</option>
@@ -1560,75 +1611,47 @@
               </select>
             </div>
 
-            <!-- Dados da Marca -->
+            <!-- DADOS DA MARCA -->
             <div>
-              <div class="inspector-group-title">DADOS DA MARCA</div>
-              <div style="display: flex; flex-direction: column; gap: 10px;">
-                <input type="text" id="carrosselNomeSeguradora" class="input-box" value="EXSeguros" style="padding: 10px; font-size: 0.85rem;" placeholder="Nome da Marca" />
-                <input type="text" id="carrosselArrobaSeguradora" class="input-box" value="@exseguros" style="padding: 10px; font-size: 0.85rem;" placeholder="Arroba @instagram" />
-              </div>
-            </div>
-
-            <!-- Paleta de Cores -->
-            <div>
-              <div class="inspector-group-title">PALETA DE CORES</div>
-              <div class="color-circles-row">
-                <div class="color-circle-btn" style="background: #ffffff;" title="Branco Puríssimo" onclick="alterarCorAspas('#ffffff')"></div>
-                <div class="color-circle-btn" style="background: #ff0a2b;" title="Vermelho EXSeguros" onclick="alterarCorAspas('#ff0a2b')"></div>
-                <div class="color-circle-btn" style="background: #7c3aed;" title="Roxo Purpura" onclick="alterarCorAspas('#7c3aed')"></div>
-                <div class="color-circle-btn" style="background: #fbbf24;" title="Dourado Luxo" onclick="alterarCorAspas('#fbbf24')"></div>
-                <div class="color-circle-btn" style="background: #00d2ff;" title="Ciano Glow" onclick="alterarCorAspas('#00d2ff')"></div>
-              </div>
-            </div>
-
-            <!-- Tipografia -->
-            <div>
-              <div class="inspector-group-title">TIPOGRAFIA</div>
+              <div class="inspector-label-sm">MARCA & INSTAGRAM</div>
               <div style="display: flex; flex-direction: column; gap: 8px;">
-                <select id="fontSelectTitle" class="input-box" style="padding: 8px; font-size: 0.82rem;" onchange="alterarFonteTitulo(this.value)">
-                  <option value="'Outfit', sans-serif">Outfit (Moderna & Impactante)</option>
-                  <option value="'Bebas Neue', sans-serif">Bebas Neue (Caixa Alta Forte)</option>
-                  <option value="'Inter', sans-serif">Inter (Executiva Minimalista)</option>
-                  <option value="'Montserrat', sans-serif">Montserrat (Elegante)</option>
-                </select>
+                <input type="text" id="carrosselNomeSeguradora" class="input-box" value="EXSeguros" style="padding: 8px 12px; font-size: 0.82rem;" />
+                <input type="text" id="carrosselArrobaSeguradora" class="input-box" value="@exseguros" style="padding: 8px 12px; font-size: 0.82rem;" />
               </div>
             </div>
 
-            <!-- Imagem de Fundo Presets -->
+            <!-- PALETA DE CORES DAS ASPAS & DESTAQUE -->
             <div>
-              <div class="inspector-group-title">FUNDO DO SLIDE</div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                <button class="btn-element-item" onclick="alterarFundoCanvas('./vertex-bg-scripts.png')">
-                  <i class="ri-car-line"></i> Showroom
-                </button>
-                <button class="btn-element-item" onclick="alterarFundoCanvas('./vertex-bg-carrosseis.png')">
-                  <i class="ri-home-4-line"></i> Villa Luxo
-                </button>
-                <button class="btn-element-item" onclick="alterarFundoCanvas('./vertex-bg-followup.png')">
-                  <i class="ri-briefcase-line"></i> Escritório
-                </button>
-                <button class="btn-element-item" onclick="alterarFundoCanvas('')">
-                  <i class="ri-contrast-2-line"></i> Fundo Preto
-                </button>
+              <div class="inspector-label-sm">COR DO DESTAQUE / ASPAS</div>
+              <div class="swatch-circles-flex">
+                <div class="swatch-circle-item" style="background: #ff0a2b;" title="Vermelho EXSeguros" onclick="alterarCorDestaque('#ff0a2b')"></div>
+                <div class="swatch-circle-item" style="background: #7c3aed;" title="Roxo Purpura" onclick="alterarCorDestaque('#7c3aed')"></div>
+                <div class="swatch-circle-item" style="background: #fbbf24;" title="Dourado Luxo" onclick="alterarCorDestaque('#fbbf24')"></div>
+                <div class="swatch-circle-item" style="background: #00d2ff;" title="Ciano Glow" onclick="alterarCorDestaque('#00d2ff')"></div>
+                <div class="swatch-circle-item" style="background: #ffffff;" title="Branco" onclick="alterarCorDestaque('#ffffff')"></div>
               </div>
             </div>
 
-            <!-- Elementos Rápidos -->
+            <!-- TIPOGRAFIA -->
             <div>
-              <div class="inspector-group-title">ELEMENTOS VISUAIS</div>
-              <div class="elements-buttons-grid">
-                <div class="btn-element-item"><i class="ri-text"></i> Texto</div>
-                <div class="btn-element-item"><i class="ri-star-line"></i> Ícone</div>
-                <div class="btn-element-item"><i class="ri-shape-line"></i> Forma</div>
-                <div class="btn-element-item"><i class="ri-separator"></i> Linha</div>
-                <div class="btn-element-item"><i class="ri-double-quotes-l"></i> Citação</div>
-              </div>
+              <div class="inspector-label-sm">FONTE DO TÍTULO</div>
+              <select id="fontSelectTitle" class="input-box" style="padding: 8px; font-size: 0.82rem;" onchange="alterarFonteRender(this.value)">
+                <option value="'Outfit', sans-serif">Outfit (Moderna & Impactante)</option>
+                <option value="'Bebas Neue', sans-serif">Bebas Neue (Caixa Alta Forte)</option>
+                <option value="'Inter', sans-serif">Inter (Executiva Minimalista)</option>
+                <option value="'Montserrat', sans-serif">Montserrat (Elegante)</option>
+              </select>
             </div>
 
-            <!-- Dica de Ouro Card -->
-            <div class="gold-tip-card">
-              ✨ <strong>Dica de Ouro EXSeguros:</strong><br/>
-              Use frases curtas no Fundo Preto com Aspas Vermelhas para ter 3x mais engajamento e salvar de apólices no Instagram!
+            <!-- FUNDO DO SLIDE PRESETS -->
+            <div>
+              <div class="inspector-label-sm">FUNDO DO SLIDE</div>
+              <div style="grid-template-columns: 1fr 1fr; display: grid; gap: 6px;">
+                <button class="btn-action btn-action-glass" style="padding: 8px; font-size: 0.75rem;" onclick="alterarFundoCard('./vertex-bg-scripts.png')">🚗 Showroom</button>
+                <button class="btn-action btn-action-glass" style="padding: 8px; font-size: 0.75rem;" onclick="alterarFundoCard('./vertex-bg-carrosseis.png')">🏠 Villa Luxo</button>
+                <button class="btn-action btn-action-glass" style="padding: 8px; font-size: 0.75rem;" onclick="alterarFundoCard('./vertex-bg-followup.png')">🏢 Escritório</button>
+                <button class="btn-action btn-action-glass" style="padding: 8px; font-size: 0.75rem;" onclick="alterarFundoCard('')">⚫ Fundo Preto</button>
+              </div>
             </div>
 
           </div>
@@ -1721,6 +1744,19 @@
       </div>
 
     </main>
+  </div>
+
+  <!-- MODAL DE PREVIEW EM TELA CHEIA DO CARROSSLE -->
+  <div class="preview-modal-backdrop" id="carouselPreviewModal">
+    <div class="preview-modal-content">
+      <button class="btn-close-modal" onclick="document.getElementById('carouselPreviewModal').classList.remove('open')">×</button>
+      <div class="slide-card-stage-1080" id="modalSlideCardPreview">
+        <div class="quote-symbol-large" id="modalQuoteMark">“</div>
+        <div class="stage-title-render" id="modalTitleTxt">Título Preview</div>
+        <div class="stage-body-render" id="modalBodyTxt">Corpo do slide em tela cheia</div>
+        <div class="stage-footer-brand" id="modalBrandTxt">EXSeguros | @exseguros</div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -1822,7 +1858,7 @@
         btnCopiarScript.onclick = () => {
           scriptOutputTextarea.select();
           navigator.clipboard.writeText(scriptOutputTextarea.value);
-          alert('Script copiado para a área de transferência!');
+          alert('Script copiado com sucesso!');
         };
       }
 
@@ -1834,7 +1870,7 @@
       }
 
       // =========================================================
-      // 4. CAROUSEL STUDIO & EDITOR PRO LOGIC (MOCKUP LIKE UI)
+      // 4. CAROUSEL STUDIO PRO EDITOR LOGIC (COMPLETO & SEM ERROS)
       // =========================================================
       const BANCO_CARROSSEIS = {
         auto_risco: {
@@ -1875,124 +1911,213 @@
         }
       };
 
-      // State do Studio
-      let currentActiveSlideIdx = 0;
-      let slidesList = [...BANCO_CARROSSEIS.auto_risco.slides];
+      // Estado do Editor
+      let activeSlideIndex = 0;
+      let slidesList = JSON.parse(JSON.stringify(BANCO_CARROSSEIS.auto_risco.slides));
+      const historyStack = [];
+      const redoStack = [];
 
       const carrosselTemaSelect = document.getElementById('carrosselTemaSelect');
       const carrosselNomeSeguradora = document.getElementById('carrosselNomeSeguradora');
       const carrosselArrobaSeguradora = document.getElementById('carrosselArrobaSeguradora');
-      const slidesThumbStrip = document.getElementById('slidesThumbStrip');
-      const activeSlideCanvasBox = document.getElementById('activeSlideCanvasBox');
-      const stageQuoteMark = document.getElementById('stageQuoteMark');
-      const stageTitleTxt = document.getElementById('stageTitleTxt');
-      const stageBodyTxt = document.getElementById('stageBodyTxt');
-      const stageBrandTxt = document.getElementById('stageBrandTxt');
-      const slideCountTotalLabel = document.getElementById('slideCountTotalLabel');
+      const slidesThumbScrollRow = document.getElementById('slidesThumbScrollRow');
+      const slideTotalBadgeTxt = document.getElementById('slideTotalBadgeTxt');
+      
+      const slideCardStage1080 = document.getElementById('slideCardStage1080');
+      const renderQuoteMark = document.getElementById('renderQuoteMark');
+      const renderTitleTxt = document.getElementById('renderTitleTxt');
+      const renderBodyTxt = document.getElementById('renderBodyTxt');
+      const renderBrandTxt = document.getElementById('renderBrandTxt');
+
+      const activeSlideTitleInput = document.getElementById('activeSlideTitleInput');
+      const activeSlideBodyInput = document.getElementById('activeSlideBodyInput');
       const carrosselLegendaTextarea = document.getElementById('carrosselLegendaTextarea');
+
+      const btnUndoStudio = document.getElementById('btnUndoStudio');
+      const btnRedoStudio = document.getElementById('btnRedoStudio');
+      const btnOpenModalPreview = document.getElementById('btnOpenModalPreview');
+      const btnExportAllSlides = document.getElementById('btnExportAllSlides');
       const btnCopiarLegenda = document.getElementById('btnCopiarLegenda');
-      const btnBaixarTodosSlides = document.getElementById('btnBaixarTodosSlides');
-      const btnPrevSlideCanvas = document.getElementById('btnPrevSlideCanvas');
-      const btnNextSlideCanvas = document.getElementById('btnNextSlideCanvas');
+      const btnPrevSlideStage = document.getElementById('btnPrevSlideStage');
+      const btnNextSlideStage = document.getElementById('btnNextSlideStage');
 
       const parseMarkdownBold = text => text ? text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') : '';
 
-      const renderStudioEditor = () => {
+      const saveHistoryState = () => {
+        historyStack.push(JSON.stringify(slidesList));
+        if (historyStack.length > 20) historyStack.shift();
+      };
+
+      const renderStudioAll = () => {
         const nomeSeg = carrosselNomeSeguradora.value.trim() || 'EXSeguros';
         const arrobaSeg = carrosselArrobaSeguradora.value.trim() || '@exseguros';
 
-        // Atualiza Strip de Thumbnails
-        slidesThumbStrip.innerHTML = '';
+        // 1. Renderiza Strip de Thumbnails
+        slidesThumbScrollRow.innerHTML = '';
         slidesList.forEach((slide, idx) => {
           const thumb = document.createElement('div');
-          thumb.className = `slide-thumb-card ${idx === currentActiveSlideIdx ? 'active' : ''}`;
-          thumb.onclick = () => selectSlideIndex(idx);
+          thumb.className = `slide-mini-thumb ${idx === activeSlideIndex ? 'active' : ''}`;
+          thumb.onclick = () => switchSlide(idx);
 
           thumb.innerHTML = `
-            <div class="slide-badge-num">${idx + 1}</div>
-            <div class="slide-thumb-preview-text">${slide.title}</div>
-            <div style="font-size: 0.62rem; color: #94a3b8; margin-top: auto;">${nomeSeg}</div>
+            <div class="badge-slide-num">${idx + 1}</div>
+            <button class="btn-delete-slide-mini" onclick="event.stopPropagation(); removerSlideIndex(${idx})" title="Excluir Slide">×</button>
+            <div class="thumb-preview-txt">${slide.title}</div>
+            <div style="font-size: 0.6rem; color: #94a3b8; margin-top: auto;">${nomeSeg}</div>
           `;
-          slidesThumbStrip.appendChild(thumb);
+          slidesThumbScrollRow.appendChild(thumb);
         });
 
-        // Botão + Adicionar Slide
-        const addBtn = document.createElement('div');
-        addBtn.className = 'add-slide-thumb-btn';
-        addBtn.onclick = adicionarNovoSlide;
-        addBtn.innerHTML = `<i class="ri-add-line" style="font-size: 1.4rem;"></i><span>Adicionar Slide</span>`;
-        slidesThumbStrip.appendChild(addBtn);
+        // Card de Adicionar Novo Slide
+        const addBtnCard = document.createElement('div');
+        addBtnCard.className = 'add-slide-card-btn';
+        addBtnCard.onclick = adicionarNovoSlide;
+        addBtnCard.innerHTML = `<i class="ri-add-line" style="font-size: 1.4rem;"></i><span>Adicionar Slide</span>`;
+        slidesThumbScrollRow.appendChild(addBtnCard);
 
-        // Atualiza Stage Central 1080x1080
-        if (slidesList[currentActiveSlideIdx]) {
-          const cur = slidesList[currentActiveSlideIdx];
-          stageTitleTxt.innerHTML = cur.title;
-          stageBodyTxt.innerHTML = parseMarkdownBold(cur.body);
-          stageBrandTxt.textContent = `${nomeSeg} | ${arrobaSeg}`;
+        slideTotalBadgeTxt.textContent = `${slidesList.length} Slides`;
+
+        // 2. Renderiza Stage 1080x1080 do Slide Ativo
+        if (slidesList[activeSlideIndex]) {
+          const current = slidesList[activeSlideIndex];
+          renderTitleTxt.innerHTML = current.title;
+          renderBodyTxt.innerHTML = parseMarkdownBold(current.body);
+          renderBrandTxt.textContent = `${nomeSeg} | ${arrobaSeg}`;
+
+          activeSlideTitleInput.value = current.title;
+          activeSlideBodyInput.value = current.body;
         }
-
-        slideCountTotalLabel.textContent = `${slidesList.length} Slides`;
       };
 
-      const selectSlideIndex = (idx) => {
+      const switchSlide = (idx) => {
         if (idx >= 0 && idx < slidesList.length) {
-          currentActiveSlideIdx = idx;
-          renderStudioEditor();
+          activeSlideIndex = idx;
+          renderStudioAll();
         }
+      };
+
+      window.removerSlideIndex = (idx) => {
+        if (slidesList.length <= 1) {
+          alert('O carrossel deve conter pelo menos 1 slide!');
+          return;
+        }
+        saveHistoryState();
+        slidesList.splice(idx, 1);
+        if (activeSlideIndex >= slidesList.length) activeSlideIndex = slidesList.length - 1;
+        renderStudioAll();
       };
 
       const adicionarNovoSlide = () => {
+        saveHistoryState();
         slidesList.push({
-          title: "Novo Slide de Engajamento",
-          body: "Insira aqui uma frase provocativa ou dica importante da **EXSeguros**."
+          title: "Novo Slide de Alta Conversão",
+          body: "Digite sua frase de impacto ou provocação estratégica para a **EXSeguros**."
         });
-        currentActiveSlideIdx = slidesList.length - 1;
-        renderStudioEditor();
+        activeSlideIndex = slidesList.length - 1;
+        renderStudioAll();
       };
 
-      window.aplicarFraseSugerida = (titulo, corpo) => {
-        slidesList[currentActiveSlideIdx] = { title: titulo, body: corpo };
-        renderStudioEditor();
+      // Edição direta pelos inputs no Painel Inspetor Lateral
+      activeSlideTitleInput.oninput = () => {
+        if (slidesList[activeSlideIndex]) {
+          slidesList[activeSlideIndex].title = activeSlideTitleInput.value;
+          renderStudioAll();
+        }
       };
 
-      window.alterarCorAspas = (corHex) => {
-        stageQuoteMark.style.color = corHex;
-        stageQuoteMark.style.textShadow = `0 0 20px ${corHex}`;
+      activeSlideBodyInput.oninput = () => {
+        if (slidesList[activeSlideIndex]) {
+          slidesList[activeSlideIndex].body = activeSlideBodyInput.value;
+          renderStudioAll();
+        }
       };
 
-      window.alterarFonteTitulo = (fonteCss) => {
-        stageTitleTxt.style.fontFamily = fonteCss;
+      window.aplicarFraseNoSlide = (titulo, corpo) => {
+        saveHistoryState();
+        if (slidesList[activeSlideIndex]) {
+          slidesList[activeSlideIndex].title = titulo;
+          slidesList[activeSlideIndex].body = corpo;
+          renderStudioAll();
+        }
       };
 
-      window.alterarFundoCanvas = (imgUrl) => {
+      window.alterarCorDestaque = (hexColor) => {
+        renderQuoteMark.style.color = hexColor;
+        renderQuoteMark.style.textShadow = `0 0 20px ${hexColor}`;
+      };
+
+      window.alterarFonteRender = (fonteCss) => {
+        renderTitleTxt.style.fontFamily = fonteCss;
+      };
+
+      window.alterarFundoCard = (imgUrl) => {
         if (imgUrl) {
-          activeSlideCanvasBox.style.backgroundImage = `linear-gradient(180deg, rgba(8,10,18,0.75) 0%, rgba(8,10,18,0.92) 100%), url('${imgUrl}')`;
+          slideCardStage1080.style.backgroundImage = `linear-gradient(180deg, rgba(8,10,18,0.78) 0%, rgba(8,10,18,0.94) 100%), url('${imgUrl}')`;
         } else {
-          activeSlideCanvasBox.style.backgroundImage = 'none';
-          activeSlideCanvasBox.style.backgroundColor = '#080a12';
+          slideCardStage1080.style.backgroundImage = 'none';
+          slideCardStage1080.style.backgroundColor = '#080a12';
         }
       };
 
       carrosselTemaSelect.onchange = () => {
         const key = carrosselTemaSelect.value;
         if (BANCO_CARROSSEIS[key]) {
-          slidesList = [...BANCO_CARROSSEIS[key].slides];
+          saveHistoryState();
+          slidesList = JSON.parse(JSON.stringify(BANCO_CARROSSEIS[key].slides));
           carrosselLegendaTextarea.value = BANCO_CARROSSEIS[key].caption;
-          currentActiveSlideIdx = 0;
-          renderStudioEditor();
+          activeSlideIndex = 0;
+          renderStudioAll();
         }
       };
 
-      carrosselNomeSeguradora.oninput = renderStudioEditor;
-      carrosselArrobaSeguradora.oninput = renderStudioEditor;
+      carrosselNomeSeguradora.oninput = renderStudioAll;
+      carrosselArrobaSeguradora.oninput = renderStudioAll;
 
-      if (btnPrevSlideCanvas) btnPrevSlideCanvas.onclick = () => selectSlideIndex(currentActiveSlideIdx - 1);
-      if (btnNextSlideCanvas) btnNextSlideCanvas.onclick = () => selectSlideIndex(currentActiveSlideIdx + 1);
+      if (btnPrevSlideStage) btnPrevSlideStage.onclick = () => switchSlide(activeSlideIndex - 1);
+      if (btnNextSlideStage) btnNextSlideStage.onclick = () => switchSlide(activeSlideIndex + 1);
 
-      carrosselLegendaTextarea.value = BANCO_CARROSSEIS.auto_risco.caption;
-      renderStudioEditor();
+      // Undo / Redo
+      if (btnUndoStudio) {
+        btnUndoStudio.onclick = () => {
+          if (historyStack.length > 0) {
+            redoStack.push(JSON.stringify(slidesList));
+            slidesList = JSON.parse(historyStack.pop());
+            if (activeSlideIndex >= slidesList.length) activeSlideIndex = 0;
+            renderStudioAll();
+          }
+        };
+      }
 
-      const baixarSlideElemento = (el, filename) => {
+      if (btnRedoStudio) {
+        btnRedoStudio.onclick = () => {
+          if (redoStack.length > 0) {
+            historyStack.push(JSON.stringify(slidesList));
+            slidesList = JSON.parse(redoStack.pop());
+            renderStudioAll();
+          }
+        };
+      }
+
+      // Fullscreen Preview Modal
+      if (btnOpenModalPreview) {
+        btnOpenModalPreview.onclick = () => {
+          const modal = document.getElementById('carouselPreviewModal');
+          const mTitle = document.getElementById('modalTitleTxt');
+          const mBody = document.getElementById('modalBodyTxt');
+          const mBrand = document.getElementById('modalBrandTxt');
+          const cur = slidesList[activeSlideIndex];
+
+          if (cur) {
+            mTitle.innerHTML = cur.title;
+            mBody.innerHTML = parseMarkdownBold(cur.body);
+            mBrand.textContent = `${carrosselNomeSeguradora.value} | ${carrosselArrobaSeguradora.value}`;
+          }
+          modal.classList.add('open');
+        };
+      }
+
+      // Exportar Todos os Slides em PNG
+      const baixarCanvasSlidePNG = (el, filename) => {
         if (typeof window.html2canvas !== 'function') return;
         window.html2canvas(el, { scale: 2.5, backgroundColor: '#08080a' }).then(canvas => {
           const a = document.createElement('a');
@@ -2002,15 +2127,15 @@
         });
       };
 
-      if (btnBaixarTodosSlides) {
-        btnBaixarTodosSlides.onclick = () => {
-          const originalIdx = currentActiveSlideIdx;
+      if (btnExportAllSlides) {
+        btnExportAllSlides.onclick = () => {
+          const originalIdx = activeSlideIndex;
           slidesList.forEach((_, i) => {
             setTimeout(() => {
-              selectSlideIndex(i);
-              baixarSlideElemento(activeSlideCanvasBox, `EXSeguros_Slide_0${i + 1}.png`);
+              switchSlide(i);
+              baixarCanvasSlidePNG(slideCardStage1080, `EXSeguros_Slide_0${i + 1}.png`);
               if (i === slidesList.length - 1) {
-                setTimeout(() => selectSlideIndex(originalIdx), 500);
+                setTimeout(() => switchSlide(originalIdx), 600);
               }
             }, i * 700);
           });
@@ -2024,6 +2149,9 @@
           alert('Legenda do Instagram copiada com sucesso!');
         };
       }
+
+      carrosselLegendaTextarea.value = BANCO_CARROSSEIS.auto_risco.caption;
+      renderStudioAll();
 
       // 5. FOLLOW-UP GENERATOR EXSEGUROS LOGIC
       const BANCO_FOLLOWUP = {
