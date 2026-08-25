@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Boutique dos Temperos | Plano de Aceleração Multi-Unidades - Vertex Digital</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  
+  <!-- Google Fonts: Outfit, Inter, Plus Jakarta Sans & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg-base: #06070a;
+      --bg-surface: #0c0e17;
+      --bg-surface-elevated: #131622;
+      
+      --primary-red: #ff1e42;
+      --primary-glow: rgba(255, 30, 66, 0.3);
+      
+      --gold-gourmet: #fbbf24;
+      --gold-glow: rgba(251, 191, 36, 0.2);
+      
+      --emerald-green: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+      
+      --cyan-bright: #06b6d4;
+      --purple-accent: #8b5cf6;
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.15);
+      --border-red: rgba(255, 30, 66, 0.35);
+      
+      --text-main: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --font-title: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      --font-num: 'Space Grotesk', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      font-size: 15px;
+    }
+
+    /* Ambient Aurora Glow */
+    .aurora-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .aurora-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.12;
+    }
+    .c1 { width: 450px; height: 450px; top: -100px; left: 10%; background: var(--primary-red); }
+    .c2 { width: 350px; height: 350px; top: 40%; right: -80px; background: var(--gold-gourmet); opacity: 0.08; }
+    .c3 { width: 350px; height: 350px; bottom: 5%; left: -50px; background: var(--emerald-green); opacity: 0.06; }
+
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Static Clean Brand Header */
+    .static-brand-header {
+      padding: 22px 0 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 25px;
+    }
+    .vertex-brand {
+      font-family: var(--font-title);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+    .vertex-brand span { color: var(--primary-red); }
+    .client-chip {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      color: var(--gold-gourmet);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Hero Section */
+    .hero-box {
+      padding: 15px 0 35px;
+      text-align: center;
+    }
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 30, 66, 0.08);
+      border: 1px solid var(--border-red);
+      color: #ff6b81;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 5px 12px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+    }
+    .hero-h1 {
+      font-family: var(--font-title);
+      font-size: clamp(1.75rem, 5.5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .glow-gold {
+      background: linear-gradient(135deg, #ffe066 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .glow-red {
+      background: linear-gradient(135deg, #ffffff 40%, #ff758c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-p {
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0 auto 28px;
+      max-width: 680px;
+    }
+
+    /* Quick Value Cards */
+    .quick-value-stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    @media (min-width: 700px) {
+      .quick-value-stack { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    }
+    .q-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+    }
+    .q-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: rgba(255, 30, 66, 0.1);
+      color: var(--primary-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .q-text strong { display: block; font-size: 0.88rem; color: #fff; }
+    .q-text span { font-size: 0.76rem; color: var(--text-muted); line-height: 1.3; }
+
+    /* Section Global */
+    .section-wrap {
+      padding: 30px 0;
+    }
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .sec-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+    .sec-h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .sec-p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Comparison Section */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 768px) {
+      .comparison-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .comp-card {
+      border-radius: 16px;
+      padding: 20px 18px;
+      border: 1px solid transparent;
+    }
+    .comp-card.is-before {
+      background: rgba(239, 68, 68, 0.03);
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+    .comp-card.is-after {
+      background: rgba(16, 185, 129, 0.04);
+      border-color: rgba(16, 185, 129, 0.25);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.06);
+    }
+    .comp-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .comp-top h3 {
+      font-family: var(--font-title);
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .is-before .comp-top h3 { color: #f87171; }
+    .is-after .comp-top h3 { color: #34d399; }
+    .comp-badge-mini { font-size: 0.7rem; font-weight: 700; }
+    .is-before .comp-badge-mini { color: #ef4444; }
+    .is-after .comp-badge-mini { color: #10b981; }
+    
+    .comp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .comp-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+    .comp-bullets li i {
+      font-size: 1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .is-before .comp-bullets li i { color: #ef4444; }
+    .is-after .comp-bullets li i { color: #10b981; }
+
+    /* The 5 Units Interactive Switcher */
+    .units-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 20px 16px;
+      margin-top: 20px;
+    }
+    .units-scroll-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .units-scroll-tabs::-webkit-scrollbar { display: none; }
+    .u-tab {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 9px 14px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .u-tab.active {
+      background: rgba(251, 191, 36, 0.12);
+      border-color: var(--gold-gourmet);
+      color: #fff;
+    }
+    .u-panel { display: none; }
+    .u-panel.active { display: block; animation: fadeIn 0.25s ease; }
+
+    .unit-details-card {
+      background: rgba(0, 0, 0, 0.4);
+      border-left: 3px solid var(--gold-gourmet);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 16px;
+    }
+    .unit-details-card h4 {
+      font-family: var(--font-title);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .unit-details-card .unit-location {
+      font-size: 0.75rem;
+      color: var(--gold-gourmet);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .unit-details-card p {
+      font-size: 0.86rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .unit-bullets-sub {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 10px;
+    }
+    .unit-bullets-sub li {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .unit-bullets-sub li i { color: var(--emerald-green); }
+
+    /* The 3 Pillars */
+    .pillars-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 768px) {
+      .pillars-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+    .pillar-item-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .p-icon-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+    }
+    .ic-multi { background: rgba(236, 72, 153, 0.12); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.25); }
+    .ic-geo { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); }
+    .ic-hub { background: rgba(6, 182, 212, 0.12); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.25); }
+    
+    .pillar-h3-title {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+    .pillar-p-txt {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .pillar-feat-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 12px;
+      margin-top: auto;
+    }
+    .pillar-feat-list li {
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .pillar-feat-list li i { color: var(--primary-red); }
+
+    /* Mockup Showcase */
+    .mockup-hub-box {
+      background: #0e1019;
+      border: 1px solid var(--border-highlight);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 22px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    }
+    .mockup-top-bar {
+      background: #151724;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .m-dot-group { display: flex; gap: 5px; }
+    .mdot { width: 8px; height: 8px; border-radius: 50%; }
+    .md-r { background: #ef4444; }
+    .md-y { background: #f59e0b; }
+    .md-g { background: #10b981; }
+    .mockup-url-text {
+      font-family: var(--font-num);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    .mockup-content-wrap {
+      padding: 20px 14px;
+      text-align: center;
+    }
+    .gourmet-catalog-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (min-width: 600px) {
+      .gourmet-catalog-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .gourmet-item-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .g-emoji { font-size: 2.2rem; margin-bottom: 6px; }
+    .g-name { font-weight: 700; font-size: 0.88rem; margin-bottom: 2px; color: #fff; }
+    .g-store-badge { font-size: 0.68rem; color: var(--gold-gourmet); text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
+    .g-price { font-family: var(--font-num); font-size: 1.05rem; font-weight: 800; color: var(--gold-gourmet); margin-bottom: 10px; }
+    .btn-order-wa {
+      background: #25d366;
+      color: #052e16;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ROI Simulator 2.0 (Ribeirão Preto) */
+    .simulator-mobile-dashboard {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-highlight);
+      border-radius: 20px;
+      padding: 24px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .slider-item-block label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .slider-item-block .live-val {
+      font-family: var(--font-num);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--primary-red);
+    }
+    .mobile-range {
+      width: 100%;
+      height: 10px;
+      border-radius: 6px;
+      background: #1e2235;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    .mobile-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--primary-red);
+      box-shadow: 0 0 10px var(--primary-glow);
+      border: 2px solid #fff;
+      cursor: pointer;
+    }
+
+    .sim-results-card {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border-red);
+      border-radius: 16px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .sim-revenue-box small {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+    .sim-revenue-box h3 {
+      font-family: var(--font-title);
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--emerald-green);
+      margin: 2px 0 10px;
+    }
+    .sim-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .mini-stat-pill {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .mini-stat-pill small { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; }
+    .mini-stat-pill strong { display: block; font-size: 0.95rem; font-family: var(--font-num); color: #fff; margin-top: 2px; }
+    .roi-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 14px;
+      font-size: 0.78rem;
+      color: #a7f3d0;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 4px 12px;
+      border-radius: 15px;
+    }
+
+    /* 30-Day Timeline */
+    .timeline-stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 640px) {
+      .timeline-stack { grid-template-columns: 1fr 1fr; }
+    }
+    .t-card-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 18px 16px;
+      position: relative;
+    }
+    .t-card-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 16px;
+      right: 16px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-red), transparent);
+    }
+    .t-week {
+      font-family: var(--font-num);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--primary-red);
+      margin-bottom: 6px;
+    }
+    .t-card-item h4 {
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .t-card-item p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* Proposal Box */
+    .proposal-card-block {
+      background: radial-gradient(circle at 50% 0%, rgba(255, 30, 66, 0.15), transparent 70%), var(--bg-surface);
+      border: 1px solid rgba(255, 30, 66, 0.4);
+      border-radius: 20px;
+      padding: 30px 18px;
+      text-align: center;
+      box-shadow: 0 15px 50px rgba(255, 30, 66, 0.1);
+    }
+    .scope-list-check {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+      margin: 20px 0 25px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-subtle);
+      padding: 16px;
+      border-radius: 12px;
+    }
+    .scope-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      color: #f1f5f9;
+    }
+    .scope-row i { color: #10b981; font-size: 1.05rem; flex-shrink: 0; }
+
+    /* Button Styling */
+    .btn-block-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 15px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      width: 100%;
+      border: none;
+      font-family: var(--font-body);
+      transition: all 0.2s;
+    }
+    .btn-emerald-big {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--emerald-glow);
+    }
+    .btn-outline-big {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-highlight);
+      color: var(--text-main);
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    .footer-mobile {
+      border-top: 1px solid var(--border-subtle);
+      padding: 25px 0 40px;
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Share Sheet Modal */
+    .modal-sheet {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-sheet.active { display: flex; animation: fadeIn 0.2s ease; }
+    .sheet-card {
+      background: #141726;
+      border: 1px solid var(--border-highlight);
+      border-radius: 18px;
+      max-width: 460px;
+      width: 100%;
+      padding: 24px 18px;
+      position: relative;
+    }
+    .sheet-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Background -->
+  <div class="aurora-bg">
+    <div class="aurora-circle c1"></div>
+    <div class="aurora-circle c2"></div>
+    <div class="aurora-circle c3"></div>
+  </div>
+
+  <div class="container">
+    <!-- Static Brand Header -->
+    <header class="static-brand-header">
+      <div class="vertex-brand">
+        VERTEX <span>DIGITAL</span>
+      </div>
+      <div class="client-chip">
+        <i class="ri-restaurant-2-line"></i> Boutique dos Temperos
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero-box">
+        <div class="meta-badge">
+          <i class="ri-shield-star-line"></i> Proposta Estratégica Multi-Unidades 2026
+        </div>
+        <h1 class="hero-h1">
+          Acelerando as Vendas do <span class="glow-gold">Grupo Boutique dos Temperos</span> em Ribeirão Preto.
+        </h1>
+        <p class="hero-p">
+          Gestão de Conteúdo e Tráfego Pago Hiperlocal no <strong>Novo Mercadão</strong> e na <strong>Unidade Academia</strong> para atrair clientes de alto valor todos os dias.
+        </p>
+
+        <!-- 3 Quick Value Items -->
+        <div class="quick-value-stack">
+          <div class="q-card">
+            <div class="q-icon"><i class="ri-store-3-line"></i></div>
+            <div class="q-text">
+              <strong>Gestão das 5 Unidades</strong>
+              <span>Instagrams integrados com padrão de excelência visual.</span>
+            </div>
+          </div>
+          <div class="q-card">
+            <div class="q-icon"><i class="ri-map-pin-2-line"></i></div>
+            <div class="q-text">
+              <strong>Tráfego Local em Ribeirão</strong>
+              <span>Anúncios focados nos bairros nobres e finais de semana.</span>
+            </div>
+          </div>
+          <div class="q-card">
+            <div class="q-icon"><i class="ri-whatsapp-line"></i></div>
+            <div class="q-text">
+              <strong>Pedidos no WhatsApp & Balcão</strong>
+              <span>Mais visitas às lojas físicas e pedidos com entrega rápida.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diagnóstico: Antes vs Depois -->
+      <section class="section-wrap">
+        <div class="section-title-wrap">
+          <span class="sec-tag"><i class="ri-scales-line"></i> Diagnóstico</span>
+          <h2 class="sec-h2">O que muda nas suas <span class="glow-gold">Operações</span></h2>
+          <p class="sec-p">Como transformar a presença digital de cada unidade em um ímã de clientes locais.</p>
+        </div>
+
+        <div class="comparison-grid">
+          <!-- Antes -->
+          <div class="comp-card is-before">
+            <div class="comp-top">
+              <h3><i class="ri-close-circle-fill"></i> Como está hoje</h3>
+              <span class="comp-badge-mini">GARGALOS ATUAIS</span>
+            </div>
+            <ul class="comp-bullets">
+              <li><i class="ri-close-line"></i> Perfis sem padrão visual padronizado, dependendo apenas de clientes presenciais.</li>
+              <li><i class="ri-close-line"></i> Falta de vídeos sensoriais (apetite appeal de peixes frescos, temperos e joias).</li>
+              <li><i class="ri-close-line"></i> Sem anúncios direcionados para os bairros nobres de Ribeirão Preto nos dias de pico.</li>
+              <li><i class="ri-close-line"></i> Dificuldade de cross-sell entre os clientes do mercadão e da academia.</li>
+              <li><i class="ri-close-line"></i> Dependência exclusiva do movimento orgânico do Novo Mercadão.</li>
+            </ul>
+          </div>
+
+          <!-- Depois -->
+          <div class="comp-card is-after">
+            <div class="comp-top">
+              <h3><i class="ri-checkbox-circle-fill"></i> Com a Vertex Digital</h3>
+              <span class="comp-badge-mini">PADRÃO GOURMET & VENDAS</span>
+            </div>
+            <ul class="comp-bullets">
+              <li><i class="ri-check-line"></i> <strong>5 Perfis Alinhados:</strong> Direção criativa e aprovação prévia dos vídeos por Gabriel.</li>
+              <li><i class="ri-check-line"></i> <strong>Apetite Appeal Magnético:</strong> Vídeos suculentos que despertam desejo imediato de compra.</li>
+              <li><i class="ri-check-line"></i> <strong>Tráfego Hiperlocal:</strong> Anúncios no Meta Ads (quinta a domingo para peixes/gastronomia).</li>
+              <li><i class="ri-check-line"></i> <strong>Catálogo Digital Integrado:</strong> Pedidos com 1 clique direto no WhatsApp.</li>
+              <li><i class="ri-check-line"></i> <strong>Acompanhamento Centralizado:</strong> Grupo VIP no WhatsApp com métricas semanais.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- As 5 Unidades da Leila -->
+      <section class="section-wrap">
+        <div class="section-title-wrap">
+          <span class="sec-tag"><i class="ri-building-4-line"></i> Ecossistema Leila Bastos</span>
+          <h2 class="sec-h2">Estratégia para as <span class="glow-gold">5 Unidades</span></h2>
+          <p class="sec-p">Clique em cada aba abaixo para visualizar o plano específico de cada operação.</p>
+        </div>
+
+        <div class="units-container">
+          <div class="units-scroll-tabs">
+            <button class="u-tab active" onclick="switchUnitTab(event, 'u-peixaria')">
+              🐟 1. Peixaria Boutique
+            </button>
+            <button class="u-tab" onclick="switchUnitTab(event, 'u-emporio')">
+              🌿 2. Empório Boutique
+            </button>
+            <button class="u-tab" onclick="switchUnitTab(event, 'u-acessorios')">
+              💎 3. Leila Bastos Acessórios
+            </button>
+            <button class="u-tab" onclick="switchUnitTab(event, 'u-estacao')">
+              🧀 4. Estação do Sabor
+            </button>
+            <button class="u-tab" onclick="switchUnitTab(event, 'u-academia')">
+              🏋️ 5. Unidade Academia
+            </button>
+          </div>
+
+          <!-- Unit 1: Peixaria -->
+          <div id="u-peixaria" class="u-panel active">
+            <div class="unit-details-card">
+              <h4>🐟 Boutique dos Temperos - Peixaria</h4>
+              <span class="unit-location">📍 Novo Mercadão de Ribeirão Preto</span>
+              <p><strong>Foco Estratégico:</strong> Peixes nobres (salmão, robalo, pescada amarela), frutos do mar, camarões selecionados e combos de fim de semana para almoço em família e churrasco de peixe.</p>
+              <ul class="unit-bullets-sub">
+                <li><i class="ri-check-line"></i> Vídeos do peixe fresco sendo cortado na bancada (Apetite Appeal)</li>
+                <li><i class="ri-check-line"></i> Tráfego concentrado de Quinta a Domingo nos bairros nobres de Ribeirão</li>
+                <li><i class="ri-check-line"></i> Pedidos expressos no WhatsApp com entrega por motoboy</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 2: Empório Boutique -->
+          <div id="u-emporio" class="u-panel">
+            <div class="unit-details-card">
+              <h4>🌿 Boutique dos Temperos - Empório Gourmet</h4>
+              <span class="unit-location">📍 Novo Mercadão de Ribeirão Preto</span>
+              <p><strong>Foco Estratégico:</strong> Temperos artesanais exclusivos, azeites nobres importados, vinhos, molhos de pimenta especiais e kits gastronômicos para presentear.</p>
+              <ul class="unit-bullets-sub">
+                <li><i class="ri-check-line"></i> Dicas rápidas de 20s: <em>"Qual tempero usar no seu churrasco hoje?"</em></li>
+                <li><i class="ri-check-line"></i> Demonstração de kits montados para presentes de bom gosto</li>
+                <li><i class="ri-check-line"></i> Combos sugeridos junto com os peixes frescos da peixaria</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 3: Leila Bastos Acessórios -->
+          <div id="u-acessorios" class="u-panel">
+            <div class="unit-details-card">
+              <h4>💎 Leila Bastos Acessórios</h4>
+              <span class="unit-location">📍 Novo Mercadão de Ribeirão Preto</span>
+              <p><strong>Foco Estratégico:</strong> Joias, semijoias finas, peças elegantes e acessórios femininos sofisticados para datas especiais, presentes e uso diário com sofisticação.</p>
+              <ul class="unit-bullets-sub">
+                <li><i class="ri-check-line"></i> Vídeos de unboxing e detalhe do brilho das peças sob boa iluminação</li>
+                <li><i class="ri-check-line"></i> Anúncios para maridos/namorados em datas comemorativas e aniversários</li>
+                <li><i class="ri-check-line"></i> Combinações de peças para compor looks de eventos</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 4: Empório Estação do Sabor -->
+          <div id="u-estacao" class="u-panel">
+            <div class="unit-details-card">
+              <h4>🧀 Empório Estação do Sabor</h4>
+              <span class="unit-location">📍 Novo Mercadão de Ribeirão Preto</span>
+              <p><strong>Foco Estratégico:</strong> Queijos artesanais da Canastra, doces coloniais, cachaças mineiras premiadas, café especial e petiscos tradicionais.</p>
+              <ul class="unit-bullets-sub">
+                <li><i class="ri-check-line"></i> Vídeos sensoriais de queijo sendo cortado/derretido e degustação</li>
+                <li><i class="ri-check-line"></i> Convite para provar no balcão do Novo Mercadão</li>
+                <li><i class="ri-check-line"></i> Montagem de tábuas de frios para eventos e reuniões</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Unit 5: Unidade Academia -->
+          <div id="u-academia" class="u-panel">
+            <div class="unit-details-card">
+              <h4>🏋️ Boutique dos Temperos - Unidade Academia</h4>
+              <span class="unit-location">📍 Unidade Fitness / Academia</span>
+              <p><strong>Foco Estratégico:</strong> Alimentação saudável, marmitas fit balanceadas, temperos sem sódio, snacks proteicos e praticidade para quem treina e não quer comer comida sem sabor.</p>
+              <ul class="unit-bullets-sub">
+                <li><i class="ri-check-line"></i> Conteúdos de praticidade: <em>"Como comer saudável sem perder tempo"</em></li>
+                <li><i class="ri-check-line"></i> Anúncios no raio de 3 km ao redor da academia</li>
+                <li><i class="ri-check-line"></i> Parcerias e combos pós-treino</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulated Multi-Store Catalog Mockup -->
+        <div class="mockup-hub-box">
+          <div class="mockup-top-bar">
+            <div class="m-dot-group">
+              <span class="mdot md-r"></span>
+              <span class="mdot md-y"></span>
+              <span class="mdot md-g"></span>
+            </div>
+            <div class="mockup-url-text">boutiquedostemperosrp.com.br (Hub Digital)</div>
+            <div></div>
+          </div>
+          <div class="mockup-content-wrap">
+            <span style="color: var(--gold-gourmet); font-size: 0.72rem; font-weight: 700; text-transform: uppercase;">✨ Vitrine Digital Multi-Loja</span>
+            <h3 style="font-family: var(--font-title); font-size: 1.25rem; color: #fff; margin-top: 2px;">Destaques do Grupo Boutique</h3>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">Peça direto no WhatsApp ou retire no Novo Mercadão.</p>
+
+            <div class="gourmet-catalog-grid">
+              <div class="gourmet-item-card">
+                <div class="g-emoji">🐟</div>
+                <div class="g-name">Combo Salmão Fresco + Camarão Rosa</div>
+                <span class="g-store-badge">Peixaria Boutique</span>
+                <div class="g-price">R$ 139,90</div>
+                <a href="#proposta" class="btn-order-wa"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
+              </div>
+              <div class="gourmet-item-card">
+                <div class="g-emoji">🌿</div>
+                <div class="g-name">Kit 5 Temperos Artesanais Gourmet</div>
+                <span class="g-store-badge">Empório Boutique</span>
+                <div class="g-price">R$ 69,90</div>
+                <a href="#proposta" class="btn-order-wa"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
+              </div>
+              <div class="gourmet-item-card">
+                <div class="g-emoji">💎</div>
+                <div class="g-name">Colar Elegance Banhado a Ouro 18k</div>
+                <span class="g-store-badge">Leila Bastos Acessórios</span>
+                <div class="g-price">R$ 119,00</div>
+                <a href="#proposta" class="btn-order-wa"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Os 3 Pilares do Escopo -->
+      <section class="section-wrap">
+        <div class="section-title-wrap">
+          <span class="sec-tag"><i class="ri-cpu-line"></i> Execução</span>
+          <h2 class="sec-h2">Os 3 Pilares do <span class="glow-red">Nosso Trabalho</span></h2>
+          <p class="sec-p">Como a Vertex Digital organiza a operação de marketing do seu grupo.</p>
+        </div>
+
+        <div class="pillars-grid-3">
+          <div class="pillar-item-box">
+            <div class="p-icon-circle ic-multi"><i class="ri-instagram-line"></i></div>
+            <div>
+              <h3 class="pillar-h3-title">Governança dos 5 Instagrams</h3>
+              <p class="pillar-p-txt">
+                Auditoria visual, arquivamento de posts fracos, padronização da identidade visual e aprovação prévia de todos os vídeos por Gabriel.
+              </p>
+            </div>
+            <ul class="pillar-feat-list">
+              <li><i class="ri-check-fill"></i> Padrão de vitrine gastronômica & joias</li>
+              <li><i class="ri-check-fill"></i> Roteiros rápidos de 20s para a equipe gravar</li>
+              <li><i class="ri-check-fill"></i> Aprovação centralizada no WhatsApp</li>
+            </ul>
+          </div>
+
+          <div class="pillar-item-box">
+            <div class="p-icon-circle ic-geo"><i class="ri-map-pin-line"></i></div>
+            <div>
+              <h3 class="pillar-h3-title">Tráfego Pago em Ribeirão Preto</h3>
+              <p class="pillar-p-txt">
+                Campanhas geolocalizadas no Meta Ads com anúncios de quinta a domingo para peixes/gastronomia e semanais para academia e joias.
+              </p>
+            </div>
+            <ul class="pillar-feat-list">
+              <li><i class="ri-check-fill"></i> Segmentação por bairros nobres e raio local</li>
+              <li><i class="ri-check-fill"></i> Foco em gerar pedidos no WhatsApp</li>
+              <li><i class="ri-check-fill"></i> Aumento do fluxo físico nas lojas</li>
+            </ul>
+          </div>
+
+          <div class="pillar-item-box">
+            <div class="p-icon-circle ic-hub"><i class="ri-layout-4-line"></i></div>
+            <div>
+              <h3 class="pillar-h3-title">Hub Digital & Catálogo Express</h3>
+              <p class="pillar-p-txt">
+                Página de catálogo moderna para o cliente visualizar os principais produtos do grupo e fazer pedidos em 1 clique.
+              </p>
+            </div>
+            <ul class="pillar-feat-list">
+              <li><i class="ri-check-fill"></i> Vitrine integrada das lojas</li>
+              <li><i class="ri-check-fill"></i> Botão WhatsApp em cada produto</li>
+              <li><i class="ri-check-fill"></i> Suporte ágil e métricas mensais</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Simulador de Retorno Local -->
+      <section class="section-wrap">
+        <div class="section-title-wrap">
+          <span class="sec-tag"><i class="ri-calculator-line"></i> Projeção</span>
+          <h2 class="sec-h2">Simulador de Retorno: <span class="glow-gold">Vendas em Ribeirão</span></h2>
+          <p class="sec-p">Simule o potencial de novos clientes e pedidos gerados com anúncios locais.</p>
+        </div>
+
+        <div class="simulator-mobile-dashboard">
+          <div class="slider-item-block">
+            <label>
+              <span>Investimento Diário em Tráfego:</span>
+              <span class="live-val" id="valDaily">R$ 30,00 / dia</span>
+            </label>
+            <input type="range" min="15" max="90" step="5" value="30" class="mobile-range" id="rangeDaily" oninput="calculateBoutiqueRoi()" />
+            <small style="color: var(--text-muted); font-size: 0.72rem; display: block; margin-top: 4px;">Total: R$ <span id="valMonthly">900</span>,00/mês distribuído nas unidades</small>
+          </div>
+
+          <div class="slider-item-block">
+            <label>
+              <span>Ticket Médio por Cliente:</span>
+              <span class="live-val" id="valTicket">R$ 110,00</span>
+            </label>
+            <input type="range" min="50" max="250" step="10" value="110" class="mobile-range" id="rangeTicket" oninput="calculateBoutiqueRoi()" />
+          </div>
+
+          <div class="slider-item-block">
+            <label>
+              <span>Taxa de Fechamento / Visitas:</span>
+              <span class="live-val" id="valRate">25% dos contatos</span>
+            </label>
+            <input type="range" min="10" max="40" step="5" value="25" class="mobile-range" id="rangeRate" oninput="calculateBoutiqueRoi()" />
+          </div>
+
+          <!-- Results Box -->
+          <div class="sim-results-card">
+            <div class="sim-revenue-box">
+              <small>Faturamento Bruto Estimado / Mês</small>
+              <h3 id="resRevenue">R$ 7.425,00</h3>
+            </div>
+
+            <div class="sim-mini-grid">
+              <div class="mini-stat-pill">
+                <small>Novos Contatos / Mês</small>
+                <strong id="resLeads">270 clientes</strong>
+              </div>
+              <div class="mini-stat-pill">
+                <small>Pedidos Fechados</small>
+                <strong id="resSales">67 vendas</strong>
+              </div>
+            </div>
+
+            <div class="roi-tag-pill">
+              <i class="ri-arrow-up-line"></i> Retorno: <strong id="resRoi">8.2x</strong> sobre os anúncios
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cronograma 30 Dias -->
+      <section class="section-wrap">
+        <div class="section-title-wrap">
+          <span class="sec-tag"><i class="ri-calendar-check-line"></i> Cronograma</span>
+          <h2 class="sec-h2">Os Primeiros <span class="glow-red">30 Dias</span></h2>
+          <p class="sec-p">Estruturação completa com entregas semanais.</p>
+        </div>
+
+        <div class="timeline-stack">
+          <div class="t-card-item">
+            <div class="t-week">SEMANA 01</div>
+            <h4>Auditoria & Setup</h4>
+            <p>Auditoria dos 5 Instagrams, criação do grupo oficial no WhatsApp, padronização visual e configuração do Gerenciador de Anúncios.</p>
+          </div>
+          <div class="t-card-item">
+            <div class="t-week">SEMANA 02</div>
+            <h4>Gravação & Lançamento</h4>
+            <p>Primeiro lote de vídeos aprovados por Gabriel e ativação dos anúncios de peixes e empório para o fim de semana em Ribeirão.</p>
+          </div>
+          <div class="t-card-item">
+            <div class="t-week">SEMANA 03</div>
+            <h4>Otimização Multi-Loja</h4>
+            <p>Análise dos produtos que mais venderam, ajustes de abordagem nas respostas do WhatsApp e campanha para a unidade da academia.</p>
+          </div>
+          <div class="t-card-item">
+            <div class="t-week">SEMANA 04</div>
+            <h4>Escala & Relatório</h4>
+            <p>Apresentação do relatório de clientes atraídos, pedidos realizados e planejamento do catálogo do próximo mês.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Proposta Comercial & Fechamento -->
+      <section id="proposta" class="section-wrap">
+        <div class="proposal-card-block">
+          <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--primary-red); letter-spacing: 1px;">Condição Especial de Início</span>
+          <h2 style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 900; margin: 6px 0 10px; color: #fff;">
+            Pronta para acelerar o <span class="glow-gold">Grupo Boutique dos Temperos</span>?
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;">
+            Um ecossistema completo para fortalecer suas 5 unidades, atrair clientes de alto poder aquisitivo e vender todos os dias.
+          </p>
+
+          <div class="scope-list-check">
+            <div class="scope-row"><i class="ri-checkbox-circle-fill"></i> Gestão & Governança de Conteúdo dos 5 Instagrams</div>
+            <div class="scope-row"><i class="ri-checkbox-circle-fill"></i> Gestão do Tráfego Pago Hiperlocal no Meta Ads</div>
+            <div class="scope-row"><i class="ri-checkbox-circle-fill"></i> Roteiros Semanais dos Vídeos que Mais Vendem</div>
+            <div class="scope-row"><i class="ri-checkbox-circle-fill"></i> Criação & Hospedagem da Landing Page de Catálogo Express</div>
+            <div class="scope-row"><i class="ri-checkbox-circle-fill"></i> Grupo VIP "Boutique dos Temperos | Vertex" no WhatsApp</div>
+            <div class="scope-row"><i class="ri-checkbox-circle-fill"></i> Relatórios Periódicos de Vendas e Crescimento</div>
+          </div>
+
+          <a href="https://wa.me/5516992805627?text=Ol%C3%A1%20Gabriel!%20Vi%20a%20p%C3%A1gina%20da%20proposta%20da%20Boutique%20dos%20Temperos%20e%20quero%20fechar%20o%20projeto%20com%20a%20Vertex!" target="_blank" class="btn-block-action btn-emerald-big">
+            <i class="ri-whatsapp-line"></i> <span>Aprovar Proposta no WhatsApp</span>
+          </a>
+
+          <button class="btn-block-action btn-outline-big" onclick="openShareSheet()">
+            <i class="ri-share-forward-line"></i> <span>Copiar Link da Proposta</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile Footer -->
+    <footer class="footer-mobile">
+      <p>Proposta Comercial Exclusiva elaborada por <strong>Vertex Digital</strong> para <strong>Boutique dos Temperos & Grupo Leila Bastos</strong>.</p>
+      <p style="margin-top: 4px; font-size: 0.72rem; opacity: 0.7;">© 2026 Vertex Digital • Gabriel de Lima</p>
+    </footer>
+  </div>
+
+  <!-- Share Sheet Modal -->
+  <div id="shareSheet" class="modal-sheet" onclick="closeShareSheet(event)">
+    <div class="sheet-card" onclick="event.stopPropagation()">
+      <button class="sheet-close" onclick="closeShareSheet()"><i class="ri-close-line"></i></button>
+      <h3 style="font-family: var(--font-title); font-size: 1.15rem; color: #fff; margin-bottom: 6px;">
+        <i class="ri-link" style="color: var(--primary-red);"></i> Link da Proposta
+      </h3>
+      <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 12px;">
+        Copie e envie no WhatsApp da Leila:
+      </p>
+      <textarea id="mobileShareText" style="width: 100%; height: 95px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-subtle); border-radius: 8px; color: #fff; padding: 10px; font-size: 0.8rem; font-family: var(--font-body); resize: none;" readonly>Olá Leila! Tudo bem? Montei uma página exclusiva detalhando o plano de crescimento, catálogo e tráfego pago para as suas 5 unidades do Grupo Boutique dos Temperos:
+https://www.somosvertexdigital.com.br/plano-boutiquedostemperos.html</textarea>
+      <button class="btn-block-action btn-emerald-big" style="margin-top: 10px; padding: 12px;" onclick="copyMobileLink()">
+        <i class="ri-file-copy-line"></i> <span>Copiar Mensagem com Link</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Tab switching for the 5 units
+    function switchUnitTab(e, tabId) {
+      document.querySelectorAll('.u-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.u-panel').forEach(p => p.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // ROI Simulator Calculation (Ribeirão Preto Market)
+    function calculateBoutiqueRoi() {
+      const dailyInvest = parseFloat(document.getElementById('rangeDaily').value);
+      const ticket = parseFloat(document.getElementById('rangeTicket').value);
+      const rate = parseFloat(document.getElementById('rangeRate').value) / 100;
+
+      // Update Labels
+      document.getElementById('valDaily').innerText = 'R$ ' + dailyInvest.toFixed(2) + ' / dia';
+      document.getElementById('valMonthly').innerText = (dailyInvest * 30).toFixed(0);
+      document.getElementById('valTicket').innerText = 'R$ ' + ticket.toFixed(2);
+      document.getElementById('valRate').innerText = (rate * 100).toFixed(0) + '% dos contatos';
+
+      // Math: Cost per lead in food/luxury in Ribeirão Preto ~ R$ 3.30
+      const costPerLead = 3.30;
+      const monthlyBudget = dailyInvest * 30;
+      const monthlyLeads = Math.floor(monthlyBudget / costPerLead);
+      const monthlySales = Math.floor(monthlyLeads * rate);
+      const monthlyRevenue = monthlySales * ticket;
+      const roi = (monthlyRevenue / monthlyBudget).toFixed(1);
+
+      document.getElementById('resLeads').innerText = monthlyLeads + ' clientes';
+      document.getElementById('resSales').innerText = monthlySales + ' vendas';
+      document.getElementById('resRevenue').innerText = 'R$ ' + monthlyRevenue.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+      document.getElementById('resRoi').innerText = roi + 'x';
+    }
+
+    // Modal Share
+    function openShareSheet() {
+      document.getElementById('shareSheet').classList.add('active');
+    }
+    function closeShareSheet() {
+      document.getElementById('shareSheet').classList.remove('active');
+    }
+    function copyMobileLink() {
+      const copyText = document.getElementById("mobileShareText");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(copyText.value);
+      alert("Mensagem copiada com sucesso! Agora basta enviar no WhatsApp da Leila.");
+      closeShareSheet();
+    }
+
+    // Init
+    calculateBoutiqueRoi();
+  </script>
+</body>
+</html>
