@@ -3,35 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Mona Lisa Brinquedos | Plano de Fechamento & Aceleração Digital - Vertex Digital</title>
+  <title>Mona Lisa Brinquedos | Plano Estratégico de Vendas & Aceleração Digital</title>
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./assets/favicon-Bb9sfGOE.png" />
   
-  <!-- Google Fonts: Outfit, Inter & Space Grotesk -->
+  <!-- Google Fonts: Outfit, Inter, Plus Jakarta Sans & Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Remix Icon -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 
   <style>
     :root {
+      --bg-base: #05060a;
+      --bg-surface: #0a0c13;
+      --bg-surface-elevated: #111420;
+      --bg-glass: rgba(17, 20, 32, 0.7);
+      
       --primary-red: #ff1e42;
-      --primary-glow: rgba(255, 30, 66, 0.35);
-      --accent-yellow: #fbbf24;
-      --accent-purple: #8b5cf6;
-      --accent-cyan: #06b6d4;
+      --primary-red-hover: #e00d2f;
+      --primary-glow: rgba(255, 30, 66, 0.28);
+      
+      --gold-toy: #fbbf24;
+      --gold-glow: rgba(251, 191, 36, 0.2);
+      
       --emerald-green: #10b981;
-      --bg-dark: #07080d;
-      --bg-card: rgba(18, 20, 29, 0.85);
-      --border-card: rgba(255, 255, 255, 0.08);
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --font-display: 'Outfit', sans-serif;
-      --font-body: 'Inter', sans-serif;
-      --font-mono: 'Space Grotesk', monospace;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+      
+      --cyan-bright: #06b6d4;
+      --purple-accent: #8b5cf6;
+      
+      --border-subtle: rgba(255, 255, 255, 0.07);
+      --border-highlight: rgba(255, 255, 255, 0.14);
+      --border-red: rgba(255, 30, 66, 0.3);
+      
+      --text-main: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --font-title: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      --font-num: 'Space Grotesk', monospace;
     }
 
     * {
@@ -41,86 +56,125 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    body {
-      font-family: var(--font-body);
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* Ambient Background Glows */
-    .ambient-glow {
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      selection-background-color: var(--primary-red);
+      selection-color: #fff;
+    }
+
+    /* Ambient Dynamic Aurora Background */
+    .aurora-bg {
       position: fixed;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      filter: blur(140px);
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.15;
+      overflow: hidden;
     }
-    .glow-1 { top: -100px; left: -100px; background: var(--primary-red); }
-    .glow-2 { top: 40%; right: -150px; background: var(--accent-purple); }
-    .glow-3 { bottom: 10%; left: 20%; background: var(--accent-yellow); opacity: 0.08; }
+    .aurora-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(130px);
+      opacity: 0.12;
+    }
+    .c1 { width: 700px; height: 700px; top: -200px; left: 10%; background: var(--primary-red); }
+    .c2 { width: 600px; height: 600px; top: 35%; right: -150px; background: var(--purple-accent); opacity: 0.08; }
+    .c3 { width: 500px; height: 500px; bottom: -100px; left: 25%; background: var(--gold-toy); opacity: 0.07; }
+
+    /* Top Grid Overlay Pattern */
+    .grid-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
     .container {
       width: 100%;
-      max-width: 1140px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 24px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
-    /* Top Bar / Header */
-    .top-header {
+    /* Executive Floating Topbar */
+    .topbar {
       position: sticky;
-      top: 0;
-      background: rgba(7, 8, 13, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-card);
+      top: 16px;
       z-index: 100;
-      padding: 14px 0;
+      margin-bottom: 20px;
     }
-    .header-flex {
+    .topbar-card {
+      background: rgba(10, 12, 19, 0.82);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-highlight);
+      border-radius: 16px;
+      padding: 12px 20px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-    .brand-group {
+    .brand-stack {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
-    .vertex-logo-badge {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-display);
+    .vertex-logo-title {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
       font-weight: 800;
-      font-size: 1.1rem;
       letter-spacing: 0.5px;
       color: #fff;
-    }
-    .vertex-logo-badge span { color: var(--primary-red); }
-    .client-badge-pill {
-      background: rgba(251, 191, 36, 0.12);
-      border: 1px solid rgba(251, 191, 36, 0.3);
-      color: var(--accent-yellow);
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 50px;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
-    .header-actions {
+    .vertex-logo-title span { color: var(--primary-red); }
+    .client-target-badge {
       display: flex;
-      gap: 10px;
+      align-items: center;
+      gap: 6px;
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      color: var(--gold-toy);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
     }
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .nav-link {
+      color: var(--text-secondary);
+      font-size: 0.86rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: #fff; }
 
     /* Buttons */
     .btn {
@@ -131,510 +185,592 @@
       padding: 10px 20px;
       border-radius: 10px;
       font-weight: 600;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       border: none;
       font-family: var(--font-body);
     }
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary-red), #d90429);
+      background: linear-gradient(135deg, var(--primary-red), #d00725);
       color: #fff;
       box-shadow: 0 4px 20px var(--primary-glow);
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(255, 30, 66, 0.5);
-    }
-    .btn-glass {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-card);
-      color: #fff;
-    }
-    .btn-glass:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 30px rgba(255, 30, 66, 0.45);
     }
     .btn-emerald {
       background: linear-gradient(135deg, #10b981, #059669);
       color: #fff;
-      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+      box-shadow: 0 4px 20px var(--emerald-glow);
     }
     .btn-emerald:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(16, 185, 129, 0.5);
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.45);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-highlight);
+      color: var(--text-main);
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
     }
     .btn-lg {
-      padding: 15px 30px;
+      padding: 15px 32px;
       font-size: 1.05rem;
       border-radius: 12px;
     }
 
-    /* Hero Section */
-    .hero-section {
-      padding: 60px 0 40px;
+    /* Hero Presentation Section */
+    .hero-wrap {
+      padding: 50px 0 35px;
       text-align: center;
     }
-    .sub-tag {
+    .hero-meta-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(255, 30, 66, 0.1);
-      border: 1px solid rgba(255, 30, 66, 0.3);
-      color: #ff6b81;
-      padding: 6px 14px;
-      border-radius: 50px;
-      font-size: 0.82rem;
+      gap: 8px;
+      background: rgba(255, 30, 66, 0.08);
+      border: 1px solid var(--border-red);
+      color: #ff5f78;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
+      letter-spacing: 1.5px;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 24px;
     }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: 2.8rem;
+    .hero-heading {
+      font-family: var(--font-title);
+      font-size: 3.2rem;
       font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 18px;
-      letter-spacing: -0.5px;
+      line-height: 1.12;
+      letter-spacing: -1px;
+      max-width: 980px;
+      margin: 0 auto 20px;
     }
-    .gradient-text {
-      background: linear-gradient(135deg, #fff 30%, #ff8a9e 100%);
+    .text-glow-red {
+      background: linear-gradient(135deg, #ffffff 40%, #ff758c 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .gradient-highlight {
-      background: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+    .text-glow-gold {
+      background: linear-gradient(135deg, #ffe066 0%, #f59e0b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hero-subtitle {
+    .hero-desc {
       font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 760px;
-      margin: 0 auto 35px;
+      color: var(--text-secondary);
+      max-width: 780px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
     }
-    .hero-stats-row {
+
+    /* Value Pillars Bar */
+    .value-cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      max-width: 820px;
+      gap: 16px;
+      max-width: 920px;
       margin: 0 auto;
     }
-    .hero-stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      padding: 18px 15px;
+    .value-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
       border-radius: 14px;
-      text-align: center;
+      padding: 18px 20px;
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: all 0.2s;
     }
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #fff;
+    .value-card:hover {
+      border-color: var(--border-highlight);
+      background: var(--bg-surface-elevated);
+      transform: translateY(-2px);
+    }
+    .value-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255, 30, 66, 0.1);
+      color: var(--primary-red);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      font-size: 1.2rem;
+      flex-shrink: 0;
     }
-    .stat-num i { color: var(--primary-red); }
-    .stat-desc {
-      font-size: 0.82rem;
+    .value-info strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .value-info span {
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-top: 4px;
+      line-height: 1.4;
+      display: block;
+      margin-top: 2px;
     }
 
-    /* Section Global */
-    .section {
-      padding: 50px 0;
+    /* Section Global Styling */
+    .section-block {
+      padding: 55px 0;
     }
-    .section-header {
+    .section-head {
       margin-bottom: 35px;
     }
-    .section-header.text-center { text-align: center; }
-    .section-header h2 {
-      font-family: var(--font-display);
-      font-size: 2.1rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      letter-spacing: -0.3px;
+    .section-head.text-center { text-align: center; }
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
     }
-    .section-header p {
-      color: var(--text-muted);
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .section-subtitle {
+      color: var(--text-secondary);
       font-size: 1rem;
-      max-width: 650px;
+      max-width: 680px;
       margin: 0 auto;
     }
 
-    /* Glass Panels & Cards */
-    .glass-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: 16px;
-      padding: 28px;
-      backdrop-filter: blur(12px);
-      transition: all 0.25s ease;
-    }
-    .glass-card:hover {
-      border-color: rgba(255, 255, 255, 0.15);
-      transform: translateY(-2px);
+    /* Glass Panels */
+    .glass-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Comparison Section: Antes vs Depois */
-    .compare-grid {
+    /* Comparison Section: Diagnostic Table */
+    .comparison-split-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
-    .compare-card.before {
-      border-color: rgba(239, 68, 68, 0.25);
-      background: rgba(239, 68, 68, 0.03);
+    .comp-box {
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid transparent;
+      display: flex;
+      flex-direction: column;
     }
-    .compare-card.after {
-      border-color: rgba(16, 185, 129, 0.35);
-      background: rgba(16, 185, 129, 0.04);
-      box-shadow: 0 0 30px rgba(16, 185, 129, 0.08);
+    .comp-box.status-before {
+      background: rgba(239, 68, 68, 0.02);
+      border-color: rgba(239, 68, 68, 0.18);
     }
-    .compare-badge {
-      display: inline-flex;
+    .comp-box.status-after {
+      background: rgba(16, 185, 129, 0.03);
+      border-color: rgba(16, 185, 129, 0.25);
+      box-shadow: 0 10px 40px rgba(16, 185, 129, 0.05);
+    }
+    .comp-header {
+      display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 5px 12px;
-      border-radius: 50px;
-      margin-bottom: 16px;
-    }
-    .badge-before { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
-    .badge-after { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
-    
-    .compare-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .compare-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 0.94rem;
-    }
-    .compare-list li i {
-      font-size: 1.1rem;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-    .compare-card.before li i { color: #ef4444; }
-    .compare-card.after li i { color: #10b981; }
-
-    /* The 3 Pillars Section */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .pillar-card {
-      display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
-    .pillar-number {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-family: var(--font-mono);
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: rgba(255, 255, 255, 0.05);
-    }
-    .pillar-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
       margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
     }
-    .icon-pink { background: rgba(244, 63, 94, 0.12); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.3); }
-    .icon-blue { background: rgba(59, 130, 246, 0.12); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
-    .icon-green { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
-
-    .pillar-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
+    .comp-title {
+      font-family: var(--font-title);
+      font-size: 1.25rem;
       font-weight: 700;
-      margin-bottom: 10px;
-      color: #fff;
-    }
-    .pillar-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-    .pillar-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      border-top: 1px solid var(--border-card);
-      padding-top: 15px;
-      margin-top: auto;
-    }
-    .pillar-features li {
-      font-size: 0.85rem;
-      color: #d1d5db;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .pillar-features li i { color: var(--primary-red); font-size: 0.95rem; }
+    .status-before .comp-title { color: #f87171; }
+    .status-after .comp-title { color: #34d399; }
+    
+    .comp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .comp-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .comp-list li i {
+      font-size: 1.1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .status-before .comp-list li i { color: #ef4444; }
+    .status-after .comp-list li i { color: #10b981; }
 
-    /* Interactive Tab for Video Scripts */
-    .interactive-box {
-      background: #0d0f18;
-      border: 1px solid var(--border-card);
-      border-radius: 16px;
-      padding: 25px;
+    /* The 3 Pillars Showcase */
+    .pillar-cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .pillar-modern-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pillar-modern-card:hover {
+      border-color: var(--border-highlight);
+      background: var(--bg-surface-elevated);
+      transform: translateY(-4px);
+    }
+    .pillar-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+    .pillar-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .pi-insta { background: rgba(236, 72, 153, 0.12); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.25); }
+    .pi-web { background: rgba(6, 182, 212, 0.12); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.25); }
+    .pi-ads { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); }
+    
+    .pillar-idx {
+      font-family: var(--font-num);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.15);
+    }
+    .pillar-h3 {
+      font-family: var(--font-title);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .pillar-p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+    .pillar-deliverables {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 16px;
+      margin-top: auto;
+    }
+    .pillar-deliverables li {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pillar-deliverables li i { color: var(--primary-red); }
+
+    /* Interactive Studio: Script Teleprompter */
+    .studio-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 30px;
       margin-top: 25px;
     }
-    .tab-nav {
+    .studio-tabs-row {
       display: flex;
       gap: 10px;
-      border-bottom: 1px solid var(--border-card);
+      border-bottom: 1px solid var(--border-subtle);
       padding-bottom: 15px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       overflow-x: auto;
     }
-    .tab-btn {
+    .studio-tab-btn {
       background: transparent;
-      border: 1px solid var(--border-card);
-      color: var(--text-muted);
-      padding: 8px 16px;
-      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 10px 18px;
+      border-radius: 10px;
       font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       transition: all 0.2s;
       white-space: nowrap;
     }
-    .tab-btn.active {
-      background: rgba(255, 30, 66, 0.15);
+    .studio-tab-btn.active {
+      background: rgba(255, 30, 66, 0.12);
       border-color: var(--primary-red);
       color: #fff;
     }
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+    .studio-content-panel { display: none; }
+    .studio-content-panel.active { display: block; animation: slideUp 0.3s ease; }
 
-    .script-card {
-      background: rgba(255, 255, 255, 0.02);
-      border-left: 3px solid var(--primary-red);
-      padding: 16px 20px;
-      border-radius: 0 10px 10px 0;
+    .teleprompter-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--primary-red);
+      border-radius: 12px;
+      padding: 24px;
     }
-    .script-card h4 { font-size: 1.05rem; margin-bottom: 8px; color: #fff; }
-    .script-card p { font-size: 0.92rem; color: #d1d5db; line-height: 1.6; }
-    .script-tag {
-      display: inline-block;
+    .teleprompter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .teleprompter-title {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .teleprompter-tag {
       font-size: 0.75rem;
       font-weight: 700;
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--accent-yellow);
-      padding: 3px 8px;
-      border-radius: 4px;
-      margin-top: 10px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(251, 191, 36, 0.1);
+      color: var(--gold-toy);
+      border: 1px solid rgba(251, 191, 36, 0.2);
     }
+    .teleprompter-body {
+      font-size: 0.94rem;
+      color: #e2e8f0;
+      line-height: 1.7;
+    }
+    .teleprompter-body strong { color: var(--gold-toy); }
+    .teleprompter-body em { color: #f87171; font-style: normal; font-weight: 600; }
 
-    /* Simulated LP Preview for Mona Lisa */
-    .mockup-preview-wrapper {
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
+    /* Interactive LP Mockup */
+    .mockup-frame {
+      background: #0f111a;
+      border: 1px solid var(--border-highlight);
+      border-radius: 18px;
       overflow: hidden;
-      background: #111420;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-      margin-top: 25px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      margin-top: 30px;
     }
-    .mockup-bar {
-      background: #1a1d2d;
-      padding: 10px 16px;
+    .mockup-header-bar {
+      background: #171926;
+      padding: 12px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--border-card);
+      border-bottom: 1px solid var(--border-subtle);
     }
-    .mockup-dots {
-      display: flex;
-      gap: 6px;
-    }
-    .mockup-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-    .dot-r { background: #ff5f56; }
-    .dot-y { background: #ffbd2e; }
-    .dot-g { background: #27c93f; }
-    .mockup-url {
-      font-family: var(--font-mono);
+    .mockup-ctrl-dots { display: flex; gap: 6px; }
+    .m-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .m-r { background: #ef4444; }
+    .m-y { background: #f59e0b; }
+    .m-g { background: #10b981; }
+    .mockup-url-pill {
+      font-family: var(--font-num);
       font-size: 0.78rem;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 4px 14px;
-      border-radius: 6px;
       color: var(--text-muted);
+      background: rgba(0, 0, 0, 0.35);
+      padding: 4px 16px;
+      border-radius: 6px;
     }
-    .mockup-body {
-      padding: 25px;
+    .mockup-interior {
+      padding: 30px;
+      text-align: center;
     }
-    .lp-toy-grid {
+    .toy-items-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 15px;
+      gap: 16px;
+      margin-top: 20px;
     }
-    .toy-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-card);
-      border-radius: 12px;
-      padding: 16px;
-      text-align: center;
+    .toy-item-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 20px 16px;
+      transition: all 0.2s;
     }
-    .toy-icon-box {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
+    .toy-item-card:hover {
+      border-color: var(--gold-toy);
+      transform: translateY(-3px);
     }
-    .toy-name {
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 4px;
-    }
-    .toy-price {
-      font-family: var(--font-mono);
-      color: var(--accent-yellow);
-      font-weight: 800;
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-    }
-    .btn-toy-order {
+    .toy-emoji-icon { font-size: 2.5rem; margin-bottom: 10px; }
+    .toy-title-txt { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; color: #fff; }
+    .toy-price-val { font-family: var(--font-num); font-size: 1.15rem; font-weight: 800; color: var(--gold-toy); margin-bottom: 12px; }
+    .btn-toy-wa {
       background: #25d366;
-      color: #000;
-      font-size: 0.78rem;
+      color: #052e16;
+      font-size: 0.8rem;
       font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
       text-decoration: none;
+      transition: transform 0.2s;
     }
+    .btn-toy-wa:hover { transform: scale(1.03); }
 
-    /* ROI Simulator for Toy Store */
-    .calculator-wrapper {
-      background: linear-gradient(145deg, #121422, #0d0f18);
-      border: 1px solid var(--border-card);
-      border-radius: 20px;
-      padding: 35px;
+    /* ROI Simulator 2.0 (Glass Financial Dashboard) */
+    .calc-dashboard {
+      background: linear-gradient(135deg, rgba(17, 20, 32, 0.9) 0%, rgba(10, 12, 19, 0.95) 100%);
+      border: 1px solid var(--border-highlight);
+      border-radius: 24px;
+      padding: 40px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 35px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
       align-items: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
     }
-    .calc-inputs {
+    .calc-inputs-col {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
     }
-    .calc-group label {
+    .slider-field-wrap label {
       display: flex;
       justify-content: space-between;
-      font-size: 0.92rem;
+      align-items: center;
+      font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 8px;
+      color: #fff;
+      margin-bottom: 10px;
     }
-    .calc-group label span {
-      font-family: var(--font-mono);
-      color: var(--primary-red);
+    .slider-field-wrap label .val-highlight {
+      font-family: var(--font-num);
+      font-size: 1.1rem;
       font-weight: 800;
+      color: var(--primary-red);
     }
-    .range-slider {
+    .styled-range {
       width: 100%;
       height: 8px;
-      border-radius: 5px;
-      background: #232738;
+      border-radius: 6px;
+      background: #1e2235;
       outline: none;
       -webkit-appearance: none;
+      cursor: pointer;
     }
-    .range-slider::-webkit-slider-thumb {
+    .styled-range::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: var(--primary-red);
+      box-shadow: 0 0 12px var(--primary-glow);
+      border: 2px solid #fff;
       cursor: pointer;
-      box-shadow: 0 0 10px var(--primary-glow);
     }
-    
-    .calc-results-box {
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 30, 66, 0.2);
-      border-radius: 16px;
-      padding: 25px;
-      text-align: center;
-    }
-    .res-metric {
-      margin-bottom: 18px;
-    }
-    .res-metric small {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .res-metric h3 {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--emerald-green);
-      margin-top: 2px;
-    }
-    .res-grid-mini {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid var(--border-card);
-    }
-    .res-mini-item {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 10px;
-      border-radius: 8px;
-    }
-    .res-mini-item small { font-size: 0.72rem; color: var(--text-muted); }
-    .res-mini-item strong { display: block; font-size: 1rem; color: #fff; margin-top: 2px; }
 
-    /* Timeline Section (30 Dias) */
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-    }
-    .timeline-step {
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      padding: 20px 16px;
-      border-radius: 14px;
+    .calc-metrics-display {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border-red);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
       position: relative;
     }
-    .timeline-step::before {
+    .metric-main-revenue small {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+    .metric-main-revenue h3 {
+      font-family: var(--font-title);
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--emerald-green);
+      margin: 4px 0 14px;
+      letter-spacing: -0.5px;
+    }
+    .metrics-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .m-pill {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 12px;
+      border-radius: 10px;
+    }
+    .m-pill small { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; }
+    .m-pill strong { display: block; font-size: 1.1rem; font-family: var(--font-num); color: #fff; margin-top: 2px; }
+    
+    .roi-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      font-size: 0.84rem;
+      color: #a7f3d0;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 6px 16px;
+      border-radius: 20px;
+    }
+
+    /* 30-Day Implementation Timeline */
+    .timeline-steps-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .t-step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px 20px;
+      position: relative;
+    }
+    .t-step-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -643,407 +779,422 @@
       height: 3px;
       background: linear-gradient(90deg, var(--primary-red), transparent);
     }
-    .step-badge {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
+    .t-step-num {
+      font-family: var(--font-num);
+      font-size: 0.78rem;
       font-weight: 800;
       color: var(--primary-red);
       margin-bottom: 10px;
     }
-    .timeline-step h4 {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
+    .t-step-card h4 {
+      font-family: var(--font-title);
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 8px;
       color: #fff;
+      margin-bottom: 8px;
     }
-    .timeline-step p {
+    .t-step-card p {
       font-size: 0.84rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       line-height: 1.5;
     }
 
-    /* Pricing & Acceptance Box */
-    .pricing-card {
-      background: linear-gradient(180deg, rgba(255, 30, 66, 0.08) 0%, rgba(18, 20, 29, 0.95) 100%);
-      border: 1px solid rgba(255, 30, 66, 0.35);
+    /* Proposal Box / CTA */
+    .proposal-box-card {
+      background: radial-gradient(circle at 50% 0%, rgba(255, 30, 66, 0.15), transparent 70%), var(--bg-surface);
+      border: 1px solid rgba(255, 30, 66, 0.4);
       border-radius: 24px;
-      padding: 45px 35px;
+      padding: 50px 35px;
       text-align: center;
-      max-width: 780px;
+      max-width: 820px;
       margin: 0 auto;
-      box-shadow: 0 20px 60px rgba(255, 30, 66, 0.12);
+      box-shadow: 0 20px 60px rgba(255, 30, 66, 0.1);
     }
-    .pricing-badge {
-      display: inline-block;
-      background: var(--primary-red);
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 5px 15px;
-      border-radius: 50px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 15px;
-    }
-    .pricing-title {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-    .pricing-subtitle {
-      color: var(--text-muted);
-      font-size: 0.98rem;
-      max-width: 580px;
-      margin: 0 auto 30px;
-    }
-    .scope-checklist {
+    .scope-matrix-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 14px;
       text-align: left;
-      margin-bottom: 35px;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 20px;
-      border-radius: 14px;
-      border: 1px solid var(--border-card);
+      margin: 30px 0 35px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-subtle);
+      padding: 24px;
+      border-radius: 16px;
     }
-    .scope-item {
+    .scope-matrix-item {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.9rem;
-      color: #e5e7eb;
+      font-size: 0.92rem;
+      color: #f1f5f9;
     }
-    .scope-item i { color: #10b981; font-size: 1.1rem; }
-
-    .action-group-cta {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 480px;
-      margin: 0 auto;
-    }
+    .scope-matrix-item i { color: #10b981; font-size: 1.15rem; }
 
     /* Footer */
-    .footer {
-      border-top: 1px solid var(--border-card);
-      padding: 30px 0;
-      margin-top: 60px;
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 35px 0;
+      margin-top: 70px;
       text-align: center;
       font-size: 0.85rem;
       color: var(--text-muted);
     }
 
-    /* Modal */
-    .modal-overlay {
+    /* Modal Share */
+    .modal-backdrop-custom {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
       background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       z-index: 1000;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
-    .modal-overlay.active { display: flex; animation: fadeIn 0.2s ease; }
-    .modal-box {
-      background: #141724;
-      border: 1px solid var(--border-card);
+    .modal-backdrop-custom.active { display: flex; animation: fadeIn 0.2s ease; }
+    .modal-dialog-custom {
+      background: #141726;
+      border: 1px solid var(--border-highlight);
       border-radius: 20px;
-      max-width: 500px;
+      max-width: 520px;
       width: 100%;
       padding: 30px;
       position: relative;
     }
-    .modal-close {
+    .modal-close-btn {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 16px;
+      right: 16px;
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       cursor: pointer;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero-title { font-size: 2.1rem; }
-      .compare-grid, .pillars-grid, .calculator-wrapper, .scope-checklist, .timeline-grid {
-        grid-template-columns: 1fr;
-      }
-      .lp-toy-grid { grid-template-columns: 1fr; }
-      .hero-stats-row { grid-template-columns: 1fr; }
-      .header-actions .btn-glass { display: none; }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    /* Print styling for PDF */
+    /* Responsive adjustments */
+    @media (max-width: 960px) {
+      .hero-heading { font-size: 2.2rem; }
+      .value-cards-grid, .comparison-split-grid, .pillar-cards-3, .calc-dashboard, .timeline-steps-4, .scope-matrix-grid {
+        grid-template-columns: 1fr;
+      }
+      .toy-items-grid { grid-template-columns: 1fr; }
+      .topbar-nav { display: none; }
+    }
+
     @media print {
       body { background: #fff; color: #000; }
-      .top-header, .ambient-glow, .btn, .range-slider { display: none !important; }
-      .glass-card, .calculator-wrapper, .pricing-card { border: 1px solid #ccc; background: #fff; color: #000; box-shadow: none; }
-      .gradient-text, .gradient-highlight { -webkit-text-fill-color: initial; background: none; color: #000; }
-      .section { page-break-inside: avoid; }
+      .topbar, .aurora-bg, .grid-pattern, .btn, .styled-range { display: none !important; }
+      .glass-panel, .comp-box, .calc-dashboard, .proposal-box-card { border: 1px solid #ddd; background: #fff; color: #000; box-shadow: none; }
+      .text-glow-red, .text-glow-gold { -webkit-text-fill-color: initial; background: none; color: #000; }
+      .section-block { page-break-inside: avoid; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Glow Effects -->
-  <div class="ambient-glow glow-1"></div>
-  <div class="ambient-glow glow-2"></div>
-  <div class="ambient-glow glow-3"></div>
+  <!-- Dynamic Aurora Glows -->
+  <div class="aurora-bg">
+    <div class="aurora-circle c1"></div>
+    <div class="aurora-circle c2"></div>
+    <div class="aurora-circle c3"></div>
+  </div>
+  <div class="grid-pattern"></div>
 
-  <!-- Top Sticky Header -->
-  <header class="top-header">
-    <div class="container header-flex">
-      <div class="brand-group">
-        <div class="vertex-logo-badge">
+  <!-- Executive Floating Topbar -->
+  <div class="container topbar">
+    <div class="topbar-card">
+      <div class="brand-stack">
+        <div class="vertex-logo-title">
           VERTEX <span>DIGITAL</span>
         </div>
-        <div class="client-badge-pill">
-          <i class="ri-gift-2-line"></i> Mona Lisa Brinquedos
+        <div class="client-target-badge">
+          <i class="ri-gift-2-fill"></i> Mona Lisa Brinquedos
         </div>
       </div>
-      <div class="header-actions">
-        <button class="btn btn-glass" onclick="window.print()">
-          <i class="ri-printer-line"></i> <span>Salvar em PDF</span>
+
+      <nav class="topbar-nav">
+        <a href="#diagnostico" class="nav-link">Diagnóstico</a>
+        <a href="#pilares" class="nav-link">Os 3 Pilares</a>
+        <a href="#roteiros" class="nav-link">Roteiros Virais</a>
+        <a href="#simulador" class="nav-link">Simulador ROI</a>
+        <a href="#cronograma" class="nav-link">Cronograma</a>
+      </nav>
+
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn-outline" onclick="window.print()" title="Salvar em PDF">
+          <i class="ri-printer-line"></i> <span style="display: none; @media(min-width:600px){display:inline;}">PDF</span>
         </button>
         <a href="https://wa.me/5516992805627?text=Ol%C3%A1%20Gabriel!%20Analisei%20a%20proposta%20da%20Vertex%20para%20a%20Mona%20Lisa%20Brinquedos%20e%20quero%20aprovar%20o%20in%C3%ADcio%20do%20projeto!" target="_blank" class="btn btn-primary">
-          <i class="ri-whatsapp-line"></i> <span>Aprovar no WhatsApp</span>
+          <i class="ri-whatsapp-line"></i> <span>Aprovar Proposta</span>
         </a>
       </div>
     </div>
-  </header>
+  </div>
 
   <main>
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-wrap">
       <div class="container">
-        <span class="sub-tag"><i class="ri-flashlight-line"></i> Proposta Estratégica & Plano de Ação 2026</span>
-        <h1 class="hero-title">
-          Como transformar o Instagram da <span class="gradient-highlight">Mona Lisa</span> em uma <span class="gradient-text">Máquina de Vendas</span> diárias de Brinquedos.
+        <div class="hero-meta-pill">
+          <i class="ri-shield-star-line"></i> Proposta Estratégica & Execução 2026
+        </div>
+        <h1 class="hero-heading">
+          Transformando o Instagram da <span class="text-glow-gold">Mona Lisa</span> em uma <span class="text-glow-red">Máquina de Vendas</span> diárias de Brinquedos.
         </h1>
-        <p class="hero-subtitle">
-          Um ecossistema completo combinando <strong>Direção Criativa no Instagram</strong>, <strong>Landing Page de Catálogo Rápido</strong> e <strong>Tráfego Pago Diário</strong> focado em pais, mães e avós.
+        <p class="hero-desc">
+          Um plano de ação sob medida unindo <strong>Direção Criativa no Instagram</strong>, <strong>Landing Page de Catálogo Express</strong> e <strong>Tráfego Pago Contínuo</strong> focado em atrair pais, mães e avós direto no WhatsApp.
         </p>
 
-        <div class="hero-stats-row">
-          <div class="hero-stat-card">
-            <div class="stat-num"><i class="ri-time-line"></i> Zero Tempo Perdido</div>
-            <div class="stat-desc">Você grava o produto na loja, a Vertex aprova e direciona o que vende.</div>
+        <div class="value-cards-grid">
+          <div class="value-card">
+            <div class="value-icon"><i class="ri-flashlight-line"></i></div>
+            <div class="value-info">
+              <strong>Sem Sobrecarga de Rotina</strong>
+              <span>Você grava o produto na loja, a Vertex valida e direciona o que vende.</span>
+            </div>
           </div>
-          <div class="hero-stat-card">
-            <div class="stat-num"><i class="ri-shopping-cart-2-line"></i> Foco Low Ticket</div>
-            <div class="stat-desc">Brinquedos são compras por impulso: facilidade máxima no WhatsApp.</div>
+          <div class="value-card">
+            <div class="value-icon"><i class="ri-shopping-bag-3-line"></i></div>
+            <div class="value-info">
+              <strong>Foco em Low Ticket</strong>
+              <span>Brinquedos são compras rápidas por impulso: facilidade total no WhatsApp.</span>
+            </div>
           </div>
-          <div class="hero-stat-card">
-            <div class="stat-num"><i class="ri-user-heart-line"></i> Tráfego Qualificado</div>
-            <div class="stat-desc">Anúncios no Meta Ads direto para mães e pais com cartão na mão.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- O Antes vs O Depois -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="sub-tag"><i class="ri-scales-3-line"></i> Diagnóstico de Oportunidade</span>
-          <h2>O que muda na prática na <span class="gradient-highlight">Mona Lisa</span></h2>
-          <p>A diferença entre tentar vender no orgânico sem direção e operar com um funil comercial estruturado.</p>
-        </div>
-
-        <div class="compare-grid">
-          <!-- Card Antes -->
-          <div class="glass-card compare-card before">
-            <span class="compare-badge badge-before"><i class="ri-close-circle-line"></i> Como está hoje (Sem Estrutura)</span>
-            <ul class="compare-list">
-              <li><i class="ri-close-line"></i> Postagens com textos longos de ChatGPT que parecem artigos e não geram desejo.</li>
-              <li><i class="ri-close-line"></i> Falta de um catálogo digital simples onde o cliente clica e já cai no WhatsApp.</li>
-              <li><i class="ri-close-line"></i> Fotos de brinquedos na caixa sem demonstrar a mágica do produto em ação.</li>
-              <li><i class="ri-close-line"></i> Dependência exclusiva do tráfego orgânico ou clientes que já conhecem a loja física.</li>
-              <li><i class="ri-close-line"></i> Sem anúncios diários para captar novas mães da cidade todos os dias.</li>
-            </ul>
-          </div>
-
-          <!-- Card Depois -->
-          <div class="glass-card compare-card after">
-            <span class="compare-badge badge-after"><i class="ri-checkbox-circle-line"></i> Com a Gestão da Vertex Digital</span>
-            <ul class="compare-list">
-              <li><i class="ri-check-line"></i> <strong>Padrão de Vitrine de Shopping:</strong> Feed limpo, profissional e magnético.</li>
-              <li><i class="ri-check-line"></i> <strong>Filtro de Qualidade:</strong> Gabriel aprova/ajusta cada vídeo antes de ir ao ar.</li>
-              <li><i class="ri-check-line"></i> <strong>Landing Page Exclusiva:</strong> Vitrine de mais vendidos e kits promocionais.</li>
-              <li><i class="ri-check-line"></i> <strong>Tráfego Pago Contínuo:</strong> Mães e pais chamando no WhatsApp todos os dias.</li>
-              <li><i class="ri-check-line"></i> <strong>Grupo VIP de Acompanhamento:</strong> Alinhamento ágil e foco total em vendas.</li>
-            </ul>
+          <div class="value-card">
+            <div class="value-icon"><i class="ri-user-star-line"></i></div>
+            <div class="value-info">
+              <strong>Tráfego Direcionado</strong>
+              <span>Anúncios no Meta Ads direto para famílias com filhos de 0 a 12 anos.</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Os 3 Pilares da Execução -->
-    <section class="section">
+    <!-- O Antes vs O Depois (Diagnóstico) -->
+    <section id="diagnostico" class="section-block">
       <div class="container">
-        <div class="section-header text-center">
-          <span class="sub-tag"><i class="ri-puzzle-line"></i> Os 3 Pilares do Escopo</span>
-          <h2>A Engrenagem de Vendas da <span class="gradient-text">Mona Lisa</span></h2>
-          <p>Como vamos trabalhar juntos sem sobrecarregar sua rotina.</p>
+        <div class="section-head text-center">
+          <span class="section-badge"><i class="ri-scales-line"></i> Raio-X Operacional</span>
+          <h2 class="section-title">O que muda na prática na <span class="text-glow-gold">Mona Lisa</span></h2>
+          <p class="section-subtitle">A diferença entre depender apenas do orgânico e operar com um funil de vendas ativo todos os dias.</p>
         </div>
 
-        <div class="pillars-grid">
-          <!-- Pilar 1 -->
-          <div class="glass-card pillar-card">
-            <span class="pillar-number">01</span>
-            <div>
-              <div class="pillar-icon icon-pink">
-                <i class="ri-instagram-line"></i>
+        <div class="comparison-split-grid">
+          <!-- Antes -->
+          <div class="comp-box status-before">
+            <div class="comp-header">
+              <div class="comp-title">
+                <i class="ri-close-circle-fill"></i> Como está hoje (Sem Direção)
               </div>
-              <h3 class="pillar-title">Direção Criativa do Instagram</h3>
-              <p class="pillar-desc">
-                Auditoria visual completa, arquivamento de posts genéricos e definição de um padrão de vídeos rápidos que geram desejo imediato.
+              <span style="font-size: 0.78rem; font-weight: 700; color: #ef4444;">GARGALOS ATUAIS</span>
+            </div>
+            <ul class="comp-list">
+              <li><i class="ri-close-line"></i> Postagens com textos longos e genéricos que parecem artigos de robô e não geram desejo de compra.</li>
+              <li><i class="ri-close-line"></i> Fotos de brinquedos na caixa sem demonstrar a mágica e a ação do produto funcionando.</li>
+              <li><i class="ri-close-line"></i> Falta de um catálogo digital direto onde o cliente clica e já cai no WhatsApp com o pedido pronto.</li>
+              <li><i class="ri-close-line"></i> Dependência exclusiva do movimento da rua ou de clientes antigos.</li>
+              <li><i class="ri-close-line"></i> Zero anúncios diários para captar novas mães da cidade de forma previsível.</li>
+            </ul>
+          </div>
+
+          <!-- Depois -->
+          <div class="comp-box status-after">
+            <div class="comp-header">
+              <div class="comp-title">
+                <i class="ri-checkbox-circle-fill"></i> Com a Gestão da Vertex Digital
+              </div>
+              <span style="font-size: 0.78rem; font-weight: 700; color: #10b981;">NOVO PADRÃO VERTEX</span>
+            </div>
+            <ul class="comp-list">
+              <li><i class="ri-check-line"></i> <strong>Padrão Vitrine de Shopping:</strong> Feed limpo, magnético e profissional.</li>
+              <li><i class="ri-check-line"></i> <strong>Filtro Estratégico:</strong> Gabriel valida e aprova cada vídeo antes de ir ao ar.</li>
+              <li><i class="ri-check-line"></i> <strong>Landing Page Exclusiva:</strong> Vitrine de mais vendidos e kits promocionais expressos.</li>
+              <li><i class="ri-check-line"></i> <strong>Tráfego Pago Contínuo:</strong> Mães e pais chamando no WhatsApp da loja todos os dias.</li>
+              <li><i class="ri-check-line"></i> <strong>Grupo VIP de Acompanhamento:</strong> Alinhamento ágil com foco total no faturamento.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Os 3 Pilares -->
+    <section id="pilares" class="section-block">
+      <div class="container">
+        <div class="section-head text-center">
+          <span class="section-badge"><i class="ri-cpu-line"></i> Engenharia Comercial</span>
+          <h2 class="section-title">Os 3 Pilares do <span class="text-glow-red">Nosso Projeto</span></h2>
+          <p class="section-subtitle">Uma estratégia prática dividida em etapas claras para garantir resultados rápidos.</p>
+        </div>
+
+        <div class="pillar-cards-3">
+          <!-- Pilar 1 -->
+          <div class="pillar-modern-card">
+            <div class="pillar-top-row">
+              <div class="pillar-icon-box pi-insta"><i class="ri-instagram-line"></i></div>
+              <span class="pillar-idx">01</span>
+            </div>
+            <div>
+              <h3 class="pillar-h3">Direção Criativa do Instagram</h3>
+              <p class="pillar-p">
+                Auditoria visual completa, arquivamento de posts genéricos e definição de um padrão de vídeos magnéticos gravados em 30 segundos na loja.
               </p>
             </div>
-            <ul class="pillar-features">
-              <li><i class="ri-check-double-line"></i> Faxina de posts sem engajamento</li>
-              <li><i class="ri-check-double-line"></i> Aprovação prévia de todos os vídeos</li>
-              <li><i class="ri-check-double-line"></i> Roteiros dos 3 formatos que viralizam</li>
+            <ul class="pillar-deliverables">
+              <li><i class="ri-check-fill"></i> Faxina de posts sem engajamento</li>
+              <li><i class="ri-check-fill"></i> Aprovação prévia de todos os conteúdos</li>
+              <li><i class="ri-check-fill"></i> Roteiros dos 3 formatos que viralizam</li>
             </ul>
           </div>
 
           <!-- Pilar 2 -->
-          <div class="glass-card pillar-card">
-            <span class="pillar-number">02</span>
+          <div class="pillar-modern-card">
+            <div class="pillar-top-row">
+              <div class="pillar-icon-box pi-web"><i class="ri-layout-4-line"></i></div>
+              <span class="pillar-idx">02</span>
+            </div>
             <div>
-              <div class="pillar-icon icon-blue">
-                <i class="ri-layout-4-line"></i>
-              </div>
-              <h3 class="pillar-title">Landing Page de Catálogo Rápido</h3>
-              <p class="pillar-desc">
-                Página moderna, ultrarrápida no celular, com os brinquedos mais vendidos, kits até R$ 99 e botão de compra direta no WhatsApp.
+              <h3 class="pillar-h3">Landing Page de Catálogo Rápido</h3>
+              <p class="pillar-p">
+                Página moderna e ultrarrápida no celular com os brinquedos mais vendidos, kits até R$ 99 e botão de compra direta no WhatsApp.
               </p>
             </div>
-            <ul class="pillar-features">
-              <li><i class="ri-check-double-line"></i> Vitrine visual dos brinquedos mais desejados</li>
-              <li><i class="ri-check-double-line"></i> Botão WhatsApp em cada produto</li>
-              <li><i class="ri-check-double-line"></i> Seção de depoimentos de mães satisfeitas</li>
+            <ul class="pillar-deliverables">
+              <li><i class="ri-check-fill"></i> Vitrine visual dos brinquedos mais desejados</li>
+              <li><i class="ri-check-fill"></i> Botão WhatsApp em cada produto</li>
+              <li><i class="ri-check-fill"></i> Depoimentos de mães satisfeitas</li>
             </ul>
           </div>
 
           <!-- Pilar 3 -->
-          <div class="glass-card pillar-card">
-            <span class="pillar-number">03</span>
+          <div class="pillar-modern-card">
+            <div class="pillar-top-row">
+              <div class="pillar-icon-box pi-ads"><i class="ri-funds-line"></i></div>
+              <span class="pillar-idx">03</span>
+            </div>
             <div>
-              <div class="pillar-icon icon-green">
-                <i class="ri-funds-line"></i>
-              </div>
-              <h3 class="pillar-title">Tráfego Pago no Meta Ads</h3>
-              <p class="pillar-desc">
+              <h3 class="pillar-h3">Tráfego Pago no Meta Ads</h3>
+              <p class="pillar-p">
                 Anúncios diários no Instagram e Facebook segmentados para mães, pais e avós com foco em mensagens diretas no WhatsApp da loja.
               </p>
             </div>
-            <ul class="pillar-features">
-              <li><i class="ri-check-double-line"></i> Segmentação por idade dos filhos (0-12 anos)</li>
-              <li><i class="ri-check-double-line"></i> Campanhas sazonais (Aniversários/Presentes)</li>
-              <li><i class="ri-check-double-line"></i> Acompanhamento semanal de métricas</li>
+            <ul class="pillar-deliverables">
+              <li><i class="ri-check-fill"></i> Segmentação por idade dos filhos (0-12 anos)</li>
+              <li><i class="ri-check-fill"></i> Campanhas sazonais (Aniversários/Presentes)</li>
+              <li><i class="ri-check-fill"></i> Acompanhamento semanal de métricas</li>
             </ul>
           </div>
         </div>
 
-        <!-- Interactive Tabs: Roteiros dos 3 Formatos Virais -->
-        <div class="interactive-box">
-          <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 12px;">
-            <i class="ri-movie-line" style="color: var(--primary-red);"></i> Os 3 Formatos de Vídeo que a Mona Lisa vai Gravar:
-          </h3>
-          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 18px;">
-            Você grava na loja em 30 segundos, envia no grupo e nós aprovamos com o áudio e a legenda certa.
-          </p>
+        <!-- Interactive Studio: Video Scripts -->
+        <div id="roteiros" class="studio-box">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h3 style="font-family: var(--font-title); font-size: 1.3rem; color: #fff;">
+              <i class="ri-clapperboard-line" style="color: var(--primary-red);"></i> Teleprompter: Os 3 Formatos de Vídeo para Gravar na Loja
+            </h3>
+            <span style="font-size: 0.78rem; color: var(--gold-toy); font-weight: 700;">30 SEGUNDOS CADA</span>
+          </div>
 
-          <div class="tab-nav">
-            <button class="tab-btn active" onclick="switchTab(event, 'tab-efeito-uau')">
-              <i class="ri-sparkling-line"></i> 1. Efeito "UAU" (Demonstração)
+          <div class="studio-tabs-row">
+            <button class="studio-tab-btn active" onclick="switchStudioTab(event, 'script-uau')">
+              <i class="ri-sparkling-fill"></i> Formato 1: Efeito "UAU" (Demonstração)
             </button>
-            <button class="tab-btn" onclick="switchTab(event, 'tab-fora-telas')">
-              <i class="ri-smartphone-line"></i> 2. Apelo Pais ("Fora das Telas")
+            <button class="studio-tab-btn" onclick="switchStudioTab(event, 'script-telas')">
+              <i class="ri-smartphone-line"></i> Formato 2: Apelo aos Pais ("Fora das Telas")
             </button>
-            <button class="tab-btn" onclick="switchTab(event, 'tab-kits-presente')">
-              <i class="ri-gift-line"></i> 3. Kits de Presente até R$ 99
+            <button class="studio-tab-btn" onclick="switchStudioTab(event, 'script-kits')">
+              <i class="ri-gift-line"></i> Formato 3: Kits de Presente até R$ 99
             </button>
           </div>
 
-          <div id="tab-efeito-uau" class="tab-panel active">
-            <div class="script-card">
-              <h4>Vídeo Magnético de Demonstração Rápida (15 a 30s)</h4>
-              <p><strong>Como gravar:</strong> Mostre o brinquedo em funcionamento no primeiro segundo (carrinho acrobático, pista luminosa, massinha sensorial). Sem introdução longa. O som real do brinquedo ou áudio viral em alta.</p>
-              <p><strong>Chamada no vídeo:</strong> <em>"O brinquedo mais pedido da semana acabou de chegar na Mona Lisa! Clique no link da bio para garantir o seu antes que acabe o estoque."</em></p>
-              <span class="script-tag">🔥 Alto Potencial de Viralização & Compartilhamento</span>
+          <div id="script-uau" class="studio-content-panel active">
+            <div class="teleprompter-card">
+              <div class="teleprompter-header">
+                <div class="teleprompter-title">Vídeo Magnético de Demonstração Rápida (15 a 30s)</div>
+                <span class="teleprompter-tag">Alta Viralização & Desejo</span>
+              </div>
+              <div class="teleprompter-body">
+                <p><strong>Como gravar na loja:</strong> Mostre o brinquedo em funcionamento logo no primeiro segundo (carrinho acrobático andando na parede, pista luminosa ou massinha mágica). Sem introdução longa. Foco no som real ou áudio em alta no Instagram.</p>
+                <p style="margin-top: 10px;"><strong>O que falar no final:</strong> <em>"O brinquedo mais pedido da semana acabou de chegar na Mona Lisa! Clique no link da nossa bio para garantir o seu antes que esgote o estoque."</em></p>
+              </div>
             </div>
           </div>
 
-          <div id="tab-fora-telas" class="tab-panel">
-            <div class="script-card">
-              <h4>Vídeo Educativo & Conexão Familiar (30 a 45s)</h4>
-              <p><strong>Como gravar:</strong> Segure o brinquedo educativo/tabuleiro e fale direto com a mãe: <em>"Cansada de ver seu filho 5 horas por dia preso no celular ou na TV? Esse brinquedo desenvolve o raciocínio lógico e garante horas de brincadeira longe das telas."</em></p>
-              <span class="script-tag">🧠 Toca na Maior Dor das Mães Atuais</span>
+          <div id="script-telas" class="studio-content-panel">
+            <div class="teleprompter-card">
+              <div class="teleprompter-header">
+                <div class="teleprompter-title">Vídeo Educativo & Conexão Familiar (30 a 45s)</div>
+                <span class="teleprompter-tag">Toca na Maior Dor das Mães</span>
+              </div>
+              <div class="teleprompter-body">
+                <p><strong>Como gravar na loja:</strong> Segure o brinquedo educativo ou tabuleiro e fale com tom acolhedor:</p>
+                <p style="margin-top: 10px;"><strong>Fala sugerida:</strong> <em>"Cansada de ver seu filho horas preso na frente da TV e do celular? Esse brinquedo desenvolve o raciocínio lógico e a criatividade, garantindo horas de brincadeira saudável. Peça o seu no WhatsApp que entregamos para você!"</em></p>
+              </div>
             </div>
           </div>
 
-          <div id="tab-kits-presente" class="tab-panel">
-            <div class="script-card">
-              <h4>Vídeo Sugestão de Presente Fácil (20 a 30s)</h4>
-              <p><strong>Como gravar:</strong> Mostre 3 opções de presentes montados em embalagens bonitas: <em>"Tem aniversário infantil no final de semana e não sabe o que dar? Na Mona Lisa montamos kits prontos de R$ 49 a R$ 99 com embalagem inclusa. Peça pelo WhatsApp que entregamos para você!"</em></p>
-              <span class="script-tag">💰 Decisão Imediata por Impulso & Praticidade</span>
+          <div id="script-kits" class="studio-content-panel">
+            <div class="teleprompter-card">
+              <div class="teleprompter-header">
+                <div class="teleprompter-title">Vídeo de Kits de Presente Expresso (20 a 30s)</div>
+                <span class="teleprompter-tag">Decisão por Impulso & Praticidade</span>
+              </div>
+              <div class="teleprompter-body">
+                <p><strong>Como gravar na loja:</strong> Mostre 3 opções de presentes montados em caixas ou sacolas bonitas:</p>
+                <p style="margin-top: 10px;"><strong>Fala sugerida:</strong> <em>"Tem aniversário de criança no fim de semana e não sabe o que dar? Na Mona Lisa montamos kits prontos de R$ 49 a R$ 99 com embalagem inclusa. Chame no WhatsApp e receba em casa!"</em></p>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Simulated Mona Lisa LP Preview -->
-        <div class="mockup-preview-wrapper">
-          <div class="mockup-bar">
-            <div class="mockup-dots">
-              <span class="mockup-dot dot-r"></span>
-              <span class="mockup-dot dot-y"></span>
-              <span class="mockup-dot dot-g"></span>
+        <div class="mockup-frame">
+          <div class="mockup-header-bar">
+            <div class="mockup-ctrl-dots">
+              <span class="m-dot m-r"></span>
+              <span class="m-dot m-y"></span>
+              <span class="m-dot m-g"></span>
             </div>
-            <div class="mockup-url">monalisabrinquedos.com.br (Simulação da Nova LP)</div>
+            <div class="mockup-url-pill">monalisabrinquedos.com.br (Simulação da Nova LP)</div>
             <div></div>
           </div>
-          <div class="mockup-body">
-            <div style="text-align: center; margin-bottom: 20px;">
-              <span style="color: var(--accent-yellow); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">✨ Vitrine Digital Exclusiva</span>
-              <h3 style="font-family: var(--font-display); font-size: 1.4rem; color: #fff; margin-top: 4px;">Os Brinquedos Mais Desejados da Mona Lisa</h3>
-              <p style="font-size: 0.85rem; color: var(--text-muted);">Compre com 1 clique direto no nosso WhatsApp com entrega rápida.</p>
-            </div>
+          <div class="mockup-interior">
+            <span style="color: var(--gold-toy); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">✨ Vitrine Digital Exclusiva</span>
+            <h3 style="font-family: var(--font-title); font-size: 1.5rem; color: #fff; margin-top: 4px;">Os Brinquedos Mais Desejados da Mona Lisa</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary);">Compre com 1 clique direto no nosso WhatsApp com entrega rápida.</p>
 
-            <div class="lp-toy-grid">
-              <div class="toy-card">
-                <div class="toy-icon-box">🏎️</div>
-                <div class="toy-name">Carrinho Acrobático 360° com Luz</div>
-                <div class="toy-price">R$ 79,90</div>
-                <a href="#proposta" class="btn-toy-order"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
+            <div class="toy-items-grid">
+              <div class="toy-item-card">
+                <div class="toy-emoji-icon">🏎️</div>
+                <div class="toy-title-txt">Carrinho Acrobático 360° com Luz</div>
+                <div class="toy-price-val">R$ 79,90</div>
+                <a href="#proposta" class="btn-toy-wa"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
               </div>
-              <div class="toy-card">
-                <div class="toy-icon-box">🧩</div>
-                <div class="toy-name">Kit Blocos Magnéticos Criativos</div>
-                <div class="toy-price">R$ 99,00</div>
-                <a href="#proposta" class="btn-toy-order"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
+              <div class="toy-item-card">
+                <div class="toy-emoji-icon">🧩</div>
+                <div class="toy-title-txt">Kit Blocos Magnéticos Criativos</div>
+                <div class="toy-price-val">R$ 99,00</div>
+                <a href="#proposta" class="btn-toy-wa"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
               </div>
-              <div class="toy-card">
-                <div class="toy-icon-box">🎨</div>
-                <div class="toy-name">Mesa Sensorial de Desenho Mágico</div>
-                <div class="toy-price">R$ 59,90</div>
-                <a href="#proposta" class="btn-toy-order"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
+              <div class="toy-item-card">
+                <div class="toy-emoji-icon">🎨</div>
+                <div class="toy-title-txt">Mesa Sensorial de Desenho Mágico</div>
+                <div class="toy-price-val">R$ 59,90</div>
+                <a href="#proposta" class="btn-toy-wa"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
               </div>
             </div>
           </div>
@@ -1052,95 +1203,95 @@
       </div>
     </section>
 
-    <!-- Simulador de ROI & Projeção de Vendas -->
-    <section class="section">
+    <!-- Simulador de Vendas & ROI 2.0 -->
+    <section id="simulador" class="section-block">
       <div class="container">
-        <div class="section-header text-center">
-          <span class="sub-tag"><i class="ri-calculator-line"></i> Ferramenta Interativa de Retorno</span>
-          <h2>Simulador de Vendas Diárias no <span class="gradient-highlight">WhatsApp</span></h2>
-          <p>Mova os controles abaixo para visualizar a estimativa de clientes e faturamento gerado com Tráfego Pago.</p>
+        <div class="section-head text-center">
+          <span class="section-badge"><i class="ri-calculator-line"></i> Projeção Financeira</span>
+          <h2 class="section-title">Simulador de Retorno: <span class="text-glow-gold">Vendas no WhatsApp</span></h2>
+          <p class="section-subtitle">Mova os controles abaixo para visualizar a projeção de clientes atraídos e faturamento gerado com Tráfego Pago.</p>
         </div>
 
-        <div class="calculator-wrapper">
-          <div class="calc-inputs">
-            <div class="calc-group">
+        <div class="calc-dashboard">
+          <div class="calc-inputs-col">
+            <div class="slider-field-wrap">
               <label>
-                <span>Investimento em Anúncios por dia:</span>
-                <span id="labelInvest">R$ 20,00 / dia</span>
+                <span>Investimento em Anúncios:</span>
+                <span class="val-highlight" id="valDaily">R$ 20,00 / dia</span>
               </label>
-              <input type="range" min="10" max="60" step="5" value="20" class="range-slider" id="rangeInvest" oninput="updateCalculator()" />
-              <small style="color: var(--text-muted); font-size: 0.75rem;">Equivalente a R$ <span id="labelInvestMonth">600</span>/mês em anúncios Meta Ads</small>
+              <input type="range" min="10" max="60" step="5" value="20" class="styled-range" id="rangeDaily" oninput="calculateRoi()" />
+              <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 4px; display: block;">Total mensal em anúncios: R$ <span id="valMonthly">600</span>,00 no Meta Ads</small>
             </div>
 
-            <div class="calc-group">
+            <div class="slider-field-wrap">
               <label>
                 <span>Ticket Médio por Venda (Brinquedo/Kit):</span>
-                <span id="labelTicket">R$ 80,00</span>
+                <span class="val-highlight" id="valTicket">R$ 80,00</span>
               </label>
-              <input type="range" min="40" max="180" step="10" value="80" class="range-slider" id="rangeTicket" oninput="updateCalculator()" />
+              <input type="range" min="40" max="180" step="10" value="80" class="styled-range" id="rangeTicket" oninput="calculateRoi()" />
             </div>
 
-            <div class="calc-group">
+            <div class="slider-field-wrap">
               <label>
                 <span>Taxa de Fechamento no WhatsApp:</span>
-                <span id="labelConv">20% dos contatos</span>
+                <span class="val-highlight" id="valRate">20% dos contatos</span>
               </label>
-              <input type="range" min="10" max="35" step="5" value="20" class="range-slider" id="rangeConv" oninput="updateCalculator()" />
+              <input type="range" min="10" max="35" step="5" value="20" class="styled-range" id="rangeRate" oninput="calculateRoi()" />
             </div>
           </div>
 
-          <div class="calc-results-box">
-            <div class="res-metric">
-              <small>Faturamento Estimado Adicional</small>
+          <div class="calc-metrics-display">
+            <div class="metric-main-revenue">
+              <small>Faturamento Bruto Estimado / Mês</small>
               <h3 id="resRevenue">R$ 3.840,00</h3>
             </div>
 
-            <div class="res-grid-mini">
-              <div class="res-mini-item">
+            <div class="metrics-2col">
+              <div class="m-pill">
                 <small>Novos Contatos / Mês</small>
                 <strong id="resLeads">240 mães</strong>
               </div>
-              <div class="res-mini-item">
+              <div class="m-pill">
                 <small>Pedidos Fechados</small>
                 <strong id="resSales">48 vendas</strong>
               </div>
             </div>
 
-            <div style="margin-top: 15px; font-size: 0.8rem; color: #a7f3d0;">
-              <i class="ri-arrow-up-circle-fill"></i> Retorno de <strong id="resRoi">6.4x</strong> sobre o investimento em tráfego
+            <div class="roi-badge-pill">
+              <i class="ri-arrow-up-line"></i> Retorno Estimado: <strong id="resRoi">6.4x</strong> sobre o tráfego
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Cronograma de 30 Dias -->
-    <section class="section">
+    <!-- Cronograma 30 Dias -->
+    <section id="cronograma" class="section-block">
       <div class="container">
-        <div class="section-header text-center">
-          <span class="sub-tag"><i class="ri-calendar-check-line"></i> Passo a Passo Ágil</span>
-          <h2>Cronograma de Execução: <span class="gradient-text">Os Primeiros 30 Dias</span></h2>
-          <p>Um método transparente com início imediato e entregas semanais.</p>
+        <div class="section-head text-center">
+          <span class="section-badge"><i class="ri-roadmap-line"></i> Passo a Passo</span>
+          <h2 class="section-title">Cronograma de Implementação: <span class="text-glow-red">Primeiros 30 Dias</span></h2>
+          <p class="section-subtitle">Um método transparente e ágil com entregas semanais garantidas.</p>
         </div>
 
-        <div class="timeline-grid">
-          <div class="timeline-step">
-            <div class="step-badge">SEMANA 01</div>
+        <div class="timeline-steps-4">
+          <div class="t-step-card">
+            <div class="t-step-num">SEMANA 01</div>
             <h4>Setup & Faxina</h4>
             <p>Auditoria do Instagram, arquivamento de posts genéricos, criação da Landing Page de catálogo e configuração do Gerenciador de Anúncios.</p>
           </div>
-          <div class="timeline-step">
-            <div class="step-badge">SEMANA 02</div>
+          <div class="t-step-card">
+            <div class="t-step-num">SEMANA 02</div>
             <h4>Gravação & Lançamento</h4>
-            <p>Primeiros vídeos gravados e aprovados pela Vertex. Ativação das campanhas de tráfego pago para mães e pais no WhatsApp.</p>
+            <p>Primeiros vídeos gravados e aprovados pela Vertex. Ativação das campanhas de tráfego pago para famílias no WhatsApp.</p>
           </div>
-          <div class="timeline-step">
-            <div class="step-badge">SEMANA 03</div>
+          <div class="t-step-card">
+            <div class="t-step-num">SEMANA 03</div>
             <h4>Otimização de Vendas</h4>
             <p>Identificação dos brinquedos mais solicitados, ajuste de criativos e refinamento das respostas da vendedora no WhatsApp.</p>
           </div>
-          <div class="timeline-step">
-            <div class="step-badge">SEMANA 04</div>
+          <div class="t-step-card">
+            <div class="t-step-num">SEMANA 04</div>
             <h4>Escala & Relatório</h4>
             <p>Apresentação do relatório de clientes atraídos, vendas realizadas e planejamento do catálogo do próximo mês.</p>
           </div>
@@ -1148,30 +1299,32 @@
       </div>
     </section>
 
-    <!-- Proposta de Fechamento -->
-    <section id="proposta" class="section">
+    <!-- Proposal Acceptance Card -->
+    <section id="proposta" class="section-block">
       <div class="container">
-        <div class="pricing-card">
-          <span class="pricing-badge">Condição Especial de Início</span>
-          <h2 class="pricing-title">Pronta para transformar as vendas da <span class="gradient-highlight">Mona Lisa</span>?</h2>
-          <p class="pricing-subtitle">
-            Um ecossistema completo para a sua loja ter presença de alto nível, catálogo digital e novos pedidos todos os dias.
+        <div class="proposal-box-card">
+          <span style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--primary-red); letter-spacing: 1.5px;">Condição Especial de Início</span>
+          <h2 style="font-family: var(--font-title); font-size: 2.3rem; font-weight: 900; margin: 8px 0 12px; color: #fff;">
+            Pronta para acelerar as vendas da <span class="text-glow-gold">Mona Lisa</span>?
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 1rem; max-width: 580px; margin: 0 auto;">
+            Um ecossistema completo para a sua loja ter presença magnética, catálogo digital e novos pedidos todos os dias.
           </p>
 
-          <div class="scope-checklist">
-            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Governança & Aprovação de Conteúdo do Instagram</div>
-            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Criação & Hospedagem da Landing Page de Catálogo</div>
-            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Gestão Completa do Tráfego Pago no Meta Ads</div>
-            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Roteiros dos 3 Formatos Virais de Brinquedos</div>
-            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Grupo VIP "Mona Lisa Tráfego Pago" no WhatsApp</div>
-            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Relatórios Periódicos de Conversão e Leads</div>
+          <div class="scope-matrix-grid">
+            <div class="scope-matrix-item"><i class="ri-checkbox-circle-fill"></i> Governança & Aprovação de Conteúdo do Instagram</div>
+            <div class="scope-matrix-item"><i class="ri-checkbox-circle-fill"></i> Criação & Hospedagem da Landing Page de Catálogo</div>
+            <div class="scope-matrix-item"><i class="ri-checkbox-circle-fill"></i> Gestão Completa do Tráfego Pago no Meta Ads</div>
+            <div class="scope-matrix-item"><i class="ri-checkbox-circle-fill"></i> Roteiros dos 3 Formatos Virais de Brinquedos</div>
+            <div class="scope-matrix-item"><i class="ri-checkbox-circle-fill"></i> Grupo VIP "Mona Lisa Tráfego Pago" no WhatsApp</div>
+            <div class="scope-matrix-item"><i class="ri-checkbox-circle-fill"></i> Relatórios Periódicos de Conversão e Vendas</div>
           </div>
 
-          <div class="action-group-cta">
+          <div style="display: flex; flex-direction: column; gap: 12px; max-width: 480px; margin: 0 auto;">
             <a href="https://wa.me/5516992805627?text=Ol%C3%A1%20Gabriel!%20Vi%20a%20p%C3%A1gina%20da%20proposta%20da%20Mona%20Lisa%20e%20quero%20fechar%20o%20projeto%20com%20a%20Vertex!" target="_blank" class="btn btn-emerald btn-lg">
               <i class="ri-whatsapp-line"></i> <span>Aprovar Proposta & Iniciar Projeto</span>
             </a>
-            <button class="btn btn-glass" onclick="openShareModal()">
+            <button class="btn btn-outline" onclick="openShareDialog()">
               <i class="ri-share-forward-line"></i> <span>Copiar Link desta Proposta</span>
             </button>
           </div>
@@ -1181,59 +1334,59 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="container">
       <p>Proposta Comercial Exclusiva elaborada por <strong>Vertex Digital</strong> para <strong>Mona Lisa Brinquedos</strong>.</p>
-      <p style="margin-top: 5px; font-size: 0.78rem; opacity: 0.7;">© 2026 Vertex Digital • Gabriel de Lima • Todos os direitos reservados.</p>
+      <p style="margin-top: 6px; font-size: 0.78rem; opacity: 0.7;">© 2026 Vertex Digital • Gabriel de Lima • Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <!-- Link Copied Modal -->
-  <div id="shareModal" class="modal-overlay" onclick="closeShareModal(event)">
-    <div class="modal-box" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeShareModal()"><i class="ri-close-line"></i></button>
-      <h3 style="font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 8px;">
+  <!-- Link Share Modal -->
+  <div id="shareDialog" class="modal-backdrop-custom" onclick="closeShareDialog(event)">
+    <div class="modal-dialog-custom" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeShareDialog()"><i class="ri-close-line"></i></button>
+      <h3 style="font-family: var(--font-title); font-size: 1.3rem; color: #fff; margin-bottom: 8px;">
         <i class="ri-link" style="color: var(--primary-red);"></i> Link da Proposta da Mona Lisa
       </h3>
-      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 15px;">
+      <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 15px;">
         Envie esta mensagem pronta para a dona da Mona Lisa no WhatsApp:
       </p>
-      <textarea id="shareTextMsg" style="width: 100%; height: 110px; background: rgba(0,0,0,0.4); border: 1px solid var(--border-card); border-radius: 8px; color: #fff; padding: 10px; font-size: 0.85rem; font-family: var(--font-body); resize: none;" readonly>Olá! Montei uma página exclusiva com o plano completo de crescimento, catálogo e tráfego pago da Mona Lisa para você dar uma olhada:
+      <textarea id="shareMsgArea" style="width: 100%; height: 110px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-subtle); border-radius: 8px; color: #fff; padding: 12px; font-size: 0.85rem; font-family: var(--font-body); resize: none;" readonly>Olá! Montei uma página exclusiva com o plano completo de crescimento, catálogo e tráfego pago da Mona Lisa para você dar uma olhada:
 https://www.somosvertexdigital.com.br/plano-monalisa.html</textarea>
-      <button class="btn btn-primary btn-block" style="width: 100%; margin-top: 12px;" onclick="copyShareText()">
+      <button class="btn btn-primary" style="width: 100%; margin-top: 14px;" onclick="copyProposalLink()">
         <i class="ri-file-copy-line"></i> <span>Copiar Mensagem com Link</span>
       </button>
     </div>
   </div>
 
   <script>
-    // Tab switching for video scripts
-    function switchTab(e, tabId) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    // Tab switching for script teleprompter
+    function switchStudioTab(e, tabId) {
+      document.querySelectorAll('.studio-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.studio-content-panel').forEach(p => p.classList.remove('active'));
       e.currentTarget.classList.add('active');
       document.getElementById(tabId).classList.add('active');
     }
 
-    // ROI Simulator calculation
-    function updateCalculator() {
-      const dailyInvest = parseFloat(document.getElementById('rangeInvest').value);
+    // ROI Simulator 2.0 Calculation
+    function calculateRoi() {
+      const dailyInvest = parseFloat(document.getElementById('rangeDaily').value);
       const ticket = parseFloat(document.getElementById('rangeTicket').value);
-      const convRate = parseFloat(document.getElementById('rangeConv').value) / 100;
+      const rate = parseFloat(document.getElementById('rangeRate').value) / 100;
 
       // Update Labels
-      document.getElementById('labelInvest').innerText = 'R$ ' + dailyInvest.toFixed(2) + ' / dia';
-      document.getElementById('labelInvestMonth').innerText = (dailyInvest * 30).toFixed(0);
-      document.getElementById('labelTicket').innerText = 'R$ ' + ticket.toFixed(2);
-      document.getElementById('labelConv').innerText = (convRate * 100).toFixed(0) + '% dos contatos';
+      document.getElementById('valDaily').innerText = 'R$ ' + dailyInvest.toFixed(2) + ' / dia';
+      document.getElementById('valMonthly').innerText = (dailyInvest * 30).toFixed(0);
+      document.getElementById('valTicket').innerText = 'R$ ' + ticket.toFixed(2);
+      document.getElementById('valRate').innerText = (rate * 100).toFixed(0) + '% dos contatos';
 
-      // Math: Estimate cost per lead in toy niche ~ R$ 2.50
+      // Math: Cost per lead in toy niche ~ R$ 2.50
       const costPerLead = 2.50;
-      const monthlyInvest = dailyInvest * 30;
-      const monthlyLeads = Math.floor(monthlyInvest / costPerLead);
-      const monthlySales = Math.floor(monthlyLeads * convRate);
+      const monthlyBudget = dailyInvest * 30;
+      const monthlyLeads = Math.floor(monthlyBudget / costPerLead);
+      const monthlySales = Math.floor(monthlyLeads * rate);
       const monthlyRevenue = monthlySales * ticket;
-      const roi = (monthlyRevenue / monthlyInvest).toFixed(1);
+      const roi = (monthlyRevenue / monthlyBudget).toFixed(1);
 
       document.getElementById('resLeads').innerText = monthlyLeads + ' mães';
       document.getElementById('resSales').innerText = monthlySales + ' vendas';
@@ -1241,24 +1394,24 @@ https://www.somosvertexdigital.com.br/plano-monalisa.html</textarea>
       document.getElementById('resRoi').innerText = roi + 'x';
     }
 
-    // Share Modal
-    function openShareModal() {
-      document.getElementById('shareModal').classList.add('active');
+    // Share Dialog
+    function openShareDialog() {
+      document.getElementById('shareDialog').classList.add('active');
     }
-    function closeShareModal() {
-      document.getElementById('shareModal').classList.remove('active');
+    function closeShareDialog() {
+      document.getElementById('shareDialog').classList.remove('active');
     }
-    function copyShareText() {
-      const copyText = document.getElementById("shareTextMsg");
+    function copyProposalLink() {
+      const copyText = document.getElementById("shareMsgArea");
       copyText.select();
       copyText.setSelectionRange(0, 99999);
       navigator.clipboard.writeText(copyText.value);
-      alert("Mensagem e link copiados com sucesso! Agora basta enviar no WhatsApp da Mona Lisa.");
-      closeShareModal();
+      alert("Mensagem e link copiados com sucesso! Agora basta colar no WhatsApp da Mona Lisa.");
+      closeShareDialog();
     }
 
     // Init
-    updateCalculator();
+    calculateRoi();
   </script>
 </body>
 </html>
