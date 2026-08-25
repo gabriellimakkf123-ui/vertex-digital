@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Mona Lisa Brinquedos | Plano de Fechamento & Aceleração Digital - Vertex Digital</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  
+  <!-- Google Fonts: Outfit, Inter & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --primary-red: #ff1e42;
+      --primary-glow: rgba(255, 30, 66, 0.35);
+      --accent-yellow: #fbbf24;
+      --accent-purple: #8b5cf6;
+      --accent-cyan: #06b6d4;
+      --emerald-green: #10b981;
+      --bg-dark: #07080d;
+      --bg-card: rgba(18, 20, 29, 0.85);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Background Glows */
+    .ambient-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(140px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.15;
+    }
+    .glow-1 { top: -100px; left: -100px; background: var(--primary-red); }
+    .glow-2 { top: 40%; right: -150px; background: var(--accent-purple); }
+    .glow-3 { bottom: 10%; left: 20%; background: var(--accent-yellow); opacity: 0.08; }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Top Bar / Header */
+    .top-header {
+      position: sticky;
+      top: 0;
+      background: rgba(7, 8, 13, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-card);
+      z-index: 100;
+      padding: 14px 0;
+    }
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .vertex-logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+    .vertex-logo-badge span { color: var(--primary-red); }
+    .client-badge-pill {
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      color: var(--accent-yellow);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .header-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      font-family: var(--font-body);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-red), #d90429);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--primary-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(255, 30, 66, 0.5);
+    }
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-card);
+      color: #fff;
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .btn-emerald {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+    }
+    .btn-emerald:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(16, 185, 129, 0.5);
+    }
+    .btn-lg {
+      padding: 15px 30px;
+      font-size: 1.05rem;
+      border-radius: 12px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .sub-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 30, 66, 0.1);
+      border: 1px solid rgba(255, 30, 66, 0.3);
+      color: #ff6b81;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 30%, #ff8a9e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gradient-highlight {
+      background: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 35px;
+    }
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .hero-stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      padding: 18px 15px;
+      border-radius: 14px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .stat-num i { color: var(--primary-red); }
+    .stat-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Section Global */
+    .section {
+      padding: 50px 0;
+    }
+    .section-header {
+      margin-bottom: 35px;
+    }
+    .section-header.text-center { text-align: center; }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* Glass Panels & Cards */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      padding: 28px;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Comparison Section: Antes vs Depois */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .compare-card.before {
+      border-color: rgba(239, 68, 68, 0.25);
+      background: rgba(239, 68, 68, 0.03);
+    }
+    .compare-card.after {
+      border-color: rgba(16, 185, 129, 0.35);
+      background: rgba(16, 185, 129, 0.04);
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.08);
+    }
+    .compare-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .badge-before { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-after { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .compare-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.94rem;
+    }
+    .compare-list li i {
+      font-size: 1.1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .compare-card.before li i { color: #ef4444; }
+    .compare-card.after li i { color: #10b981; }
+
+    /* The 3 Pillars Section */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .pillar-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .pillar-number {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.05);
+    }
+    .pillar-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .icon-pink { background: rgba(244, 63, 94, 0.12); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .icon-blue { background: rgba(59, 130, 246, 0.12); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .icon-green { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    .pillar-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .pillar-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .pillar-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      border-top: 1px solid var(--border-card);
+      padding-top: 15px;
+      margin-top: auto;
+    }
+    .pillar-features li {
+      font-size: 0.85rem;
+      color: #d1d5db;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pillar-features li i { color: var(--primary-red); font-size: 0.95rem; }
+
+    /* Interactive Tab for Video Scripts */
+    .interactive-box {
+      background: #0d0f18;
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      padding: 25px;
+      margin-top: 25px;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-card);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      background: transparent;
+      border: 1px solid var(--border-card);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      background: rgba(255, 30, 66, 0.15);
+      border-color: var(--primary-red);
+      color: #fff;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+    .script-card {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--primary-red);
+      padding: 16px 20px;
+      border-radius: 0 10px 10px 0;
+    }
+    .script-card h4 { font-size: 1.05rem; margin-bottom: 8px; color: #fff; }
+    .script-card p { font-size: 0.92rem; color: #d1d5db; line-height: 1.6; }
+    .script-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--accent-yellow);
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    /* Simulated LP Preview for Mona Lisa */
+    .mockup-preview-wrapper {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #111420;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      margin-top: 25px;
+    }
+    .mockup-bar {
+      background: #1a1d2d;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-card);
+    }
+    .mockup-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .mockup-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-r { background: #ff5f56; }
+    .dot-y { background: #ffbd2e; }
+    .dot-g { background: #27c93f; }
+    .mockup-url {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 4px 14px;
+      border-radius: 6px;
+      color: var(--text-muted);
+    }
+    .mockup-body {
+      padding: 25px;
+    }
+    .lp-toy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .toy-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-card);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .toy-icon-box {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    .toy-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .toy-price {
+      font-family: var(--font-mono);
+      color: var(--accent-yellow);
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .btn-toy-order {
+      background: #25d366;
+      color: #000;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+    }
+
+    /* ROI Simulator for Toy Store */
+    .calculator-wrapper {
+      background: linear-gradient(145deg, #121422, #0d0f18);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 35px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 35px;
+      align-items: center;
+    }
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .calc-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .calc-group label span {
+      font-family: var(--font-mono);
+      color: var(--primary-red);
+      font-weight: 800;
+    }
+    .range-slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 5px;
+      background: #232738;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .range-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary-red);
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+    
+    .calc-results-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 30, 66, 0.2);
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+    }
+    .res-metric {
+      margin-bottom: 18px;
+    }
+    .res-metric small {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .res-metric h3 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--emerald-green);
+      margin-top: 2px;
+    }
+    .res-grid-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border-card);
+    }
+    .res-mini-item {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .res-mini-item small { font-size: 0.72rem; color: var(--text-muted); }
+    .res-mini-item strong { display: block; font-size: 1rem; color: #fff; margin-top: 2px; }
+
+    /* Timeline Section (30 Dias) */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+    .timeline-step {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      padding: 20px 16px;
+      border-radius: 14px;
+      position: relative;
+    }
+    .timeline-step::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20px;
+      right: 20px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-red), transparent);
+    }
+    .step-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary-red);
+      margin-bottom: 10px;
+    }
+    .timeline-step h4 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .timeline-step p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Pricing & Acceptance Box */
+    .pricing-card {
+      background: linear-gradient(180deg, rgba(255, 30, 66, 0.08) 0%, rgba(18, 20, 29, 0.95) 100%);
+      border: 1px solid rgba(255, 30, 66, 0.35);
+      border-radius: 24px;
+      padding: 45px 35px;
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto;
+      box-shadow: 0 20px 60px rgba(255, 30, 66, 0.12);
+    }
+    .pricing-badge {
+      display: inline-block;
+      background: var(--primary-red);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 5px 15px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+    .pricing-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .pricing-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      max-width: 580px;
+      margin: 0 auto 30px;
+    }
+    .scope-checklist {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      text-align: left;
+      margin-bottom: 35px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid var(--border-card);
+    }
+    .scope-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+    .scope-item i { color: #10b981; font-size: 1.1rem; }
+
+    .action-group-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-card);
+      padding: 30px 0;
+      margin-top: 60px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; animation: fadeIn 0.2s ease; }
+    .modal-box {
+      background: #141724;
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      max-width: 500px;
+      width: 100%;
+      padding: 30px;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-title { font-size: 2.1rem; }
+      .compare-grid, .pillars-grid, .calculator-wrapper, .scope-checklist, .timeline-grid {
+        grid-template-columns: 1fr;
+      }
+      .lp-toy-grid { grid-template-columns: 1fr; }
+      .hero-stats-row { grid-template-columns: 1fr; }
+      .header-actions .btn-glass { display: none; }
+    }
+
+    /* Print styling for PDF */
+    @media print {
+      body { background: #fff; color: #000; }
+      .top-header, .ambient-glow, .btn, .range-slider { display: none !important; }
+      .glass-card, .calculator-wrapper, .pricing-card { border: 1px solid #ccc; background: #fff; color: #000; box-shadow: none; }
+      .gradient-text, .gradient-highlight { -webkit-text-fill-color: initial; background: none; color: #000; }
+      .section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Effects -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Top Sticky Header -->
+  <header class="top-header">
+    <div class="container header-flex">
+      <div class="brand-group">
+        <div class="vertex-logo-badge">
+          VERTEX <span>DIGITAL</span>
+        </div>
+        <div class="client-badge-pill">
+          <i class="ri-gift-2-line"></i> Mona Lisa Brinquedos
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-glass" onclick="window.print()">
+          <i class="ri-printer-line"></i> <span>Salvar em PDF</span>
+        </button>
+        <a href="https://wa.me/5516992805627?text=Ol%C3%A1%20Gabriel!%20Analisei%20a%20proposta%20da%20Vertex%20para%20a%20Mona%20Lisa%20Brinquedos%20e%20quero%20aprovar%20o%20in%C3%ADcio%20do%20projeto!" target="_blank" class="btn btn-primary">
+          <i class="ri-whatsapp-line"></i> <span>Aprovar no WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <span class="sub-tag"><i class="ri-flashlight-line"></i> Proposta Estratégica & Plano de Ação 2026</span>
+        <h1 class="hero-title">
+          Como transformar o Instagram da <span class="gradient-highlight">Mona Lisa</span> em uma <span class="gradient-text">Máquina de Vendas</span> diárias de Brinquedos.
+        </h1>
+        <p class="hero-subtitle">
+          Um ecossistema completo combinando <strong>Direção Criativa no Instagram</strong>, <strong>Landing Page de Catálogo Rápido</strong> e <strong>Tráfego Pago Diário</strong> focado em pais, mães e avós.
+        </p>
+
+        <div class="hero-stats-row">
+          <div class="hero-stat-card">
+            <div class="stat-num"><i class="ri-time-line"></i> Zero Tempo Perdido</div>
+            <div class="stat-desc">Você grava o produto na loja, a Vertex aprova e direciona o que vende.</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-num"><i class="ri-shopping-cart-2-line"></i> Foco Low Ticket</div>
+            <div class="stat-desc">Brinquedos são compras por impulso: facilidade máxima no WhatsApp.</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-num"><i class="ri-user-heart-line"></i> Tráfego Qualificado</div>
+            <div class="stat-desc">Anúncios no Meta Ads direto para mães e pais com cartão na mão.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O Antes vs O Depois -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="sub-tag"><i class="ri-scales-3-line"></i> Diagnóstico de Oportunidade</span>
+          <h2>O que muda na prática na <span class="gradient-highlight">Mona Lisa</span></h2>
+          <p>A diferença entre tentar vender no orgânico sem direção e operar com um funil comercial estruturado.</p>
+        </div>
+
+        <div class="compare-grid">
+          <!-- Card Antes -->
+          <div class="glass-card compare-card before">
+            <span class="compare-badge badge-before"><i class="ri-close-circle-line"></i> Como está hoje (Sem Estrutura)</span>
+            <ul class="compare-list">
+              <li><i class="ri-close-line"></i> Postagens com textos longos de ChatGPT que parecem artigos e não geram desejo.</li>
+              <li><i class="ri-close-line"></i> Falta de um catálogo digital simples onde o cliente clica e já cai no WhatsApp.</li>
+              <li><i class="ri-close-line"></i> Fotos de brinquedos na caixa sem demonstrar a mágica do produto em ação.</li>
+              <li><i class="ri-close-line"></i> Dependência exclusiva do tráfego orgânico ou clientes que já conhecem a loja física.</li>
+              <li><i class="ri-close-line"></i> Sem anúncios diários para captar novas mães da cidade todos os dias.</li>
+            </ul>
+          </div>
+
+          <!-- Card Depois -->
+          <div class="glass-card compare-card after">
+            <span class="compare-badge badge-after"><i class="ri-checkbox-circle-line"></i> Com a Gestão da Vertex Digital</span>
+            <ul class="compare-list">
+              <li><i class="ri-check-line"></i> <strong>Padrão de Vitrine de Shopping:</strong> Feed limpo, profissional e magnético.</li>
+              <li><i class="ri-check-line"></i> <strong>Filtro de Qualidade:</strong> Gabriel aprova/ajusta cada vídeo antes de ir ao ar.</li>
+              <li><i class="ri-check-line"></i> <strong>Landing Page Exclusiva:</strong> Vitrine de mais vendidos e kits promocionais.</li>
+              <li><i class="ri-check-line"></i> <strong>Tráfego Pago Contínuo:</strong> Mães e pais chamando no WhatsApp todos os dias.</li>
+              <li><i class="ri-check-line"></i> <strong>Grupo VIP de Acompanhamento:</strong> Alinhamento ágil e foco total em vendas.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Os 3 Pilares da Execução -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="sub-tag"><i class="ri-puzzle-line"></i> Os 3 Pilares do Escopo</span>
+          <h2>A Engrenagem de Vendas da <span class="gradient-text">Mona Lisa</span></h2>
+          <p>Como vamos trabalhar juntos sem sobrecarregar sua rotina.</p>
+        </div>
+
+        <div class="pillars-grid">
+          <!-- Pilar 1 -->
+          <div class="glass-card pillar-card">
+            <span class="pillar-number">01</span>
+            <div>
+              <div class="pillar-icon icon-pink">
+                <i class="ri-instagram-line"></i>
+              </div>
+              <h3 class="pillar-title">Direção Criativa do Instagram</h3>
+              <p class="pillar-desc">
+                Auditoria visual completa, arquivamento de posts genéricos e definição de um padrão de vídeos rápidos que geram desejo imediato.
+              </p>
+            </div>
+            <ul class="pillar-features">
+              <li><i class="ri-check-double-line"></i> Faxina de posts sem engajamento</li>
+              <li><i class="ri-check-double-line"></i> Aprovação prévia de todos os vídeos</li>
+              <li><i class="ri-check-double-line"></i> Roteiros dos 3 formatos que viralizam</li>
+            </ul>
+          </div>
+
+          <!-- Pilar 2 -->
+          <div class="glass-card pillar-card">
+            <span class="pillar-number">02</span>
+            <div>
+              <div class="pillar-icon icon-blue">
+                <i class="ri-layout-4-line"></i>
+              </div>
+              <h3 class="pillar-title">Landing Page de Catálogo Rápido</h3>
+              <p class="pillar-desc">
+                Página moderna, ultrarrápida no celular, com os brinquedos mais vendidos, kits até R$ 99 e botão de compra direta no WhatsApp.
+              </p>
+            </div>
+            <ul class="pillar-features">
+              <li><i class="ri-check-double-line"></i> Vitrine visual dos brinquedos mais desejados</li>
+              <li><i class="ri-check-double-line"></i> Botão WhatsApp em cada produto</li>
+              <li><i class="ri-check-double-line"></i> Seção de depoimentos de mães satisfeitas</li>
+            </ul>
+          </div>
+
+          <!-- Pilar 3 -->
+          <div class="glass-card pillar-card">
+            <span class="pillar-number">03</span>
+            <div>
+              <div class="pillar-icon icon-green">
+                <i class="ri-funds-line"></i>
+              </div>
+              <h3 class="pillar-title">Tráfego Pago no Meta Ads</h3>
+              <p class="pillar-desc">
+                Anúncios diários no Instagram e Facebook segmentados para mães, pais e avós com foco em mensagens diretas no WhatsApp da loja.
+              </p>
+            </div>
+            <ul class="pillar-features">
+              <li><i class="ri-check-double-line"></i> Segmentação por idade dos filhos (0-12 anos)</li>
+              <li><i class="ri-check-double-line"></i> Campanhas sazonais (Aniversários/Presentes)</li>
+              <li><i class="ri-check-double-line"></i> Acompanhamento semanal de métricas</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Interactive Tabs: Roteiros dos 3 Formatos Virais -->
+        <div class="interactive-box">
+          <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 12px;">
+            <i class="ri-movie-line" style="color: var(--primary-red);"></i> Os 3 Formatos de Vídeo que a Mona Lisa vai Gravar:
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 18px;">
+            Você grava na loja em 30 segundos, envia no grupo e nós aprovamos com o áudio e a legenda certa.
+          </p>
+
+          <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab(event, 'tab-efeito-uau')">
+              <i class="ri-sparkling-line"></i> 1. Efeito "UAU" (Demonstração)
+            </button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-fora-telas')">
+              <i class="ri-smartphone-line"></i> 2. Apelo Pais ("Fora das Telas")
+            </button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-kits-presente')">
+              <i class="ri-gift-line"></i> 3. Kits de Presente até R$ 99
+            </button>
+          </div>
+
+          <div id="tab-efeito-uau" class="tab-panel active">
+            <div class="script-card">
+              <h4>Vídeo Magnético de Demonstração Rápida (15 a 30s)</h4>
+              <p><strong>Como gravar:</strong> Mostre o brinquedo em funcionamento no primeiro segundo (carrinho acrobático, pista luminosa, massinha sensorial). Sem introdução longa. O som real do brinquedo ou áudio viral em alta.</p>
+              <p><strong>Chamada no vídeo:</strong> <em>"O brinquedo mais pedido da semana acabou de chegar na Mona Lisa! Clique no link da bio para garantir o seu antes que acabe o estoque."</em></p>
+              <span class="script-tag">🔥 Alto Potencial de Viralização & Compartilhamento</span>
+            </div>
+          </div>
+
+          <div id="tab-fora-telas" class="tab-panel">
+            <div class="script-card">
+              <h4>Vídeo Educativo & Conexão Familiar (30 a 45s)</h4>
+              <p><strong>Como gravar:</strong> Segure o brinquedo educativo/tabuleiro e fale direto com a mãe: <em>"Cansada de ver seu filho 5 horas por dia preso no celular ou na TV? Esse brinquedo desenvolve o raciocínio lógico e garante horas de brincadeira longe das telas."</em></p>
+              <span class="script-tag">🧠 Toca na Maior Dor das Mães Atuais</span>
+            </div>
+          </div>
+
+          <div id="tab-kits-presente" class="tab-panel">
+            <div class="script-card">
+              <h4>Vídeo Sugestão de Presente Fácil (20 a 30s)</h4>
+              <p><strong>Como gravar:</strong> Mostre 3 opções de presentes montados em embalagens bonitas: <em>"Tem aniversário infantil no final de semana e não sabe o que dar? Na Mona Lisa montamos kits prontos de R$ 49 a R$ 99 com embalagem inclusa. Peça pelo WhatsApp que entregamos para você!"</em></p>
+              <span class="script-tag">💰 Decisão Imediata por Impulso & Praticidade</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulated Mona Lisa LP Preview -->
+        <div class="mockup-preview-wrapper">
+          <div class="mockup-bar">
+            <div class="mockup-dots">
+              <span class="mockup-dot dot-r"></span>
+              <span class="mockup-dot dot-y"></span>
+              <span class="mockup-dot dot-g"></span>
+            </div>
+            <div class="mockup-url">monalisabrinquedos.com.br (Simulação da Nova LP)</div>
+            <div></div>
+          </div>
+          <div class="mockup-body">
+            <div style="text-align: center; margin-bottom: 20px;">
+              <span style="color: var(--accent-yellow); font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">✨ Vitrine Digital Exclusiva</span>
+              <h3 style="font-family: var(--font-display); font-size: 1.4rem; color: #fff; margin-top: 4px;">Os Brinquedos Mais Desejados da Mona Lisa</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Compre com 1 clique direto no nosso WhatsApp com entrega rápida.</p>
+            </div>
+
+            <div class="lp-toy-grid">
+              <div class="toy-card">
+                <div class="toy-icon-box">🏎️</div>
+                <div class="toy-name">Carrinho Acrobático 360° com Luz</div>
+                <div class="toy-price">R$ 79,90</div>
+                <a href="#proposta" class="btn-toy-order"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
+              </div>
+              <div class="toy-card">
+                <div class="toy-icon-box">🧩</div>
+                <div class="toy-name">Kit Blocos Magnéticos Criativos</div>
+                <div class="toy-price">R$ 99,00</div>
+                <a href="#proposta" class="btn-toy-order"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
+              </div>
+              <div class="toy-card">
+                <div class="toy-icon-box">🎨</div>
+                <div class="toy-name">Mesa Sensorial de Desenho Mágico</div>
+                <div class="toy-price">R$ 59,90</div>
+                <a href="#proposta" class="btn-toy-order"><i class="ri-whatsapp-line"></i> Pedir no WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Simulador de ROI & Projeção de Vendas -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="sub-tag"><i class="ri-calculator-line"></i> Ferramenta Interativa de Retorno</span>
+          <h2>Simulador de Vendas Diárias no <span class="gradient-highlight">WhatsApp</span></h2>
+          <p>Mova os controles abaixo para visualizar a estimativa de clientes e faturamento gerado com Tráfego Pago.</p>
+        </div>
+
+        <div class="calculator-wrapper">
+          <div class="calc-inputs">
+            <div class="calc-group">
+              <label>
+                <span>Investimento em Anúncios por dia:</span>
+                <span id="labelInvest">R$ 20,00 / dia</span>
+              </label>
+              <input type="range" min="10" max="60" step="5" value="20" class="range-slider" id="rangeInvest" oninput="updateCalculator()" />
+              <small style="color: var(--text-muted); font-size: 0.75rem;">Equivalente a R$ <span id="labelInvestMonth">600</span>/mês em anúncios Meta Ads</small>
+            </div>
+
+            <div class="calc-group">
+              <label>
+                <span>Ticket Médio por Venda (Brinquedo/Kit):</span>
+                <span id="labelTicket">R$ 80,00</span>
+              </label>
+              <input type="range" min="40" max="180" step="10" value="80" class="range-slider" id="rangeTicket" oninput="updateCalculator()" />
+            </div>
+
+            <div class="calc-group">
+              <label>
+                <span>Taxa de Fechamento no WhatsApp:</span>
+                <span id="labelConv">20% dos contatos</span>
+              </label>
+              <input type="range" min="10" max="35" step="5" value="20" class="range-slider" id="rangeConv" oninput="updateCalculator()" />
+            </div>
+          </div>
+
+          <div class="calc-results-box">
+            <div class="res-metric">
+              <small>Faturamento Estimado Adicional</small>
+              <h3 id="resRevenue">R$ 3.840,00</h3>
+            </div>
+
+            <div class="res-grid-mini">
+              <div class="res-mini-item">
+                <small>Novos Contatos / Mês</small>
+                <strong id="resLeads">240 mães</strong>
+              </div>
+              <div class="res-mini-item">
+                <small>Pedidos Fechados</small>
+                <strong id="resSales">48 vendas</strong>
+              </div>
+            </div>
+
+            <div style="margin-top: 15px; font-size: 0.8rem; color: #a7f3d0;">
+              <i class="ri-arrow-up-circle-fill"></i> Retorno de <strong id="resRoi">6.4x</strong> sobre o investimento em tráfego
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cronograma de 30 Dias -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="sub-tag"><i class="ri-calendar-check-line"></i> Passo a Passo Ágil</span>
+          <h2>Cronograma de Execução: <span class="gradient-text">Os Primeiros 30 Dias</span></h2>
+          <p>Um método transparente com início imediato e entregas semanais.</p>
+        </div>
+
+        <div class="timeline-grid">
+          <div class="timeline-step">
+            <div class="step-badge">SEMANA 01</div>
+            <h4>Setup & Faxina</h4>
+            <p>Auditoria do Instagram, arquivamento de posts genéricos, criação da Landing Page de catálogo e configuração do Gerenciador de Anúncios.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="step-badge">SEMANA 02</div>
+            <h4>Gravação & Lançamento</h4>
+            <p>Primeiros vídeos gravados e aprovados pela Vertex. Ativação das campanhas de tráfego pago para mães e pais no WhatsApp.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="step-badge">SEMANA 03</div>
+            <h4>Otimização de Vendas</h4>
+            <p>Identificação dos brinquedos mais solicitados, ajuste de criativos e refinamento das respostas da vendedora no WhatsApp.</p>
+          </div>
+          <div class="timeline-step">
+            <div class="step-badge">SEMANA 04</div>
+            <h4>Escala & Relatório</h4>
+            <p>Apresentação do relatório de clientes atraídos, vendas realizadas e planejamento do catálogo do próximo mês.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proposta de Fechamento -->
+    <section id="proposta" class="section">
+      <div class="container">
+        <div class="pricing-card">
+          <span class="pricing-badge">Condição Especial de Início</span>
+          <h2 class="pricing-title">Pronta para transformar as vendas da <span class="gradient-highlight">Mona Lisa</span>?</h2>
+          <p class="pricing-subtitle">
+            Um ecossistema completo para a sua loja ter presença de alto nível, catálogo digital e novos pedidos todos os dias.
+          </p>
+
+          <div class="scope-checklist">
+            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Governança & Aprovação de Conteúdo do Instagram</div>
+            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Criação & Hospedagem da Landing Page de Catálogo</div>
+            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Gestão Completa do Tráfego Pago no Meta Ads</div>
+            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Roteiros dos 3 Formatos Virais de Brinquedos</div>
+            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Grupo VIP "Mona Lisa Tráfego Pago" no WhatsApp</div>
+            <div class="scope-item"><i class="ri-checkbox-circle-fill"></i> Relatórios Periódicos de Conversão e Leads</div>
+          </div>
+
+          <div class="action-group-cta">
+            <a href="https://wa.me/5516992805627?text=Ol%C3%A1%20Gabriel!%20Vi%20a%20p%C3%A1gina%20da%20proposta%20da%20Mona%20Lisa%20e%20quero%20fechar%20o%20projeto%20com%20a%20Vertex!" target="_blank" class="btn btn-emerald btn-lg">
+              <i class="ri-whatsapp-line"></i> <span>Aprovar Proposta & Iniciar Projeto</span>
+            </a>
+            <button class="btn btn-glass" onclick="openShareModal()">
+              <i class="ri-share-forward-line"></i> <span>Copiar Link desta Proposta</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Proposta Comercial Exclusiva elaborada por <strong>Vertex Digital</strong> para <strong>Mona Lisa Brinquedos</strong>.</p>
+      <p style="margin-top: 5px; font-size: 0.78rem; opacity: 0.7;">© 2026 Vertex Digital • Gabriel de Lima • Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Link Copied Modal -->
+  <div id="shareModal" class="modal-overlay" onclick="closeShareModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeShareModal()"><i class="ri-close-line"></i></button>
+      <h3 style="font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 8px;">
+        <i class="ri-link" style="color: var(--primary-red);"></i> Link da Proposta da Mona Lisa
+      </h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 15px;">
+        Envie esta mensagem pronta para a dona da Mona Lisa no WhatsApp:
+      </p>
+      <textarea id="shareTextMsg" style="width: 100%; height: 110px; background: rgba(0,0,0,0.4); border: 1px solid var(--border-card); border-radius: 8px; color: #fff; padding: 10px; font-size: 0.85rem; font-family: var(--font-body); resize: none;" readonly>Olá! Montei uma página exclusiva com o plano completo de crescimento, catálogo e tráfego pago da Mona Lisa para você dar uma olhada:
+https://www.somosvertexdigital.com.br/plano-monalisa.html</textarea>
+      <button class="btn btn-primary btn-block" style="width: 100%; margin-top: 12px;" onclick="copyShareText()">
+        <i class="ri-file-copy-line"></i> <span>Copiar Mensagem com Link</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Tab switching for video scripts
+    function switchTab(e, tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // ROI Simulator calculation
+    function updateCalculator() {
+      const dailyInvest = parseFloat(document.getElementById('rangeInvest').value);
+      const ticket = parseFloat(document.getElementById('rangeTicket').value);
+      const convRate = parseFloat(document.getElementById('rangeConv').value) / 100;
+
+      // Update Labels
+      document.getElementById('labelInvest').innerText = 'R$ ' + dailyInvest.toFixed(2) + ' / dia';
+      document.getElementById('labelInvestMonth').innerText = (dailyInvest * 30).toFixed(0);
+      document.getElementById('labelTicket').innerText = 'R$ ' + ticket.toFixed(2);
+      document.getElementById('labelConv').innerText = (convRate * 100).toFixed(0) + '% dos contatos';
+
+      // Math: Estimate cost per lead in toy niche ~ R$ 2.50
+      const costPerLead = 2.50;
+      const monthlyInvest = dailyInvest * 30;
+      const monthlyLeads = Math.floor(monthlyInvest / costPerLead);
+      const monthlySales = Math.floor(monthlyLeads * convRate);
+      const monthlyRevenue = monthlySales * ticket;
+      const roi = (monthlyRevenue / monthlyInvest).toFixed(1);
+
+      document.getElementById('resLeads').innerText = monthlyLeads + ' mães';
+      document.getElementById('resSales').innerText = monthlySales + ' vendas';
+      document.getElementById('resRevenue').innerText = 'R$ ' + monthlyRevenue.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+      document.getElementById('resRoi').innerText = roi + 'x';
+    }
+
+    // Share Modal
+    function openShareModal() {
+      document.getElementById('shareModal').classList.add('active');
+    }
+    function closeShareModal() {
+      document.getElementById('shareModal').classList.remove('active');
+    }
+    function copyShareText() {
+      const copyText = document.getElementById("shareTextMsg");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(copyText.value);
+      alert("Mensagem e link copiados com sucesso! Agora basta enviar no WhatsApp da Mona Lisa.");
+      closeShareModal();
+    }
+
+    // Init
+    updateCalculator();
+  </script>
+</body>
+</html>
