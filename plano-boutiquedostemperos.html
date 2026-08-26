@@ -677,6 +677,62 @@
       text-align: center;
       box-shadow: 0 15px 50px rgba(255, 30, 66, 0.1);
     }
+    .pricing-badge-container {
+      background: linear-gradient(135deg, rgba(255, 30, 66, 0.12), rgba(251, 191, 36, 0.08));
+      border: 1px solid rgba(255, 30, 66, 0.4);
+      border-radius: 16px;
+      padding: 20px 16px;
+      margin: 18px 0 15px;
+      text-align: center;
+    }
+    .pricing-tag-title {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .pricing-main-val {
+      font-family: var(--font-title);
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+    }
+    .pricing-main-val .currency {
+      font-size: 1.3rem;
+      color: var(--gold-gourmet);
+      font-weight: 700;
+    }
+    .pricing-main-val .cents {
+      font-size: 1.3rem;
+      color: #cbd5e1;
+    }
+    .pricing-main-val .recurrence {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-left: 4px;
+    }
+    .pricing-perks {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: #a7f3d0;
+    }
+    .pricing-perks span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
     .scope-list-check {
       display: flex;
       flex-direction: column;
@@ -1177,6 +1233,19 @@
             Um ecossistema completo para fortalecer suas 5 unidades, atrair clientes de alto poder aquisitivo e vender todos os dias.
           </p>
 
+          <!-- Price Display Box -->
+          <div class="pricing-badge-container">
+            <div class="pricing-tag-title">Investimento Mensal (Ecossistema 5 Unidades)</div>
+            <div class="pricing-main-val">
+              <span class="currency">R$</span> 3.500<span class="cents">,00</span> <span class="recurrence">/mês</span>
+            </div>
+            <div class="pricing-perks">
+              <span><i class="ri-shield-check-fill"></i> Cobre as 5 operações</span>
+              <span><i class="ri-store-3-line"></i> Mercadão + Academia</span>
+              <span><i class="ri-refresh-line"></i> Renovação mensal</span>
+            </div>
+          </div>
+
           <div class="scope-list-check">
             <div class="scope-row"><i class="ri-checkbox-circle-fill"></i> Gestão & Governança de Conteúdo dos 5 Instagrams</div>
             <div class="scope-row"><i class="ri-checkbox-circle-fill"></i> Gestão do Tráfego Pago Hiperlocal no Meta Ads</div>
@@ -1186,7 +1255,7 @@
             <div class="scope-row"><i class="ri-checkbox-circle-fill"></i> Relatórios Periódicos de Vendas e Crescimento</div>
           </div>
 
-          <a href="https://wa.me/5516992805627?text=Ol%C3%A1%20Gabriel!%20Vi%20a%20p%C3%A1gina%20da%20proposta%20da%20Boutique%20dos%20Temperos%20e%20quero%20fechar%20o%20projeto%20com%20a%20Vertex!" target="_blank" class="btn-block-action btn-emerald-big">
+          <a href="https://wa.me/5516992805627?text=Ol%C3%A1%20Gabriel!%20Vi%20a%20p%C3%A1gina%20da%20proposta%20da%20Boutique%20dos%20Temperos%20e%20quero%20fechar%20o%20plano%20de%20R$%203.500/m%C3%AAs%20com%20a%20Vertex!" target="_blank" class="btn-block-action btn-emerald-big">
             <i class="ri-whatsapp-line"></i> <span>Aprovar Proposta no WhatsApp</span>
           </a>
 
