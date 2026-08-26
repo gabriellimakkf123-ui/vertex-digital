@@ -9,7 +9,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        monalisa: resolve(__dirname, 'plano-monalisa.html'),
+        planomonalisa: resolve(__dirname, 'plano-monalisa.html'),
+        monalisa: resolve(__dirname, 'monalisa.html'),
         boutique: resolve(__dirname, 'plano-boutiquedostemperos.html')
       }
     }

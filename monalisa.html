@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Monalisa Presentes & Brinquedos | Box 88 Novo Mercadão de Ribeirão Preto</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans, Fredoka & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg-dark: #08090d;
+      --bg-card: #12141d;
+      --bg-card-hover: #191c28;
+      
+      --brand-red: #e11d48;
+      --brand-red-light: #fb7185;
+      --brand-red-glow: rgba(225, 29, 72, 0.35);
+      
+      --gold-accent: #f59e0b;
+      --gold-bright: #fbbf24;
+      --gold-glow: rgba(251, 191, 36, 0.25);
+      
+      --wa-green: #25d366;
+      --wa-green-hover: #20bd5a;
+      --wa-green-glow: rgba(37, 211, 102, 0.3);
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.16);
+      
+      --text-white: #ffffff;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --font-display: 'Fredoka', 'Outfit', sans-serif;
+      --font-title: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-price: 'Space Grotesk', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      font-size: 15px;
+    }
+
+    /* Subtle Animated Glows */
+    .ambient-glows {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .glow-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.14;
+    }
+    .g1 { width: 480px; height: 480px; top: -120px; left: 5%; background: var(--brand-red); }
+    .g2 { width: 380px; height: 380px; top: 45%; right: -80px; background: var(--gold-bright); opacity: 0.09; }
+    .g3 { width: 400px; height: 400px; bottom: 5%; left: -60px; background: #8b5cf6; opacity: 0.07; }
+
+    .container {
+      width: 100%;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 0 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Header */
+    .site-header {
+      padding: 16px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .mona-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-bright);
+      box-shadow: 0 0 12px var(--gold-glow);
+      background: #831843;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      overflow: hidden;
+    }
+    .brand-name-group h1 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.3px;
+    }
+    .brand-name-group h1 span {
+      color: var(--brand-red-light);
+    }
+    .brand-tag-loc {
+      font-size: 0.72rem;
+      color: var(--gold-bright);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-header-wa {
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      color: var(--wa-green);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-header-wa:hover {
+      background: var(--wa-green);
+      color: #052e16;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 24px 0 32px;
+      text-align: center;
+    }
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(225, 29, 72, 0.12);
+      border: 1px solid rgba(225, 29, 72, 0.3);
+      color: #fda4af;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 6vw, 2.9rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }
+    .text-glow-gold {
+      background: linear-gradient(135deg, #fef08a 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-glow-pink {
+      background: linear-gradient(135deg, #ffffff 30%, #fb7185 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto 24px;
+      line-height: 1.55;
+    }
+
+    /* Store Photo Card Hero */
+    .store-photo-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-highlight);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(225, 29, 72, 0.15);
+      margin: 0 auto 30px;
+      max-width: 780px;
+    }
+    .store-photo-card img {
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+    .store-photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px;
+      background: linear-gradient(180deg, transparent 0%, rgba(8, 9, 13, 0.92) 80%);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .store-info-text {
+      text-align: left;
+    }
+    .store-info-text h3 {
+      font-family: var(--font-title);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .store-info-text p {
+      font-size: 0.78rem;
+      color: var(--gold-bright);
+      font-weight: 600;
+    }
+    .badge-open-live {
+      background: #10b981;
+      color: #022c22;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-transform: uppercase;
+    }
+
+    /* Quick Benefit Grid */
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 35px;
+    }
+    @media (min-width: 640px) {
+      .benefit-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+    }
+    .benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .benefit-icon {
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+    .benefit-card strong {
+      display: block;
+      font-size: 0.84rem;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .benefit-card span {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+      display: block;
+    }
+
+    /* Section Global */
+    .section-wrap {
+      padding: 24px 0;
+    }
+    .sec-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sec-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--gold-bright);
+      margin-bottom: 6px;
+    }
+    .sec-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 4.5vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .sec-sub {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* Category Filter Tabs */
+    .category-scroll-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .category-scroll-bar::-webkit-scrollbar { display: none; }
+    .cat-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 9px 16px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .cat-btn.active {
+      background: var(--brand-red);
+      border-color: var(--brand-red-light);
+      color: #fff;
+      box-shadow: 0 4px 15px var(--brand-red-glow);
+    }
+
+    /* Products Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 550px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 850px) {
+      .product-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    }
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .product-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-highlight);
+    }
+    .product-top-badge {
+      padding: 12px 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .p-category-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gold-bright);
+      background: rgba(251, 191, 36, 0.1);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .p-age-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .product-emoji-wrap {
+      text-align: center;
+      padding: 20px 10px 10px;
+      font-size: 3.5rem;
+    }
+    .product-body {
+      padding: 0 14px 14px;
+      text-align: left;
+    }
+    .product-body h4 {
+      font-family: var(--font-title);
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .product-body p {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin-bottom: 12px;
+      min-height: 34px;
+    }
+    .product-footer {
+      padding: 12px 14px 14px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .product-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .price-txt {
+      font-family: var(--font-price);
+      font-size: 1.28rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+    }
+    .installments-txt {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    .btn-buy-wa {
+      background: var(--wa-green);
+      color: #052e16;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 10px 14px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-buy-wa:hover {
+      background: var(--wa-green-hover);
+      box-shadow: 0 4px 15px var(--wa-green-glow);
+    }
+
+    /* Age Groups Section */
+    .age-groups-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 600px) {
+      .age-groups-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .age-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 18px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .age-badge-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(225, 29, 72, 0.12);
+      color: var(--brand-red-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .age-text h4 {
+      font-family: var(--font-title);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .age-text p {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+
+    /* Location & Hours Card */
+    .location-box {
+      background: radial-gradient(circle at 50% 0%, rgba(225, 29, 72, 0.15), transparent 70%), var(--bg-card);
+      border: 1px solid var(--border-highlight);
+      border-radius: 20px;
+      padding: 26px 18px;
+      text-align: center;
+      margin: 30px 0 20px;
+    }
+    .location-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .location-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .loc-details-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      text-align: left;
+      margin-bottom: 22px;
+    }
+    @media (min-width: 600px) {
+      .loc-details-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .loc-pill {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .loc-pill h5 {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .loc-pill p {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    .btn-maps-action {
+      background: #3b82f6;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 12px 20px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .btn-wa-big-main {
+      background: var(--wa-green);
+      color: #052e16;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 15px 20px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px var(--wa-green-glow);
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 25px 0 40px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .site-footer a {
+      color: var(--brand-red-light);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Floating WhatsApp Button on Mobile */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: #fff;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      z-index: 999;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .floating-wa-btn:hover {
+      transform: scale(1.08);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Background -->
+  <div class="ambient-glows">
+    <div class="glow-blob g1"></div>
+    <div class="glow-blob g2"></div>
+    <div class="glow-blob g3"></div>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="site-header">
+      <a href="#" class="brand-logo-wrap">
+        <div class="mona-avatar">🎨</div>
+        <div class="brand-name-group">
+          <h1>MONA<span>LISA</span></h1>
+          <div class="brand-tag-loc"><i class="ri-map-pin-2-fill"></i> Box 88 • Novo Mercadão</div>
+        </div>
+      </a>
+      <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Estou%20no%20site%20da%20Mona%20Lisa%20e%20gostaria%20de%20atendimento." target="_blank" class="btn-header-wa">
+        <i class="ri-whatsapp-line"></i> <span>WhatsApp</span>
+      </a>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-badge-pill">
+          <i class="ri-gift-fill"></i> Presentes, Brinquedos & Utilidades
+        </div>
+        <h2 class="hero-title">
+          Brinquedos que Encantam & <span class="text-glow-gold">Presentes Criativos</span> para Toda a Família.
+        </h2>
+        <p class="hero-subtitle">
+          Faça seu pedido online com <strong>entrega rápida em Ribeirão Preto</strong> ou venha nos visitar no <strong>Box 88 do Novo Mercadão</strong>!
+        </p>
+
+        <!-- Store Photo Hero Card -->
+        <div class="store-photo-card">
+          <img src="./monalisa-fachada.jpg" alt="Fachada Mona Lisa Box 88 Novo Mercadão de Ribeirão Preto" />
+          <div class="store-photo-overlay">
+            <div class="store-info-text">
+              <h3><i class="ri-store-2-fill" style="color: var(--brand-red-light);"></i> Mona Lisa Presentes & Brinquedos</h3>
+              <p>📍 Novo Mercadão de Ribeirão Preto • Box 88</p>
+            </div>
+            <div class="badge-open-live">
+              <i class="ri-checkbox-circle-fill"></i> Loja Aberta
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Quick Benefits -->
+        <div class="benefit-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">🚚</div>
+            <strong>Entrega Expressa</strong>
+            <span>Motoboy no mesmo dia em Ribeirão Preto</span>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🎁</div>
+            <strong>Embalagem Grátis</strong>
+            <span>Seu presente já vai montado com laço</span>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">💳</div>
+            <strong>Pagamento Fácil</strong>
+            <span>Pix ou Cartão de Crédito em até 12x</span>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">📍</div>
+            <strong>Retire no Mercadão</strong>
+            <span>Visite nosso Box 88 de Terça a Domingo</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vitrine de Produtos & Brinquedos -->
+      <section class="section-wrap" id="catalogo">
+        <div class="sec-header">
+          <span class="sec-tag"><i class="ri-sparkling-fill"></i> Vitrine Express</span>
+          <h3 class="sec-title">Destaques da <span class="text-glow-pink">Nossa Loja</span></h3>
+          <p class="sec-sub">Clique em qualquer produto para pedir direto no WhatsApp ou tirar dúvidas com nossa equipe.</p>
+        </div>
+
+        <!-- Category Scroll Filters -->
+        <div class="category-scroll-bar">
+          <button class="cat-btn active" onclick="filterProducts('all', event)">✨ Todos os Destaques</button>
+          <button class="cat-btn" onclick="filterProducts('brinquedos', event)">🏎️ Brinquedos & Ação</button>
+          <button class="cat-btn" onclick="filterProducts('jogos', event)">🎲 Jogos Educativos</button>
+          <button class="cat-btn" onclick="filterProducts('kits', event)">🎁 Kits de Presente até R$ 99</button>
+          <button class="cat-btn" onclick="filterProducts('acessorios', event)">🎒 Mochilas & Utilidades</button>
+        </div>
+
+        <!-- Product Cards -->
+        <div class="product-grid" id="productGrid">
+          
+          <!-- Item 1: Carrinho Acrobático -->
+          <div class="product-card" data-cat="brinquedos">
+            <div>
+              <div class="product-top-badge">
+                <span class="p-category-tag">Ação & Diversão</span>
+                <span class="p-age-tag">A partir de 3 anos</span>
+              </div>
+              <div class="product-emoji-wrap">🏎️</div>
+              <div class="product-body">
+                <h4>Carrinho Acrobático 360° com Luz & Som</h4>
+                <p>Gira 360 graus, supera obstáculos e diverte pais e filhos. O brinquedo mais pedido da loja!</p>
+              </div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price-row">
+                <span class="price-txt">R$ 79,90</span>
+                <span class="installments-txt">ou Pix à vista</span>
+              </div>
+              <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Vi%20no%20site%20o%20Carrinho%20Acrob%C3%A1tico%20360%C2%B0%20(R$%2079,90)%20e%20quero%20garantir%20o%20meu!" target="_blank" class="btn-buy-wa">
+                <i class="ri-whatsapp-line"></i> <span>Pedir pelo WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Item 2: Kit Jogos Tabuleiro Clássico -->
+          <div class="product-card" data-cat="jogos">
+            <div>
+              <div class="product-top-badge">
+                <span class="p-category-tag">Sem Telas</span>
+                <span class="p-age-tag">Para toda a família</span>
+              </div>
+              <div class="product-emoji-wrap">🎲</div>
+              <div class="product-body">
+                <h4>Super Kit Tabuleiro: Ludo, Dama & Xadrez</h4>
+                <p>Jogos tradicionais completos em madeira/plástico para reunir a família e estimular o raciocínio.</p>
+              </div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price-row">
+                <span class="price-txt">R$ 49,90</span>
+                <span class="installments-txt">ou Pix à vista</span>
+              </div>
+              <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Vi%20no%20site%20o%20Super%20Kit%20Tabuleiro%20(R$%2049,90)%20e%20quero%20comprar!" target="_blank" class="btn-buy-wa">
+                <i class="ri-whatsapp-line"></i> <span>Pedir pelo WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Item 3: Kit Blocos Magnéticos -->
+          <div class="product-card" data-cat="jogos">
+            <div>
+              <div class="product-top-badge">
+                <span class="p-category-tag">Educativo Criativo</span>
+                <span class="p-age-tag">3 a 10 anos</span>
+              </div>
+              <div class="product-emoji-wrap">🧩</div>
+              <div class="product-body">
+                <h4>Blocos Magnéticos de Construção 3D</h4>
+                <p>Peças magnéticas coloridas para montar castelos, veículos e formas geométricas com imaginação.</p>
+              </div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price-row">
+                <span class="price-txt">R$ 89,90</span>
+                <span class="installments-txt">ou Pix à vista</span>
+              </div>
+              <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Vi%20no%20site%20os%20Blocos%20Magn%C3%A9ticos%203D%20(R$%2089,90)%20e%20quero%20comprar!" target="_blank" class="btn-buy-wa">
+                <i class="ri-whatsapp-line"></i> <span>Pedir pelo WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Item 4: Kit Aniversário Presente Pronto -->
+          <div class="product-card" data-cat="kits">
+            <div>
+              <div class="product-top-badge">
+                <span class="p-category-tag">Presente Pronto</span>
+                <span class="p-age-tag">Embalagem Inclusa</span>
+              </div>
+              <div class="product-emoji-wrap">🎁</div>
+              <div class="product-body">
+                <h4>Kit Presente Kids: Brinquedo + Livro Todolivro</h4>
+                <p>A combinação perfeita para presentear em aniversários infantis sem dor de cabeça. Já vai embalado!</p>
+              </div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price-row">
+                <span class="price-txt">R$ 69,90</span>
+                <span class="installments-txt">ou Pix à vista</span>
+              </div>
+              <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Vi%20o%20Kit%20Presente%20Kids%20(R$%2069,90)%20no%20site%20e%20quero%20pedir%20para%20presente!" target="_blank" class="btn-buy-wa">
+                <i class="ri-whatsapp-line"></i> <span>Pedir pelo WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Item 5: Mochila Infantil Personagens -->
+          <div class="product-card" data-cat="acessorios">
+            <div>
+              <div class="product-top-badge">
+                <span class="p-category-tag">Utilidades & Escola</span>
+                <span class="p-age-tag">Infantil & Juvenil</span>
+              </div>
+              <div class="product-emoji-wrap">🎒</div>
+              <div class="product-body">
+                <h4>Mochila Infantil Estilosa com Bolsos</h4>
+                <p>Mochila resistente, espaçosa e com cores vibrantes para passeios, viagens e creche/escola.</p>
+              </div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price-row">
+                <span class="price-txt">R$ 59,90</span>
+                <span class="installments-txt">ou Pix à vista</span>
+              </div>
+              <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Gostei%20da%20Mochila%20Infantil%20(R$%2059,90)%20do%20site,%20quais%20modelos%20est%C3%A3o%20dispon%C3%ADveis?" target="_blank" class="btn-buy-wa">
+                <i class="ri-whatsapp-line"></i> <span>Pedir pelo WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Item 6: Livros Educativos & Caça Palavras -->
+          <div class="product-card" data-cat="jogos">
+            <div>
+              <div class="product-top-badge">
+                <span class="p-category-tag">Passatempo & Aprendizado</span>
+                <span class="p-age-tag">Todas as Idades</span>
+              </div>
+              <div class="product-emoji-wrap">📚</div>
+              <div class="product-body">
+                <h4>Combo 3 Livros de Colorir & Histórias Infantis</h4>
+                <p>Livros infantis com ilustrações encantadoras para desenvolver a leitura e a coordenação motora.</p>
+              </div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price-row">
+                <span class="price-txt">R$ 39,90</span>
+                <span class="installments-txt">ou Pix à vista</span>
+              </div>
+              <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Quero%20o%20Combo%20de%203%20Livros%20Infantis%20(R$%2039,90)%20do%20site!" target="_blank" class="btn-buy-wa">
+                <i class="ri-whatsapp-line"></i> <span>Pedir pelo WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Presentes por Idade -->
+      <section class="section-wrap">
+        <div class="sec-header">
+          <span class="sec-tag"><i class="ri-user-heart-line"></i> Para Todas as Fases</span>
+          <h3 class="sec-title">Presentes para <span class="text-glow-gold">Cada Idade</span></h3>
+          <p class="sec-sub">Facilidade para encontrar a opção certa sem errar no presente.</p>
+        </div>
+
+        <div class="age-groups-grid">
+          <div class="age-card">
+            <div class="age-badge-circle">🍼</div>
+            <div class="age-text">
+              <h4>Primeira Infância (0 a 3 anos)</h4>
+              <p>Mordedores, brinquedos sensoriais, livrinhos de banho e pelúcias antialérgicas.</p>
+            </div>
+          </div>
+          <div class="age-card">
+            <div class="age-badge-circle">🎨</div>
+            <div class="age-text">
+              <h4>Infantil Criativo (4 a 7 anos)</h4>
+              <p>Massinhas, carrinhos velozes, bonecas, kits de pintura e brinquedos musicais.</p>
+            </div>
+          </div>
+          <div class="age-card">
+            <div class="age-badge-circle">🧩</div>
+            <div class="age-text">
+              <h4>Desafios & Jogos (8 a 12 anos)</h4>
+              <p>Jogos de tabuleiro, blocos de montar, quebra-cabeças 3D e cubos mágicos.</p>
+            </div>
+          </div>
+          <div class="age-card">
+            <div class="age-badge-circle">🎁</div>
+            <div class="age-text">
+              <h4>Jovens & Adultos</h4>
+              <p>Presentes criativos, garrafas térmicas, guarda-chuvas reforçados e utilidades.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Localização & Atendimento -->
+      <section class="location-box" id="contato">
+        <div class="hero-badge-pill" style="margin-bottom: 8px;">
+          <i class="ri-map-pin-line"></i> Onde nos Encontrar
+        </div>
+        <h3 class="location-title">Venha nos Visitar no <span class="text-glow-gold">Novo Mercadão</span></h3>
+        <p class="location-desc">Um ambiente acolhedor, seguro e com estacionamento para você e sua família.</p>
+
+        <div class="loc-details-grid">
+          <div class="loc-pill">
+            <h5><i class="ri-store-3-line"></i> Endereço da Loja</h5>
+            <p><strong>Novo Mercadão de Ribeirão Preto</strong><br />Av. Ligia Latuf Salomão, 200 - <strong>Box 88</strong><br />Nova Aliança, Ribeirão Preto - SP</p>
+          </div>
+          <div class="loc-pill">
+            <h5><i class="ri-time-line"></i> Horário de Atendimento</h5>
+            <p><strong>Terça a Sábado:</strong> 08:00 às 20:00<br /><strong>Domingo:</strong> 08:00 às 16:00<br /><strong>Segunda:</strong> Fechado</p>
+          </div>
+        </div>
+
+        <a href="https://maps.google.com/?q=Novo+Mercadão+Ribeirão+Preto" target="_blank" class="btn-maps-action">
+          <i class="ri-direction-line"></i> <span>Abrir no Google Maps (Traçar Rota)</span>
+        </a>
+
+        <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Estou%20no%20site%20da%20Mona%20Lisa%20e%20quero%20fazer%20um%20pedido%20pelo%20WhatsApp!" target="_blank" class="btn-wa-big-main">
+          <i class="ri-whatsapp-line"></i> <span>Chamar no WhatsApp: (16) 99739-9407</span>
+        </a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p><strong>Monalisa Presentes, Brinquedos & Utilidades</strong> • Box 88 Novo Mercadão RP</p>
+      <p style="margin-top: 4px; font-size: 0.72rem; color: var(--text-muted);">
+        WhatsApp: (16) 99739-9407 • Ribeirão Preto - SP
+      </p>
+      <p style="margin-top: 10px; font-size: 0.7rem; opacity: 0.75;">
+        Tecnologia & Aceleração Digital por <a href="https://www.somosvertexdigital.com.br" target="_blank">Vertex Digital</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Floating WhatsApp Action -->
+  <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Vi%20o%20cat%C3%A1logo%20no%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" class="floating-wa-btn" aria-label="WhatsApp">
+    <i class="ri-whatsapp-line"></i>
+  </a>
+
+  <script>
+    function filterProducts(category, e) {
+      document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-cat') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
