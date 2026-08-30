@@ -2,1099 +2,2257 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Monalisa Presentes | Box 88 — Novo Mercadão Ribeirão Preto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Monalisa Presentes & Brinquedos | Box 88 - Novo Mercadão Ribeirão Preto</title>
+  <meta name="description" content="A loja de brinquedos e presentes infantis mais querida de Ribeirão Preto. Brinquedos educativos, pelúcias, carrinhos e kits embalados para presente com entrega expressa." />
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  
+  <!-- Google Fonts: Plus Jakarta Sans + Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Nunito Sans', system-ui, sans-serif;
-      background: #fff8f4;
-      color: #1a1a1a;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
+    :root {
+      --primary: #FF5C39;
+      --primary-hover: #E84522;
+      --primary-light: #FFF0EB;
+      --secondary: #7C3AED;
+      --secondary-light: #F3EEFF;
+      --accent-yellow: #FFB800;
+      --accent-yellow-light: #FFF8E5;
+      --accent-blue: #0284C7;
+      --accent-blue-light: #E0F2FE;
+      --accent-green: #10B981;
+      --accent-green-light: #ECFDF5;
+      --green-wa: #25D366;
+      --green-wa-dark: #1EBE5D;
+      
+      --bg: #FAF8F5;
+      --card-bg: #FFFFFF;
+      --text-main: #18181B;
+      --text-muted: #52525B;
+      --text-sub: #71717A;
+      --border-color: #E4E4E7;
+      --border-subtle: #F4F4F5;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 14px -1px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 12px 28px -4px rgba(0, 0, 0, 0.1), 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+      --shadow-float: 0 16px 36px -4px rgba(255, 92, 57, 0.28);
+      
+      --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
     }
 
-    /* ─── TOPBAR ─── */
-    .topbar {
-      background: #fff;
-      border-bottom: 1px solid #ffe4d4;
-      padding: 12px 20px;
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      overflow-x: hidden;
+      padding-bottom: 76px; /* Space for sticky bottom bar on mobile */
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding-bottom: 0;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Container Utility */
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    /* --- TOP ANNOUNCEMENT BAR --- */
+    .announcement-bar {
+      background: linear-gradient(90deg, #FF5C39 0%, #FF7A59 50%, #FF5C39 100%);
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      text-align: center;
+      letter-spacing: 0.2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .announcement-bar span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .announcement-dot {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+    }
+
+    @media (max-width: 580px) {
+      .announcement-bar .desktop-only-item {
+        display: none;
+      }
+    }
+
+    /* --- HEADER --- */
+    header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      height: 68px;
+      gap: 16px;
     }
-    .topbar-brand {
+
+    .brand-logo {
       display: flex;
       align-items: center;
       gap: 10px;
       text-decoration: none;
     }
-    .topbar-logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #ff6b35 0%, #f7c59f 100%);
+
+    .brand-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--primary) 0%, #FF8A65 100%);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: 0 4px 10px rgba(255, 92, 57, 0.3);
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.28rem;
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .location-badge-btn {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border-color);
+      padding: 7px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    @media (min-width: 768px) {
+      .location-badge-btn {
+        display: flex;
+      }
+    }
+
+    .btn-header-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-wa);
+      color: #052E16;
+      font-weight: 800;
+      font-size: 0.84rem;
+      padding: 10px 18px;
+      border-radius: var(--radius-full);
+      transition: transform 0.15s, background 0.15s;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+      white-space: nowrap;
+    }
+
+    .btn-header-wa:hover {
+      background: var(--green-wa-dark);
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    /* --- STORIES / QUICK CATEGORIES BAR --- */
+    .stories-section {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 0 12px;
+    }
+
+    .stories-scroll {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .stories-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .story-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      text-decoration: none;
+      width: 72px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .story-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .story-ring {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      padding: 2.5px;
+      background: linear-gradient(45deg, #FF5C39, #FFB800, #7C3AED);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    .story-img-box {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid #FFFFFF;
+      overflow: hidden;
+      background: #F4F4F5;
+    }
+
+    .story-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.15;
+      max-width: 68px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* --- HERO BANNER --- */
+    .hero-section {
+      padding: 24px 0 32px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #FFF6F3 0%, #FFFFFF 60%, #F5F0FF 100%);
+      border: 1px solid rgba(255, 92, 57, 0.15);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1fr;
+      position: relative;
+    }
+
+    @media (min-width: 840px) {
+      .hero-card {
+        grid-template-columns: 1.15fr 0.85fr;
+        min-height: 420px;
+      }
+    }
+
+    .hero-content {
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 640px) {
+      .hero-content {
+        padding: 44px 36px;
+      }
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFFFFF;
+      border: 1px solid rgba(255, 92, 57, 0.25);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--primary);
+      width: fit-content;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(255, 92, 57, 0.1);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4.5vw, 2.75rem);
+      font-weight: 900;
+      line-height: 1.12;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(120deg, var(--primary) 0%, #FF8A65 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      max-width: 480px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .btn-hero-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-float);
+      transition: all 0.2s;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .btn-hero-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -6px rgba(255, 92, 57, 0.35);
+    }
+
+    .btn-hero-wa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--green-wa);
+      color: #052E16;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .btn-hero-wa:hover {
+      background: var(--green-wa-dark);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .social-stars {
+      color: var(--accent-yellow);
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .social-text {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      min-height: 260px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FDF4EC;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-float-badge {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-lg);
+      z-index: 3;
+    }
+
+    .badge-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .badge-title {
+      font-weight: 800;
+      font-size: 0.8rem;
+      color: var(--text-main);
+    }
+
+    .badge-sub {
+      font-size: 0.68rem;
+      color: var(--text-sub);
+    }
+
+    /* --- TRUST STATS STRIP --- */
+    .trust-stats-strip {
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (min-width: 768px) {
+      .trust-stats-strip {
+        grid-template-columns: repeat(4, 1fr);
+        padding: 20px 28px;
+      }
+    }
+
+    .trust-stat-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .stat-icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.2rem;
-      box-shadow: 0 4px 12px rgba(255,107,53,0.35);
+      flex-shrink: 0;
     }
-    .topbar-name {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 1.15rem;
-      color: #1a1a1a;
-      line-height: 1;
+
+    .stat-icon-circle.orange { background: var(--primary-light); color: var(--primary); }
+    .stat-icon-circle.purple { background: var(--secondary-light); color: var(--secondary); }
+    .stat-icon-circle.yellow { background: var(--accent-yellow-light); color: #B45309; }
+    .stat-icon-circle.green  { background: var(--accent-green-light); color: var(--accent-green); }
+
+    .stat-title {
+      font-weight: 800;
+      font-size: 0.84rem;
+      color: var(--text-main);
+      line-height: 1.2;
     }
-    .topbar-sub { font-size: 0.65rem; color: #888; font-weight: 600; }
-    .topbar-wa {
+
+    .stat-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* --- GIFT FINDER WIDGET --- */
+    .finder-widget {
+      background: #FFFFFF;
+      border: 2px solid #FFE4DB;
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .finder-widget {
+        padding: 32px;
+      }
+    }
+
+    .finder-header {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 24px;
+    }
+
+    .finder-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      margin-bottom: 8px;
+    }
+
+    .finder-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3.5vw, 1.85rem);
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .finder-pills-row {
+      margin-bottom: 18px;
+    }
+
+    .finder-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 6px;
-      background: #22c55e;
-      color: #052e16;
-      font-weight: 800;
-      font-size: 0.8rem;
-      padding: 9px 16px;
-      border-radius: 100px;
-      text-decoration: none;
-      box-shadow: 0 4px 14px rgba(34,197,94,0.35);
     }
 
-    /* ─── HERO ─── */
-    .hero {
-      background: linear-gradient(135deg, #ff6b35 0%, #ff9f5a 55%, #ffbe76 100%);
-      padding: 52px 24px 64px;
-      position: relative;
-      overflow: hidden;
-      text-align: center;
+    .filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-    .hero-deco {
-      position: absolute;
-      font-size: 7rem;
-      opacity: 0.1;
-      animation: float 6s ease-in-out infinite;
-      user-select: none;
-      pointer-events: none;
+
+    .filter-btn {
+      background: var(--bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      transition: all 0.15s;
     }
-    .hero-deco:nth-child(1) { top: -20px; left: -10px; animation-delay: 0s; }
-    .hero-deco:nth-child(2) { top: 10px; right: 5px; font-size: 5rem; animation-delay: 1.5s; }
-    .hero-deco:nth-child(3) { bottom: 10px; left: 10%; font-size: 4rem; animation-delay: 3s; }
-    .hero-deco:nth-child(4) { bottom: -10px; right: 8%; font-size: 6rem; animation-delay: 0.8s; }
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(-5deg); }
-      50% { transform: translateY(-18px) rotate(5deg); }
+
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: #FFFFFF;
     }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.28);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.5);
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      padding: 5px 14px;
-      border-radius: 100px;
-      margin-bottom: 20px;
+
+    .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(255, 92, 57, 0.25);
     }
-    .hero-title {
-      font-family: 'Nunito', sans-serif;
-      font-size: clamp(2rem, 7.5vw, 3.2rem);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.12;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 2;
-      text-shadow: 0 2px 20px rgba(200,60,0,0.3);
-    }
-    .hero-title span {
-      display: inline-block;
-      background: rgba(255,255,255,0.22);
-      border-radius: 8px;
-      padding: 0 6px;
-    }
-    .hero-sub {
-      font-size: clamp(0.9rem, 3vw, 1.1rem);
-      color: rgba(255,255,255,0.88);
-      margin-bottom: 32px;
-      line-height: 1.55;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      z-index: 2;
-    }
-    .hero-actions {
+
+    .finder-action-bar {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
       gap: 12px;
-      max-width: 340px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-    .btn-wa-hero {
-      display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: #22c55e;
-      color: #052e16;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 1.05rem;
-      padding: 16px;
-      border-radius: 16px;
-      text-decoration: none;
-      box-shadow: 0 8px 24px rgba(34,197,94,0.45);
-      transition: transform 0.2s;
+      justify-content: space-between;
     }
-    .btn-wa-hero:active { transform: scale(0.97); }
-    .btn-ghost-hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.22);
-      border: 2px solid rgba(255,255,255,0.6);
-      color: #fff;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 0.92rem;
-      padding: 13px;
-      border-radius: 16px;
-      text-decoration: none;
+
+    @media (min-width: 640px) {
+      .finder-action-bar {
+        flex-direction: row;
+      }
     }
-    .hero-social-proof {
-      position: relative;
-      z-index: 2;
-      margin-top: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .hero-avatars {
-      display: flex;
-    }
-    .hero-avatar {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.8);
-      margin-left: -8px;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,0.3);
-    }
-    .hero-avatar:first-child { margin-left: 0; }
-    .hero-proof-text {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.9);
+
+    .finder-result-count {
+      font-size: 0.84rem;
       font-weight: 700;
-    }
-    .hero-wave {
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 100%;
+      color: var(--text-muted);
     }
 
-    /* ─── TRUST PILLS ─── */
-    .trust-strip {
-      background: #fff;
-      padding: 18px 20px;
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      border-bottom: 1px solid #ffe4d4;
-    }
-    .trust-strip::-webkit-scrollbar { display: none; }
-    .trust-pill {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: #fff8f4;
-      border: 1.5px solid #ffd5bc;
-      border-radius: 100px;
-      padding: 8px 14px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #8b4513;
-      white-space: nowrap;
-    }
-    .trust-pill-icon { font-size: 1rem; }
-
-    /* ─── SECTION TITLE ─── */
-    .sec-head {
-      text-align: center;
-      padding: 48px 24px 12px;
-    }
-    .sec-kicker {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      padding: 4px 12px;
-      border-radius: 100px;
-      margin-bottom: 10px;
-    }
-    .kicker-orange { background: #fff0e6; color: #d4580a; }
-    .kicker-purple { background: #f3f0ff; color: #6d28d9; }
-    .kicker-pink   { background: #fff0f6; color: #be185d; }
-    .kicker-blue   { background: #eff6ff; color: #1d4ed8; }
-    .sec-title {
-      font-family: 'Nunito', sans-serif;
-      font-size: clamp(1.5rem, 5vw, 2.1rem);
-      font-weight: 900;
-      line-height: 1.2;
-      color: #1a1a1a;
-    }
-    .sec-desc {
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 8px;
-      line-height: 1.6;
-    }
-
-    /* ─── CATEGORIA CARDS ─── */
-    .cat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      padding: 24px 16px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    @media(min-width:600px) { .cat-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; } }
-    .cat-card {
-      border-radius: 20px;
-      padding: 24px 14px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      transition: transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .cat-card:active { transform: scale(0.97); }
-    .cat-card-bg-deco {
-      position: absolute;
-      font-size: 5rem;
-      opacity: 0.12;
-      bottom: -8px;
-      right: -8px;
-      transform: rotate(-15deg);
-      pointer-events: none;
-    }
-    .cat-card.orange { background: linear-gradient(135deg, #ff9a3c 0%, #ff6b00 100%); }
-    .cat-card.purple { background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); }
-    .cat-card.pink   { background: linear-gradient(135deg, #f472b6 0%, #db2777 100%); }
-    .cat-card.teal   { background: linear-gradient(135deg, #34d399 0%, #059669 100%); }
-    .cat-emoji { font-size: 2.5rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); }
-    .cat-label {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 0.88rem;
-      color: #fff;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.2);
-      position: relative;
-      z-index: 1;
-    }
-    .cat-sub {
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.8);
-      font-weight: 700;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ─── PRODUCTS ─── */
-    .products-wrap {
-      padding: 8px 16px 0;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .products-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media(min-width:580px) { .products-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
-    @media(min-width:900px) { .products-grid { grid-template-columns: repeat(4, 1fr); } }
-
-    .prod-card {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .prod-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.13); }
-    .prod-thumb {
-      aspect-ratio: 1/1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .prod-thumb-bg-deco {
-      position: absolute;
-      font-size: 6rem;
-      opacity: 0.08;
-      bottom: -10px;
-      right: -10px;
-      transform: rotate(20deg);
-      pointer-events: none;
-    }
-    .prod-tag {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(4px);
-      color: #fff;
-      font-size: 0.6rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      padding: 3px 7px;
-      border-radius: 6px;
-    }
-    .prod-thumb.bg1 { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
-    .prod-thumb.bg2 { background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%); }
-    .prod-thumb.bg3 { background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); }
-    .prod-thumb.bg4 { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
-    .prod-thumb.bg5 { background: linear-gradient(135deg, #fddb92 0%, #d1fdff 100%); }
-    .prod-thumb.bg6 { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); }
-    .prod-thumb.bg7 { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
-    .prod-thumb.bg8 { background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); }
-    .prod-info { padding: 12px 12px 0; flex: 1; }
-    .prod-name {
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 800;
-      color: #1a1a1a;
-      line-height: 1.3;
-      margin-bottom: 3px;
-    }
-    .prod-age { font-size: 0.68rem; color: #999; font-weight: 700; }
-    .prod-bottom { padding: 10px 12px 14px; }
-    .prod-price {
-      font-family: 'Nunito', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 900;
-      color: #ff6b35;
-      margin-bottom: 8px;
-    }
-    .prod-price span { font-size: 0.65rem; color: #aaa; font-weight: 600; display: block; }
-    .btn-prod {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      background: #22c55e;
-      color: #052e16;
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.76rem;
-      font-weight: 900;
-      padding: 10px 8px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: background 0.18s;
-    }
-    .btn-prod:active { background: #16a34a; }
-
-    /* ─── EMOTIONAL BANNER ─── */
-    .emo-banner {
-      margin: 44px 16px 0;
-      border-radius: 24px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 40px 28px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .emo-banner-deco {
-      position: absolute;
-      font-size: 8rem;
-      opacity: 0.08;
-      pointer-events: none;
-    }
-    .emo-banner-deco:nth-child(1) { top: -20px; left: -20px; }
-    .emo-banner-deco:nth-child(2) { bottom: -20px; right: -10px; font-size: 6rem; }
-    .emo-banner-title {
-      font-family: 'Nunito', sans-serif;
-      font-size: clamp(1.5rem, 5.5vw, 2.4rem);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.2;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 2;
-    }
-    .emo-banner-sub {
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.82);
-      margin-bottom: 24px;
-      line-height: 1.6;
-      max-width: 440px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      z-index: 2;
-    }
-    .btn-emo {
+    .btn-finder-wa {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #fff;
-      color: #5b21b6;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 0.95rem;
-      padding: 14px 28px;
-      border-radius: 14px;
-      text-decoration: none;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      position: relative;
-      z-index: 2;
-    }
-
-    /* ─── COMO FUNCIONA ─── */
-    .how-section {
-      padding: 48px 16px 0;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 28px;
-    }
-    @media(min-width:600px) { .steps-grid { grid-template-columns: repeat(3, 1fr); } }
-    .step-card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 26px 22px;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    @media(min-width:600px) { .step-card { flex-direction: column; align-items: center; text-align: center; gap: 12px; } }
-    .step-num {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
+      background: var(--secondary);
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.86rem;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+      width: 100%;
       justify-content: center;
-      font-size: 1.3rem;
-      flex-shrink: 0;
     }
-    .step-num.s1 { background: #fff0e6; }
-    .step-num.s2 { background: #f0fdf4; }
-    .step-num.s3 { background: #f5f3ff; }
-    .step-title {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 0.95rem;
-      color: #1a1a1a;
-      margin-bottom: 4px;
-    }
-    .step-desc { font-size: 0.82rem; color: #666; line-height: 1.5; }
 
-    /* ─── AGE GUIDE ─── */
-    .age-section {
-      padding: 48px 16px 0;
-      max-width: 1100px;
-      margin: 0 auto;
+    @media (min-width: 640px) {
+      .btn-finder-wa {
+        width: auto;
+      }
     }
-    .age-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 28px;
+
+    .btn-finder-wa:hover {
+      background: #6D28D9;
+      transform: translateY(-1px);
     }
-    @media(min-width:700px) { .age-grid { grid-template-columns: repeat(4, 1fr); } }
-    .age-card {
-      border-radius: 18px;
-      padding: 22px 16px;
-      text-align: center;
-      text-decoration: none;
-      transition: transform 0.18s;
+
+    /* --- SECTION HEADINGS --- */
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 24px;
     }
-    .age-card:active { transform: scale(0.96); }
-    .age-card.a1 { background: #fff0e6; }
-    .age-card.a2 { background: #fdf4ff; }
-    .age-card.a3 { background: #f0f9ff; }
-    .age-card.a4 { background: #f0fdf4; }
-    .age-emoji { font-size: 2.4rem; margin-bottom: 8px; display: block; }
-    .age-range {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 1rem;
-      color: #1a1a1a;
-      margin-bottom: 4px;
+
+    @media (min-width: 640px) {
+      .section-header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
     }
-    .age-sub { font-size: 0.72rem; color: #777; font-weight: 700; }
-    .age-wa {
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .section-link {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--primary);
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      background: #22c55e;
-      color: #052e16;
-      font-size: 0.7rem;
-      font-weight: 900;
-      padding: 6px 12px;
-      border-radius: 100px;
-      text-decoration: none;
-      margin-top: 12px;
+      transition: gap 0.15s;
     }
 
-    /* ─── LOCATION CTA ─── */
-    .loc-cta {
-      margin: 44px 16px 0;
-      background: linear-gradient(135deg, #f97316 0%, #ff6b35 50%, #ef4444 100%);
-      border-radius: 24px;
-      padding: 40px 28px;
-      text-align: center;
-      position: relative;
+    .section-link:hover {
+      gap: 8px;
+    }
+
+    /* --- PRODUCT CATALOG GRID --- */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+
+    @media (min-width: 640px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+    }
+
+    .product-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
       overflow: hidden;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      position: relative;
     }
-    .loc-cta-deco {
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(255, 92, 57, 0.3);
+    }
+
+    .product-thumb-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #F4F4F5;
+      overflow: hidden;
+    }
+
+    .product-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover .product-thumb-wrap img {
+      transform: scale(1.05);
+    }
+
+    .product-badge {
       position: absolute;
-      font-size: 9rem;
-      opacity: 0.08;
-      pointer-events: none;
+      top: 8px;
+      left: 8px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 2;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
-    .loc-cta-deco:nth-child(1) { top: -20px; right: -15px; }
-    .loc-cta-deco:nth-child(2) { bottom: -25px; left: -10px; font-size: 7rem; transform: scaleX(-1); }
-    .loc-cta-eyebrow {
+
+    .product-badge.bestseller { background: #FF5C39; color: #FFFFFF; }
+    .product-badge.new        { background: #7C3AED; color: #FFFFFF; }
+    .product-badge.ready      { background: #10B981; color: #FFFFFF; }
+
+    .product-age-tag {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(24, 24, 27, 0.8);
+      backdrop-filter: blur(4px);
+      color: #FFFFFF;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      z-index: 2;
+    }
+
+    .product-body {
+      padding: 14px 12px 10px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    @media (min-width: 640px) {
+      .product-body {
+        padding: 16px 14px 12px;
+      }
+    }
+
+    .product-category {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .product-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+      margin-bottom: 6px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.5em;
+    }
+
+    .product-stars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      color: var(--accent-yellow);
+      margin-bottom: 10px;
+    }
+
+    .product-stars span {
+      color: var(--text-sub);
+      font-size: 0.68rem;
+    }
+
+    .product-price-box {
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .product-price {
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .product-installments {
+      font-size: 0.68rem;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+
+    .product-actions {
+      padding: 0 12px 14px;
+    }
+
+    @media (min-width: 640px) {
+      .product-actions {
+        padding: 0 14px 16px;
+      }
+    }
+
+    .btn-buy-wa {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--green-wa);
+      color: #052E16;
+      font-weight: 800;
+      font-size: 0.78rem;
+      padding: 10px 8px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .btn-buy-wa:hover {
+      background: var(--green-wa-dark);
+      color: #FFFFFF;
+    }
+
+    /* --- READY-TO-GIFT BANNER --- */
+    .gift-banner {
+      background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      color: #FFFFFF;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 1fr;
+      box-shadow: var(--shadow-lg);
+    }
+
+    @media (min-width: 800px) {
+      .gift-banner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .gift-banner-content {
+      padding: 36px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (min-width: 640px) {
+      .gift-banner-content {
+        padding: 44px 36px;
+      }
+    }
+
+    .gift-banner-tag {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
       font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 2;
-    }
-    .loc-cta-title {
-      font-family: 'Nunito', sans-serif;
-      font-size: clamp(1.5rem, 5vw, 2.2rem);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.2;
+      letter-spacing: 1px;
+      width: fit-content;
       margin-bottom: 12px;
-      position: relative;
-      z-index: 2;
     }
-    .loc-cta-addr {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 8px;
-      position: relative;
-      z-index: 2;
+
+    .gift-banner-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .gift-banner-desc {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.85);
       line-height: 1.6;
+      margin-bottom: 24px;
     }
-    .loc-cta-hrs {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.7);
+
+    .gift-banner-features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       margin-bottom: 28px;
-      position: relative;
-      z-index: 2;
     }
-    .loc-cta-buttons {
+
+    .gift-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .gift-feature-item i {
+      color: var(--accent-yellow);
+      font-size: 1.1rem;
+    }
+
+    .btn-gift-banner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #FFFFFF;
+      color: #5B21B6;
+      font-weight: 900;
+      font-size: 0.92rem;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+      width: fit-content;
+    }
+
+    .btn-gift-banner:hover {
+      transform: translateY(-2px);
+    }
+
+    .gift-banner-image {
+      position: relative;
+      min-height: 240px;
+      overflow: hidden;
+    }
+
+    .gift-banner-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* --- REVIEWS / SOCIAL PROOF --- */
+    .reviews-section {
+      margin-bottom: 48px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 720px) {
+      .reviews-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .review-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .review-stars {
+      color: var(--accent-yellow);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .review-quote {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .author-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.84rem;
+    }
+
+    .author-info {
+      line-height: 1.2;
+    }
+
+    .author-name {
+      font-weight: 800;
+      font-size: 0.82rem;
+      color: var(--text-main);
+    }
+
+    .author-tag {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+    }
+
+    /* --- STORE LOCATION / VISIT SECTION --- */
+    .location-section {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 48px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 800px) {
+      .location-section {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .location-info {
+      padding: 36px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (min-width: 640px) {
+      .location-info {
+        padding: 44px 36px;
+      }
+    }
+
+    .location-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .location-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-weight: 900;
+      color: var(--text-main);
+      margin-bottom: 14px;
+    }
+
+    .location-details {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .loc-detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .loc-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      border: 1px solid var(--border-color);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .loc-text {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .loc-text strong {
+      color: var(--text-main);
+      display: block;
+    }
+
+    .location-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-maps {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      font-weight: 800;
+      font-size: 0.86rem;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+      flex: 1;
+      min-width: 160px;
+    }
+
+    .btn-maps:hover {
+      background: #FFFFFF;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .location-image-side {
+      position: relative;
+      min-height: 280px;
+      background: #E4E4E7;
+    }
+
+    .location-image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* --- FAQ ACCORDION --- */
+    .faq-section {
+      margin-bottom: 48px;
+    }
+
+    .faq-list {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      max-width: 320px;
+      max-width: 800px;
       margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-    .btn-loc-wa {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: #22c55e;
-      color: #052e16;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 1rem;
-      padding: 15px;
-      border-radius: 14px;
-      text-decoration: none;
-      box-shadow: 0 8px 24px rgba(34,197,94,0.4);
-    }
-    .btn-loc-maps {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.18);
-      border: 2px solid rgba(255,255,255,0.5);
-      color: #fff;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 0.9rem;
-      padding: 13px;
-      border-radius: 14px;
-      text-decoration: none;
     }
 
-    /* ─── FOOTER ─── */
+    .faq-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item.open {
+      border-color: var(--primary);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 16px 20px;
+      text-align: left;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .faq-icon {
+      font-size: 1.2rem;
+      color: var(--text-sub);
+      transition: transform 0.2s;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+      color: var(--primary);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 18px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* --- FOOTER --- */
     footer {
-      padding: 36px 20px 52px;
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0 24px;
       text-align: center;
-      border-top: 1px solid #ffe4d4;
-      margin-top: 48px;
     }
-    .footer-logo { font-size: 2rem; margin-bottom: 8px; }
-    .footer-name {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 900;
-      font-size: 1.1rem;
-      color: #1a1a1a;
-      margin-bottom: 4px;
-    }
-    .footer-sub { font-size: 0.75rem; color: #999; line-height: 1.6; }
-    .footer-sub a { color: #ff6b35; text-decoration: none; font-weight: 700; }
-    .footer-divider { width: 40px; height: 2px; background: #ffe4d4; margin: 16px auto; border-radius: 2px; }
 
-    /* ─── FLOAT WA ─── */
-    .float-wa {
-      position: fixed;
-      bottom: 20px;
-      right: 18px;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: #22c55e;
+    .footer-brand {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      text-decoration: none;
-      box-shadow: 0 6px 24px rgba(34,197,94,0.5);
-      z-index: 200;
-      animation: pulse-wa 2.5s ease-in-out infinite;
-    }
-    @keyframes pulse-wa {
-      0%,100% { box-shadow: 0 6px 24px rgba(34,197,94,0.5); }
-      50% { box-shadow: 0 6px 32px rgba(34,197,94,0.7), 0 0 0 10px rgba(34,197,94,0.1); }
+      gap: 8px;
+      margin-bottom: 12px;
     }
 
-    /* ─── SPACING ─── */
-    .mt-s { margin-top: 12px; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .px { padding-left: 16px; padding-right: 16px; }
+    .footer-logo-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--text-main);
+    }
+
+    .footer-info {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto 20px;
+    }
+
+    .footer-social-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      transition: all 0.2s;
+    }
+
+    .social-btn:hover {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    .footer-bottom-copy {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 20px;
+    }
+
+    .footer-bottom-copy a {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* --- STICKY MOBILE BOTTOM BAR --- */
+    .mobile-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border-color);
+      padding: 10px 16px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    @media (min-width: 768px) {
+      .mobile-sticky-bar {
+        display: none;
+      }
+    }
+
+    .sticky-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sticky-title {
+      font-weight: 800;
+      font-size: 0.8rem;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .sticky-sub {
+      font-size: 0.68rem;
+      color: var(--accent-green);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .sticky-sub::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .btn-sticky-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green-wa);
+      color: #052E16;
+      font-weight: 900;
+      font-size: 0.86rem;
+      padding: 12px 18px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
 
-  <!-- TOPBAR -->
-  <header class="topbar">
-    <a href="#" class="topbar-brand">
-      <div class="topbar-logo">🎁</div>
-      <div>
-        <div class="topbar-name">Monalisa</div>
-        <div class="topbar-sub">Presentes & Brinquedos · Box 88</div>
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    <span><i class="ri-truck-line"></i> Entrega Expressa Hoje em Ribeirão Preto</span>
+    <span class="announcement-dot desktop-only-item"></span>
+    <span class="desktop-only-item"><i class="ri-gift-line"></i> Embalagem para Presente Cortesia</span>
+    <span class="announcement-dot"></span>
+    <span><i class="ri-map-pin-2-fill"></i> Box 88 · Novo Mercadão</span>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="brand-logo">
+          <div class="brand-icon-box">
+            <i class="ri-gift-2-fill"></i>
+          </div>
+          <div>
+            <div class="brand-title">Monalisa</div>
+            <div class="brand-tag"><i class="ri-sparkling-fill"></i> Presentes & Brinquedos</div>
+          </div>
+        </a>
+
+        <div class="header-right">
+          <a href="https://maps.google.com/?q=Novo+Mercad%C3%A3o+de+Ribeir%C3%A3o+Preto" target="_blank" class="location-badge-btn">
+            <i class="ri-map-pin-line"></i>
+            <span>Box 88 · Novo Mercadão</span>
+          </a>
+          <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Monalisa%20e%20gostaria%20de%20atendimento!" target="_blank" class="btn-header-wa">
+            <i class="ri-whatsapp-line"></i>
+            <span>Pedir no WhatsApp</span>
+          </a>
+        </div>
       </div>
-    </a>
-    <a href="https://wa.me/5516997399407?text=Olá!%20Vim%20pelo%20site%20da%20Monalisa%20e%20quero%20fazer%20um%20pedido!" target="_blank" class="topbar-wa">
-      <span>💬</span> Pedir já
-    </a>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-deco">🎈</div>
-    <div class="hero-deco">⭐</div>
-    <div class="hero-deco">🎊</div>
-    <div class="hero-deco">🌈</div>
-
-    <div class="hero-badge">📍 Box 88 · Novo Mercadão · Ribeirão Preto</div>
-    <h1 class="hero-title">
-      O brilho nos olhos<br/>do seu filho começa<br/><span>aqui.</span>
-    </h1>
-    <p class="hero-sub">
-      Brinquedos, presentes e surpresas que criam memórias que duram pra sempre. Atendimento pelo WhatsApp e entrega expressa na sua cidade.
-    </p>
-    <div class="hero-actions">
-      <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20ver%20os%20produtos%20da%20Monalisa%20e%20fazer%20um%20pedido!" target="_blank" class="btn-wa-hero">
-        💬 Fazer pedido pelo WhatsApp
-      </a>
-      <a href="#catalogo" class="btn-ghost-hero">
-        🎁 Ver todos os produtos
-      </a>
-    </div>
-    <div class="hero-social-proof">
-      <div class="hero-avatars">
-        <div class="hero-avatar">👩</div>
-        <div class="hero-avatar">👨</div>
-        <div class="hero-avatar">👩</div>
-        <div class="hero-avatar">👨</div>
-      </div>
-      <span class="hero-proof-text">+5.000 famílias satisfeitas ⭐⭐⭐⭐⭐</span>
-    </div>
-
-    <svg class="hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,40 C360,0 1080,80 1440,20 L1440,60 L0,60 Z" fill="#fff8f4"/>
-    </svg>
-  </section>
-
-  <!-- TRUST PILLS -->
-  <div class="trust-strip">
-    <div class="trust-pill"><span class="trust-pill-icon">🚀</span> Entrega no mesmo dia</div>
-    <div class="trust-pill"><span class="trust-pill-icon">🎀</span> Embalagem de presente grátis</div>
-    <div class="trust-pill"><span class="trust-pill-icon">💳</span> Pix · Cartão até 12x</div>
-    <div class="trust-pill"><span class="trust-pill-icon">✅</span> Produtos seguros e certificados</div>
-    <div class="trust-pill"><span class="trust-pill-icon">🔄</span> Troca facilitada</div>
-  </div>
-
-  <!-- CATEGORIAS -->
-  <section id="catalogo">
-    <div class="sec-head container">
-      <div class="sec-kicker kicker-orange">🛍️ O que você vai encontrar</div>
-      <h2 class="sec-title">Uma loja completa para<br/>cada fase da infância</h2>
-      <p class="sec-desc">Selecione a categoria e encontre o presente perfeito para o seu filho!</p>
-    </div>
-
-    <div class="cat-grid">
-      <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20ver%20os%20brinquedos%20disponíveis%20na%20Monalisa!" target="_blank" class="cat-card orange">
-        <div class="cat-card-bg-deco">🚀</div>
-        <div class="cat-emoji">🏎️</div>
-        <div class="cat-label">Brinquedos</div>
-        <div class="cat-sub">Carrinhos, pelúcias e mais</div>
-      </a>
-      <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20ver%20os%20jogos%20educativos%20disponíveis%20na%20Monalisa!" target="_blank" class="cat-card purple">
-        <div class="cat-card-bg-deco">🧠</div>
-        <div class="cat-emoji">🧩</div>
-        <div class="cat-label">Jogos & Educativo</div>
-        <div class="cat-sub">Aprender brincando</div>
-      </a>
-      <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20ver%20os%20kits%20de%20presente%20da%20Monalisa!" target="_blank" class="cat-card pink">
-        <div class="cat-card-bg-deco">🎀</div>
-        <div class="cat-emoji">🎁</div>
-        <div class="cat-label">Kits de Presente</div>
-        <div class="cat-sub">Prontos pra presentear</div>
-      </a>
-      <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20ver%20as%20utilidades%20e%20papelaria%20da%20Monalisa!" target="_blank" class="cat-card teal">
-        <div class="cat-card-bg-deco">📚</div>
-        <div class="cat-emoji">🎒</div>
-        <div class="cat-label">Escola & Utilidades</div>
-        <div class="cat-sub">Mochilas, livros e mais</div>
-      </a>
-    </div>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section>
-    <div class="sec-head container">
-      <div class="sec-kicker kicker-purple">⭐ Mais pedidos do mês</div>
-      <h2 class="sec-title">Os queridinhos das crianças</h2>
-      <p class="sec-desc">Produtos mais pedidos por pais e mães em Ribeirão Preto</p>
-    </div>
-
-    <div class="products-wrap">
-      <div class="products-grid">
-
-        <div class="prod-card">
-          <div class="prod-thumb bg1">
-            <span>🏎️</span>
-            <div class="prod-thumb-bg-deco">🚗</div>
-            <span class="prod-tag">🔥 TOP</span>
+  <!-- STORIES / QUICK CATEGORIES -->
+  <div class="stories-section">
+    <div class="container">
+      <div class="stories-scroll">
+        <a href="#catalogo" onclick="applyQuickFilter('pelucias')" class="story-item">
+          <div class="story-ring">
+            <div class="story-img-box">
+              <img src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=200&auto=format&fit=crop&q=80" alt="Pelúcias" />
+            </div>
           </div>
-          <div class="prod-info">
-            <div class="prod-name">Carrinho Acrobático 360° com Luz & Som</div>
-            <div class="prod-age">✅ A partir de 3 anos</div>
-          </div>
-          <div class="prod-bottom">
-            <div class="prod-price">R$ 79,90 <span>+ embalagem grátis</span></div>
-            <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20o%20Carrinho%20Acrobático%20360°%20(R$79,90)%20da%20Monalisa!" target="_blank" class="btn-prod">💬 Pedir agora</a>
-          </div>
-        </div>
-
-        <div class="prod-card">
-          <div class="prod-thumb bg3">
-            <span>🧸</span>
-            <div class="prod-thumb-bg-deco">❤️</div>
-            <span class="prod-tag">💕 ESPECIAL</span>
-          </div>
-          <div class="prod-info">
-            <div class="prod-name">Pelúcia Antialérgica Macia</div>
-            <div class="prod-age">✅ Para bebês e crianças</div>
-          </div>
-          <div class="prod-bottom">
-            <div class="prod-price">R$ 54,90 <span>Vários modelos disponíveis</span></div>
-            <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20ver%20as%20pelúcias%20disponíveis%20na%20Monalisa!" target="_blank" class="btn-prod">💬 Pedir agora</a>
-          </div>
-        </div>
-
-        <div class="prod-card">
-          <div class="prod-thumb bg4">
-            <span>🧩</span>
-            <div class="prod-thumb-bg-deco">🌟</div>
-          </div>
-          <div class="prod-info">
-            <div class="prod-name">Blocos Magnéticos 3D — 50 peças</div>
-            <div class="prod-age">✅ 3 a 10 anos</div>
-          </div>
-          <div class="prod-bottom">
-            <div class="prod-price">R$ 89,90 <span>Estimula criatividade</span></div>
-            <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20os%20Blocos%20Magnéticos%203D%20(R$89,90)%20da%20Monalisa!" target="_blank" class="btn-prod">💬 Pedir agora</a>
-          </div>
-        </div>
-
-        <div class="prod-card">
-          <div class="prod-thumb bg7">
-            <span>🎁</span>
-            <div class="prod-thumb-bg-deco">🎊</div>
-            <span class="prod-tag">🎀 PRONTO</span>
-          </div>
-          <div class="prod-info">
-            <div class="prod-name">Kit Aniversário Infantil Embalado</div>
-            <div class="prod-age">✅ Já embalado com laço</div>
-          </div>
-          <div class="prod-bottom">
-            <div class="prod-price">R$ 69,90 <span>Chega pronto pra presentear</span></div>
-            <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20o%20Kit%20Aniversário%20Infantil%20(R$69,90)%20da%20Monalisa!" target="_blank" class="btn-prod">💬 Pedir agora</a>
-          </div>
-        </div>
-
-        <div class="prod-card">
-          <div class="prod-thumb bg2">
-            <span>🎲</span>
-            <div class="prod-thumb-bg-deco">♟️</div>
-          </div>
-          <div class="prod-info">
-            <div class="prod-name">Kit Jogos Clássicos: Ludo, Dama & Xadrez</div>
-            <div class="prod-age">✅ A partir de 5 anos</div>
-          </div>
-          <div class="prod-bottom">
-            <div class="prod-price">R$ 49,90 <span>3 jogos em 1 estojo</span></div>
-            <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20o%20Kit%20de%20Jogos%20Clássicos%20(R$49,90)%20da%20Monalisa!" target="_blank" class="btn-prod">💬 Pedir agora</a>
-          </div>
-        </div>
-
-        <div class="prod-card">
-          <div class="prod-thumb bg5">
-            <span>✨</span>
-            <div class="prod-thumb-bg-deco">🎯</div>
-            <span class="prod-tag">🌟 POPULAR</span>
-          </div>
-          <div class="prod-info">
-            <div class="prod-name">Kit Surpresa Personalizado por Idade</div>
-            <div class="prod-age">✅ Diga a idade — a gente monta!</div>
-          </div>
-          <div class="prod-bottom">
-            <div class="prod-price">até R$ 99 <span>Completamente personalizado</span></div>
-            <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20um%20Kit%20Surpresa%20Personalizado%20da%20Monalisa!%20Vou%20te%20dizer%20a%20idade." target="_blank" class="btn-prod">💬 Montar meu kit</a>
-          </div>
-        </div>
-
-        <div class="prod-card">
-          <div class="prod-thumb bg6">
-            <span>🎒</span>
-            <div class="prod-thumb-bg-deco">📐</div>
-          </div>
-          <div class="prod-info">
-            <div class="prod-name">Mochila Escolar Reforçada com Bolsos</div>
-            <div class="prod-age">✅ Várias cores disponíveis</div>
-          </div>
-          <div class="prod-bottom">
-            <div class="prod-price">R$ 59,90 <span>Ideal pra escola e passeios</span></div>
-            <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20ver%20as%20mochilas%20disponíveis%20na%20Monalisa!" target="_blank" class="btn-prod">💬 Ver cores</a>
-          </div>
-        </div>
-
-        <div class="prod-card">
-          <div class="prod-thumb bg8">
-            <span>📚</span>
-            <div class="prod-thumb-bg-deco">🌈</div>
-          </div>
-          <div class="prod-info">
-            <div class="prod-name">Combo 3 Livros Infantis Ilustrados</div>
-            <div class="prod-age">✅ 3 a 10 anos</div>
-          </div>
-          <div class="prod-bottom">
-            <div class="prod-price">R$ 39,90 <span>Estimula o hábito da leitura</span></div>
-            <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20o%20Combo%20de%203%20Livros%20Infantis%20(R$39,90)%20da%20Monalisa!" target="_blank" class="btn-prod">💬 Pedir agora</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- EMOTIONAL BANNER -->
-  <div class="container px" style="margin-top:0">
-    <div class="emo-banner" style="margin:44px 0 0;">
-      <span class="emo-banner-deco">🧸</span>
-      <span class="emo-banner-deco">🌟</span>
-      <h2 class="emo-banner-title">Não sabe o que dar<br/>de presente?</h2>
-      <p class="emo-banner-sub">
-        Manda mensagem pra gente! Com a idade da criança e o valor que você tem disponível, a gente monta o presente perfeito — já embalado e pronto para você entregar com muito amor.
-      </p>
-      <a href="https://wa.me/5516997399407?text=Olá!%20Não%20sei%20o%20que%20dar%20de%20presente.%20Pode%20me%20ajudar?%20Me%20diz%20o%20que%20preciso%20informar." target="_blank" class="btn-emo">
-        💬 Me ajuda a escolher!
-      </a>
-    </div>
-  </div>
-
-  <!-- COMO FUNCIONA -->
-  <section class="how-section">
-    <div class="sec-head">
-      <div class="sec-kicker kicker-blue">💡 Simples assim</div>
-      <h2 class="sec-title">Como fazer seu pedido</h2>
-      <p class="sec-desc">Rápido, fácil e sem complicação pelo WhatsApp</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num s1">💬</div>
-        <div>
-          <div class="step-title">1. Fale com a gente</div>
-          <div class="step-desc">Manda mensagem no WhatsApp dizendo o que você procura ou a idade da criança.</div>
-        </div>
-      </div>
-      <div class="step-card">
-        <div class="step-num s2">🎁</div>
-        <div>
-          <div class="step-title">2. A gente cuida de tudo</div>
-          <div class="step-desc">Separamos, embalamos com carinho e temos o presente pronto em minutos.</div>
-        </div>
-      </div>
-      <div class="step-card">
-        <div class="step-num s3">🚀</div>
-        <div>
-          <div class="step-title">3. Receba ou retire</div>
-          <div class="step-desc">Entregamos em Ribeirão Preto no mesmo dia ou retire no Box 88 do Novo Mercadão.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AGE GUIDE -->
-  <section class="age-section">
-    <div class="sec-head">
-      <div class="sec-kicker kicker-pink">🎂 Por faixa etária</div>
-      <h2 class="sec-title">Presentes certos para<br/>cada fase</h2>
-      <p class="sec-desc">Selecione a idade do seu filho e a gente indica o presente ideal!</p>
-    </div>
-    <div class="age-grid">
-      <div class="age-card a1">
-        <span class="age-emoji">👶</span>
-        <div class="age-range">0 – 2 anos</div>
-        <div class="age-sub">Bebês & Primeiros brinquedos</div>
-        <a href="https://wa.me/5516997399407?text=Olá!%20Preciso%20de%20um%20presente%20para%20uma%20criança%20de%200%20a%202%20anos.%20O%20que%20vocês%20têm?" target="_blank" class="age-wa">💬 Ver opções</a>
-      </div>
-      <div class="age-card a2">
-        <span class="age-emoji">🧒</span>
-        <div class="age-range">3 – 5 anos</div>
-        <div class="age-sub">Fase da imaginação e descoberta</div>
-        <a href="https://wa.me/5516997399407?text=Olá!%20Preciso%20de%20um%20presente%20para%20uma%20criança%20de%203%20a%205%20anos.%20O%20que%20vocês%20têm?" target="_blank" class="age-wa">💬 Ver opções</a>
-      </div>
-      <div class="age-card a3">
-        <span class="age-emoji">🧑</span>
-        <div class="age-range">6 – 9 anos</div>
-        <div class="age-sub">Jogos, aventura e desafios</div>
-        <a href="https://wa.me/5516997399407?text=Olá!%20Preciso%20de%20um%20presente%20para%20uma%20criança%20de%206%20a%209%20anos.%20O%20que%20vocês%20têm?" target="_blank" class="age-wa">💬 Ver opções</a>
-      </div>
-      <div class="age-card a4">
-        <span class="age-emoji">👦</span>
-        <div class="age-range">10+ anos</div>
-        <div class="age-sub">Kits criativos e educativos</div>
-        <a href="https://wa.me/5516997399407?text=Olá!%20Preciso%20de%20um%20presente%20para%20uma%20criança%20de%2010%20anos%20ou%20mais.%20O%20que%20vocês%20têm?" target="_blank" class="age-wa">💬 Ver opções</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOCATION CTA -->
-  <div class="container px" style="margin-top:0">
-    <div class="loc-cta" style="margin:44px 0 0;">
-      <span class="loc-cta-deco">📍</span>
-      <span class="loc-cta-deco">🌟</span>
-      <p class="loc-cta-eyebrow">Venha nos visitar</p>
-      <h2 class="loc-cta-title">A gente te espera<br/>no Novo Mercadão!</h2>
-      <p class="loc-cta-addr">
-        📍 Av. Ligia Latuf Salomão, 200 — <strong>Box 88</strong><br/>
-        Nova Aliança · Ribeirão Preto – SP
-      </p>
-      <p class="loc-cta-hrs">
-        🕗 Ter–Sáb: 8h às 20h · Dom: 8h às 16h · Seg: Fechado
-      </p>
-      <div class="loc-cta-buttons">
-        <a href="https://wa.me/5516997399407?text=Olá!%20Quero%20fazer%20um%20pedido%20na%20Monalisa!" target="_blank" class="btn-loc-wa">
-          💬 Pedir pelo WhatsApp
+          <span class="story-label">Pelúcias</span>
         </a>
-        <a href="https://maps.google.com/?q=Novo+Mercadão+Ribeirão+Preto+Av.+Ligia+Latuf+Salomão+200" target="_blank" class="btn-loc-maps">
-          📍 Abrir no Google Maps
+
+        <a href="#catalogo" onclick="applyQuickFilter('carrinhos')" class="story-item">
+          <div class="story-ring">
+            <div class="story-img-box">
+              <img src="https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=200&auto=format&fit=crop&q=80" alt="Carrinhos" />
+            </div>
+          </div>
+          <span class="story-label">Carrinhos</span>
+        </a>
+
+        <a href="#catalogo" onclick="applyQuickFilter('educativos')" class="story-item">
+          <div class="story-ring">
+            <div class="story-img-box">
+              <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=200&auto=format&fit=crop&q=80" alt="Educativos" />
+            </div>
+          </div>
+          <span class="story-label">Educativos</span>
+        </a>
+
+        <a href="#catalogo" onclick="applyQuickFilter('jogos')" class="story-item">
+          <div class="story-ring">
+            <div class="story-img-box">
+              <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=200&auto=format&fit=crop&q=80" alt="Jogos" />
+            </div>
+          </div>
+          <span class="story-label">Jogos</span>
+        </a>
+
+        <a href="#catalogo" onclick="applyQuickFilter('kits')" class="story-item">
+          <div class="story-ring">
+            <div class="story-img-box">
+              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=200&auto=format&fit=crop&q=80" alt="Kits Prontos" />
+            </div>
+          </div>
+          <span class="story-label">Kits Prontos</span>
+        </a>
+
+        <a href="#catalogo" onclick="applyQuickFilter('mochilas')" class="story-item">
+          <div class="story-ring">
+            <div class="story-img-box">
+              <img src="https://images.unsplash.com/photo-1577401239170-897942555fb3?w=200&auto=format&fit=crop&q=80" alt="Mochilas" />
+            </div>
+          </div>
+          <span class="story-label">Mochilas</span>
+        </a>
+
+        <a href="#localizacao" class="story-item">
+          <div class="story-ring">
+            <div class="story-img-box">
+              <img src="./monalisa-fachada.jpg" alt="Box 88" />
+            </div>
+          </div>
+          <span class="story-label">Box 88</span>
         </a>
       </div>
     </div>
   </div>
 
+  <main class="container">
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-card">
+        <div class="hero-content">
+          <div class="hero-pill">
+            <i class="ri-sparkling-2-fill"></i> Catálogo Oficial · Ribeirão Preto
+          </div>
+          <h1 class="hero-title">
+            O presente perfeito para arrancar o <span class="highlight">melhor sorriso</span> do seu filho.
+          </h1>
+          <p class="hero-subtitle">
+            Brinquedos educativos, carrinhos acrobáticos, pelúcias macias e kits prontos para presentear. Peça direto no WhatsApp e receba hoje mesmo no conforto da sua casa!
+          </p>
+          <div class="hero-buttons">
+            <a href="#catalogo" class="btn-hero-primary">
+              <i class="ri-gift-line"></i> Explorar Catálogo
+            </a>
+            <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20para%20escolher%20um%20presente%20infantil!" target="_blank" class="btn-hero-wa">
+              <i class="ri-whatsapp-line"></i> Pedir Sugestão
+            </a>
+          </div>
+          <div class="hero-social-proof">
+            <div class="social-stars">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <div class="social-text">
+              <strong>4.9 / 5.0</strong> · Mais de 5.000 presentes entregues
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&auto=format&fit=crop&q=80" alt="Criança feliz brincando com presente da Monalisa" />
+          <div class="hero-float-badge">
+            <div class="badge-icon">
+              <i class="ri-gift-line"></i>
+            </div>
+            <div>
+              <div class="badge-title">Embalagem de Cortesia</div>
+              <div class="badge-sub">Laço e papel de seda inclusos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST STATS STRIP -->
+    <div class="trust-stats-strip">
+      <div class="trust-stat-item">
+        <div class="stat-icon-circle orange">
+          <i class="ri-truck-line"></i>
+        </div>
+        <div>
+          <div class="stat-title">Entrega no Mesmo Dia</div>
+          <div class="stat-desc">Motoboy em Ribeirão Preto</div>
+        </div>
+      </div>
+      <div class="trust-stat-item">
+        <div class="stat-icon-circle purple">
+          <i class="ri-gift-line"></i>
+        </div>
+        <div>
+          <div class="stat-title">Pronto pra Entregar</div>
+          <div class="stat-desc">Embalagem de presente grátis</div>
+        </div>
+      </div>
+      <div class="trust-stat-item">
+        <div class="stat-icon-circle yellow">
+          <i class="ri-shield-check-line"></i>
+        </div>
+        <div>
+          <div class="stat-title">100% Seguro</div>
+          <div class="stat-desc">Selo INMETRO garantido</div>
+        </div>
+      </div>
+      <div class="trust-stat-item">
+        <div class="stat-icon-circle green">
+          <i class="ri-bank-card-line"></i>
+        </div>
+        <div>
+          <div class="stat-title">Pix ou até 12x</div>
+          <div class="stat-desc">Pague na entrega ou online</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GIFT FINDER WIDGET -->
+    <section class="finder-widget" id="buscador">
+      <div class="finder-header">
+        <div class="finder-kicker"><i class="ri-magic-line"></i> Assistente Rápido</div>
+        <h2 class="finder-title">Qual é a idade de quem você vai presentear?</h2>
+      </div>
+
+      <div class="finder-pills-row">
+        <div class="finder-label"><i class="ri-user-smile-line"></i> 1. Selecione a Idade:</div>
+        <div class="filter-options" id="ageFilters">
+          <button class="filter-btn active" data-age="all" onclick="setAgeFilter('all', this)">Todas as Idades</button>
+          <button class="filter-btn" data-age="0-2" onclick="setAgeFilter('0-2', this)">👶 0 a 2 anos (Bebês)</button>
+          <button class="filter-btn" data-age="3-5" onclick="setAgeFilter('3-5', this)">🧒 3 a 5 anos (Primeira Infância)</button>
+          <button class="filter-btn" data-age="6-8" onclick="setAgeFilter('6-8', this)">🧑 6 a 8 anos (Escolar)</button>
+          <button class="filter-btn" data-age="9+" onclick="setAgeFilter('9+', this)">👦 9+ anos (Jogos & Desafios)</button>
+        </div>
+      </div>
+
+      <div class="finder-pills-row">
+        <div class="finder-label"><i class="ri-price-tag-3-line"></i> 2. Categoria / Tipo:</div>
+        <div class="filter-options" id="catFilters">
+          <button class="filter-btn active" data-cat="all" onclick="setCatFilter('all', this)">Ver Tudo</button>
+          <button class="filter-btn" data-cat="carrinhos" onclick="setCatFilter('carrinhos', this)">🏎️ Carrinhos & Ação</button>
+          <button class="filter-btn" data-cat="pelucias" onclick="setCatFilter('pelucias', this)">🧸 Pelúcias</button>
+          <button class="filter-btn" data-cat="educativos" onclick="setCatFilter('educativos', this)">🧩 Educativos & Madeira</button>
+          <button class="filter-btn" data-cat="jogos" onclick="setCatFilter('jogos', this)">🎲 Jogos em Família</button>
+          <button class="filter-btn" data-cat="kits" onclick="setCatFilter('kits', this)">🎁 Kits Presente</button>
+          <button class="filter-btn" data-cat="mochilas" onclick="setCatFilter('mochilas', this)">🎒 Mochilas & Papelaria</button>
+        </div>
+      </div>
+
+      <div class="finder-action-bar">
+        <div class="finder-result-count" id="resultsCount">
+          Exibindo <strong>8 produtos selecionados</strong>
+        </div>
+        <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Gostaria%20de%20uma%20sugest%C3%A3o%20personalizada%20de%20presente%20para%20uma%20crian%C3%A7a!" target="_blank" class="btn-finder-wa">
+          <i class="ri-whatsapp-line"></i> Não achou o que queria? Peça pelo WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- CATALOG PRODUCTS -->
+    <section id="catalogo">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Vitrine de Presentes em Destaque</h2>
+          <p class="section-subtitle">Itens selecionados a dedo com pronta entrega e embalagem de presente inclusa</p>
+        </div>
+        <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Quero%20ver%20mais%20modelos%20de%20brinquedos%20dispon%C3%ADveis%20na%20loja!" target="_blank" class="section-link">
+          Ver acervo completo no WhatsApp <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+
+      <div class="products-grid" id="productGrid">
+
+        <!-- PROD 1 -->
+        <div class="product-card" data-cat="carrinhos" data-age="3-5,6-8">
+          <div class="product-thumb-wrap">
+            <span class="product-badge bestseller">🔥 Mais Pedido</span>
+            <span class="product-age-tag">+3 anos</span>
+            <img src="https://images.unsplash.com/photo-1594787318286-3d835c1d207f?w=600&auto=format&fit=crop&q=80" alt="Carrinho Acrobático 360 Graus" />
+          </div>
+          <div class="product-body">
+            <span class="product-category">Carrinhos & Ação</span>
+            <h3 class="product-title">Super Carro Acrobático 360° com Luzes LED & Controle</h3>
+            <div class="product-stars">
+              <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+              <span>(64 avaliações)</span>
+            </div>
+            <div class="product-price-box">
+              <div class="product-price">R$ 79,90</div>
+              <div class="product-installments">ou 3x de R$ 26,63 sem juros</div>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Quero%20fazer%20o%20pedido%20do%20Super%20Carro%20Acrob%C3%A1tico%20360%C2%B0%20(R$%2079,90)%20da%20Monalisa!" target="_blank" class="btn-buy-wa">
+              <i class="ri-whatsapp-line"></i> Pedir no WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- PROD 2 -->
+        <div class="product-card" data-cat="pelucias" data-age="0-2,3-5">
+          <div class="product-thumb-wrap">
+            <span class="product-badge ready">🎀 Pronto p/ Presente</span>
+            <span class="product-age-tag">0+ meses</span>
+            <img src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=600&auto=format&fit=crop&q=80" alt="Pelúcia Ursinho Antialérgico" />
+          </div>
+          <div class="product-body">
+            <span class="product-category">Pelúcias & Fofuras</span>
+            <h3 class="product-title">Urso Pelúcia Classic Antialérgico Toque Ultra Macio</h3>
+            <div class="product-stars">
+              <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+              <span>(48 avaliações)</span>
+            </div>
+            <div class="product-price-box">
+              <div class="product-price">R$ 54,90</div>
+              <div class="product-installments">ou 2x de R$ 27,45 sem juros</div>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Urso%20Pel%C3%BAcia%20Classic%20(R$%2054,90)%20da%20Monalisa!" target="_blank" class="btn-buy-wa">
+              <i class="ri-whatsapp-line"></i> Pedir no WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- PROD 3 -->
+        <div class="product-card" data-cat="educativos" data-age="3-5,6-8">
+          <div class="product-thumb-wrap">
+            <span class="product-badge bestseller">🧠 Recomendado</span>
+            <span class="product-age-tag">3 a 10 anos</span>
+            <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&auto=format&fit=crop&q=80" alt="Blocos de Montar Montessori Madeira" />
+          </div>
+          <div class="product-body">
+            <span class="product-category">Educativos & Madeira</span>
+            <h3 class="product-title">Kit Montessori Blocos Geométricos de Madeira 50 Peças</h3>
+            <div class="product-stars">
+              <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+              <span>(52 avaliações)</span>
+            </div>
+            <div class="product-price-box">
+              <div class="product-price">R$ 89,90</div>
+              <div class="product-installments">ou 3x de R$ 29,96 sem juros</div>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Quero%20o%20Kit%20Montessori%20Blocos%20de%20Madeira%20(R$%2089,90)%20da%20Monalisa!" target="_blank" class="btn-buy-wa">
+              <i class="ri-whatsapp-line"></i> Pedir no WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- PROD 4 -->
+        <div class="product-card" data-cat="kits" data-age="3-5,6-8,9+">
+          <div class="product-thumb-wrap">
+            <span class="product-badge new">✨ Kit Luxo</span>
+            <span class="product-age-tag">Embalado</span>
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80" alt="Kit Presente Completo" />
+          </div>
+          <div class="product-body">
+            <span class="product-category">Kits de Presente</span>
+            <h3 class="product-title">Kit Aniversário Mágico: Brinquedo + Livro + Caixa Laço</h3>
+            <div class="product-stars">
+              <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+              <span>(39 avaliações)</span>
+            </div>
+            <div class="product-price-box">
+              <div class="product-price">R$ 69,90</div>
+              <div class="product-installments">ou 2x de R$ 34,95 sem juros</div>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Quero%20o%20Kit%20Anivers%C3%A1rio%20M%C3%A1gico%20(R$%2069,90)%20já%20embalado%20para%20presente!" target="_blank" class="btn-buy-wa">
+              <i class="ri-whatsapp-line"></i> Pedir no WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- PROD 5 -->
+        <div class="product-card" data-cat="jogos" data-age="6-8,9+">
+          <div class="product-thumb-wrap">
+            <span class="product-badge bestseller">🎲 Sucesso</span>
+            <span class="product-age-tag">+5 anos</span>
+            <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=600&auto=format&fit=crop&q=80" alt="Kit Jogos de Tabuleiro Clássicos" />
+          </div>
+          <div class="product-body">
+            <span class="product-category">Jogos em Família</span>
+            <h3 class="product-title">Kit Tabuleiro Família 3 em 1: Ludo, Dama e Xadrez</h3>
+            <div class="product-stars">
+              <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+              <span>(43 avaliações)</span>
+            </div>
+            <div class="product-price-box">
+              <div class="product-price">R$ 49,90</div>
+              <div class="product-installments">ou 2x de R$ 24,95 sem juros</div>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Quero%20o%20Kit%20Tabuleiro%20Fam%C3%ADlia%203%20em%201%20(R$%2049,90)%20da%20Monalisa!" target="_blank" class="btn-buy-wa">
+              <i class="ri-whatsapp-line"></i> Pedir no WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- PROD 6 -->
+        <div class="product-card" data-cat="mochilas" data-age="3-5,6-8">
+          <div class="product-thumb-wrap">
+            <span class="product-badge ready">🎒 Escolar</span>
+            <span class="product-age-tag">Infantil</span>
+            <img src="https://images.unsplash.com/photo-1577401239170-897942555fb3?w=600&auto=format&fit=crop&q=80" alt="Mochila Escolar Infantil" />
+          </div>
+          <div class="product-body">
+            <span class="product-category">Mochilas & Utilidades</span>
+            <h3 class="product-title">Mochila Escolar Divertida Reforçada com Bolsos Laterais</h3>
+            <div class="product-stars">
+              <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+              <span>(31 avaliações)</span>
+            </div>
+            <div class="product-price-box">
+              <div class="product-price">R$ 59,90</div>
+              <div class="product-installments">ou 2x de R$ 29,95 sem juros</div>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Quero%20ver%20os%20modelos%20da%20Mochila%20Escolar%20(R$%2059,90)%20da%20Monalisa!" target="_blank" class="btn-buy-wa">
+              <i class="ri-whatsapp-line"></i> Pedir no WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- PROD 7 -->
+        <div class="product-card" data-cat="educativos" data-age="0-2,3-5">
+          <div class="product-thumb-wrap">
+            <span class="product-badge ready">👶 Primeira Idade</span>
+            <span class="product-age-tag">6m a 3 anos</span>
+            <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80" alt="Brinquedo Sensorial Educativo" />
+          </div>
+          <div class="product-body">
+            <span class="product-category">Educativos & Bebê</span>
+            <h3 class="product-title">Torre de Encaixe e Cores Sensorial Primeira Infância</h3>
+            <div class="product-stars">
+              <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+              <span>(57 avaliações)</span>
+            </div>
+            <div class="product-price-box">
+              <div class="product-price">R$ 44,90</div>
+              <div class="product-installments">ou 2x de R$ 22,45 sem juros</div>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Quero%20a%20Torre%20de%20Encaixe%20Sensorial%20(R$%2044,90)%20para%20beb%C3%AA!" target="_blank" class="btn-buy-wa">
+              <i class="ri-whatsapp-line"></i> Pedir no WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- PROD 8 -->
+        <div class="product-card" data-cat="kits" data-age="0-2,3-5,6-8,9+">
+          <div class="product-thumb-wrap">
+            <span class="product-badge bestseller">⭐ Personalizado</span>
+            <span class="product-age-tag">Sob Medida</span>
+            <img src="https://images.unsplash.com/photo-1512909006721-3d6018887383?w=600&auto=format&fit=crop&q=80" alt="Kit Surpresa Personalizado" />
+          </div>
+          <div class="product-body">
+            <span class="product-category">Kits de Presente</span>
+            <h3 class="product-title">Kit Surpresa Monalisa: Montado Especialmente por Idade</h3>
+            <div class="product-stars">
+              <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+              <span>(82 avaliações)</span>
+            </div>
+            <div class="product-price-box">
+              <div class="product-price">Até R$ 99,00</div>
+              <div class="product-installments">Você define o valor e a idade</div>
+            </div>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Quero%20montar%20um%20Kit%20Surpresa%20Personalizado%20para%20uma%20crian%C3%A7a!" target="_blank" class="btn-buy-wa">
+              <i class="ri-whatsapp-line"></i> Montar meu Kit
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- READY-TO-GIFT BANNER -->
+    <section class="gift-banner">
+      <div class="gift-banner-content">
+        <div class="gift-banner-tag">
+          <i class="ri-gift-2-line"></i> Solução Sem Estresse
+        </div>
+        <h2 class="gift-banner-title">
+          Foi convidado para um aniversário e está sem tempo?
+        </h2>
+        <p class="gift-banner-desc">
+          Mande uma mensagem no WhatsApp informando a idade e o valor que deseja gastar. Nós montamos o presente com os itens mais desejados da loja, colocamos laço, cartão e entregamos onde você estiver!
+        </p>
+        <div class="gift-banner-features">
+          <div class="gift-feature-item">
+            <i class="ri-checkbox-circle-fill"></i> Embalagem de luxo cortesia em todos os pedidos
+          </div>
+          <div class="gift-feature-item">
+            <i class="ri-checkbox-circle-fill"></i> Envio de fotos e vídeos no WhatsApp antes de fechar
+          </div>
+          <div class="gift-feature-item">
+            <i class="ri-checkbox-circle-fill"></i> Entrega rápida por motoboy em Ribeirão Preto
+          </div>
+        </div>
+        <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Preciso%20de%20um%20presente%20urgente%20j%C3%A1%20embalado!%20Pode%20me%20ajudar?" target="_blank" class="btn-gift-banner">
+          <i class="ri-whatsapp-line"></i> Montar Presente pelo WhatsApp
+        </a>
+      </div>
+      <div class="gift-banner-image">
+        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop&q=80" alt="Mãe e filho felizes com presente" />
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">O que dizem os pais de Ribeirão Preto</h2>
+          <p class="section-subtitle">Avaliações reais de clientes atendidos no Box 88 e pelo WhatsApp</p>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div>
+            <div class="review-stars">
+              <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+            </div>
+            <p class="review-quote">
+              "Comprei o presente de aniversário da minha afilhada em cima da hora. Em menos de 1 hora o motoboy já tinha entregue aqui em casa, com uma embalagem linda de laço! Recomendo demais!"
+            </p>
+          </div>
+          <div class="review-author">
+            <div class="author-avatar">MS</div>
+            <div class="author-info">
+              <div class="author-name">Mariana Silveira</div>
+              <div class="author-tag">Jardim Botânico · Ribeirão Preto</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="review-stars">
+              <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+            </div>
+            <p class="review-quote">
+              "O atendimento da Cláudia no WhatsApp é impecável. Ela me mandou vídeo de 3 brinquedos para eu escolher o ideal para meu menino de 4 anos. Ele não larga o carrinho!"
+            </p>
+          </div>
+          <div class="review-author">
+            <div class="author-avatar">RM</div>
+            <div class="author-info">
+              <div class="author-name">Rodrigo Medeiros</div>
+              <div class="author-tag">Nova Aliança · Ribeirão Preto</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="review-stars">
+              <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+            </div>
+            <p class="review-quote">
+              "Sempre passo no Box 88 quando vou ao Novo Mercadão. A variedade de jogos educativos de madeira é fantástica e com preços super justos. Nota 10!"
+            </p>
+          </div>
+          <div class="review-author">
+            <div class="author-avatar">CF</div>
+            <div class="author-info">
+              <div class="author-name">Camila F. Toledo</div>
+              <div class="author-tag">Ribeirânia · Ribeirão Preto</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION & STORE SECTION -->
+    <section class="location-section" id="localizacao">
+      <div class="location-info">
+        <div class="location-kicker">
+          <i class="ri-store-2-line"></i> Conheça Nossa Loja Física
+        </div>
+        <h2 class="location-title">
+          Venha tomar um café e nos visitar no Novo Mercadão!
+        </h2>
+        
+        <div class="location-details">
+          <div class="loc-detail-row">
+            <div class="loc-icon"><i class="ri-map-pin-2-fill"></i></div>
+            <div class="loc-text">
+              <strong>Endereço do Box:</strong>
+              Novo Mercadão de Ribeirão Preto — <strong>Box 88</strong><br/>
+              Av. Ligia Latuf Salomão, 200 — Nova Aliança, Ribeirão Preto – SP
+            </div>
+          </div>
+
+          <div class="loc-detail-row">
+            <div class="loc-icon"><i class="ri-time-fill"></i></div>
+            <div class="loc-text">
+              <strong>Horário de Funcionamento:</strong>
+              Terça a Sábado: 08h às 20h<br/>
+              Domingo: 08h às 16h (Segunda: Fechado)
+            </div>
+          </div>
+
+          <div class="loc-detail-row">
+            <div class="loc-icon"><i class="ri-whatsapp-fill"></i></div>
+            <div class="loc-text">
+              <strong>Atendimento e Encomendas:</strong>
+              (16) 99739-9407 · WhatsApp direto com a loja
+            </div>
+          </div>
+        </div>
+
+        <div class="location-buttons">
+          <a href="https://maps.google.com/?q=Novo+Mercad%C3%A3o+de+Ribeir%C3%A3o+Preto" target="_blank" class="btn-maps">
+            <i class="ri-direction-line"></i> Como Chegar (Google Maps)
+          </a>
+          <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Gostaria%20de%20saber%20se%20o%20Box%2088%20est%C3%A1%20aberto%20agora!" target="_blank" class="btn-header-wa" style="flex:1; justify-content:center;">
+            <i class="ri-whatsapp-line"></i> Falar com o Box 88
+          </a>
+        </div>
+      </div>
+
+      <div class="location-image-side">
+        <img src="./monalisa-fachada.jpg" alt="Fachada da Loja Monalisa no Box 88 do Novo Mercadão" />
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+      <div class="section-header" style="text-align:center; display:block; margin-bottom:32px;">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <p class="section-subtitle">Tire suas dúvidas sobre pedidos, embalagens e entregas</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Como funciona a entrega expressa em Ribeirão Preto?</span>
+            <i class="ri-arrow-down-s-line faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Enviamos via motoboy para qualquer bairro de Ribeirão Preto. Fazendo o pedido pelo WhatsApp, combinamos o melhor horário e seu presente chega pronto e embalado no mesmo dia!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>A embalagem para presente é cobrada à parte?</span>
+            <i class="ri-arrow-down-s-line faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Não! Todos os nossos produtos já acompanham embalagem de presente especial com laço de cetim e papel de seda sem nenhum custo adicional.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Posso escolher pelo WhatsApp e retirar pessoalmente no Box 88?</span>
+            <i class="ri-arrow-down-s-line faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Com certeza! Você pode nos mandar mensagem, reservar os itens desejados e apenas passar no Box 88 do Novo Mercadão para retirar seu pacote já prontinho.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Quais são as formas de pagamento aceitas?</span>
+            <i class="ri-arrow-down-s-line faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            Aceitamos Pix com confirmação imediata, cartões de crédito em até 12x (com link de pagamento seguro ou maquininha na entrega/retirada) e dinheiro.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">🎁</div>
-    <div class="footer-name">Monalisa Presentes & Brinquedos</div>
-    <div class="footer-divider"></div>
-    <div class="footer-sub">
-      Box 88 · Novo Mercadão · Ribeirão Preto – SP<br/>
-      📞 (16) 99739-9407<br/><br/>
-      Página desenvolvida por <a href="https://www.somosvertexdigital.com.br" target="_blank">Vertex Digital</a>
+    <div class="container">
+      <div class="footer-brand">
+        <div class="brand-icon-box" style="width:34px; height:34px; font-size:1.1rem;">
+          <i class="ri-gift-2-fill"></i>
+        </div>
+        <span class="footer-logo-title">Monalisa Presentes & Brinquedos</span>
+      </div>
+      <p class="footer-info">
+        Box 88 · Novo Mercadão de Ribeirão Preto — Av. Ligia Latuf Salomão, 200, Nova Aliança.<br/>
+        WhatsApp de Vendas: <strong>(16) 99739-9407</strong>
+      </p>
+      
+      <div class="footer-social-links">
+        <a href="https://www.instagram.com/monalisa.novomercadao/" target="_blank" class="social-btn" aria-label="Instagram">
+          <i class="ri-instagram-line"></i>
+        </a>
+        <a href="https://wa.me/5516997399407" target="_blank" class="social-btn" aria-label="WhatsApp">
+          <i class="ri-whatsapp-line"></i>
+        </a>
+        <a href="https://maps.google.com/?q=Novo+Mercad%C3%A3o+de+Ribeir%C3%A3o+Preto" target="_blank" class="social-btn" aria-label="Localização">
+          <i class="ri-map-pin-line"></i>
+        </a>
+      </div>
+
+      <div class="footer-bottom-copy">
+        © 2026 Monalisa Presentes & Brinquedos. Todos os direitos reservados.<br/>
+        Ambiente Digital e Infraestrutura desenvolvidos por <a href="https://www.somosvertexdigital.com.br" target="_blank">Vertex Digital</a>.
+      </div>
     </div>
   </footer>
 
-  <!-- FLOAT WA -->
-  <a href="https://wa.me/5516997399407?text=Olá!%20Vi%20o%20site%20da%20Monalisa%20e%20quero%20atendimento!" target="_blank" class="float-wa" aria-label="WhatsApp">
-    💬
-  </a>
+  <!-- MOBILE STICKY BOTTOM BAR -->
+  <div class="mobile-sticky-bar">
+    <div class="sticky-info">
+      <div class="sticky-title">Monalisa Presentes</div>
+      <div class="sticky-sub">Atendimento Online</div>
+    </div>
+    <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Monalisa%20e%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" class="btn-sticky-wa">
+      <i class="ri-whatsapp-line"></i> Fazer Pedido
+    </a>
+  </div>
 
   <script>
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const t = document.querySelector(a.getAttribute('href'));
-        if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    let currentAge = 'all';
+    let currentCat = 'all';
+
+    function setAgeFilter(age, btn) {
+      document.querySelectorAll('#ageFilters .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentAge = age;
+      filterProducts();
+    }
+
+    function setCatFilter(cat, btn) {
+      document.querySelectorAll('#catFilters .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentCat = cat;
+      filterProducts();
+    }
+
+    function applyQuickFilter(cat) {
+      const btn = document.querySelector(`#catFilters button[data-cat="${cat}"]`);
+      if (btn) {
+        setCatFilter(cat, btn);
+      }
+    }
+
+    function filterProducts() {
+      const cards = document.querySelectorAll('.product-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-cat');
+        const cardAges = card.getAttribute('data-age') ? card.getAttribute('data-age').split(',') : [];
+
+        const matchCat = (currentCat === 'all' || cardCat === currentCat);
+        const matchAge = (currentAge === 'all' || cardAges.includes(currentAge));
+
+        if (matchCat && matchAge) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
       });
-    });
+
+      const counter = document.getElementById('resultsCount');
+      if (counter) {
+        counter.innerHTML = `Exibindo <strong>${visibleCount} produto${visibleCount !== 1 ? 's' : ''} selecionado${visibleCount !== 1 ? 's' : ''}</strong>`;
+      }
+    }
+
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      item.classList.toggle('open');
+    }
   </script>
 </body>
 </html>
