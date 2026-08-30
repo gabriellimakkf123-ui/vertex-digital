@@ -11,7 +11,8 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         planomonalisa: resolve(__dirname, 'plano-monalisa.html'),
         monalisa: resolve(__dirname, 'monalisa.html'),
-        boutique: resolve(__dirname, 'plano-boutiquedostemperos.html')
+        boutique: resolve(__dirname, 'plano-boutiquedostemperos.html'),
+        operacaomonalisa: resolve(__dirname, 'operacao-monalisa.html')
       }
     }
   }

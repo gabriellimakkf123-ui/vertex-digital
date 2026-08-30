@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Central de Operações · Mona Lisa [Privado Vertex]</title>
+  
+  <!-- Fonts: Outfit, Plus Jakarta Sans & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg-dark: #07080C;
+      --bg-card: #0F1118;
+      --bg-card-hover: #151824;
+      --bg-inner: #181B28;
+      --border: #222638;
+      --border-focus: #3B4260;
+      
+      --red: #FF1E42;
+      --red-glow: rgba(255, 30, 66, 0.25);
+      --red-subtle: rgba(255, 30, 66, 0.1);
+      
+      --gold: #F59E0B;
+      --gold-subtle: rgba(245, 158, 11, 0.12);
+      
+      --green: #10B981;
+      --green-subtle: rgba(16, 185, 129, 0.12);
+      
+      --blue: #3B82F6;
+      --blue-subtle: rgba(59, 130, 246, 0.12);
+      
+      --purple: #8B5CF6;
+      --purple-subtle: rgba(139, 92, 246, 0.12);
+
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --font-title: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      padding-bottom: 60px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--border-focus); }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* TOP HEADER */
+    .header-bar {
+      background: rgba(15, 17, 24, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-lock {
+      background: rgba(255, 30, 66, 0.15);
+      border: 1px solid rgba(255, 30, 66, 0.35);
+      color: var(--red);
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .header-title {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-title span { color: var(--red); }
+
+    .client-badge {
+      background: var(--gold-subtle);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* HERO COCKPIT STATS */
+    .cockpit-hero {
+      padding: 28px 0 20px;
+    }
+
+    .hero-panel {
+      background: linear-gradient(135deg, #0F1118 0%, #171A27 100%);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (min-width: 860px) {
+      .hero-panel {
+        grid-template-columns: 1.4fr 1fr;
+        padding: 32px;
+        align-items: center;
+      }
+    }
+
+    .hero-h1 {
+      font-family: var(--font-title);
+      font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .hero-h1 span {
+      color: var(--red);
+    }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .contract-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .c-pill {
+      background: var(--bg-inner);
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .c-pill strong { color: #FFFFFF; }
+    .c-pill i { color: var(--red); }
+
+    /* PROGRESS BOX */
+    .progress-box {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .progress-val {
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background: var(--bg-inner);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--red) 0%, var(--green) 100%);
+      border-radius: 10px;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .progress-sub {
+      font-size: 0.74rem;
+      color: var(--text-dim);
+    }
+
+    /* NAVIGATION TABS */
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0 20px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tabs-nav::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--border-focus);
+      color: #FFFFFF;
+    }
+
+    .tab-btn.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: #FFFFFF;
+      box-shadow: 0 4px 16px var(--red-glow);
+    }
+
+    /* TAB CONTENT WRAPPERS */
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* WEEK SECTIONS */
+    .week-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .week-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .week-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .week-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .week-name {
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .week-objective {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* CHECKLIST ITEMS */
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .check-item {
+      background: var(--bg-inner);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .check-item:hover {
+      border-color: var(--border-focus);
+      background: var(--bg-card-hover);
+    }
+
+    .check-item.completed {
+      border-color: rgba(16, 185, 129, 0.35);
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .check-item.completed .check-title {
+      text-decoration: line-through;
+      color: var(--text-dim);
+    }
+
+    .custom-checkbox {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: all 0.15s;
+    }
+
+    .check-item.completed .custom-checkbox {
+      background: var(--green);
+      border-color: var(--green);
+      color: #FFFFFF;
+    }
+
+    .check-content {
+      flex: 1;
+    }
+
+    .check-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .check-title {
+      font-weight: 700;
+      font-size: 0.94rem;
+      color: #FFFFFF;
+    }
+
+    .check-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .badge-urgent { background: rgba(255, 30, 66, 0.2); color: #FF6B81; }
+    .badge-tech   { background: rgba(59, 130, 246, 0.2); color: #60A5FA; }
+    .badge-ad     { background: rgba(139, 92, 246, 0.2); color: #A78BFA; }
+    .badge-sales  { background: rgba(16, 185, 129, 0.2); color: #34D399; }
+
+    .check-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* COPYABLE SNIPPET BOX */
+    .snippet-box {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 12px;
+      position: relative;
+    }
+
+    .snippet-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .snippet-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-copy {
+      background: var(--bg-inner);
+      border: 1px solid var(--border);
+      color: #FFFFFF;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s;
+    }
+
+    .btn-copy:hover {
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .btn-copy.copied {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .snippet-code {
+      font-family: inherit;
+      font-size: 0.82rem;
+      color: #E2E8F0;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+
+    /* GRID CARDS FOR PLAYBOOKS */
+    .playbook-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .playbook-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .playbook-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pb-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .pb-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+    }
+
+    .pb-icon.red { background: var(--red-subtle); color: var(--red); }
+    .pb-icon.blue { background: var(--blue-subtle); color: var(--blue); }
+    .pb-icon.purple { background: var(--purple-subtle); color: var(--purple); }
+    .pb-icon.green { background: var(--green-subtle); color: var(--green); }
+
+    .pb-title {
+      font-family: var(--font-title);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .pb-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    /* FLOATING STATS FOOTER */
+    .reset-btn-wrap {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn-reset {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-reset:hover {
+      color: var(--red);
+      border-color: var(--red);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header-bar">
+    <div class="container">
+      <div class="header-inner">
+        <div class="brand-group">
+          <div class="badge-lock"><i class="ri-shield-keyhole-line"></i> Acesso Interno</div>
+          <div class="header-title">Vertex <span>Operations</span></div>
+        </div>
+
+        <div class="client-badge">
+          <i class="ri-user-star-fill"></i>
+          <span>Mona Lisa Presentes · R$ 1.000/mês</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- COCKPIT HERO -->
+    <section class="cockpit-hero">
+      <div class="hero-panel">
+        <div>
+          <h1 class="hero-h1">Central de Execução <span>Mona Lisa</span></h1>
+          <p class="hero-desc">
+            Seu roteiro operacional completo para cumprir 100% do contrato com a Cláudia, gerar vendas no WhatsApp e garantir a renovação e indicação.
+          </p>
+          <div class="contract-pills">
+            <div class="c-pill"><i class="ri-money-dollar-circle-line"></i> Contrato: <strong>R$ 1.000,00/mês</strong></div>
+            <div class="c-pill"><i class="ri-store-2-line"></i> Loja: <strong>Box 88 · Novo Mercadão</strong></div>
+            <div class="c-pill"><i class="ri-whatsapp-line"></i> Whats: <strong>(16) 99739-9407</strong></div>
+          </div>
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="progress-box">
+          <div class="progress-top">
+            <span>Progresso da Operação</span>
+            <span class="progress-val" id="progressPct">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressBar"></div>
+          </div>
+          <div class="progress-sub" id="progressCount">0 de 16 tarefas concluídas</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NAVIGATION TABS -->
+    <nav class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('tab-semana1', this)"><i class="ri-calendar-check-line"></i> Semana 1 (Fundação)</button>
+      <button class="tab-btn" onclick="switchTab('tab-semana2', this)"><i class="ri-palette-line"></i> Semana 2 (Artes & Ads)</button>
+      <button class="tab-btn" onclick="switchTab('tab-semana3', this)"><i class="ri-rocket-2-line"></i> Semana 3 (Vendas Ativas)</button>
+      <button class="tab-btn" onclick="switchTab('tab-semana4', this)"><i class="ri-bar-chart-box-line"></i> Semana 4 (Resultados)</button>
+      <button class="tab-btn" onclick="switchTab('tab-roteiros', this)"><i class="ri-video-line"></i> Roteiros de Vídeo</button>
+      <button class="tab-btn" onclick="switchTab('tab-metaads', this)"><i class="ri-advertisement-line"></i> Guia Meta Ads</button>
+      <button class="tab-btn" onclick="switchTab('tab-whatsapp', this)"><i class="ri-whatsapp-line"></i> Scripts de Atendimento</button>
+    </nav>
+
+    <!-- ==================== TAB: SEMANA 1 ==================== -->
+    <div id="tab-semana1" class="tab-panel active">
+      <div class="week-card">
+        <div class="week-header">
+          <div class="week-title-wrap">
+            <span class="week-tag">Etapa 1 · Dias 01 a 07</span>
+            <h2 class="week-name">Onboarding, Alinhamento & Fundação Digital</h2>
+            <p class="week-objective">Objetivo: Validar a vitrine com a Cláudia, alinhar canais de comunicação, otimizar o Instagram e gravar os 2 primeiros vídeos no Box 88.</p>
+          </div>
+        </div>
+
+        <div class="checklist">
+          <!-- T1 -->
+          <div class="check-item" data-id="s1_t1" onclick="toggleTask('s1_t1')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">1. Mensagem de Boas-Vindas no Grupo VIP</span>
+                <span class="check-badge badge-urgent">Imediato</span>
+              </div>
+              <p class="check-desc">Enviar a mensagem de início dos trabalhos no grupo do WhatsApp com a Cláudia e apresentar a vitrine oficial no ar.</p>
+              <div class="snippet-box" onclick="event.stopPropagation()">
+                <div class="snippet-header">
+                  <span class="snippet-label"><i class="ri-file-copy-line"></i> Template WhatsApp</span>
+                  <button class="btn-copy" onclick="copyText('txt_w1_welcome', this)"><i class="ri-clipboard-line"></i> Copiar</button>
+                </div>
+                <div class="snippet-code" id="txt_w1_welcome">Cláudia, seja muito bem-vinda oficialmente ao nosso plano de aceleração digital pela Vertex! 🚀
+
+Já deixamos a primeira grande entrega pronta para você: a sua Vitrine Digital Oficial no ar, já com a logo da Monalisa, catálogo de presentes e botão direto para o WhatsApp da loja:
+👉 https://www.somosvertexdigital.com.br/monalisa.html
+
+📌 Nossos próximos passos dessa primeira semana:
+1. Atualizar a bio do Instagram com o link oficial da loja.
+2. Organizar os acessos do Instagram/Meta para prepararmos os anúncios.
+3. Gravar os primeiros vídeos com os roteiros práticos que já preparei para você.
+
+Vamos para cima transformar o Box 88 na maior referência de presentes de Ribeirão Preto! 🔥</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- T2 -->
+          <div class="check-item" data-id="s1_t2" onclick="toggleTask('s1_t2')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">2. Atualização da Bio do Instagram da Mona Lisa</span>
+                <span class="check-badge badge-tech">Instagram</span>
+              </div>
+              <p class="check-desc">Enviar para a Cláudia a nova biografia padronizada com o link oficial da vitrine.</p>
+              <div class="snippet-box" onclick="event.stopPropagation()">
+                <div class="snippet-header">
+                  <span class="snippet-label"><i class="ri-instagram-line"></i> Nova Bio Instagram</span>
+                  <button class="btn-copy" onclick="copyText('txt_w1_bio', this)"><i class="ri-clipboard-line"></i> Copiar</button>
+                </div>
+                <div class="snippet-code" id="txt_w1_bio">🎁 Loja de Presentes, Brinquedos & Variedades
+📍 Box 88 · Novo Mercadão de Ribeirão Preto
+🚚 Entrega expressa na sua casa com embalagem de presente
+👇 Veja nosso catálogo e faça seu pedido:
+somosvertexdigital.com.br/monalisa.html</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- T3 -->
+          <div class="check-item" data-id="s1_t3" onclick="toggleTask('s1_t3')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">3. Solicitação de Acessos Meta & Instagram</span>
+                <span class="check-badge badge-tech">Acessos</span>
+              </div>
+              <p class="check-desc">Pegar acesso de Administrador/Parceiro ao Gerenciador de Negócios da Meta e verificar o WhatsApp Business.</p>
+            </div>
+          </div>
+
+          <!-- T4 -->
+          <div class="check-item" data-id="s1_t4" onclick="toggleTask('s1_t4')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">4. Enviar os 2 Primeiros Roteiros de Reels para Gravação</span>
+                <span class="check-badge badge-sales">Gravação</span>
+              </div>
+              <p class="check-desc">Enviar o Vídeo 1 (Salva-Vidas de Aniversário) e Vídeo 2 (Tour Box 88) para a Cláudia gravar no celular na loja.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB: SEMANA 2 ==================== -->
+    <div id="tab-semana2" class="tab-panel">
+      <div class="week-card">
+        <div class="week-header">
+          <div class="week-title-wrap">
+            <span class="week-tag">Etapa 2 · Dias 08 a 14</span>
+            <h2 class="week-name">Identidade dos Destaques & Estruturação do Tráfego</h2>
+            <p class="week-objective">Objetivo: Organizar a vitrine do perfil no Instagram e subir a primeira campanha de Meta Ads no ar.</p>
+          </div>
+        </div>
+
+        <div class="checklist">
+          <!-- T5 -->
+          <div class="check-item" data-id="s2_t1" onclick="toggleTask('s2_t1')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">5. Implementar 5 Capas de Destaques Estratégicos</span>
+                <span class="check-badge badge-tech">Design</span>
+              </div>
+              <p class="check-desc">Organizar os destaques do perfil: 1. <strong>Quem Somos</strong>, 2. <strong>Box 88</strong>, 3. <strong>Como Pedir</strong>, 4. <strong>Depoimentos</strong>, 5. <strong>Presentes</strong>.</p>
+            </div>
+          </div>
+
+          <!-- T6 -->
+          <div class="check-item" data-id="s2_t2" onclick="toggleTask('s2_t2')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">6. Edição e Postagem dos Primeiros 2 Reels</span>
+                <span class="check-badge badge-sales">Conteúdo</span>
+              </div>
+              <p class="check-desc">Receber os vídeos gravados pela Cláudia, aplicar cortes dinâmicos, legendas chamativas e publicar com copy de conversão direcionando para o link da bio.</p>
+            </div>
+          </div>
+
+          <!-- T7 -->
+          <div class="check-item" data-id="s2_t3" onclick="toggleTask('s2_t3')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">7. Subir a 1ª Campanha de Meta Ads (Tráfego WhatsApp)</span>
+                <span class="check-badge badge-ad">Meta Ads</span>
+              </div>
+              <p class="check-desc">Criar campanha de engajamento direcionada ao WhatsApp da loja com raio de 12km em Ribeirão Preto (R$ 10 a R$ 15/dia).</p>
+            </div>
+          </div>
+
+          <!-- T8 -->
+          <div class="check-item" data-id="s2_t4" onclick="toggleTask('s2_t4')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">8. Treinar o Atendimento de WhatsApp da Loja</span>
+                <span class="check-badge badge-sales">Vendas</span>
+              </div>
+              <p class="check-desc">Repassar com a Cláudia e a equipe do Box 88 o script de resposta rápida quando chegarem leads do anúncio e da landing page.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB: SEMANA 3 ==================== -->
+    <div id="tab-semana3" class="tab-panel">
+      <div class="week-card">
+        <div class="week-header">
+          <div class="week-title-wrap">
+            <span class="week-tag">Etapa 3 · Dias 15 a 21</span>
+            <h2 class="week-name">Otimização de Anúncios & Escala de Conversas</h2>
+            <p class="week-objective">Objetivo: Reduzir o custo por mensagem, aumentar o volume de pedidos no WhatsApp e publicar novos conteúdos de prova social.</p>
+          </div>
+        </div>
+
+        <div class="checklist">
+          <!-- T9 -->
+          <div class="check-item" data-id="s3_t1" onclick="toggleTask('s3_t1')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">9. Check-in de Metricas de Anúncios (Custo por Conversa)</span>
+                <span class="check-badge badge-ad">Otimização</span>
+              </div>
+              <p class="check-desc">Analisar o custo por lead no WhatsApp (meta: abaixo de R$ 3,50 por conversa iniciada). Pausar criativos fracos e escalar os melhores.</p>
+            </div>
+          </div>
+
+          <!-- T10 -->
+          <div class="check-item" data-id="s3_t2" onclick="toggleTask('s3_t2')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">10. Envio do 2º Lote de Roteiros (Foco em Novidades)</span>
+                <span class="check-badge badge-sales">Roteiros</span>
+              </div>
+              <p class="check-desc">Enviar Vídeo 3 (Novidades da Semana) e Vídeo 4 (Kit Presente Express Montado ao Vivo).</p>
+            </div>
+          </div>
+
+          <!-- T11 -->
+          <div class="check-item" data-id="s3_t3" onclick="toggleTask('s3_t3')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">11. Alinhamento Rápido de Feedback com a Cláudia</span>
+                <span class="check-badge badge-urgent">Relacionamento</span>
+              </div>
+              <p class="check-desc">Perguntar no grupo VIP: <em>"Cláudia, como estão chegando as mensagens no WhatsApp? Quais brinquedos as pessoas mais pediram?"</em></p>
+            </div>
+          </div>
+
+          <!-- T12 -->
+          <div class="check-item" data-id="s3_t4" onclick="toggleTask('s3_t4')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">12. Teste de Remarketing Local (Visitantes da Vitrine)</span>
+                <span class="check-badge badge-ad">Meta Ads</span>
+              </div>
+              <p class="check-desc">Rodar anúncio lembrete para quem interagiu com o Instagram nos últimos 30 dias com a oferta de embalagem cortesia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB: SEMANA 4 ==================== -->
+    <div id="tab-semana4" class="tab-panel">
+      <div class="week-card">
+        <div class="week-header">
+          <div class="week-title-wrap">
+            <span class="week-tag">Etapa 4 · Dias 22 a 30</span>
+            <h2 class="week-name">Fechamento do Mês 1 & Apresentação de Resultados</h2>
+            <p class="week-objective">Objetivo: Consolidar relatório executivo de impacto, demonstrar o ROI gerado e assegurar a continuidade do contrato.</p>
+          </div>
+        </div>
+
+        <div class="checklist">
+          <!-- T13 -->
+          <div class="check-item" data-id="s4_t1" onclick="toggleTask('s4_t1')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">13. Consolidação dos Dados do Mês (Visitas, Conversas e Posts)</span>
+                <span class="check-badge badge-tech">Métricas</span>
+              </div>
+              <p class="check-desc">Levantar número de acessos à vitrine, conversas iniciadas no WhatsApp e alcance total das publicações em Ribeirão Preto.</p>
+            </div>
+          </div>
+
+          <!-- T14 -->
+          <div class="check-item" data-id="s4_t2" onclick="toggleTask('s4_t2')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">14. Envio do Relatório Executivo no Grupo VIP</span>
+                <span class="check-badge badge-urgent">Relatório</span>
+              </div>
+              <p class="check-desc">Enviar o resumo executivo mensal com gráfico e pontos de melhoria para o Mês 2.</p>
+            </div>
+          </div>
+
+          <!-- T15 -->
+          <div class="check-item" data-id="s4_t3" onclick="toggleTask('s4_t3')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">15. Alinhamento de Faturamento & Próximas Ações</span>
+                <span class="check-badge badge-sales">Financeiro</span>
+              </div>
+              <p class="check-desc">Envio da cobrança da mensalidade do Mês 2 (R$ 1.000,00) com confirmação do plano de ação do próximo período.</p>
+            </div>
+          </div>
+
+          <!-- T16 -->
+          <div class="check-item" data-id="s4_t4" onclick="toggleTask('s4_t4')">
+            <div class="custom-checkbox"><i class="ri-check-line"></i></div>
+            <div class="check-content">
+              <div class="check-title-row">
+                <span class="check-title">16. Planejamento de Campanhas Sazonais (Dia das Crianças / Natal)</span>
+                <span class="check-badge badge-sales">Planejamento</span>
+              </div>
+              <p class="check-desc">Antecipar o calendário de presentes de datas comemorativas para abastecimento de estoque e novos criativos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB: ROTEIROS DE VÍDEO ==================== -->
+    <div id="tab-roteiros" class="tab-panel">
+      <div class="playbook-grid">
+        <!-- Roteiro 1 -->
+        <div class="playbook-card">
+          <div>
+            <div class="pb-head">
+              <div class="pb-icon red"><i class="ri-video-fill"></i></div>
+              <div class="pb-title">Roteiro 1: Salva-Vidas de Aniversário</div>
+            </div>
+            <p class="pb-desc">Focado em pais/padrinhos sem tempo que precisam de um presente urgente com embalagem pronta.</p>
+          </div>
+          <div class="snippet-box">
+            <div class="snippet-header">
+              <span class="snippet-label"><i class="ri-file-text-line"></i> Roteiro 30s</span>
+              <button class="btn-copy" onclick="copyText('txt_rot1', this)"><i class="ri-clipboard-line"></i> Copiar</button>
+            </div>
+            <div class="snippet-code" id="txt_rot1">🎬 ROTEIRO 1: "O SALVA-VIDAS DE ANIVERSÁRIO" (Reels / 30 seg)
+
+[0 a 5s - GANCHO]
+(Cláudia segurando uma caixa linda de presente com laço de cetim):
+"Foi convidado para um aniversário infantil de última hora e não sabe o que dar de presente? Calma que eu resolvo para você em 2 minutos!"
+
+[5 a 20s - DESENVOLVIMENTO]
+(Câmera rápida mostrando prateleira com carrinho acrobático, pelúcia e jogo):
+"Aqui no Box 88 da Monalisa no Novo Mercadão, a gente tem opções para todas as idades a partir de R$ 40 reais. Você manda a idade da criança no nosso WhatsApp e a gente te manda fotos e vídeos das melhores opções."
+
+[20 a 30s - CTA]
+(Cláudia mostrando o motoboy saindo ou sacola pronta):
+"A gente já entrega embalado com laço no mesmo dia em Ribeirão Preto! Clica no link da nossa bio e faça seu pedido agora mesmo!"</div>
+          </div>
+        </div>
+
+        <!-- Roteiro 2 -->
+        <div class="playbook-card">
+          <div>
+            <div class="pb-head">
+              <div class="pb-icon blue"><i class="ri-store-2-fill"></i></div>
+              <div class="pb-title">Roteiro 2: Tour Rápido no Box 88</div>
+            </div>
+            <p class="pb-desc">Apresenta a loja física no Novo Mercadão para gerar autoridade e atrair visitas no fim de semana.</p>
+          </div>
+          <div class="snippet-box">
+            <div class="snippet-header">
+              <span class="snippet-label"><i class="ri-file-text-line"></i> Roteiro 30s</span>
+              <button class="btn-copy" onclick="copyText('txt_rot2', this)"><i class="ri-clipboard-line"></i> Copiar</button>
+            </div>
+            <div class="snippet-code" id="txt_rot2">🎬 ROTEIRO 2: "TOUR NO BOX 88" (Reels / 30 seg)
+
+[0 a 5s - GANCHO]
+(Cláudia acenando em frente ao letreiro do Novo Mercadão):
+"Você já conhece o paraíso dos presentes e brinquedos aqui no Novo Mercadão de Ribeirão?"
+
+[5 a 20s - DESENVOLVIMENTO]
+(Câmera mostrando o Box 88 e detalhes de brinquedos educativos e novidades):
+"Estamos no Box 88! Se você procura presentes educativos, brinquedos para primeira infância ou kits prontos para festa, aqui você encontra variedade e os melhores preços da cidade."
+
+[20 a 30s - CTA]
+"Estamos abertos de terça a domingo. Vem tomar um café com a gente ou veja nosso catálogo online no link da bio!"</div>
+          </div>
+        </div>
+
+        <!-- Roteiro 3 -->
+        <div class="playbook-card">
+          <div>
+            <div class="pb-head">
+              <div class="pb-icon purple"><i class="ri-gift-2-fill"></i></div>
+              <div class="pb-title">Roteiro 3: Kit Surpresa Sob Medida</div>
+            </div>
+            <p class="pb-desc">Divulga o serviço de curadoria da loja para presentes personalizados de acordo com o orçamento do cliente.</p>
+          </div>
+          <div class="snippet-box">
+            <div class="snippet-header">
+              <span class="snippet-label"><i class="ri-file-text-line"></i> Roteiro 30s</span>
+              <button class="btn-copy" onclick="copyText('txt_rot3', this)"><i class="ri-clipboard-line"></i> Copiar</button>
+            </div>
+            <div class="snippet-code" id="txt_rot3">🎬 ROTEIRO 3: "MONTANDO UM PRESENTE EM 30 SEGUNDOS" (Reels / 30 seg)
+
+[0 a 5s - GANCHO]
+(Cláudia com um bloquinho de anotações):
+"Um cliente nos mandou no WhatsApp: 'Preciso de um presente de R$ 80 reais para um menino de 4 anos'. Olha o que a gente montou!"
+
+[5 a 20s - MONTAGEM]
+(Take rápido colocando carrinho + livrinho ilustrado dentro da caixa, colocando papel de seda e fechando o laço):
+"Colocamos o nosso carrinho sucesso de vendas, um livrinho de histórias e um laço vermelho de presente especial."
+
+[20 a 30s - CTA]
+"Quer que a gente monte o seu também? Chama a gente no WhatsApp no link da bio e receba hoje em casa!"</div>
+          </div>
+        </div>
+
+        <!-- Roteiro 4 -->
+        <div class="playbook-card">
+          <div>
+            <div class="pb-head">
+              <div class="pb-icon green"><i class="ri-brain-fill"></i></div>
+              <div class="pb-title">Roteiro 4: Brinquedos que Desconectam das Telas</div>
+            </div>
+            <p class="pb-desc">Focado na dor dos pais que querem tirar as crianças do celular e tablet.</p>
+          </div>
+          <div class="snippet-box">
+            <div class="snippet-header">
+              <span class="snippet-label"><i class="ri-file-text-line"></i> Roteiro 30s</span>
+              <button class="btn-copy" onclick="copyText('txt_rot4', this)"><i class="ri-clipboard-line"></i> Copiar</button>
+            </div>
+            <div class="snippet-code" id="txt_rot4">🎬 ROTEIRO 4: "BRINQUEDOS SEM TELA" (Reels / 30 seg)
+
+[0 a 5s - GANCHO]
+(Cláudia segurando um jogo de tabuleiro e blocos de madeira):
+"Quer tirar o seu filho do celular e reunir a família toda na sala?"
+
+[5 a 20s - DESENVOLVIMENTO]
+"Esses aqui são os nossos campeões de vendas: o Kit Montessori em madeira que estimula o raciocínio e o nosso Kit de Jogos Clássicos 3 em 1. Diversão garantida que educa de verdade."
+
+[20 a 30s - CTA]
+"Temos pronta entrega no Box 88 ou entrega expressa em Ribeirão. Link no perfil para pedir o seu!"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB: GUIA META ADS ==================== -->
+    <div id="tab-metaads" class="tab-panel">
+      <div class="week-card">
+        <div class="week-header">
+          <div class="week-title-wrap">
+            <span class="week-tag">Tráfego Hiperlocal · Ribeirão Preto</span>
+            <h2 class="week-name">Configuração da Campanha de Meta Ads</h2>
+            <p class="week-objective">Configuração exata para o Gerenciador de Anúncios da Meta.</p>
+          </div>
+        </div>
+
+        <div class="playbook-grid">
+          <div class="playbook-card">
+            <div>
+              <div class="pb-head">
+                <div class="pb-icon red"><i class="ri-crosshair-2-line"></i></div>
+                <div class="pb-title">1. Parâmetros de Segmentação</div>
+              </div>
+              <div class="snippet-box" style="margin-top:0">
+                <div class="snippet-code">🎯 <strong>Objetivo:</strong> Engajamento (Mensagens no WhatsApp)
+📍 <strong>Localização:</strong> Ribeirão Preto (Pino no Novo Mercadão + Raio de 12 km)
+👥 <strong>Idade:</strong> 24 a 54 anos (Homens e Mulheres)
+💡 <strong>Interesses Sugeridos:</strong>
+• Pais de crianças (0 a 12 anos)
+• Brinquedos educativos
+• Compras online e presentes
+• Aniversários nos próximos 30 dias
+💰 <strong>Orçamento Inicial:</strong> R$ 10,00 a R$ 15,00 / dia
+📲 <strong>Destino:</strong> WhatsApp da Loja (16) 99739-9407</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="playbook-card">
+            <div>
+              <div class="pb-head">
+                <div class="pb-icon green"><i class="ri-text"></i></div>
+                <div class="pb-title">2. Textos de Anúncio (Copys Prontas)</div>
+              </div>
+              <div class="snippet-box" style="margin-top:0">
+                <div class="snippet-header">
+                  <span class="snippet-label">Copy do Anúncio</span>
+                  <button class="btn-copy" onclick="copyText('txt_ad_copy', this)"><i class="ri-clipboard-line"></i> Copiar</button>
+                </div>
+                <div class="snippet-code" id="txt_ad_copy">🎁 Procurando presentes infantis em Ribeirão Preto?
+
+No Box 88 da Monalisa (Novo Mercadão), você encontra carrinhos, pelúcias, jogos educativos e kits prontos para presentear!
+
+🚚 Entregamos no mesmo dia na sua casa com embalagem de presente cortesia.
+
+👇 Toque no botão abaixo e peça agora pelo WhatsApp da loja!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB: SCRIPTS DE ATENDIMENTO ==================== -->
+    <div id="tab-whatsapp" class="tab-panel">
+      <div class="week-card">
+        <div class="week-header">
+          <div class="week-title-wrap">
+            <span class="week-tag">Manual de Fechamento</span>
+            <h2 class="week-name">Scripts de Atendimento para o WhatsApp da Loja</h2>
+            <p class="week-objective">Instruções para a Cláudia e a equipe do Box 88 converterem os leads que chegam dos anúncios.</p>
+          </div>
+        </div>
+
+        <div class="playbook-grid">
+          <!-- Script 1: Boas Vindas -->
+          <div class="playbook-card">
+            <div>
+              <div class="pb-head">
+                <div class="pb-icon green"><i class="ri-chat-smile-2-line"></i></div>
+                <div class="pb-title">Resposta 1: Cliente chamou no Whats</div>
+              </div>
+              <div class="snippet-box" style="margin-top:0">
+                <div class="snippet-header">
+                  <span class="snippet-label">Mensagem Rápida</span>
+                  <button class="btn-copy" onclick="copyText('txt_wa_r1', this)"><i class="ri-clipboard-line"></i> Copiar</button>
+                </div>
+                <div class="snippet-code" id="txt_wa_r1">Olá! Seja muito bem-vindo(a) à Monalisa Presentes no Novo Mercadão! 🥰🎁
+
+Meu nome é Cláudia. Para eu te ajudar a encontrar o presente perfeito rapidinho:
+
+1. Qual a idade da criança?
+2. É menino ou menina?
+3. Tem alguma faixa de valor em mente?
+
+Já vou te mandar fotos e vídeos dos que fazem mais sucesso! ✨</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Script 2: Fechamento -->
+          <div class="playbook-card">
+            <div>
+              <div class="pb-head">
+                <div class="pb-icon red"><i class="ri-bank-card-line"></i></div>
+                <div class="pb-title">Resposta 2: Fechando o Pedido & Entrega</div>
+              </div>
+              <div class="snippet-box" style="margin-top:0">
+                <div class="snippet-header">
+                  <span class="snippet-label">Mensagem de Fechamento</span>
+                  <button class="btn-copy" onclick="copyText('txt_wa_r2', this)"><i class="ri-clipboard-line"></i> Copiar</button>
+                </div>
+                <div class="snippet-code" id="txt_wa_r2">Perfeito! Já separei aqui com todo o carinho! 🎀
+
+🎁 A embalagem com laço de presente é por nossa conta (cortesia).
+
+Você prefere:
+1. Retirar hoje aqui no Box 88 do Novo Mercadão?
+2. Ou que o motoboy entregue na sua casa hoje mesmo?
+
+Aceitamos Pix e Cartão de Crédito! Qual seu endereço para eu calcular a entrega? 🛵</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESET CHECKLIST -->
+    <div class="reset-btn-wrap">
+      <button class="btn-reset" onclick="resetChecklist()"><i class="ri-refresh-line"></i> Resetar Marcações do Checklist</button>
+    </div>
+  </main>
+
+  <script>
+    const TOTAL_TASKS = 16;
+    const STORAGE_KEY = 'vertex_monalisa_tasks_v1';
+
+    function getSavedTasks() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveTasks(tasks) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      updateProgress();
+    }
+
+    function toggleTask(id) {
+      const tasks = getSavedTasks();
+      tasks[id] = !tasks[id];
+      saveTasks(tasks);
+      renderTasks();
+    }
+
+    function renderTasks() {
+      const tasks = getSavedTasks();
+      document.querySelectorAll('.check-item').forEach(item => {
+        const id = item.getAttribute('data-id');
+        if (tasks[id]) {
+          item.classList.add('completed');
+        } else {
+          item.classList.remove('completed');
+        }
+      });
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const tasks = getSavedTasks();
+      const completed = Object.values(tasks).filter(Boolean).length;
+      const pct = Math.round((completed / TOTAL_TASKS) * 100);
+      
+      const pctElem = document.getElementById('progressPct');
+      const barElem = document.getElementById('progressBar');
+      const countElem = document.getElementById('progressCount');
+
+      if (pctElem) pctElem.textContent = `${pct}%`;
+      if (barElem) barElem.style.width = `${pct}%`;
+      if (countElem) countElem.textContent = `${completed} de ${TOTAL_TASKS} tarefas concluídas`;
+    }
+
+    function resetChecklist() {
+      if (confirm('Deseja realmente resetar todas as marcações do checklist?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        renderTasks();
+      }
+    }
+
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      
+      btn.classList.add('active');
+      const target = document.getElementById(tabId);
+      if (target) target.classList.add('active');
+    }
+
+    function copyText(elementId, btn) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      
+      navigator.clipboard.writeText(el.innerText).then(() => {
+        const origText = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = '<i class="ri-check-line"></i> Copiado!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = origText;
+        }, 2000);
+      });
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTasks();
+    });
+  </script>
+</body>
+</html>
