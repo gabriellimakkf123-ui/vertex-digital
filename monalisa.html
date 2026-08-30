@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Monalisa Presentes & Brinquedos | Box 88 - Novo Mercadão Ribeirão Preto</title>
-  <meta name="description" content="A loja de brinquedos e presentes infantis mais querida de Ribeirão Preto. Brinquedos educativos, pelúcias, carrinhos e kits embalados para presente com entrega expressa." />
-  <link rel="icon" type="image/png" href="./favicon.png" />
+  <title>Monalisa Presentes e Variedades | Box 88 - Novo Mercadão Ribeirão Preto</title>
+  <meta name="description" content="A loja de presentes, brinquedos e variedades mais querida de Ribeirão Preto. Brinquedos educativos, pelúcias, carrinhos e kits embalados para presente no Box 88 do Novo Mercadão." />
+  <link rel="icon" type="image/jpeg" href="./monalisa-logo.jpg" />
   
   <!-- Google Fonts: Plus Jakarta Sans + Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,13 +17,13 @@
 
   <style>
     :root {
-      --primary: #FF5C39;
-      --primary-hover: #E84522;
-      --primary-light: #FFF0EB;
+      --primary: #E51E2B;
+      --primary-hover: #C5131E;
+      --primary-light: #FFF1F2;
       --secondary: #7C3AED;
       --secondary-light: #F3EEFF;
-      --accent-yellow: #FFB800;
-      --accent-yellow-light: #FFF8E5;
+      --accent-yellow: #F59E0B;
+      --accent-yellow-light: #FEF3C7;
       --accent-blue: #0284C7;
       --accent-blue-light: #E0F2FE;
       --accent-green: #10B981;
@@ -42,7 +42,7 @@
       --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       --shadow-md: 0 4px 14px -1px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
       --shadow-lg: 0 12px 28px -4px rgba(0, 0, 0, 0.1), 0 4px 12px -2px rgba(0, 0, 0, 0.05);
-      --shadow-float: 0 16px 36px -4px rgba(255, 92, 57, 0.28);
+      --shadow-float: 0 16px 36px -4px rgba(229, 30, 43, 0.28);
       
       --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -70,7 +70,7 @@
       font-family: var(--font-body);
       line-height: 1.5;
       overflow-x: hidden;
-      padding-bottom: 76px; /* Space for sticky bottom bar on mobile */
+      padding-bottom: 76px;
     }
 
     @media (min-width: 768px) {
@@ -97,7 +97,6 @@
       display: block;
     }
 
-    /* Container Utility */
     .container {
       width: 100%;
       max-width: 1140px;
@@ -113,7 +112,7 @@
 
     /* --- TOP ANNOUNCEMENT BAR --- */
     .announcement-bar {
-      background: linear-gradient(90deg, #FF5C39 0%, #FF7A59 50%, #FF5C39 100%);
+      background: linear-gradient(90deg, #E51E2B 0%, #FF334B 50%, #E51E2B 100%);
       color: #FFFFFF;
       font-size: 0.78rem;
       font-weight: 700;
@@ -160,38 +159,39 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
+      height: 72px;
       gap: 16px;
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
     }
 
-    .brand-icon-box {
-      width: 42px;
-      height: 42px;
-      border-radius: var(--radius-md);
-      background: linear-gradient(135deg, var(--primary) 0%, #FF8A65 100%);
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.35rem;
-      box-shadow: 0 4px 10px rgba(255, 92, 57, 0.3);
+    .brand-logo-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+      box-shadow: 0 4px 10px rgba(229, 30, 43, 0.25);
       flex-shrink: 0;
+    }
+
+    .brand-text-wrap {
+      display: flex;
+      flex-direction: column;
     }
 
     .brand-title {
       font-family: var(--font-display);
-      font-size: 1.28rem;
+      font-size: 1.25rem;
       font-weight: 900;
       color: var(--text-main);
       line-height: 1.1;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.3px;
     }
 
     .brand-tag {
@@ -199,7 +199,7 @@
       font-weight: 700;
       color: var(--primary);
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
       display: flex;
       align-items: center;
       gap: 4px;
@@ -217,7 +217,7 @@
       gap: 6px;
       background: var(--bg);
       border: 1px solid var(--border-color);
-      padding: 7px 12px;
+      padding: 8px 14px;
       border-radius: var(--radius-full);
       font-size: 0.76rem;
       font-weight: 700;
@@ -292,7 +292,7 @@
       height: 58px;
       border-radius: 50%;
       padding: 2.5px;
-      background: linear-gradient(45deg, #FF5C39, #FFB800, #7C3AED);
+      background: linear-gradient(45deg, #E51E2B, #F59E0B, #E51E2B);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -331,8 +331,8 @@
     }
 
     .hero-card {
-      background: linear-gradient(135deg, #FFF6F3 0%, #FFFFFF 60%, #F5F0FF 100%);
-      border: 1px solid rgba(255, 92, 57, 0.15);
+      background: linear-gradient(135deg, #FFF5F5 0%, #FFFFFF 60%, #FFFBEB 100%);
+      border: 1px solid rgba(229, 30, 43, 0.18);
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-md);
@@ -368,7 +368,7 @@
       align-items: center;
       gap: 6px;
       background: #FFFFFF;
-      border: 1px solid rgba(255, 92, 57, 0.25);
+      border: 1px solid rgba(229, 30, 43, 0.25);
       padding: 6px 14px;
       border-radius: var(--radius-full);
       font-size: 0.76rem;
@@ -376,7 +376,7 @@
       color: var(--primary);
       width: fit-content;
       margin-bottom: 16px;
-      box-shadow: 0 2px 8px rgba(255, 92, 57, 0.1);
+      box-shadow: 0 2px 8px rgba(229, 30, 43, 0.1);
     }
 
     .hero-title {
@@ -390,7 +390,7 @@
     }
 
     .hero-title .highlight {
-      background: linear-gradient(120deg, var(--primary) 0%, #FF8A65 100%);
+      background: linear-gradient(120deg, var(--primary) 0%, #FF5A67 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
@@ -431,7 +431,7 @@
     .btn-hero-primary:hover {
       background: var(--primary-hover);
       transform: translateY(-2px);
-      box-shadow: 0 20px 40px -6px rgba(255, 92, 57, 0.35);
+      box-shadow: 0 20px 40px -6px rgba(229, 30, 43, 0.35);
     }
 
     .btn-hero-wa {
@@ -483,7 +483,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #FDF4EC;
+      background: #FFF1F2;
     }
 
     .hero-image-wrap img {
@@ -497,7 +497,7 @@
       position: absolute;
       bottom: 20px;
       right: 20px;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(8px);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
@@ -510,15 +510,15 @@
     }
 
     .badge-icon {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       background: var(--primary-light);
       color: var(--primary);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
     .badge-title {
@@ -569,7 +569,7 @@
       flex-shrink: 0;
     }
 
-    .stat-icon-circle.orange { background: var(--primary-light); color: var(--primary); }
+    .stat-icon-circle.red    { background: var(--primary-light); color: var(--primary); }
     .stat-icon-circle.purple { background: var(--secondary-light); color: var(--secondary); }
     .stat-icon-circle.yellow { background: var(--accent-yellow-light); color: #B45309; }
     .stat-icon-circle.green  { background: var(--accent-green-light); color: var(--accent-green); }
@@ -590,7 +590,7 @@
     /* --- GIFT FINDER WIDGET --- */
     .finder-widget {
       background: #FFFFFF;
-      border: 2px solid #FFE4DB;
+      border: 2px solid #FFE4E6;
       border-radius: var(--radius-lg);
       padding: 24px 20px;
       margin-bottom: 40px;
@@ -677,7 +677,7 @@
       background: var(--primary);
       border-color: var(--primary);
       color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(255, 92, 57, 0.25);
+      box-shadow: 0 4px 12px rgba(229, 30, 43, 0.25);
     }
 
     .finder-action-bar {
@@ -808,7 +808,7 @@
     .product-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
-      border-color: rgba(255, 92, 57, 0.3);
+      border-color: rgba(229, 30, 43, 0.3);
     }
 
     .product-thumb-wrap {
@@ -844,7 +844,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
 
-    .product-badge.bestseller { background: #FF5C39; color: #FFFFFF; }
+    .product-badge.bestseller { background: #E51E2B; color: #FFFFFF; }
     .product-badge.new        { background: #7C3AED; color: #FFFFFF; }
     .product-badge.ready      { background: #10B981; color: #FFFFFF; }
 
@@ -1358,19 +1358,27 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 12px;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .footer-logo-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary);
     }
 
     .footer-logo-title {
       font-family: var(--font-display);
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 900;
       color: var(--text-main);
     }
 
     .footer-info {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--text-sub);
       line-height: 1.6;
       max-width: 500px;
@@ -1386,8 +1394,8 @@
     }
 
     .social-btn {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: var(--bg);
       border: 1px solid var(--border-color);
@@ -1395,7 +1403,7 @@
       align-items: center;
       justify-content: center;
       color: var(--text-muted);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       transition: all 0.2s;
     }
 
@@ -1444,12 +1452,26 @@
 
     .sticky-info {
       display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sticky-logo-thumb {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid var(--primary);
+      object-fit: cover;
+    }
+
+    .sticky-text-wrap {
+      display: flex;
       flex-direction: column;
     }
 
     .sticky-title {
       font-weight: 800;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--text-main);
       line-height: 1.1;
     }
@@ -1503,12 +1525,10 @@
     <div class="container">
       <div class="header-inner">
         <a href="#" class="brand-logo">
-          <div class="brand-icon-box">
-            <i class="ri-gift-2-fill"></i>
-          </div>
-          <div>
+          <img src="./monalisa-logo.jpg" alt="Logo Monalisa Presentes e Variedades" class="brand-logo-img" />
+          <div class="brand-text-wrap">
             <div class="brand-title">Monalisa</div>
-            <div class="brand-tag"><i class="ri-sparkling-fill"></i> Presentes & Brinquedos</div>
+            <div class="brand-tag"><i class="ri-sparkling-fill"></i> Presentes e Variedades</div>
           </div>
         </a>
 
@@ -1530,6 +1550,15 @@
   <div class="stories-section">
     <div class="container">
       <div class="stories-scroll">
+        <a href="#localizacao" class="story-item">
+          <div class="story-ring">
+            <div class="story-img-box">
+              <img src="./monalisa-logo.jpg" alt="Sobre a Loja Monalisa" />
+            </div>
+          </div>
+          <span class="story-label">A Loja</span>
+        </a>
+
         <a href="#catalogo" onclick="applyQuickFilter('pelucias')" class="story-item">
           <div class="story-ring">
             <div class="story-img-box">
@@ -1583,15 +1612,6 @@
           </div>
           <span class="story-label">Mochilas</span>
         </a>
-
-        <a href="#localizacao" class="story-item">
-          <div class="story-ring">
-            <div class="story-img-box">
-              <img src="./monalisa-fachada.jpg" alt="Box 88" />
-            </div>
-          </div>
-          <span class="story-label">Box 88</span>
-        </a>
       </div>
     </div>
   </div>
@@ -1602,7 +1622,7 @@
       <div class="hero-card">
         <div class="hero-content">
           <div class="hero-pill">
-            <i class="ri-sparkling-2-fill"></i> Catálogo Oficial · Ribeirão Preto
+            <i class="ri-sparkling-2-fill"></i> Catálogo Oficial · Box 88 Novo Mercadão
           </div>
           <h1 class="hero-title">
             O presente perfeito para arrancar o <span class="highlight">melhor sorriso</span> do seu filho.
@@ -1627,7 +1647,7 @@
               <i class="ri-star-fill"></i>
             </div>
             <div class="social-text">
-              <strong>4.9 / 5.0</strong> · Mais de 5.000 presentes entregues
+              <strong>4.9 / 5.0</strong> · Mais de 5.000 presentes entregues em Ribeirão Preto
             </div>
           </div>
         </div>
@@ -1650,7 +1670,7 @@
     <!-- TRUST STATS STRIP -->
     <div class="trust-stats-strip">
       <div class="trust-stat-item">
-        <div class="stat-icon-circle orange">
+        <div class="stat-icon-circle red">
           <i class="ri-truck-line"></i>
         </div>
         <div>
@@ -2037,7 +2057,7 @@
               <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
             </div>
             <p class="review-quote">
-              "Sempre passo no Box 88 quando vou ao Novo Mercadão. A variedade de jogos educativos de madeira é fantástica e com preços super justos. Nota 10!"
+              "Sempre passo no Box 88 quando vou ao Novo Mercadão. A variedade de brinquedos e presentes é fantástica e com preços super justos. Nota 10!"
             </p>
           </div>
           <div class="review-author">
@@ -2159,14 +2179,12 @@
   <footer>
     <div class="container">
       <div class="footer-brand">
-        <div class="brand-icon-box" style="width:34px; height:34px; font-size:1.1rem;">
-          <i class="ri-gift-2-fill"></i>
-        </div>
-        <span class="footer-logo-title">Monalisa Presentes & Brinquedos</span>
+        <img src="./monalisa-logo.jpg" alt="Monalisa Presentes e Variedades" class="footer-logo-img" />
+        <span class="footer-logo-title">Monalisa Presentes e Variedades</span>
       </div>
       <p class="footer-info">
         Box 88 · Novo Mercadão de Ribeirão Preto — Av. Ligia Latuf Salomão, 200, Nova Aliança.<br/>
-        WhatsApp de Vendas: <strong>(16) 99739-9407</strong>
+        WhatsApp de Vendas e Encomendas: <strong>(16) 99739-9407</strong>
       </p>
       
       <div class="footer-social-links">
@@ -2182,7 +2200,7 @@
       </div>
 
       <div class="footer-bottom-copy">
-        © 2026 Monalisa Presentes & Brinquedos. Todos os direitos reservados.<br/>
+        © 2026 Monalisa Presentes e Variedades. Todos os direitos reservados.<br/>
         Ambiente Digital e Infraestrutura desenvolvidos por <a href="https://www.somosvertexdigital.com.br" target="_blank">Vertex Digital</a>.
       </div>
     </div>
@@ -2191,8 +2209,11 @@
   <!-- MOBILE STICKY BOTTOM BAR -->
   <div class="mobile-sticky-bar">
     <div class="sticky-info">
-      <div class="sticky-title">Monalisa Presentes</div>
-      <div class="sticky-sub">Atendimento Online</div>
+      <img src="./monalisa-logo.jpg" alt="Monalisa" class="sticky-logo-thumb" />
+      <div class="sticky-text-wrap">
+        <div class="sticky-title">Monalisa Presentes</div>
+        <div class="sticky-sub">Atendimento Online</div>
+      </div>
     </div>
     <a href="https://wa.me/5516997399407?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Monalisa%20e%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" class="btn-sticky-wa">
       <i class="ri-whatsapp-line"></i> Fazer Pedido
